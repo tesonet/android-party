@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable name="handlers" type="app.androidparty.LoginFragment"/>
+    </data>
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/login_container"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:src="@drawable/login_logo"
+                android:layout_centerHorizontal="true"
+                android:minWidth="@dimen/login_logo_w"
+                android:minHeight="@dimen/login_logo_h"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/login_logo_top_margin"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:layout_width="@dimen/login_field_w"
+                android:id="@+id/userName"
+                android:paddingLeft="@dimen/login_field_padding"
+                android:paddingRight="@dimen/login_field_padding"
+                android:layout_gravity="center"
+                android:textColor="@color/login_field_hint"
+                android:textColorHint="@color/login_field_hint"
+                android:background="@drawable/login_field"
+                android:hint="@string/username_hint"
+                android:layout_marginBottom="@dimen/login_field_margin_bottom"
+                android:drawableLeft="@drawable/ic_ico_username"
+                android:drawablePadding="@dimen/login_drawable_padding"
+                android:fontFamily="sans-serif"
+                android:textSize="@dimen/login_field_text_size"
+                android:layout_height="@dimen/login_field_h" />
+
+            <EditText
+                android:layout_width="@dimen/login_field_w"
+                android:id="@+id/userPsw"
+                android:paddingLeft="@dimen/login_field_padding"
+                android:paddingRight="@dimen/login_field_padding"
+                android:layout_gravity="center"
+                android:inputType="textPassword"
+                android:textColor="@color/login_field_hint"
+                android:textColorHint="@color/login_field_hint"
+                android:hint="@string/password_hint"
+                android:background="@drawable/login_field"
+                android:drawablePadding="@dimen/login_drawable_padding"
+                android:layout_marginBottom="@dimen/login_field_margin_bottom"
+                android:fontFamily="sans-serif"
+                android:drawableLeft="@drawable/ic_ico_lock"
+                android:textSize="@dimen/login_field_text_size"
+                android:layout_height="@dimen/login_field_h" />
+
+            <Button
+                android:layout_gravity="center"
+                android:text="@string/login"
+                android:id="@+id/doLogin"
+                android:textColor="@color/login_btn_text"
+                android:textAllCaps="false"
+                android:onClick="@{() -> handlers.onDoLoginClick()}"
+                android:layout_width="@dimen/login_btn_w"
+                android:background="@drawable/login_btn"
+                android:textSize="@dimen/login_field_text_size"
+                android:layout_height="@dimen/login_btn_h" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>
+
+</layout>

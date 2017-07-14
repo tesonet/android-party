@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">AndroidParty</string>
+    <string name="no_internet">No insternet connection</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="login">Log In</string>
+    <string name="fetching">Fetching the list..</string>
+    <string name="wait">Please wait..</string>
+    <string name="login_error">Failed to login</string>
+    <string name="invalid_credentials">Invalid credentials</string>
+    <string name="failed_get_token">Failed to get token</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="failed_get_servers">Failed to ger servers list</string>
+    <string name="server">SERVER</string>
+    <string name="distance">DISTANCE</string>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.databinding.ObservableArrayList" />
+        <import type="app.androidparty.Models.Server" />
+        <variable name="servers" type="ObservableArrayList&lt;Server&gt;"/>
+        <variable name="handlers" type="app.androidparty.ServersFragment"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:orientation="vertical"
+           android:layout_height="match_parent">
+
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:background="#fff"
+               android:padding="@dimen/list_header_padding"
+               android:layout_height="wrap_content">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:text="@string/server"
+                   android:layout_alignParentLeft="true"
+                   android:layout_height="wrap_content" />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:text="@string/distance"
+                   android:layout_alignParentRight="true"
+                   android:layout_height="wrap_content" />
+
+           </RelativeLayout>
+
+           <ListView
+               android:id="@+id/servers_list"
+               android:padding="@dimen/servers_list_padding"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               app:items="@{servers}" >
+           </ListView>
+
+
+       </LinearLayout>
+
+    </FrameLayout>
+
+</layout>
