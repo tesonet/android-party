@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="main_bg">#ffffff</color>
+    <color name="login_bg">#0b0f27</color>
+    <color name="login_field_hint">#b2b2b2</color>
+    <color name="login_btn_text">#ffffff</color>
+    <color name="login_btn_bg">#9fd533</color>
+    <color name="img_overlay">#c4e6e6e6</color>
+</resources>
