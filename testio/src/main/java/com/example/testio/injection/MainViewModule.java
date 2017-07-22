@@ -1,6 +1,7 @@
 package com.example.testio.injection;
 
 import android.support.annotation.NonNull;
+import com.example.testio.api.TestioApi;
 import com.example.testio.interactor.MainInteractor;
 import com.example.testio.interactor.impl.MainInteractorImpl;
 import com.example.testio.presenter.MainPresenter;
@@ -12,8 +13,8 @@ import dagger.Provides;
 @Module
 public final class MainViewModule {
   @Provides
-  public MainInteractor provideInteractor() {
-    return new MainInteractorImpl();
+  public MainInteractor provideInteractor(TestioApi testioApi) {
+    return new MainInteractorImpl(testioApi);
   }
 
   @Provides
