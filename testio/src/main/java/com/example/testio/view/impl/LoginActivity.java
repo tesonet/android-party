@@ -84,9 +84,8 @@ public final class LoginActivity extends BaseActivity<LoginPresenter, LoginView>
   }
 
   private void hideKeyboard() {
-    View view = this.getCurrentFocus();
     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    imm.hideSoftInputFromWindow(buttonLogin.getWindowToken(), 0);
   }
 
   private void isLoading(boolean isLoading) {
