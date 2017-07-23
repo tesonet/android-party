@@ -1,3 +1,12 @@
 <resources>
   <string name="app_name">Testio</string>
+  <string name="server">Server</string>
+  <string name="distance">Distance</string>
+  <string name="logout">logout</string>
+  <string name="logo">logo</string>
+  <string name="background">background</string>
+  <string name="username">username</string>
+  <string name="password">password</string>
+  <string name="log_in">Log in</string>
+  <string name="fetching_the_list">Fetching the list …</string>
 </resources>

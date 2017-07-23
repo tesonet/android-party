@@ -14,14 +14,14 @@ public final class App extends Application {
   public void onCreate() {
     super.onCreate();
 
-    //if (BuildConfig.DEBUG) {
-    Timber.plant(new Timber.DebugTree() {
-      @Override
-      protected String createStackElementTag(StackTraceElement element) {
-        return super.createStackElementTag(element) + ":" + element.getLineNumber();
-      }
-    });
-    //}
+    if (BuildConfig.DEBUG) {
+      Timber.plant(new Timber.DebugTree() {
+        @Override
+        protected String createStackElementTag(StackTraceElement element) {
+          return super.createStackElementTag(element) + ":" + element.getLineNumber();
+        }
+      });
+    }
 
     mAppComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
   }

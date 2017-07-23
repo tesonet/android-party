@@ -2,6 +2,7 @@ package com.example.testio.injection;
 
 import android.support.annotation.NonNull;
 import com.example.testio.api.TestioApi;
+import com.example.testio.helpers.TokenStorage;
 import com.example.testio.interactor.LoginInteractor;
 import com.example.testio.interactor.impl.LoginInteractorImpl;
 import com.example.testio.presenter.LoginPresenter;
@@ -13,8 +14,8 @@ import dagger.Provides;
 @Module
 public final class LoginViewModule {
   @Provides
-  public LoginInteractor provideInteractor(TestioApi testioApi) {
-    return new LoginInteractorImpl(testioApi);
+  public LoginInteractor provideInteractor(TestioApi testioApi, TokenStorage tokenStorage) {
+    return new LoginInteractorImpl(testioApi, tokenStorage);
   }
 
   @Provides

@@ -1,15 +1,11 @@
 package com.example.testio.interactor;
 
-import com.example.testio.models.Server;
-import com.example.testio.models.Token;
 import com.example.testio.models.User;
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import java.util.List;
+import io.reactivex.Completable;
 
 public interface LoginInteractor extends BaseInteractor {
 
-  Observable<Token> getToken(User user);
+  Completable tryLogin(User user);
 
-  Observable<List<Server>> getServersList(String token);
+  Completable checkToken();
 }

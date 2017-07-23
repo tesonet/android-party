@@ -4,4 +4,5 @@ import com.example.testio.view.MainView;
 
 public interface MainPresenter extends BasePresenter<MainView> {
 
+  void releaseToken();
 }

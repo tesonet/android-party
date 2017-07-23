@@ -14,9 +14,14 @@
       android:supportsPictureInPicture="false"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-    <activity android:name=".view.impl.MainActivity">
+    <activity
+        android:name=".view.impl.MainActivity"
+        android:theme="@style/Theme.AppTheme.Light.NoActionBar"
+        >
     </activity>
-    <activity android:name=".view.impl.LoginActivity">
+    <activity
+        android:name=".view.impl.LoginActivity"
+        android:theme="@style/AppThemeNoActionBar">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 

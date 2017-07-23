@@ -1,15 +1,14 @@
 package com.example.testio.injection;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import com.example.testio.App;
 import com.example.testio.api.TestioApi;
+import com.example.testio.helpers.TokenStorage;
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -18,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public final class AppModule {
 
   //// TODO: 7/22/17 hide me
-  final String BASE_URL= "http://playground.tesonet.lt/v1/";
+  final String BASE_URL = "http://playground.tesonet.lt/v1/";
 
   @NonNull
   private final App mApp;
@@ -53,18 +52,18 @@ public final class AppModule {
   }
 
   @Provides
-  public TestioApi provideTestioApi(
-      GsonConverterFactory gsonConverterFactory,
+  public TestioApi provideTestioApi(GsonConverterFactory gsonConverterFactory,
       RxJava2CallAdapterFactory rxJava2CallAdapterFactory, OkHttpClient client) {
 
-    HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-    interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-    OkHttpClient client1 = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+    //for debug
+    //HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+    //interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+    //OkHttpClient client1 = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
     Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
         .addConverterFactory(gsonConverterFactory)
         .addCallAdapterFactory(rxJava2CallAdapterFactory)
-        .client(client1)
+        .client(client)
         .build();
 
     return retrofit.create(TestioApi.class);
@@ -76,5 +75,8 @@ public final class AppModule {
     return application.getSharedPreferences("some_prefs_name", 0);
   }
 
-
+  @Provides
+  public TokenStorage provideTokenStorage(SharedPreferences sharedPreferences) {
+    return new TokenStorage(sharedPreferences);
+  }
 }

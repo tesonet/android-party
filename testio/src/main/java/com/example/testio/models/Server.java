@@ -6,8 +6,8 @@ package com.example.testio.models;
 
 public class Server {
 
-  String name;
-  String distance;
+  private String name;
+  private String distance;
 
   public String getName() {
     return name;

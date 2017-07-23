@@ -1,9 +1,9 @@
 package com.example.testio.injection;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import com.example.testio.App;
 import com.example.testio.api.TestioApi;
+import com.example.testio.helpers.TokenStorage;
 import dagger.Component;
 import javax.inject.Singleton;
 
@@ -16,6 +16,5 @@ public interface AppComponent {
 
   TestioApi getTestioApi();
 
-  SharedPreferences getSharedPrefs();
-
+  TokenStorage getTokenStorage();
 }

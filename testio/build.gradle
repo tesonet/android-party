@@ -10,7 +10,6 @@ android {
     targetSdkVersion 25
     versionCode 1
     versionName "1.0"
-
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
   buildTypes {
@@ -42,4 +41,5 @@ dependencies {
   compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
   compile 'com.squareup.retrofit2:converter-gson:2.3.0'
   compile 'com.jakewharton.timber:timber:4.3.1'
+  compile 'org.jetbrains:annotations-java5:15.0'
 }

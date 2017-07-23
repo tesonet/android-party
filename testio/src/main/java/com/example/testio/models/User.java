@@ -6,14 +6,13 @@ package com.example.testio.models;
 
 public class User {
 
+  private String username;
+  private String password;
+
   public User(String username, String password) {
     this.username = username;
     this.password = password;
   }
-
-  private String username;
-
-  private String password;
 
   public String getUsername() {
     return username;
@@ -31,8 +30,8 @@ public class User {
     this.password = password;
   }
 
-  public String stringToJson(){
-    return "{username: "+username+", password: "+password+"}";
+  public String stringToJson() {
+    return "{username: " + username + ", password: " + password + "}";
   }
 
   @Override

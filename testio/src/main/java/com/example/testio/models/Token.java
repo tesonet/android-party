@@ -6,7 +6,7 @@ package com.example.testio.models;
 
 public class Token {
 
-  String token;
+  private String token;
 
   public String getToken() {
     return token;
