@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">PartyApp</string>
+
+    <string name="error_username">username is incorrect</string>
+    <string name="error_password">password is incorrect</string>
+
+    <string name="button_login">Log In</string>
+
+    <string name="hint_username">username</string>
+    <string name="hint_password">password</string>
+
+    <string name="regexp_general">^[A-Za-z0-9_-]{5,15}$</string>
+
+    <string name="label_server">server</string>
+    <string name="label_distance">distance</string>
+
+</resources>

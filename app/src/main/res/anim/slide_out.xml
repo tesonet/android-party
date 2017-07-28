@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--TOOK FROM https://stackoverflow.com/questions/10243557/how-to-apply-slide-animation-between-two-activities-in-android-->
+<translate
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="@android:integer/config_longAnimTime"
+    android:fromXDelta="0%p"
+    android:toXDelta="-100%p">
+</translate>
