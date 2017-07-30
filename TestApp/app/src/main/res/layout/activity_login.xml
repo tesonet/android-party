@@ -1,0 +1,48 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg"
+        android:scaleType="fitXY"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="40dp">
+
+        <include layout="@layout/logo" />
+
+        <EditText
+            android:layout_marginTop="100dp"
+            android:id="@+id/et_login"
+            android:drawableLeft="@drawable/username"
+            android:hint="@string/username"
+            style="@style/login_input_field"/>
+
+        <EditText
+            android:id="@+id/et_password"
+            android:drawableLeft="@drawable/lock"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            style="@style/login_input_field"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login_string"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/login_btn"/>
+
+    </LinearLayout>
+
+</FrameLayout>
