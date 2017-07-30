@@ -1,0 +1,116 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <FrameLayout
+        android:id="@+id/fl_loading_container"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:visibility="visible">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bg"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/iv_spinner"
+            android:layout_margin="40dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:src="@drawable/loading_circle_shape"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:textColor="@android:color/white"
+            android:layout_margin="50dp"
+            android:text="@string/fetching_the_list"/>
+
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/fl_list_container"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:visibility="invisible"
+        android:background="#f0f0f0">
+
+        <FrameLayout
+            android:id="@+id/fl_top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left">
+
+                <include layout="@layout/logo" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_logout"
+                android:layout_gravity="right|center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/logout"/>
+
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_header_container"
+            android:layout_below="@+id/fl_top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:padding="10dp"
+            android:background="@android:color/white">
+
+            <TextView
+                android:layout_alignParentLeft="true"
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Server"
+                android:textAllCaps="true"
+                android:textColor="@android:color/darker_gray"
+                />
+
+            <TextView
+                android:layout_alignParentRight="true"
+                android:id="@+id/tv_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Distance"
+                android:textAllCaps="true"
+                android:textColor="@android:color/darker_gray"
+                tools:text="3923 km"/>
+
+            <View
+                android:layout_marginTop="7dp"
+                android:background="@android:color/darker_gray"
+                android:layout_below="@id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_below="@+id/rl_header_container"
+            android:padding="10dp"
+            android:id="@+id/rv_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

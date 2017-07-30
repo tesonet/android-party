@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Test App</string>
+
+    <string name="login_string">Log in</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="testio">testio</string>
+    <string name="fetching_the_list">Fetching the list...</string>
+</resources>
