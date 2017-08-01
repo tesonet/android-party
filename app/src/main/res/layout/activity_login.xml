@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg"
+        android:contentDescription="@null" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/username"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@null"
+                android:padding="@dimen/form_vertical_margin"
+                android:src="@drawable/logo_light" />
+
+            <com.yegor.tesonet.partyapp.ui.login.RegexpInputView
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/form_vertical_margin"
+                app:error="@string/error_username"
+                app:hint="@string/hint_username"
+                app:image="@drawable/ic_perm_identity_black_18dp"
+                app:regexp="@string/regexp_general" />
+
+            <com.yegor.tesonet.partyapp.ui.login.RegexpInputView
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/username"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/form_vertical_margin"
+                app:error="@string/error_password"
+                app:hint="@string/hint_password"
+                app:image="@drawable/ic_lock_black_18dp"
+                app:regexp="@string/regexp_general" />
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/password"
+                android:layout_marginTop="@dimen/form_vertical_margin"
+                android:background="@drawable/button_background"
+                android:text="@string/button_login"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</RelativeLayout>

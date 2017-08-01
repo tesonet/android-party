@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RegexpInputView">
+        <attr name="hint" format="string" />
+        <attr name="regexp" format="string" />
+        <attr name="error" format="string" />
+        <attr name="image" format="reference"/>
+    </declare-styleable>
+</resources>
