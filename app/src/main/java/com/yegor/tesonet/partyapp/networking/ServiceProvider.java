@@ -4,7 +4,9 @@ import com.google.gson.GsonBuilder;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rx.schedulers.Schedulers;
 
 /**
  * Services factory
@@ -26,7 +28,8 @@ public class ServiceProvider {
                 .addInterceptor(new CustomInterceptor())
                 .build();
         Retrofit.Builder builder = new Retrofit.Builder().baseUrl(API_BASE_URL);
-        builder.addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()));
+        builder.addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io()));
         Retrofit retrofit = builder.client(okHttpClient).build();
         return retrofit.create(serviceClass);
     }

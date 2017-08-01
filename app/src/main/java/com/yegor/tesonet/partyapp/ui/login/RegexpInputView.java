@@ -63,14 +63,11 @@ public class RegexpInputView extends TextInputLayout {
                 mCurrentStatus = newStatus;
             }
         });
-        mEditText.setOnFocusChangeListener(new OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!mCurrentStatus && !hasFocus) {
-                    setError(mError);
-                } else {
-                    setError(null);
-                }
+        mEditText.setOnFocusChangeListener((v, hasFocus) -> {
+            if (!mCurrentStatus && !hasFocus) {
+                setError(mError);
+            } else {
+                setError(null);
             }
         });
     }

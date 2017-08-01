@@ -10,6 +10,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import rx.Observable;
 
 /**
  * Beck-end service
@@ -17,8 +18,8 @@ import retrofit2.http.POST;
 interface TesonetService {
 
     @POST("tokens")
-    Call<TokenResponse> login(@Body Account account);
+    Observable<TokenResponse> login(@Body Account account);
 
     @GET("servers")
-    Call<List<Server>> fetchList();
+    Observable<List<Server>> fetchList();
 }
