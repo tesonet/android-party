@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:animateLayoutChanges="true">
+
+	<ImageView
+		android:id="@+id/login_logo"
+		android:layout_width="120dp"
+		android:layout_height="wrap_content"
+		android:layout_above="@+id/login_container"
+		android:layout_centerInParent="true"
+		android:layout_marginBottom="50dp"
+		android:adjustViewBounds="true"
+		android:src="@drawable/logo_1"/>
+
+	<LinearLayout
+		android:id="@+id/login_container"
+		android:layout_width="260dp"
+		android:layout_height="wrap_content"
+		android:layout_centerInParent="true"
+		android:orientation="vertical">
+
+		<RelativeLayout
+			style="@style/AppTheme.Login_Container"
+			android:layout_marginBottom="10dp">
+
+			<ImageView
+				style="@style/AppTheme.Login_EditText_Image"
+				android:src="@drawable/ic_username"/>
+
+			<EditText
+				android:id="@+id/login_username"
+				style="@style/AppTheme.Login_EditText"
+				android:hint="@string/username"
+				android:inputType="textEmailAddress"/>
+		</RelativeLayout>
+
+		<RelativeLayout
+			style="@style/AppTheme.Login_Container"
+			android:layout_marginBottom="20dp">
+
+			<ImageView
+				style="@style/AppTheme.Login_EditText_Image"
+				android:src="@drawable/ic_lock"/>
+
+			<EditText
+				android:id="@+id/login_password"
+				style="@style/AppTheme.Login_EditText"
+				android:hint="@string/password"
+				android:inputType="textPassword"/>
+		</RelativeLayout>
+
+		<TextView
+			android:id="@+id/login_button"
+			style="@style/AppTheme.Login_Button"
+			android:text="@string/log_in"/>
+	</LinearLayout>
+
+	<RelativeLayout
+		android:id="@+id/login_progress_container"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:visibility="gone">
+
+		<lt.mediapark.driveadvice.custom.ColoredProgressBar
+			android:id="@+id/login_progress"
+			android:layout_width="150dp"
+			android:layout_height="150dp"
+			android:layout_centerInParent="true"
+			app:progressColor="@android:color/white"/>
+
+		<TextView
+			android:id="@+id/login_progress_text"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/login_progress"
+			android:layout_centerHorizontal="true"
+			android:layout_marginTop="40dp"
+			android:text="@string/loading_text_servers"
+			android:textColor="@android:color/white"/>
+	</RelativeLayout>
+</RelativeLayout>

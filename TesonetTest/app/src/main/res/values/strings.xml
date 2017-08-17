@@ -1,0 +1,12 @@
+<resources>
+	<string name="app_name">TesonetTest</string>
+	<string name="log_in">Log In</string>
+	<string name="password">password</string>
+	<string name="username">Username</string>
+	<string name="loading_text_servers">Fetching the list…</string>
+	<string name="loading_text_login">Logging in…</string>
+	<string name="logout">menu_logout</string>
+	<string name="server_list_distance">Distance</string>
+	<string name="server_list_server">Server</string>
+	<string name="server_distance">%1$d km</string>
+</resources>
