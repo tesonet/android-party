@@ -10,19 +10,19 @@ import kotlinx.android.synthetic.main.activity_login.*
 import lt.marius.testio.LoginEvent
 import lt.marius.testio.LogoutEvent
 import lt.marius.testio.R
-import lt.marius.testio.api.ApiAppServiceFactory
+import lt.marius.testio.api.AppServiceFactory
 import lt.marius.testio.model.LoginRequestBody
 import lt.marius.testio.model.Server
 import lt.marius.testio.persistance.UserPreferences
 import lt.marius.testio.viewModel.ServersViewModel
 import org.greenrobot.eventbus.Subscribe
 
-class MainActivity : BaseActivity() {
-	private val appService by lazy {
-		ApiAppServiceFactory().createAppService(this)
+open class MainActivity : BaseActivity() {
+	val appService by lazy {
+		AppServiceFactory.create().createAppService(this)
 	}
 
-	private val userPrefs by lazy {
+	val userPrefs by lazy {
 		UserPreferences(this)
 	}
 
@@ -47,6 +47,7 @@ class MainActivity : BaseActivity() {
 		window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 		                WindowManager.LayoutParams.FLAG_FULLSCREEN)
 		setContentView(R.layout.activity_login)
+
 
 
 		loginFragment

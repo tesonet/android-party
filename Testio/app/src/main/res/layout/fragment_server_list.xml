@@ -1,18 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<android.support.design.widget.CoordinatorLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
 
-	<TextView
+	<android.support.design.widget.AppBarLayout
+		android:id="@+id/app_bar_layout"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="Serverių sąrašas"
-		android:textColor="@android:color/white"
-		android:textSize="20sp"/>
-	<Button
-		android:layout_width="wrap_content"
-		android:id="@+id/logoutButton"
-		android:layout_height="wrap_content"/>
+		android:fitsSystemWindows="true"
+		android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-</LinearLayout>
+		<android.support.design.widget.CollapsingToolbarLayout
+			android:id="@+id/collapsing_toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="112dp"
+			android:fitsSystemWindows="true"
+			app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="56dp"
+				app:layout_collapseMode="none">
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentStart="true"
+					android:layout_centerVertical="true"
+					android:src="@drawable/ic_logo_2"/>
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentEnd="true"
+					android:layout_centerVertical="true"
+					android:src="@drawable/ic_lock"/>
+
+			</RelativeLayout>
+
+			<android.support.v7.widget.Toolbar
+				android:layout_width="match_parent"
+				android:layout_height="56dp"
+				android:layout_gravity="bottom"
+				app:layout_collapseMode="pin">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Server"/>
+
+				<TextView
+					android:id="@+id/logoutButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Distance"/>
+
+			</android.support.v7.widget.Toolbar>
+
+
+		</android.support.design.widget.CollapsingToolbarLayout>
+
+	</android.support.design.widget.AppBarLayout>
+
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/serverRecycler"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+
+</android.support.design.widget.CoordinatorLayout>

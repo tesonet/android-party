@@ -7,4 +7,14 @@ import android.content.Context
  */
 interface AppServiceFactory {
 	fun createAppService(context: Context): AppService
+
+	companion object {
+		var mockAppServiceFactory: AppServiceFactory? = null
+		fun create(): AppServiceFactory {
+			mockAppServiceFactory?.let {
+				return it
+			}
+			return ApiAppServiceFactory()
+		}
+	}
 }
