@@ -77,9 +77,12 @@ class MainActivity : BaseActivity() {
 		} else {
 			supportFragmentManager.beginTransaction().remove(loginFragment).commit()
 			if (supportFragmentManager.findFragmentByTag("server_list_fragment") == null) {
-				supportFragmentManager.beginTransaction().add(R.id.mainFragmentContainer,
-				                                              ServerListFragment(),
-				                                              "server_list_fragment").commit()
+				supportFragmentManager
+						.beginTransaction()
+						.add(R.id.mainFragmentContainer,
+						     ServerListFragment(),
+						     "server_list_fragment")
+						.commit()
 			}
 		}
 	}
