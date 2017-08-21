@@ -68,4 +68,14 @@ class ExampleInstrumentedTest {
 		onView(withId(R.id.serverRecycler)).check(matches(hasDescendant(withText("900 km"))))
 	}
 
+	@Test
+	fun testLogout() {
+		//must login.. probably should mock that.. but, for the sake of simplicity
+		testLoginSuccess()
+
+		onView(withId(R.id.logoutButton)).perform(click())
+		onView(withId(R.id.loginFormLogin)).check (matches(isDisplayed()))
+
+	}
+
 }
