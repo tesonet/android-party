@@ -65,6 +65,7 @@ class ExampleInstrumentedTest {
 		onView(withId(R.id.loginFormLogin)).perform(click())
 		Espresso.closeSoftKeyboard()
 		onView(withId(R.id.serverRecycler)).check(matches(hasDescendant(withText("Lithuania #2"))))
+		onView(withId(R.id.serverRecycler)).check(matches(hasDescendant(withText("900 km"))))
 	}
 
 }

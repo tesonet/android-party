@@ -11,5 +11,8 @@
 	<string name="login.progress.message.fetchList">Fetching the list…</string>
 	<string name="login.progress.message.login">Logging you in…</string>
 
+	<string name="serverList.header.server">Server</string>
+	<string name="serverList.header.distance">Distance</string>
+
 
 </resources>

@@ -13,6 +13,7 @@ class ServerDisplayableItem(val server: Server) : DisplayableItem {
 	override fun bind(holder: RecyclerView.ViewHolder) {
 		holder.itemView.apply {
 			serverName.text = server.name
+			serverDistance.text = "${server.distance} km"
 		}
 	}
 }
