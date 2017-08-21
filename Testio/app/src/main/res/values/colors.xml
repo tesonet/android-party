@@ -5,4 +5,5 @@
 	<color name="colorAccent">#FF4081</color>
 	<color name="colorLoginButton">#9FD533</color>
 	<color name="colorServerListBg">#F0F0F0</color>
+	<color name="colorLogout">#2F3254</color>
 </resources>
