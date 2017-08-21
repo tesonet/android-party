@@ -64,9 +64,15 @@ class MainActivity : BaseActivity() {
 
 	private fun observeServerList(servers: List<Server>?) {
 		if (servers == null) {
-			loginFragment
 			supportFragmentManager.findFragmentByTag("server_list_fragment")?.let {
 				supportFragmentManager.beginTransaction().remove(it).commit()
+			}
+			if (supportFragmentManager.findFragmentByTag("login_fragment") == null) {
+				supportFragmentManager
+						.beginTransaction()
+						.add(R.id.mainFragmentContainer, loginFragment, "login_fragment")
+						.commit()
+
 			}
 		} else {
 			supportFragmentManager.beginTransaction().remove(loginFragment).commit()
