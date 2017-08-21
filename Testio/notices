@@ -1,0 +1,3 @@
+Neturiu fotoshop'o, tai dydžiai iš akies;
+extracted folderyje esantys svg iamge'ai turi defs, kurio android studio nesupportina, dydžiai - ne pagal design guidelines. Trumpai tariant - blogi image'ai
+abu logo svg failai - su kažkokiu bug'u. Kadangi jie visai ne "scaleable", tai per online toolą iš viduj esančio base64 stringo pasidariau image'us. Gavosi labai shit quality...

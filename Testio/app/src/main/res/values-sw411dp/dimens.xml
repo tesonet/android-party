@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="login_form_width">302dp</dimen>
+	<dimen name="login_form_logo_margin_bottom">128dp</dimen>
+	<dimen name="login_form_logo_width">154dp</dimen>
+	<dimen name="login_progress_bar_size">192dp</dimen>
+	<dimen name="login_progress_message_margin_top">128dp</dimen>
+
+</resources>
