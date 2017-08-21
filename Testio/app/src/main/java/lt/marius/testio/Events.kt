@@ -6,3 +6,4 @@ package lt.marius.testio
 class GlobalErrorEvent(val message: String)
 
 class LoginEvent(val username: String, val password: String)
+class LogoutEvent

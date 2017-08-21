@@ -5,9 +5,11 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.fragment_server_list.*
+import lt.marius.testio.LogoutEvent
 import lt.marius.testio.R
 import lt.marius.testio.model.Server
 import lt.marius.testio.viewModel.ServersViewModel
+import org.greenrobot.eventbus.EventBus
 
 /**
  * Created by marius on 17.8.21.
@@ -18,11 +20,7 @@ class ServerListFragment : BaseFragment() {
 	override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		logoutButton.setOnClickListener {
-			ViewModelProviders
-					.of(activity)
-					.get(ServersViewModel::class.java)
-					.servers
-					.postValue(null)
+			EventBus.getDefault().post(LogoutEvent())
 		}
 
 		ViewModelProviders
@@ -41,3 +39,4 @@ class ServerListFragment : BaseFragment() {
 	}
 
 }
+

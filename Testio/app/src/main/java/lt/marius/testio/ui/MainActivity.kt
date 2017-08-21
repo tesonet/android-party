@@ -8,6 +8,7 @@ import android.view.WindowManager
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_login.*
 import lt.marius.testio.LoginEvent
+import lt.marius.testio.LogoutEvent
 import lt.marius.testio.R
 import lt.marius.testio.api.ApiAppServiceFactory
 import lt.marius.testio.model.LoginRequestBody
@@ -87,6 +88,16 @@ class MainActivity : BaseActivity() {
 		}
 	}
 
+
+	@Subscribe
+	fun onEvent(event: LogoutEvent) {
+		UserPreferences(this).authorization = null
+		ViewModelProviders
+				.of(this)
+				.get(ServersViewModel::class.java)
+				.servers
+				.postValue(null)
+	}
 
 	@Subscribe
 	fun onEvent(event: LoginEvent) {
