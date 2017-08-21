@@ -1,5 +1,17 @@
 <resources>
+	<!--Default dimens  - nors techniškai mažiausias ekranas - 320dp pločio, bet jų tiek nedaug, kad pakentės :)-->
+
 	<!-- Default screen margins, per the Android Design guidelines. -->
 	<dimen name="activity_horizontal_margin">16dp</dimen>
 	<dimen name="activity_vertical_margin">16dp</dimen>
+
+	<dimen name="default_corner_radius">4dp</dimen>
+
+	<!--Ne random - su Gimp'u iš login screen image'o daugmaž tiek gaunasi-->
+	<dimen name="login_form_width">268dp</dimen>
+	<dimen name="login_form_logo_margin_bottom">112dp</dimen>
+	<dimen name="login_form_logo_width">135dp</dimen>
+
+	<dimen name="login_progress_bar_size">168dp</dimen>
+	<dimen name="login_progress_message_margin_top">112dp</dimen>
 </resources>
