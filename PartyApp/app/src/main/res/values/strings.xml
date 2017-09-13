@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">PartyApp</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="button_login">Log in</string>
+    <string name="km">km</string>
+    <string name="loading">loading</string>
+    <string name="fetching_the_list">Fetching the list...</string>
+    <string name="offline_data">Offline data</string>
+    <string name="network_error">Network error</string>
+    <string name="server_error">Server error</string>
+    <string name="authorization_failed">Authorization failed</string>
+</resources>

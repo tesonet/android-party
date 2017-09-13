@@ -1,0 +1,29 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.alex.partyapp.loading.LoadingFragment">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="72dp"
+            android:textColor="@android:color/white"
+            android:text="@string/fetching_the_list" />
+
+        <ImageView
+            android:id="@+id/image_spinner"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/loading"
+            android:scaleType="center"
+            android:src="@drawable/loading" />
+    </FrameLayout>
+</layout>
