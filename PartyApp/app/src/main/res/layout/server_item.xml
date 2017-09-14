@@ -5,29 +5,20 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingEnd="24dp"
+        android:paddingTop="15dp"
         android:paddingStart="16dp"
-        android:paddingRight="6dp"
+        android:paddingEnd="24dp"
         android:paddingLeft="16dp"
-        android:paddingTop="15dp">
+        android:paddingRight="24dp">
 
         <TextView
 
             style="@style/item_style"
-            android:layout_alignParentLeft="true"
+            android:gravity="left"
             android:id="@+id/text_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Canada #10"/>
-
-        <TextView
-            style="@style/item_style"
-            android:layout_alignParentRight="true"
-            android:id="@+id/text_distance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            tools:text="1000 km"/>
 
         <View
             android:layout_marginTop="14dp"
@@ -35,6 +26,16 @@
             android:layout_below="@id/text_name"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
+
+        <TextView
+            style="@style/item_style"
+            android:gravity="start"
+            android:minWidth="@dimen/distance_min_width"
+            android:layout_alignParentRight="true"
+            android:id="@+id/text_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="1000 km"/>
 
     </RelativeLayout>
 </layout>

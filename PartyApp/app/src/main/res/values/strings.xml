@@ -10,4 +10,6 @@
     <string name="network_error">Network error</string>
     <string name="server_error">Server error</string>
     <string name="authorization_failed">Authorization failed</string>
+    <string name="server">SERVER</string>
+    <string name="distance">DISTANCE</string>
 </resources>
