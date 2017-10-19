@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AndroidParty</string>
+    <string name="server">SERVER</string>
+    <string name="distance">DISTANCE</string>
+    <string name="usernameOrPassWarn">Please enter username and password.</string>
+    <string name="loadingServers">Loading server list..</string>
+    <string name="usernameHint">Username</string>
+    <string name="passwordHint">Password</string>
+</resources>
