@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">AndroidParty</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_username">username</string>
+    <string name="prompt_password">password</string>
+    <string name="login_success">Logged in!</string>
+    <string name="login_failure">Failed to login</string>
+    <string name="login_btn">Log in</string>
+    <string name="fetching">Fetching the list...</string>
+    <string name="server">Server</string>
+    <string name="distance">Distance</string>
+    <string name="title_activity_list">ListActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>
