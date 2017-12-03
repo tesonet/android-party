@@ -74,8 +74,7 @@ public class LoginActivity extends BaseActivity{
         mProgressView = findViewById(R.id.login_progress);
     }
 
-    private void initializeCallbacks()
-    {
+    private void initializeCallbacks() {
         mLoginListener = new ResponseListener(){
             @Override
             public void onResponse(String response) {
@@ -142,8 +141,7 @@ public class LoginActivity extends BaseActivity{
 
     }
 
-    private void getServers(String token)
-    {
+    private void getServers(String token) {
         HashMap<String, String> headers = new HashMap<>();
         headers.put("Authorization", "Bearer " + token);
         mClient.request(mClient.createRequest(SERVERS_PREFERENCE, Request.Method.GET, mServerListener)
