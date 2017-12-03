@@ -1,0 +1,156 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.tesonet.justas.androidparty.LoginActivity">
+
+    <RelativeLayout
+        android:id="@+id/fullscreen_login"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:adjustViewBounds="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg" />
+
+        <ImageView
+            android:id="@+id/tesonet"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/logotype_testio" />
+
+        <LinearLayout
+            android:id="@+id/login_form"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="210dp"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:id="@+id/username_background"
+                    android:layout_width="210dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/input" />
+
+                <ImageView
+                    android:id="@+id/username_icon"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_alignLeft="@id/username_background"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/ic_ico_username" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="170dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prompt_username"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:singleLine="true" />
+
+                </android.support.design.widget.TextInputLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="210dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:id="@+id/password_background"
+                    android:layout_width="210dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/input" />
+
+                <ImageView
+                    android:id="@+id/password_icon"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_alignLeft="@id/password_background"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/ic_ico_lock" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="170dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true">
+
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prompt_password"
+                        android:imeActionId="6"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:singleLine="true" />
+
+                </android.support.design.widget.TextInputLayout>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/sign_in_button"
+                android:layout_width="210dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/login_btn"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- Login progress -->
+        <LinearLayout
+            android:id="@+id/login_progress"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ProgressBar
+
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:indeterminate="true"
+                android:indeterminateDrawable="@drawable/progress_rotation" />
+
+            <TextView
+                android:id="@+id/text_view_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/fetching"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
