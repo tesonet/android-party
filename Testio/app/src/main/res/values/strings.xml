@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Testio</string>
+    <string name="empty_username">Empty username</string>
+    <string name="empty_password">Empty password</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Log in</string>
+    <string name="server">Server</string>
+    <string name="distance">Distance</string>
+    <string name="error">Error</string>
+    <string name="fetching_list">Fetching the list...</string>
+    <string name="fetching_data">Fetching data...</string>
+    <string name="all_retry">Retry</string>
+</resources>
