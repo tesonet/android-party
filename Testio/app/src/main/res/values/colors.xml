@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#9fd533</color>
+    <color name="colorPrimary">#1b1b1b</color>
+    <color name="colorPrimaryDark">#000000</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="grey">#b3b3b3</color>
+    <color name="dark_grey">#b2b2b2</color>
+    <color name="even_more_dark_grey">#676767</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="background_footer">#f0f0f0</color>
+    <color name="button_main">@color/colorAccent</color>
+    <color name="button_main_hover">#6d941e</color>
+    <color name="logout_icon">#404261</color>
+</resources>
