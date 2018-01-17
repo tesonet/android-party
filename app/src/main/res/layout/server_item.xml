@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/li_server_cl"
+    android:paddingLeft="@dimen/margin_large"
+    android:paddingStart="@dimen/margin_large"
+    android:paddingRight="@dimen/margin_medium"
+    android:paddingEnd="@dimen/margin_medium"
+    android:paddingTop="@dimen/margin_tiny"
+    android:paddingBottom="@dimen/margin_tiny"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/li_server_tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ui_server"
+        android:textColor="@color/color_text_grey"
+        android:layout_marginTop="@dimen/text_medium"
+        android:layout_marginBottom="@dimen/text_medium"
+        app:layout_constraintStart_toStartOf="@id/li_server_cl"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/li_server_tv_distance"
+        android:layout_width="@dimen/item_width_large"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_macro"
+        android:layout_marginRight="@dimen/margin_macro"
+        android:gravity="start"
+        android:text="@string/ui_distance"
+        android:textColor="@color/color_text_grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/li_server_cl"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/v_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/vp_dark_grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        />
+
+</android.support.constraint.ConstraintLayout>

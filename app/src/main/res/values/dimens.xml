@@ -1,0 +1,81 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="elevation_tiny">2dp</dimen>
+
+    <dimen name="item_width_large">72dp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="margin">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_macro">4dp</dimen>
+    <dimen name="margin_tiny">2dp</dimen>
+
+    <!-- Radius for rounding -->
+    <dimen name="radius_default">16dp</dimen>
+
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_xlarge">32dp</dimen>
+    <dimen name="margin_xxlarge">48dp</dimen>
+    <dimen name="margin_xxxlarge">64dp</dimen>
+
+    <dimen name="padding_xxxsmall">4dp</dimen>
+    <dimen name="padding_xxsmall">6dp</dimen>
+    <dimen name="padding_xsmall">8dp</dimen>
+    <dimen name="padding_small">12dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
+    <dimen name="padding_xlarge">32dp</dimen>
+    <dimen name="padding_xxlarge">48dp</dimen>
+    <dimen name="padding_xxxlarge">64dp</dimen>
+
+    <dimen name="list_item_common_height">72dp</dimen>
+
+    <!-- ActionBar's and InfoBar's (custom additional bar) various dimensions -->
+    <dimen name="actionbar_height">48dp</dimen>
+    <dimen name="actionbar_icon_size">48dp</dimen>
+
+    <dimen name="infobar_height">32dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="text_micro">12sp</dimen>
+    <dimen name="text_macro">14sp</dimen>
+    <dimen name="text_small">16sp</dimen>
+    <dimen name="text_medium">18sp</dimen>
+    <dimen name="text_large">22sp</dimen>
+    <dimen name="text_larger">26sp</dimen>
+    <dimen name="text_xlarge">32sp</dimen>
+    <dimen name="text_xxlarge">38sp</dimen>
+    <dimen name="text_subheader">48sp</dimen>
+
+    <!-- Ration 1.5 for Object Logo image-->
+    <dimen name="list_image_width">108dp</dimen>
+    <dimen name="list_image_height">72dp</dimen>
+
+    <dimen name="photo_default_height">140dp</dimen>
+
+    <dimen name="icon_width_medium">48dp</dimen>
+    <dimen name="icon_width_large">96dp</dimen>
+
+    <!--category icons size -->
+    <dimen name="category_ic_size">16dp</dimen>
+    <dimen name="category_ic_padding">4dp</dimen>
+
+    <dimen name="state_indicator_width">8dp</dimen>
+    <dimen name="dashboard_indicator_width">10dp</dimen>
+    <dimen name="dashboard_indicator_negative_width">-10dp</dimen>
+
+    <!-- Transparency level -->
+    <item name="alpha_low" format="float" type="dimen">0.25</item>
+    <item name="alpha_medium" format="float" type="dimen">0.5</item>
+    <item name="alpha_high" format="float" type="dimen">0.75</item>
+    <item name="alpha_full" format="float" type="dimen">1</item>
+
+    <dimen name="list_item_height">64dp</dimen>
+</resources>

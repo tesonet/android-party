@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="list_background">#FFFFFF</color>
+    <color name="action_bar_color">#F0F0F0</color>
+
+        <!-- Specific colors for Venipak Drive application (prefixed with vd) -->
+        <color name="vd_silver">#EBEBEB</color>
+        <color name="vd_grey">#B3B3B3</color>
+        <color name="vd_red">#C1272D</color>
+        <color name="vd_yellow">#EEAA00</color>
+        <color name="vd_dark_blue">#1E1158</color>
+
+        <!-- Main color groups for this application. Each group has a translucent layer -->
+
+        <!-- VP_yellow color group -->
+        <color name="vp_yellow_light">#40EEAA00</color>
+        <color name="vp_yellow_medium">#80EEAA00</color>
+        <color name="vp_yellow_darker">#A0EEAA00</color>
+        <color name="vp_yellow_full">#FFEEAA00</color>
+
+        <!-- Red color group -->
+        <color name="color_venipak_red_light">#40FF4444</color>
+        <color name="color_venipak_red_medium">#80FF4444</color>
+        <color name="color_venipak_red_darker">#A0FF4444</color>
+        <color name="color_venipak_red_full">#FFFF4444</color>
+        <!-- Orange color group -->
+        <color name="color_venipak_orange_light">#40FFBB33</color>
+        <color name="color_venipak_orange_medium">#80FFBB33</color>
+        <color name="color_venipak_orange_darker">#A0FFBB33</color>
+        <color name="color_venipak_orange_full">#FFFFBB33</color>
+        <!-- Green color group -->
+        <color name="color_venipak_green_light">#4099CC00</color>
+        <color name="color_venipak_green_medium">#8099CC00</color>
+        <color name="color_venipak_green_darker">#A099CC00</color>
+        <color name="color_venipak_green_full">#FF99CC00</color>
+        <!-- Grey color group -->
+        <color name="color_venipak_grey_light">#40222222</color>
+        <color name="color_venipak_grey_medium">#80222222</color>
+        <color name="color_venipak_grey_darker">#A0222222</color>
+        <color name="color_venipak_grey_full">#FF222222</color>
+        <color name="color_venipak_grey_darkest">#272727</color>
+        <!-- Blue color group -->
+        <color name="color_venipak_blue_light">#400057FF</color>
+        <color name="color_venipak_blue_medium">#800057FF</color>
+        <color name="color_venipak_blue_darker">#A00057FF</color>
+        <color name="color_venipak_blue_full">#FF0057FF</color>
+        <!-- Teal color group -->
+        <color name="color_venipak_teal_light">#4000FFEE</color>
+        <color name="color_venipak_teal_medium">#8000FFEE</color>
+        <color name="color_venipak_teal_darker">#A000FFEE</color>
+        <color name="color_venipak_teal_full">#FF00FFEE</color>
+        <!-- Electric color group -->
+        <color name="color_venipak_electric_light">#4000FF62</color>
+        <color name="color_venipak_electric_medium">#8000FF62</color>
+        <color name="color_venipak_electric_darker">#A000FF62</color>
+        <color name="color_venipak_electric_full">#FF00FF62</color>
+        <!-- Yellow color group -->
+        <color name="color_venipak_yellow_light">#40FFEE00</color>
+        <color name="color_venipak_yellow_medium">#80FFEE00</color>
+        <color name="color_venipak_yellow_darker">#A0FFEE00</color>
+        <color name="color_venipak_yellow_full">#FFFFEE00</color>
+        <!-- Violet color group -->
+        <color name="color_venipak_violet_light">#40B700FF</color>
+        <color name="color_venipak_violet_medium">#80B700FF</color>
+        <color name="color_venipak_violet_darker">#A0B700FF</color>
+        <color name="color_venipak_violet_full">#FFB700FF</color>
+        <!-- Pink color group -->
+        <color name="color_venipak_pink_light">#40FF0090</color>
+        <color name="color_venipak_pink_medium">#80FF0090</color>
+        <color name="color_venipak_pink_darker">#A0FF0090</color>
+        <color name="color_venipak_pink_full">#FFFF0090</color>
+        <!-- end -->
+
+        <!-- Various text colors -->
+        <color name="color_text_black">#FF000000</color>
+        <color name="color_text_grey">#FF555555</color>
+        <color name="color_text_grey_darker">#FF333333</color>
+        <color name="color_text_red">#FFFF4444</color>
+        <color name="color_text_green">#FF99CC00</color>
+        <color name="color_text_dark_green">#FF1C783B</color>
+        <color name="color_text_orange">#FFFFBB33</color>
+        <!-- end -->
+
+        <!-- Various background colors -->
+        <!-- NOTE: matching colors generated using: http://paletton.com/#uid=33i0u0k8uVF00++3DZUd4OthnDE (2015 01 05) -->
+        <color name="color_blue">#FFAFEEEE</color>
+        <color name="color_green">#FFB5F6B5</color>
+        <color name="color_red">#FFFFBBBB</color>
+        <color name="color_orange">#FFFFE8BB</color>
+        <color name="color_violet">#FFDBB5F1</color>
+        <color name="color_navy_blue">#FFB8C9F1</color>
+        <!-- end -->
+
+        <!-- Specific colors for Venipak application (prefixed with vp_) -->
+        <color name="vp_dark_blue">#FF0F355F</color>
+        <color name="vp_logo_blue">#FF1F1058</color>
+        <color name="vp_white">#FFF0F0F0</color>
+        <color name="vp_white_bg">#FFF0F0F0</color>
+        <color name="vp_black">#FF111111</color>
+        <color name="vp_green">#FF4E9436</color>
+        <color name="vp_green_dark">#FF305C21</color>
+        <color name="vp_yellow">#FFEED500</color>
+        <color name="vp_yellow_dark">#FFCBB41B</color>
+        <color name="vp_blue">#FF00849B</color>
+        <color name="vp_blue_dark">#FF396273</color>
+        <color name="vp_orange">#FFF57F33</color>
+        <color name="vp_orange_dark">#FFC16123</color>
+        <color name="vp_purple">#FF652D86</color>
+        <color name="vp_grey">#FFDDDDDD</color>
+        <color name="vp_grey_darker">#A0DDDDDD</color><!--#FFE0E0E0</color>-->
+        <color name="vp_dark_grey">#FF222222</color>
+        <color name="vp_red">#FFB91618</color>
+        <color name="vp_red_dark">#FF991113</color>
+        <!-- end -->
+
+        <!-- Standard simple colors -->
+        <color name="white">#FFFFFF</color>
+        <color name="yellow">#FFFF00</color>
+        <color name="fuchsia">#FF00FF</color>
+        <color name="red">#FF0000</color>
+        <color name="silver">#C0C0C0</color>
+        <color name="gray">#808080</color>
+        <color name="olive">#808000</color>
+        <color name="purple">#800080</color>
+        <color name="maroon">#800000</color>
+        <color name="aqua">#00FFFF</color>
+        <color name="lime">#00FF00</color>
+        <color name="teal">#008080</color>
+        <color name="green">#008000</color>
+        <color name="blue">#0000FF</color>
+        <color name="navy">#000080</color>
+        <color name="black">#000000</color>
+        <!-- end -->
+
+        <!-- Transparent and semi-transparent colors -->
+        <color name="transparent">#00000000</color>
+        <!-- addPackageNo CC for transparency -->
+        <color name="transparent_blue">#CC33B5E5</color>
+        <color name="transparent_ab_item_pressed">#CCDCC532</color>
+        <!-- Semi-transparent color -->
+        <!-- IMPORTANT and useful reference: https://coderwall.com/p/dedqca/argb-colors-in-android -->
+        <color name="semi_transparent_red_50">#77fb4343</color> <!-- Red 50% -->
+        <color name="semi_transparent_black_75">#C0000000</color> <!-- Black 75% -->
+        <color name="semi_transparent_black_50">#80000000</color> <!-- Black 50% -->
+        <color name="semi_transparent_black_25">#40000000</color> <!-- Black 25% -->
+        <color name="semi_transparent_black_15">#26000000</color> <!-- Black 15% -->
+        <color name="semi_transparent_black_10">#10000000</color> <!-- Black 10% -->
+        <color name="semi_transparent_black_8">#08000000</color> <!-- Black 8% -->
+        <!-- end -->
+
+        <!-- Various text colors for EditText -->
+        <color name="et_hint_text_color">@color/colorPrimary</color>
+        <color name="et_text_color">@color/colorPrimaryDark</color>
+        <color name="et_black_hint_text_color">#FF444444</color>
+        <color name="et_black_text_color">#FF222222</color>
+        <color name="et_white_hint_text_color">#FFAAAAAA</color>
+        <color name="et_white_text_color">#FFFFFFFF</color>
+        <!-- end -->
+
+</resources>
