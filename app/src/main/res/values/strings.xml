@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TesonetParty</string>
+
+    <string name="notification_message_exit_app">Press BACK one more time to exit</string>
+    <string name="ui_server">SERVER</string>
+    <string name="ui_distance">DISTANCE</string>
+
+    <!--Login Validation-->
+    <string name="empty_username">Please provide a non empty username!</string>
+    <string name="empty_password">Please provide a non empty password!</string>
+
+
+</resources>

@@ -1,0 +1,38 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="EditTextLogin" parent="android:Widget.EditText">
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/vd_dark_blue</item>
+        <item name="android:background">@drawable/et_login_bg</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:drawablePadding">@dimen/padding_xsmall</item>
+        <item name="android:padding">@dimen/margin_medium</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="ButtonLogin" parent="android:Widget.Button">
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/login_button_selector</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:drawablePadding">@dimen/padding_xsmall</item>
+        <item name="android:padding">@dimen/margin_medium</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+</resources>
