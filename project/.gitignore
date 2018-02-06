@@ -1,0 +1,24 @@
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+/.idea/tasks.xml
+/.idea/gradle.xml
+/.idea/dictionaries
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+
+# Generated files
+bin/
+gen/
+out/
+
+# Android Studio Navigation editor temp files
+.navigation/
+
+# Android Studio captures folder
+captures/
+

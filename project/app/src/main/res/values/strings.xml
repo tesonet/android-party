@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Tesonet Party</string>
+
+    <string name="edit_hint_username">Username</string>
+    <string name="edit_hint_password">Password</string>
+
+    <string name="list_label_server">server</string>
+    <string name="list_label_distance">distance</string>
+
+    <string name="button_login">Log In</string>
+
+    <string name="menu_logout">Logout</string>
+
+    <string name="error_invalid_input_data">Invalid input data</string>
+    <string name="error_invalid_credentials">Credentials aren\'t wild enough for party tokens!</string>
+    <string name="error_api_request_failed">API request failed: %s</string>
+    <string name="error_no_internet_connect">No internet connection</string>
+
+    <string name="info_fetching_the_list">Fetching the list...</string>
+    <string name="info_requesting_token">Requesting token...</string>
+    <string name="info_parsing_the_list">Processing server list...</string>
+
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="login_input_height">54dp</dimen>
+    <dimen name="login_input_width">280dp</dimen>
+
+    <dimen name="login_logo_width">160dp</dimen>
+
+    <dimen name="login_input_wrap_padding_top">100dp</dimen>
+    <dimen name="login_logo_margin_bottom">20dp</dimen>
+    <dimen name="login_info_margin_top">100dp</dimen>
+    <dimen name="login_bg_margin_bottom">200dp</dimen>
+
+    <dimen name="login_progress_bar_size">180dp</dimen>
+
+    <dimen name="input_border_radius">4dp</dimen>
+
+    <dimen name="server_list_row_height">44dp</dimen>
+    <dimen name="server_list_row_padding">15dp</dimen>
+
+    <dimen name="server_list_header_height">44dp</dimen>
+    <dimen name="server_list_shadow_height">20dp</dimen>
+
+    <dimen name="server_list_distance_col_width">100dp</dimen>
+</resources>
