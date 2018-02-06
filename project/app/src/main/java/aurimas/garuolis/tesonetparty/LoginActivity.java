@@ -100,6 +100,8 @@ public class LoginActivity extends AppCompatActivity {
 
         mEditUser.setText(mUsername);
 
+
+        // initiate login when "done" clicked on the keyboard
         mEditPass.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -138,6 +140,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    // fade out inputs, align background and show loading UI
     private void showLoadingViews(){
         if (fadeIn != null) fadeIn.cancel();
         if (fadeOut != null) fadeOut.cancel();
@@ -211,7 +214,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-
+    /// fade in inputs and align background
     private void showInputViews() {
         if (fadeIn != null) fadeIn.cancel();
         if (fadeOut != null) fadeOut.cancel();
@@ -307,7 +310,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(Call call, Response response) throws IOException {
                     if (response.isSuccessful()) {
                         threadSleep();
-                        parseApiResponse(response.body().string());
+                        parseTokenCallResponse(response.body().string());
                     } else if (response.code() == 401) {
                         failWithSnack(getString(R.string.error_invalid_credentials));
                     } else {
@@ -318,19 +321,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    // sleep thread for demonstration purposes
-    // otherwise loading screen might not be seen
-    private void threadSleep() {
-        if (debug) {
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private void parseApiResponse(String responseString){
+    private void parseTokenCallResponse(String responseString){
         try {
 
             JSONObject jo = new JSONObject(responseString);
@@ -344,6 +335,70 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    private void requestServerList(String token){
+        updateInfoString(getString(R.string.info_fetching_the_list));
+
+        OkHttpClient client = new OkHttpClient();
+        Request.Builder builder = new Request.Builder().url(ApiUtils.API_URL_SERVERS);
+        builder.addHeader("Authorization", "Bearer " + token);
+        Request request = builder.build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                failWithSnack(getString(R.string.error_api_request_failed, e.getLocalizedMessage()));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    threadSleep();
+                    parseServerListResponse(response.body().string());
+                } else {
+                    failWithSnack(getString(R.string.error_api_request_failed, response.body().string()));
+                }
+            }
+        });
+    }
+
+    private void parseServerListResponse(String responseString){
+        updateInfoString(getString(R.string.info_parsing_the_list));
+        try {
+
+            JSONArray ja = new JSONArray(responseString);
+            int count = ja.length();
+
+            if (count > 0) {
+                // remove cached data
+                mDb.delete(PartyContract.ServerEntry.TABLE_NAME, null, null);
+
+                mDb.beginTransaction();
+
+                for (int i = 0; i < count; i++) {
+                    JSONObject jo = ja.getJSONObject(i);
+
+                    ContentValues values = new ContentValues();
+                    values.put(PartyContract.ServerEntry.COL_NAME, jo.getString("name"));
+                    values.put(PartyContract.ServerEntry.COL_DISTANCE, jo.getString("distance"));
+                    mDb.insert(PartyContract.ServerEntry.TABLE_NAME, null, values);
+                }
+                mDb.setTransactionSuccessful();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            mDb.endTransaction();
+
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    showListActivity("");
+                }
+            });
+        }
+    }
+
+    // Show error snack and login inputs
     private void failWithSnack(final String message) {
         runOnUiThread(new Runnable() {
             @Override
@@ -366,67 +421,15 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void requestServerList(String token){
-        updateInfoString(getString(R.string.info_fetching_the_list));
-
-        OkHttpClient client = new OkHttpClient();
-        Request.Builder builder = new Request.Builder().url(ApiUtils.API_URL_SERVERS);
-        builder.addHeader("Authorization", "Bearer " + token);
-        Request request = builder.build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                failWithSnack(getString(R.string.error_api_request_failed, e.getLocalizedMessage()));
+    // sleep thread for demonstration purposes
+    // otherwise loading screen might not be seen
+    private void threadSleep() {
+        if (debug) {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    threadSleep();
-                    parseTokenCallResponse(response.body().string());
-                } else {
-                    failWithSnack(getString(R.string.error_api_request_failed, response.body().string()));
-                }
-            }
-        });
-    }
-
-    private void parseTokenCallResponse(String responseString){
-        updateInfoString(getString(R.string.info_parsing_the_list));
-        try {
-
-            JSONArray ja = new JSONArray(responseString);
-            int count = ja.length();
-
-            if (count > 0) {
-                // remove cached data
-                mDb.delete(PartyContract.ServerEntry.TABLE_NAME, null, null);
-
-                mDb.beginTransaction();
-
-                for (int i = 0; i < count; i++) {
-                    JSONObject jo = ja.getJSONObject(i);
-
-                    ContentValues values = new ContentValues();
-                    values.put(PartyContract.ServerEntry.COL_NAME, jo.getString("name"));
-                    values.put(PartyContract.ServerEntry.COL_DISTANCE, jo.getString("distance"));
-                    mDb.insert(PartyContract.ServerEntry.TABLE_NAME, null, values);
-                }
-                mDb.setTransactionSuccessful();
-                Log.v(TAG, ja.toString(4));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            mDb.endTransaction();
-
-
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    showListActivity("");
-                }
-            });
         }
     }
 
@@ -436,4 +439,5 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
     }
+
 }

@@ -41,11 +41,11 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        // remove shadow from ActionBar
         getSupportActionBar().setElevation(0);
 
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.rv_list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-
 
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(layoutManager);
