@@ -3,6 +3,9 @@
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
+/.idea/tasks.xml
+/.idea/gradle.xml
+/.idea/dictionaries
 .DS_Store
 /build
 /captures
@@ -12,3 +15,10 @@
 bin/
 gen/
 out/
+
+# Android Studio Navigation editor temp files
+.navigation/
+
+# Android Studio captures folder
+captures/
+

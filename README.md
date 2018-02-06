@@ -1,22 +1,14 @@
-# Task for a Great Android developer
+# Tesonet Homework
 
-If you found this task it means we are looking for you!
+Tesonet Android Party homework task by Aurimas Garuolis.
 
-> Note: To clone this repository you will need [GIT-LFS](https://git-lfs.github.com/)
+## Notes
 
-## Few simple steps
+- Server list is saved to SQLite database
+- Thread.sleep() used to make UI transitions noticable (TODO: remove in production)
+- I confess of using negative margin to align ActionBar logo to avoid exporting whole image set again 
 
-1. Fork this repo
-2. Do your best
-3. Prepare pull request and let us know that you are done
+## Used Libraries
 
-## Few simple requirements
-
-- Send authorization request (POST) to http://playground.tesonet.lt/v1/tokens to generate token with body: `{"username": "tesonet", "password": "partyanimal"}`. (Don't forget Content-Type)
-- Get servers list from http://playground.tesonet.lt/v1/servers. Add header to request: `Authorization: Bearer <token>`
-- Design should be recreated as closely as possible
-- Bonus: implement smooth animated transition from login through loader to server list screen
-- Bonus: implement persistent storage of the downloaded server data
-- Bonus: have a good set of unit tests
-
-*Note:* The bonus requirements are optional. While they are nice to have, it's much more important to have the basics nailed.
+- OkHttp for API requests
+- Android Design library for SnackBar
