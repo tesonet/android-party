@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="aurimas.garuolis.tesonetparty.ListActivity"
+    android:id="@+id/body"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/rv_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/server_list_header_height"
+    />
+
+    <include layout="@layout/list_item_header"
+             android:id="@+id/list_header"
+             android:layout_width="match_parent"
+             android:layout_height="@dimen/server_list_header_height"
+             android:layout_alignParentTop="true"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/server_list_shadow_height"
+        android:background="@drawable/bg_list_header_shadow"
+        android:layout_below="@id/list_header"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#2f3254</color>
+
+    <color name="colorAccent">#9fd533</color>
+    <color name="colorLoginBacground">#0b0f27</color>
+
+    <color name="colorError">#CC3214</color>
+
+    <color name="colorInputText">#b3b3b3</color>
+    <color name="colorLoginButton">#9fd533</color>
+    <color name="colorLoginButtonLight">#b0f527</color>
+
+    <color name="colorListDivider">#999999</color>
+    <color name="colorListBackground">#ffffff</color>
+
+    <color name="colorListItemRipple">#9fd533</color>
+    <color name="colorActionbarBackground">#f0f0f0</color>
+
+    <color name="colorListItemText">#666666</color>
+    <color name="colorListHeaderText">#999999</color>
+
+    <color name="colorLightGray">#eeeeee</color>
+</resources>
