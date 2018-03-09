@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">android-party</string>
+    <string name="usernameH">Username</string>
+    <string name="passwordH">Password</string>
+    <string name="log_in_btn">Log In</string>
+    <string name="col_name_server">Server</string>
+    <string name="col_name_distance">Distance</string>
+    <string name="info_fetching_the_list">Fetching the list…</string>
+</resources>
