@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginEnd="@dimen/servers_header_end_margin"
+    android:layout_marginStart="@dimen/servers_header_side_margin">
+
+    <data>
+
+        <variable
+            name="server"
+            type="com.ne2rnas.party.data.servers.Server" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="@dimen/match_parent"
+        android:layout_height="@dimen/wrap_content">
+
+        <TextView
+            android:id="@+id/server_name"
+            style="@style/Widget.ServerItem"
+            android:layout_width="@dimen/wrap_content"
+            android:layout_height="@dimen/wrap_content"
+            android:layout_marginBottom="@dimen/servers_item_margin"
+            android:layout_marginTop="@dimen/servers_item_margin"
+            android:text="@{server.name}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Japan #91" />
+
+        <TextView
+            android:id="@+id/server_distance"
+            style="@style/Widget.ServerItem"
+            android:layout_width="@dimen/wrap_content"
+            android:layout_height="@dimen/wrap_content"
+            android:layout_marginBottom="@dimen/servers_item_margin"
+            android:layout_marginTop="@dimen/servers_item_margin"
+            android:text="@{String.format(@string/servers_distance_formatter, server.distance)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="497" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

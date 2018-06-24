@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#808080</color>
+    <color name="colorPrimaryDark">#4E4E4E</color>
+    <color name="colorAccent">#FFF</color>
+
+    <color name="color_log_in_button">#9fd533</color>
+    <color name="color_log_in_button_ripple">#CDF382</color>
+
+    <color name="color_label">#ededed</color>
+    <color name="color_white_transparent">#fafafa</color>
+
+    <color name="color_input_hint">#b3b3b3</color>
+    <color name="color_text_highlight">#fff</color>
+    <color name="color_text_white">#FFF</color>
+    <color name="color_text_black">#000</color>
+    <color name="color_server_header_text">#9f9f9f</color>
+    <color name="color_server_item_text">#666</color>
+    <color name="color_logout_button">#2f3254</color>
+    <color name="color_loading_label_text">#FFF</color>
+</resources>
