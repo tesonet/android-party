@@ -1,0 +1,50 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="Widget" />
+
+    <style name="Widget.LoginTextEdit">
+        <item name="android:layout_height">@dimen/wrap_content</item>
+        <item name="android:layout_width">@dimen/login_input_width</item>
+        <item name="android:textColorHighlight">@color/color_text_highlight</item>
+        <item name="android:textColorHint">@color/color_input_hint</item>
+        <item name="android:background">@drawable/login_edit_text_background</item>
+        <item name="android:textColor">@color/color_text_black</item>
+        <item name="android:padding">@dimen/login_text_padding</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:drawablePadding">16dp</item>
+    </style>
+
+    <style name="Widget.LoginButton" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/color_text_white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:padding">@dimen/login_text_padding</item>
+    </style>
+
+    <style name="Widget.ServerTextView">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="Widget.ServerHeader" parent="Widget.ServerTextView">
+        <item name="android:textColor">@color/color_server_header_text</item>
+    </style>
+
+    <style name="Widget.ServerItem" parent="Widget.ServerTextView">
+        <item name="android:textColor">@color/color_server_item_text</item>
+    </style>
+
+    <style name="ToolbarIcon" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColorSecondary">@color/color_logout_button</item>
+    </style>
+
+</resources>

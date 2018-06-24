@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="adapter"
+            type="com.ne2rnas.party.ui.servers.ServersAdapter" />
+
+        <variable
+            name="dividerItemDecoration"
+            type="android.support.v7.widget.DividerItemDecoration" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/servers_header_top_and_bottom_margin">
+
+        <TextView
+            android:id="@+id/servers_text_view_server_header"
+            style="@style/Widget.ServerHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/servers_header_top_and_bottom_margin"
+            android:layout_marginStart="@dimen/servers_header_side_margin"
+            android:text="@string/servers_server"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/servers_text_view_distance_header"
+            style="@style/Widget.ServerHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/servers_header_end_margin"
+            android:layout_marginTop="@dimen/servers_header_top_and_bottom_margin"
+            android:text="@string/servers_distance"
+            android:textColor="@color/color_server_header_text"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/servers_recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/servers_top_item_padding"
+            app:adapter="@{adapter}"
+            app:dividerItemDecoration="@{dividerItemDecoration}"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/servers_text_view_distance_header" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

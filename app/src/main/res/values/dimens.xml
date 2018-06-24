@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="match_parent" format="integer" type="dimen">-1</item>
+    <item name="wrap_content" format="integer" type="dimen">-2</item>
+
+    <dimen name="login_text_padding">12dp</dimen>
+    <dimen name="login_hint_size">17sp</dimen>
+    <dimen name="login_input_width">220dp</dimen>
+    <dimen name="login_button_width">@dimen/login_input_width</dimen>
+    <dimen name="login_logo_size">64dp</dimen>
+    <dimen name="login_logo_margin_top">120dp</dimen>
+    <dimen name="login_username_margin_top">120dp</dimen>
+    <dimen name="login_password_margin_top">12dp</dimen>
+    <dimen name="login_log_in_margin_top">12dp</dimen>
+    <dimen name="login_logo_width">123dp</dimen>
+    <dimen name="login_logo_height">32dp</dimen>
+    <dimen name="servers_header_side_margin">16dp</dimen>
+    <dimen name="servers_header_end_margin">32dp</dimen>
+    <dimen name="servers_header_top_and_bottom_margin">16dp</dimen>
+    <dimen name="servers_item_margin">8dp</dimen>
+    <dimen name="servers_item_view_margin">@dimen/servers_header_side_margin</dimen>
+    <dimen name="servers_top_item_padding">8dp</dimen>
+    <dimen name="toolbar_logo_width">65dp</dimen>
+    <dimen name="toolbar_logo_height">17dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+    <dimen name="servers_loader_progress_bar_size">200dp</dimen>
+</resources>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Party</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="login_log_in">Log In</string>
+    <string name="servers_server">Server</string>
+    <string name="servers_distance">Distance</string>
+    <string name="servers_distance_formatter">%1$s km</string>
+    <string name="navigation_logout">Logout</string>
+    <string name="testio">testio</string>
+    <string name="servers_fetcher_indicator_fetching_the_list">Fetching the list…</string>
+</resources>
