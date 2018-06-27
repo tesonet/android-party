@@ -23,6 +23,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.view.View
 
+
 class ServerListActivity : AppCompatActivity() {
 
     private lateinit var viewModel: ServerActivityViewModel
