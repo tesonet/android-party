@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="loginViewModel"
+            type="assignment.tesonet.homework.ui.viewmodel.LoginViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="assignment.tesonet.homework.ui.LoginActivity">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/bg"
+                tools:ignore="ContentDescription" />
+
+            <EditText
+                android:cursorVisible="false"
+                android:textSize="16sp"
+                android:paddingEnd="15dp"
+                android:paddingStart="50dp"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:textColor="#aaa"
+                android:minWidth="250dp"
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rounded_corners"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="@string/username"
+                app:layout_constraintBottom_toTopOf="@+id/password"
+                app:layout_constraintEnd_toEndOf="@+id/password"
+                app:layout_constraintStart_toStartOf="@+id/password"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <EditText
+                android:cursorVisible="false"
+                android:textSize="16sp"
+                android:paddingEnd="15dp"
+                android:paddingStart="50dp"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:textColor="#aaa"
+                android:minWidth="250dp"
+                android:id="@+id/password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/shape_rounded_corners"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:hint="@string/password"
+                app:layout_constraintBottom_toTopOf="@+id/button"
+                app:layout_constraintEnd_toEndOf="@+id/imageView"
+                app:layout_constraintStart_toStartOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/username" />
+
+            <Button
+                android:onClick="onClickLogin"
+                android:textColor="#fff"
+                android:id="@+id/button"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/shape_btn"
+                android:text="@string/login"
+                app:layout_constraintBottom_toTopOf="@+id/imageView"
+                app:layout_constraintEnd_toEndOf="@+id/password"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/password"
+                app:layout_constraintTop_toBottomOf="@+id/password" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/username"
+                app:layout_constraintEnd_toEndOf="@+id/imageView"
+                app:layout_constraintStart_toStartOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="@+id/imageView"
+                app:srcCompat="@drawable/ic_logo_1"
+                tools:ignore="ContentDescription" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/imageView3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/username"
+                app:layout_constraintStart_toStartOf="@+id/username"
+                app:layout_constraintTop_toTopOf="@+id/username"
+                app:srcCompat="@drawable/ic_person_black_24dp" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/password"
+                app:layout_constraintStart_toStartOf="@+id/password"
+                app:layout_constraintTop_toTopOf="@+id/password"
+                app:srcCompat="@drawable/ic_lock_black_24dp"
+                tools:ignore="ContentDescription" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

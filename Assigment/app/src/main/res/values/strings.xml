@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Assigment</string>
+    <string translatable="false" name="km">%1$d km</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Log In</string>
+    <string name="server">Server</string>
+    <string name="distance">Distance</string>
+    <string name="fetching_the_list">Fetching the list...</string>
+    <string name="response_error">Response error</string>
+    <string name="no_internet">No internet</string>
+</resources>
