@@ -20,6 +20,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -79,22 +80,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         ctx = getApplicationContext();
 
         // Set up the login form.
-        mUsernameView = (EditText) findViewById(R.id.username);
+        mUsernameView = findViewById(R.id.text_username);
 
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
+        mPasswordView = findViewById(R.id.text_password);
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+        CardView buttonLogin = findViewById(R.id.button_login);
+        buttonLogin.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
@@ -102,7 +93,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
+        mProgressView = findViewById(R.id.login_progress_wrap);
     }
 
 
