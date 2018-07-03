@@ -96,7 +96,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mProgressView = findViewById(R.id.login_progress_wrap);
     }
 
-
     private boolean mayRequestContacts() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
@@ -208,7 +207,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
                 Log.i("TESONET", "Request error: " + error.getMessage());
-
+                showProgress(false);
             }
         });
 
@@ -220,6 +219,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         Intent i = new Intent(ctx, MainActivity.class);
         ctx.startActivity(i);
+
+        finish();
     }
 
     private boolean isEmailValid(String email) {
