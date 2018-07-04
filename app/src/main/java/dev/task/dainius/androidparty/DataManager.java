@@ -24,6 +24,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Data handler.
+ */
 public class DataManager {
     private String token;
     private List<Server> serverList = new ArrayList<>();

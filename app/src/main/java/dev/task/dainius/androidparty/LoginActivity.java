@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
         View focusView = null;
 
         // Check for a valid password.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+        if (!TextUtils.isEmpty(password) && password.length() <= 4) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
@@ -174,29 +174,25 @@ public class LoginActivity extends AppCompatActivity {
         final Context ctx = this;
         DataManager.getInstance(this).setToken(token);
 
+        // Wait for server list to load and show it
         DataManager.getInstance(this).getServerList(new DataManager.VolleyCallback() {
             @Override
             public void onSuccess(List<Server> result) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
-                Intent i = new Intent(ctx, MainActivity.class);
-                ctx.startActivity(i);
+            Intent i = new Intent(ctx, MainActivity.class);
+            ctx.startActivity(i);
 
-                finish();
+            finish();
             }
         });
 
-
     }
 
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() > 4;
-    }
 
     /**
      * Shows the progress UI and hides the login form.

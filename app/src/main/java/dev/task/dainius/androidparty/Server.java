@@ -1,5 +1,8 @@
 package dev.task.dainius.androidparty;
 
+/**
+ * Server record representation.
+ */
 public class Server {
     private String name;
     private int distance;

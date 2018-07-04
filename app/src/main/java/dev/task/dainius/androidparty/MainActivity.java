@@ -20,6 +20,9 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * List of servers.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private ListView viewServerList;
