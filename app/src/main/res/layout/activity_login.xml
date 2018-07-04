@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".LoginActivity">
+
+
+    <LinearLayout
+        android:id="@+id/login_progress_wrap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/login_progress"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="center"
+            android:indeterminateDrawable="@layout/custom_progressbar"
+            android:indeterminate="true"/>
+
+        <TextView
+            android:id="@+id/text_progress_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/fetching_the_list"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textColor="#ffffffff"/>
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_logo"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="120dp"
+            app:srcCompat="@drawable/logo_1" />
+
+        <EditText
+            android:id="@+id/text_username"
+            android:layout_width="340dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/image_logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/rounded_input"
+            android:drawableLeft="@drawable/ic_person_black_24dp"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ico_username"
+            android:ems="10"
+            android:hint="@string/username"
+            android:inputType="textPersonName"
+            android:paddingEnd="30dp"
+            android:paddingStart="30dp"
+            android:textColor="#ffb2b2b2"
+            android:textColorHint="#ffb2b2b2"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/text_password"
+            android:layout_width="340dp"
+            android:layout_height="60dp"
+            android:layout_alignEnd="@id/text_username"
+            android:layout_alignStart="@id/text_username"
+            android:layout_below="@id/text_username"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_input"
+            android:drawableLeft="@drawable/ic_lock_black_24dp"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ico_lock"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:paddingEnd="30dp"
+            android:paddingStart="30dp"
+            android:textColor="#ffb2b2b2"
+            android:textColorHint="#ffb2b2b2"
+            android:textSize="16sp" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/button_login"
+            android:layout_width="340dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/text_password"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="#ff9fd533"
+            app:cardCornerRadius="6dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00ffffff">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/log_in"
+                    android:textColor="#ffffffff"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+
+
+</RelativeLayout>
