@@ -55,10 +55,12 @@ public class DataManager {
         void onSuccess(List<Server> result);
     }
 
+    public List<Server> getServers() {
+        return serverList;
+    }
+
     public void getServerList(final VolleyCallback callback) {
-//        if(serverList.size() > 0) {
-//            return serverList;
-//        }
+
         serverList = new ArrayList<>();
         String url = "http://playground.tesonet.lt/v1/servers";
 
