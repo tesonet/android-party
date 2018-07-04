@@ -36,7 +36,7 @@ public class ServerListAdapter extends ArrayAdapter<Server> {
             TextView txtDistance = v.findViewById(R.id.text_server_distance);
 
             txtName.setText(s.getName());
-            txtDistance.setText(String.valueOf(s.getDistance()));
+            txtDistance.setText(String.valueOf(s.getDistance()) + " km");
         }
 
         return v;

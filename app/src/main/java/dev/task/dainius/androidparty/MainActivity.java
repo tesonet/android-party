@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -31,6 +33,18 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(
                 new ColorDrawable(Color.parseColor("#ffb2b2b2")));
         getSupportActionBar().setElevation(0);
+
+        // Inflate your custom layout
+        final ViewGroup actionBarLayout = (ViewGroup) getLayoutInflater().inflate(
+                R.layout.actionbar,
+                null);
+
+        // Set up your ActionBar
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setCustomView(actionBarLayout);
 
         viewServerList = findViewById(R.id.server_list);
         final ServerListAdapter listAdapter = new ServerListAdapter(this, R.layout.server_list_row, serverList);
