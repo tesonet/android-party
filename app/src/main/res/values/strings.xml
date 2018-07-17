@@ -1,0 +1,9 @@
+<resources>
+	<string name="app_name">TesonetTest</string>
+	<string name="login">Login</string>
+	<string name="username">Username</string>
+	<string name="password">Password</string>
+	<string name="server">server</string>
+	<string name="distance">distance</string>
+	<string name="fetching_the_list">Fetching the list...</string>
+</resources>
