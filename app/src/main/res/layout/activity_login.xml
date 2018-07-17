@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/content"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".ui.login.LoginActivity">
+
+	<ImageView
+		android:id="@+id/imageView"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:scaleType="centerCrop"
+		android:src="@drawable/bg" />
+	<ImageView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/logo_1"
+		android:layout_marginBottom="8dp"
+		android:layout_marginEnd="8dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+	<LinearLayout
+		android:id="@+id/linearLayout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+
+		android:orientation="vertical"
+		android:layout_marginStart="36dp"
+		android:layout_marginEnd="36dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<android.support.design.widget.TextInputLayout
+			android:id="@+id/usernameWrapper"
+			android:layout_width="match_parent"
+			android:background="@drawable/bg_rounded"
+			android:layout_height="48dp">
+
+			<android.support.v7.widget.AppCompatEditText
+				android:id="@+id/et_username"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/username"
+				android:background="@android:color/transparent"
+				android:maxLines="1"
+				android:layout_marginStart="12dp"
+				android:imeOptions="actionNext"
+				android:drawableStart="@drawable/ic_ico_username"
+				android:drawablePadding="24dp"
+				android:inputType="textEmailAddress|textNoSuggestions" />
+
+		</android.support.design.widget.TextInputLayout>
+
+
+		<android.support.design.widget.TextInputLayout
+			android:id="@+id/passwordWrapper"
+			android:layout_width="match_parent"
+			android:layout_marginTop="24dp"
+			android:background="@drawable/bg_rounded"
+			android:layout_height="48dp">
+
+			<android.support.v7.widget.AppCompatEditText
+				android:id="@+id/et_password"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/username"
+				android:background="@android:color/transparent"
+				android:maxLines="1"
+				android:layout_marginStart="12dp"
+				android:imeOptions="actionNext"
+				android:drawableStart="@drawable/ic_ico_lock"
+				android:drawablePadding="24dp"
+				android:inputType="textPassword" />
+
+		</android.support.design.widget.TextInputLayout>
+		<Button
+			android:id="@+id/login"
+			android:layout_height="48dp"
+			android:text="@string/login"
+			android:textColor="@android:color/white"
+			android:layout_marginTop="24dp"
+			android:background="@drawable/bg_rounded"
+			android:backgroundTint="@color/colorAccent"
+			android:layout_width="match_parent" />
+	</LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

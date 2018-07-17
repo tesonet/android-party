@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".ui.main.MainActivity"
+	android:orientation="vertical">
+	<android.support.v7.widget.Toolbar
+		android:id="@+id/toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:minHeight="?attr/actionBarSize"
+		android:background="#ffffff"
+		app:title=""
+		app:navigationIcon="@drawable/logo_2" />
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:background="@android:color/white"
+		android:layout_height="wrap_content">
+		<TextView
+			android:text="@string/server"
+			android:padding="8dp"
+			android:textAllCaps="true"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
+		<TextView
+			android:text="@string/distance"
+			android:padding="8dp"
+			android:textAllCaps="true"
+			android:layout_alignParentEnd="true"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
+	</RelativeLayout>
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/serverList"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="16dp"
+		app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+
+</LinearLayout>
