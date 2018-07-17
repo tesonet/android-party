@@ -36,6 +36,7 @@ class MainActivity : BaseActivity(), MainView {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setSupportActionBar(toolbar)
+    supportActionBar?.setDisplayShowTitleEnabled(false)
     val token = PreferenceHelper.getStringPreference(this, PreferenceHelper.token)
     mainPresenter = MainPresenter(this, token!!)
     serverList.adapter = adapter
