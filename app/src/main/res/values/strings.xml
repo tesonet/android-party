@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Tesonet.</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short. Min 4 symbols</string>
+    <string name="error_incorrect_password">This password is incorrect.</string>
+    <string name="error_user_name">This field is required. Min 4 symbols</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="fetching_the_list">Fetching the list...</string>
+    <string name="log_in">Log In</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="logout">Logout</string>
+    <string name="bad_credentials">Bad credentials</string>
+    <string name="server">server</string>
+    <string name="distance">distance</string>
+    <string name="no_internet_title">No Internet Connection</string>
+    <string name="no_internet_description">You need to have Mobile Data or wifi to access this.</string>
+</resources>
