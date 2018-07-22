@@ -14,7 +14,6 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -22,7 +21,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding{
+    dataBinding {
         enabled = true
     }
 }
@@ -32,6 +31,7 @@ dependencies {
         support = '28.0.0-alpha3'
         view_model = '1.1.1'
         retrofit = '2.4.0'
+        room = '1.1.1'
     }
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -55,7 +55,10 @@ dependencies {
 
     kapt "com.android.databinding:compiler:$compiler_and_gradle"
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    /*room*/
+    implementation "android.arch.persistence.room:runtime:$room"
+    kapt "android.arch.persistence.room:compiler:$room"
+    //rx for room
+    implementation "android.arch.persistence.room:rxjava2:$room"
+    /*room*/
 }

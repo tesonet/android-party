@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -9,16 +10,107 @@
             type="com.amaximan.tesonet.viewModel.AuthVM" />
     </data>
 
-    <ScrollView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        tools:background="@drawable/background"
+        tools:ignore="ScrollViewSize">
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:ignore="ScrollViewSize">
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/logo_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.33" />
 
-        </android.support.constraint.ConstraintLayout>
-    </ScrollView>
+        <EditText
+            android:id="@+id/et_focusable"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            tools:ignore="LabelFor,TextFields" />
+
+        <EditText
+            android:id="@+id/et_username"
+            style="@style/AuthEditText"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/auth_control_height"
+            android:drawableStart="@drawable/ic_username"
+            android:hint="@string/username"
+            android:inputType="text"
+            android:text="@={viewModel.username}"
+            android:visibility="@{!viewModel.isLoadingToken &amp;&amp; !viewModel.isLoadingServers}"
+            app:error="@{viewModel.usernameError}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo"
+            app:layout_constraintWidth_percent="0.7" />
+
+        <EditText
+            android:id="@+id/et_password"
+            style="@style/AuthEditText"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/auth_control_height"
+            android:layout_marginTop="@dimen/padding_8"
+            android:drawableStart="@drawable/ic_lock"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:text="@={viewModel.password}"
+            android:visibility="@{!viewModel.isLoadingToken &amp;&amp; !viewModel.isLoadingServers}"
+            app:error="@{viewModel.passwordError}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_username"
+            app:layout_constraintWidth_percent="0.7" />
+
+        <Button
+            android:id="@+id/btn_log_in"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/auth_control_height"
+            android:layout_marginTop="@dimen/padding_16"
+            android:background="@drawable/auth_btn_background"
+            android:text="@string/log_in"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_min"
+            android:visibility="@{!viewModel.isLoadingToken &amp;&amp; !viewModel.isLoadingServers}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_password"
+            app:layout_constraintWidth_percent="0.7" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:visibility="@{viewModel.isLoadingToken || viewModel.isLoadingServers}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guide_70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".7" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fetching_the_list"
+            android:textColor="@android:color/white"
+            android:visibility="@{viewModel.isLoadingServers}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guide_70" />
+    </android.support.constraint.ConstraintLayout>
 </layout>
