@@ -5,13 +5,14 @@ import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.njakawaii.tesonet.App;
-import com.njakawaii.tesonet.main.MainActivity;
 import com.njakawaii.tesonet.R;
 import com.njakawaii.tesonet.data.LoginModel;
 import com.njakawaii.tesonet.data.ServerModelData;
 import com.njakawaii.tesonet.data.ServersDB;
+import com.njakawaii.tesonet.main.MainActivity;
 import com.orhanobut.hawk.Hawk;
 
 import java.util.concurrent.TimeUnit;
@@ -67,6 +68,7 @@ public class LoginPresenter implements LoginContract.Actions, LifecycleObserver 
             @Override
             public void onError(Throwable e) {
                 view.showProgress(false);
+                showCredentialsError();
             }
 
             @Override
@@ -74,6 +76,10 @@ public class LoginPresenter implements LoginContract.Actions, LifecycleObserver 
 
             }
         });
+    }
+
+    private void showCredentialsError() {
+        activity.runOnUiThread(() -> Toast.makeText(activity, R.string.error_invalid_credentials, Toast.LENGTH_LONG).show());
     }
 
     @Override
@@ -87,7 +93,7 @@ public class LoginPresenter implements LoginContract.Actions, LifecycleObserver 
     }
 
     private void getServersCall() {
-        App.getInstance().getModelService().getServers().delay(500, TimeUnit.MILLISECONDS).subscribeOn(Schedulers.io())
+        App.getInstance().getModelService().getServers().delay(1000, TimeUnit.MILLISECONDS).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<ServerModelData>() {
             @Override
             public void onSubscribe(Disposable d) {

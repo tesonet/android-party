@@ -22,6 +22,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         serverList.adapter = adapter
         serverList.setHasFixedSize(true)
         loadDataFromDB()

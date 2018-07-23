@@ -18,10 +18,11 @@ public class LoginView implements LoginContract.View {
 
     private EditText usernameView;
     private EditText passwordView;
+    private View progressBar;
     private View progressView;
     private TextView logingBtn;
     private View loginFormView;
-    private  ProgressDialog dialog;
+    private ProgressDialog dialog;
 
     public LoginView(BaseActivity activity, View root) {
         this.activity = activity;
@@ -34,7 +35,8 @@ public class LoginView implements LoginContract.View {
         passwordView = root.findViewById(R.id.password);
         logingBtn = root.findViewById(R.id.login_action);
         loginFormView = root.findViewById(R.id.login_form);
-        progressView = root.findViewById(R.id.login_progress);
+        progressBar = root.findViewById(R.id.login_progress);
+        progressView = root.findViewById(R.id.login_progress_wrap);
     }
 
     @Override
@@ -65,36 +67,36 @@ public class LoginView implements LoginContract.View {
     @Override
     public void showProgress(boolean show) {
         activity.runOnUiThread(() -> {
-        if (show) {
-            dialog = ProgressDialog.show(activity, "",
-                    "Loading. Please wait...", true);
-        }  else {
-            dialog.dismiss();
-        }
+            if (show) {
+                dialog = ProgressDialog.show(activity, "",
+                        activity.getString(R.string.title_loading), true);
+            } else {
+                dialog.dismiss();
+            }
         });
     }
 
     @Override
     public void showFetchingServers(boolean show) {
-                int shortAnimTime = activity.getResources().getInteger(android.R.integer.config_shortAnimTime);
+        int shortAnimTime = activity.getResources().getInteger(android.R.integer.config_shortAnimTime);
         activity.runOnUiThread(() -> {
-        loginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-        loginFormView.animate().setDuration(shortAnimTime).alpha(
-                show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                loginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            }
-        });
+            progressView.setVisibility(show ? View.GONE : View.VISIBLE);
+            loginFormView.animate().setDuration(shortAnimTime).alpha(
+                    show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    loginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+                }
+            });
 
-        progressView.setVisibility(show ? View.VISIBLE : View.GONE);
-        progressView.animate().setDuration(shortAnimTime).alpha(
-                show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                progressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            }
-        });
+            progressView.setVisibility(show ? View.VISIBLE : View.GONE);
+            progressBar.animate().setDuration(shortAnimTime).alpha(
+                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    progressBar.setVisibility(show ? View.VISIBLE : View.GONE);
+                }
+            });
         });
 
     }

@@ -13,10 +13,10 @@ interface ServersDAO {
     fun getAll(): Flowable<List<ServerModel>>
 
     @Insert(onConflict = REPLACE)
-    fun insert(weatherData: ServerModel)
+    fun insert(serverModel: ServerModel)
 
     @Insert(onConflict = REPLACE)
-    fun insertAll(pets: List<ServerModel>)
+    fun insertAll(serverModel: List<ServerModel>)
 
     @Query("DELETE from servers")
     fun deleteAll()
