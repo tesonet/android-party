@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Tesonet.</string>
+    <string name="error_invalid_password">This password is too short. Min 4 symbols</string>
+    <string name="error_user_name">This field is required. Min 4 symbols</string>
+    <string name="fetching_the_list">Fetching the list...</string>
+    <string name="log_in">Log In</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="server">server</string>
+    <string name="distance">distance</string>
+    <string name="no_internet_title">No Internet Connection</string>
+    <string name="no_internet_description">You need to have Mobile Data or wifi to access this.</string>
+    <string name="title_loading">Loading. Please wait...</string>
+    <string name="error_invalid_credentials">Username or password invalid.</string>
+</resources>
