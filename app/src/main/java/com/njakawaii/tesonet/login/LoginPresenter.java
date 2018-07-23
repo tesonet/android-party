@@ -41,7 +41,6 @@ public class LoginPresenter implements LoginContract.Actions, LifecycleObserver 
     @Override
     public void doLogin() {
         if (activity.isNetworkAvailable(activity)) {
-            view.showProgress(true);
             if (isValidData()) {
                 doLoginCall();
             }
@@ -49,6 +48,7 @@ public class LoginPresenter implements LoginContract.Actions, LifecycleObserver 
     }
 
     private void doLoginCall() {
+        view.showProgress(true);
         App.getInstance().getModelService().login(view.getUserName(), view.getPassword()).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).delay(500, TimeUnit.MILLISECONDS).subscribe(new Observer<LoginModel>() {
             @Override
