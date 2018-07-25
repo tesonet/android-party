@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:fitsSystemWindows="true"
-    tools:context=".views.LoginFragment">
+    tools:context=".views.fragments.LoginFragment">
 
     <ImageView
         android:id="@+id/testio"
@@ -55,7 +55,6 @@
                 android:maxLines="1"
                 android:textColor="@android:color/black"
                 android:textColorHint="@color/textSecondary"
-                android:focusableInTouchMode="false"
                 android:textCursorDrawable="@drawable/cursor"
                 android:textSize="15sp" />
 
@@ -83,7 +82,6 @@
                 android:layout_height="match_parent"
                 android:backgroundTint="@android:color/transparent"
                 android:hint="@string/password"
-                android:focusableInTouchMode="false"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:textColor="@android:color/black"
@@ -105,8 +103,7 @@
 
     </LinearLayout>
 
-
-    <com.playground.ugnius.homework.views.LoadingView
+    <com.playground.ugnius.homework.views.components.LoadingView
         android:id="@+id/loader"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

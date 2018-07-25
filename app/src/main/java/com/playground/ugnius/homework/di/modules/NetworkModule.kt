@@ -16,32 +16,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 class NetworkModule {
 
     @Provides
-    fun provideOkHttpClient(preferences: SharedPreferences) = with(OkHttpClient().newBuilder()) {
-        addInterceptor { chain ->
-            val originalRequest = chain.request()
-            val accessToken = preferences.getString("accessToken", "")
-            val builder = originalRequest.newBuilder().header("Authorization", " Bearer $accessToken")
-            val modifiedRequest = builder.build()
-            chain.proceed(modifiedRequest)
-        }
-        build()
-    }
-
-    @Provides
     fun provideGsonConverterFactory(): GsonConverterFactory {
         val builder = GsonBuilder().apply { setFieldNamingPolicy(LOWER_CASE_WITH_UNDERSCORES) }
         return GsonConverterFactory.create(builder.create())
     }
 
     @Provides
-    fun provideRetrofit(
-        gsonConverterFactory: GsonConverterFactory,
-        okHttpClient: OkHttpClient
-    ) = with(Retrofit.Builder()) {
+    fun provideRetrofit(gsonConverterFactory: GsonConverterFactory) = with(Retrofit.Builder()) {
         baseUrl("http://playground.tesonet.lt")
         addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
         addConverterFactory(gsonConverterFactory)
-        client(okHttpClient)
+        client(OkHttpClient().newBuilder().build())
         build()
     }
 

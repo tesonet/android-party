@@ -3,7 +3,7 @@ package com.playground.ugnius.homework.global
 import android.app.Application
 import com.playground.ugnius.homework.di.components.DaggerMainComponent
 import com.playground.ugnius.homework.di.components.MainComponent
-import com.playground.ugnius.homework.di.modules.UtilitiesModule
+import io.realm.Realm
 
 class App : Application() {
 
@@ -11,8 +11,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        mainComponent = DaggerMainComponent.builder()
-            .utilitiesModule(UtilitiesModule(this))
-            .build()
+        Realm.init(this)
+        mainComponent = DaggerMainComponent.builder().build()
     }
 }

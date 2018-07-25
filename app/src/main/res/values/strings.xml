@@ -6,4 +6,6 @@
     <string name="login">Log in</string>
     <string name="invalid_credentials">Invalid Credentials</string>
     <string name="loading_message">Fetching the list</string>
+    <string name="server">Server</string>
+    <string name="distance">Distance</string>
 </resources>

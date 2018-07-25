@@ -1,4 +1,4 @@
-package com.playground.ugnius.homework.views
+package com.playground.ugnius.homework.views.components
 
 import android.content.Context
 import android.graphics.Color.RED
