@@ -40,16 +40,20 @@
         android:layout_marginTop="16dp"
         app:loginHint="@string/password"
         app:loginIcon="@drawable/ic_ico_lock"
+        app:loginMask="true"
         app:layout_constraintEnd_toEndOf="@+id/guidelineRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
         app:layout_constraintTop_toBottomOf="@+id/loginName" />
 
     <TextView
+        android:id="@+id/loginButton"
         android:layout_width="0dp"
         android:layout_height="@dimen/button_height"
         android:layout_marginTop="16dp"
         android:background="@drawable/login_button_bg"
         android:gravity="center"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:text="@string/log_in"
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="@+id/guidelineRight"

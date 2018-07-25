@@ -13,7 +13,9 @@ import com.teso.net.ui.adapters.SiteAdapter
 import com.teso.net.ui.base.BaseFragment
 import com.teso.net.ui.vm.LoginFragmentVM
 import com.teso.net.ui.vm.SiteFragmentVM
+import com.teso.net.utils.onClick
 import com.teso.net.utils.showSnack
+import kotlinx.android.synthetic.main.fragment_login.*
 import timber.log.Timber
 
 class LoginFragment : BaseFragment() {
@@ -31,11 +33,11 @@ class LoginFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        loginButton.onClick { login() }
     }
 
-
-    private fun onClickLog() {
+    private fun login() {
         Timber.d("Login was clicked")
+        viewModel.login(loginName.getText(), loginPassword.getText())
     }
 }

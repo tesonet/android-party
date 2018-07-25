@@ -1,6 +1,5 @@
 package com.teso.net.di
 
-import android.content.Context
 import com.teso.net.data_flow.IUserStorage
 import com.teso.net.data_flow.database.LocalDatabase
 import com.teso.net.data_flow.interactions.*
@@ -14,16 +13,13 @@ class InteractionModule {
 
     @Provides
     @Singleton
-    fun provideInteract(api: Api, pref: IUserStorage, context: Context): ITokenInteractor {
-        return TokenInteractor(api, pref, context)
-    }
+    fun provideTokenInteractor(pref: IUserStorage): ITokenInteractor = TokenInteractor(pref)
 
     @Provides
     @Singleton
-    fun provideLoginInteractor(pref: IUserStorage): ILoginInteractor = LoginInteractor(pref)
+    fun provideLoginInteractor(api: Api): ILoginInteractor = LoginInteractor(api)
 
     @Provides
     @Singleton
     fun provideSitesInteractor(api: Api, db: LocalDatabase): IServerInteractor = ServerInteractor(api, db)
-
 }

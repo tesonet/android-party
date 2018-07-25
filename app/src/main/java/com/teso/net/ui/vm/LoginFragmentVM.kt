@@ -3,31 +3,54 @@ package com.teso.net.ui.vm
 import android.arch.lifecycle.LiveData
 import com.teso.net.AndroidApplication
 import com.teso.net.ErrorModel
-import com.teso.net.data_flow.database.entities.ServerEntity
-import com.teso.net.data_flow.interactions.IServerInteractor
+import com.teso.net.R
+import com.teso.net.data_flow.interactions.ILoginInteractor
+import com.teso.net.data_flow.interactions.ITokenInteractor
+import com.teso.net.data_flow.network.api_models.TokenAnswer
 import com.teso.net.ui.base.BaseViewModel
 import com.teso.net.utils.SingleLiveEvent
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class LoginFragmentVM : BaseViewModel() {
 
-    @Inject lateinit var serverInteractor: IServerInteractor
+    @Inject lateinit var tokenInteractor: ITokenInteractor
+
+    @Inject lateinit var loginInteractor: ILoginInteractor
 
     private val error: SingleLiveEvent<ErrorModel> = SingleLiveEvent()
+
+    private val nextScreen: SingleLiveEvent<Void> = SingleLiveEvent()
 
     init {
         AndroidApplication.component.inject(this)
     }
 
-    fun getListOfSites(): LiveData<List<ServerEntity>> = serverInteractor.getListOfSites()
+    fun getError(): LiveData<ErrorModel> = error
 
-    fun updateListOfSites() {
-        disposal.add(serverInteractor.updateListOfServers()
-                .subscribeOn(Schedulers.io())
-                .subscribe({ serverInteractor.writeServersToDb(it) },
-                        { error.postValue(ErrorModel(throwable = it)) }))
+    fun getNextScreen(): LiveData<Void> = nextScreen
+
+    fun login(name: String, password: String) {
+        if (name.isBlank() || password.isBlank()) {
+            error.value = ErrorModel(stringId = R.string.fields_empty)
+        } else {
+            disposal.add(loginInteractor.getTokenFormServer(name, password)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(Schedulers.io())
+                    .subscribe({ saveToken(it, name, password) },
+                            { error.value = ErrorModel(stringId = R.string.incorrect_password) }))
+        }
     }
 
-    fun getError(): LiveData<ErrorModel> = error
+    private fun saveToken(tokenAnswer: TokenAnswer, name: String, password: String) {
+        if (tokenAnswer.token?.isBlank() == false) {
+            tokenInteractor.setToken(tokenAnswer.token)
+            tokenInteractor.setUserName(name)
+            tokenInteractor.setPassword(password)
+            nextScreen.call()
+        } else {
+            error.value = ErrorModel(stringId = R.string.server_error)
+        }
+    }
 }

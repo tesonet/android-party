@@ -8,9 +8,6 @@ import android.support.annotation.Nullable
 import timber.log.Timber
 import java.util.concurrent.atomic.AtomicBoolean
 
-/**
- * Created by a.belichenko@gmail.com on 6/21/18.
- */
 class SingleLiveEvent<T> : MutableLiveData<T>() {
 
     private val pending: AtomicBoolean = AtomicBoolean(false)

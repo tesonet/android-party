@@ -10,7 +10,7 @@ class PreferenceUserStorage(context: Context) : IUserStorage {
 
     companion object {
         private const val NAME = "pref"
-        private const val SECURE_NAME = "prefs"
+        private const val SECURE_NAME = "sprefs"
 
         private const val TOKEN_KEY = "teso_token"
         private const val NAME_KEY = "teso_name"

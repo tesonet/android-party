@@ -3,12 +3,12 @@ package com.teso.net.data_flow.network
 import android.text.TextUtils
 import com.google.gson.Gson
 import com.teso.net.BuildConfig
-import com.teso.net.data_flow.interactions.ILoginInteractor
+import com.teso.net.data_flow.interactions.ITokenInteractor
 import com.teso.net.data_flow.network.api_models.TokenAnswer
 import okhttp3.*
 import timber.log.Timber
 
-class TokenInterceptor(private val loginInteractor: ILoginInteractor) : Interceptor {
+class TokenInterceptor(private val loginInteractor: ITokenInteractor) : Interceptor {
 
     private val TOKEN_REQUEST = "token"
 

@@ -4,12 +4,13 @@ import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.teso.net.BuildConfig
-import com.teso.net.data_flow.interactions.ILoginInteractor
+import com.teso.net.data_flow.interactions.ITokenInteractor
 import com.teso.net.data_flow.network.Api
 import com.teso.net.data_flow.network.TokenInterceptor
 import dagger.Module
 import dagger.Provides
 import okhttp3.HttpUrl
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -46,7 +47,10 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(loggerInterceptor: HttpLoggingInterceptor, tokenInterceptor: TokenInterceptor): OkHttpClient = OkHttpClient.Builder()
+    fun provideOkHttpClient(loggerInterceptor: HttpLoggingInterceptor,
+                            tokenInterceptor: TokenInterceptor,
+                            headerInterceptor: Interceptor): OkHttpClient = OkHttpClient.Builder()
+            //.addInterceptor(headerInterceptor)
             .addInterceptor(tokenInterceptor)
             .addNetworkInterceptor(loggerInterceptor)
             .addNetworkInterceptor(StethoInterceptor())
@@ -68,8 +72,22 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideTokenInterceptor(loginInteractor: ILoginInteractor): TokenInterceptor {
+    fun provideTokenInterceptor(loginInteractor: ITokenInteractor): TokenInterceptor {
         return TokenInterceptor(loginInteractor)
+    }
+
+    @Singleton
+    @Provides
+    fun provideHeaderInterceptor(): Interceptor {
+        return Interceptor {
+            it.proceed(
+                    it.request().newBuilder()
+                            .addHeader("Accept", "application/json")
+                            .addHeader("Accept-Language", "en")
+                            .addHeader("Content-Type", "application/json")
+                            .build()
+            )
+        }
     }
 
     @Singleton

@@ -2,6 +2,7 @@ package com.teso.net.ui.views
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.text.InputType
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
@@ -23,6 +24,7 @@ class LoginEditText @JvmOverloads constructor(
             field = value
             initView()
         }
+    var useMask: Boolean = false
 
     init {
         LayoutInflater.from(context).inflate(R.layout.login_edit_view, this)
@@ -39,6 +41,7 @@ class LoginEditText @JvmOverloads constructor(
         if (a.hasValue(R.styleable.LoginEditText_loginIcon)) {
             icon = a.getDrawable(R.styleable.LoginEditText_loginIcon)
         }
+        useMask = a.getBoolean(R.styleable.LoginEditText_loginMask, false)
         a.recycle()
     }
 
@@ -47,6 +50,7 @@ class LoginEditText @JvmOverloads constructor(
         if (icon != null) {
             logoEditIcon.setImageDrawable(icon)
         }
+        if (useMask) logoEdit.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
     }
 
     fun getText() = logoEdit.text.toString()
