@@ -4,7 +4,6 @@ import com.playground.ugnius.homework.interfaces.LoginView
 import com.playground.ugnius.homework.model.ServersRepository
 import com.playground.ugnius.homework.model.clients.ApiClient
 import com.playground.ugnius.homework.model.entities.AccessToken
-import com.playground.ugnius.homework.model.entities.Server
 import com.playground.ugnius.homework.model.entities.UserRequest
 import com.playground.ugnius.homework.presenters.LoginPresenter
 import io.reactivex.Scheduler
@@ -27,11 +26,11 @@ import org.mockito.junit.MockitoJUnitRunner
 class PresenterTest {
 
     companion object {
-        const val SUCCESSFUL_TEST_USERNAME = "tesonet"
-        const val SUCCESSFUL_TEST_PASSWORD = "partyanimal"
-        const val UNSUCCESSFUL_TEST_USERNAME = "error"
-        const val UNSUCCESSFUL_TEST_PASSWORD = "error"
-        const val ACCESS_TOKEN = "f9731b590611a5a9377fbd02f247fcdf"
+        private const val SUCCESSFUL_TEST_USERNAME = "tesonet"
+        private const val SUCCESSFUL_TEST_PASSWORD = "partyanimal"
+        private const val UNSUCCESSFUL_TEST_USERNAME = "error"
+        private const val UNSUCCESSFUL_TEST_PASSWORD = "error"
+        private const val ACCESS_TOKEN = "f9731b590611a5a9377fbd02f247fcdf"
 
         @BeforeClass
         @JvmStatic

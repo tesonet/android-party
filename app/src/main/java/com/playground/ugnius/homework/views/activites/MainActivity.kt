@@ -4,7 +4,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.test.espresso.idling.CountingIdlingResource
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE

@@ -10,7 +10,7 @@ import android.widget.LinearLayout
 import com.github.florent37.viewanimator.AnimationBuilder
 import com.github.florent37.viewanimator.ViewAnimator
 import com.playground.ugnius.homework.R
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.loading_animation.view.*
 
@@ -23,7 +23,7 @@ class LoadingView constructor(context: Context, attrs: AttributeSet?) : LinearLa
     }
 
     private val subject = PublishSubject.create<Int>()
-    private val compositeDisposable = CompositeDisposable()
+    private var disposable: Disposable? = null
 
     init {
         inflate(context, R.layout.loading_animation, this) as LinearLayout
@@ -47,7 +47,7 @@ class LoadingView constructor(context: Context, attrs: AttributeSet?) : LinearLa
     }
 
     fun playErrorAnimation(message: String, onStop: () -> Unit = {}) {
-        val disposable = subject.subscribe {
+        disposable = subject.subscribe {
             loadingAnimation.setMinAndMaxFrame(ERROR_START_FRAME, ERROR_END_FRAME)
             Handler().postDelayed(
                 {
@@ -62,12 +62,11 @@ class LoadingView constructor(context: Context, attrs: AttributeSet?) : LinearLa
                 onStop = { onStop() }
             )
         }
-        compositeDisposable.add(disposable)
     }
 
     private fun cancelAnimation() {
         loadingAnimation.cancelAnimation()
-        compositeDisposable.clear()
+        disposable?.dispose()
     }
 
     private fun fade(

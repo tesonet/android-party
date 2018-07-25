@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.graphics.Color.WHITE
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
+import android.support.v4.view.ViewCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -36,7 +37,8 @@ class ServersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rootView.shade(ContextCompat.getColor(context!!, R.color.gray), 0.32F)
+        ViewCompat.requestApplyInsets(rootView)
+        rootView.shade(ContextCompat.getColor(context!!, R.color.gray), 0.28F)
         initializeRecyclerView()
         logout.setOnClickListener {
             serversRepository.clear()
@@ -46,7 +48,7 @@ class ServersFragment : Fragment() {
 
     private fun initializeRecyclerView() {
         with(serversRecycler) {
-            adapter = ServersAdapter(context = context!!, entries = serversRepository.getServers())
+            adapter = ServersAdapter(context!!, entries = serversRepository.getServers())
             layoutManager = LinearLayoutManager(context)
             val divider = ContextCompat.getDrawable(context!!, R.drawable.divider)!!
             val decoration = DividerItemDecoration(context!!, VERTICAL).apply { setDrawable(divider) }
@@ -55,9 +57,6 @@ class ServersFragment : Fragment() {
     }
 
     private fun View.shade(color: Int, ratio: Float) {
-        if (ratio < 0 && ratio > 1F) {
-            throw IllegalArgumentException("Ratio must be a float value between 0 and 1")
-        }
         val shader = object : ShapeDrawable.ShaderFactory() {
             override fun resize(width: Int, height: Int): Shader {
                 return LinearGradient(

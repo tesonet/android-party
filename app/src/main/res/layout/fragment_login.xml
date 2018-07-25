@@ -54,7 +54,7 @@
                 android:inputType="text"
                 android:maxLines="1"
                 android:textColor="@android:color/black"
-                android:textColorHint="@color/textSecondary"
+                android:textColorHint="@color/darkGray"
                 android:textCursorDrawable="@drawable/cursor"
                 android:textSize="15sp" />
 
@@ -85,7 +85,7 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:textColor="@android:color/black"
-                android:textColorHint="@color/textSecondary"
+                android:textColorHint="@color/darkGray"
                 android:textCursorDrawable="@drawable/cursor"
                 android:textSize="15sp" />
 

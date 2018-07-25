@@ -22,7 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:alpha="0"
-        android:clickable="false"
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:textAllCaps="true"

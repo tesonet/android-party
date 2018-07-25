@@ -9,7 +9,7 @@
         android:id="@+id/server"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/textSecondary"
+        android:textColor="@color/darkGray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -18,8 +18,8 @@
         android:id="@+id/distance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/textSecondary"
         android:layout_marginEnd="8dp"
+        android:textColor="@color/darkGray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

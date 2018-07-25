@@ -8,5 +8,5 @@ import io.realm.Realm
 class UtilitiesModule() {
 
     @Provides
-    fun provideRealm() = Realm.getDefaultInstance()
+    fun provideRealm(): Realm = Realm.getDefaultInstance()
 }

@@ -21,12 +21,8 @@ class LoginPresenter constructor(
             .map { serversRepository.saveServers(it) }
             .delay(1, SECONDS)
             .subscribeBy(
-                onSuccess = {
-                    loginView.goToServersFragment()
-                },
-                onError = {
-                    loginView.showError()
-                }
+                onSuccess = { loginView.goToServersFragment() },
+                onError = { loginView.showError() }
             )
     }
 }

@@ -68,7 +68,9 @@ class LoginFragment : Fragment(), LoginView {
 
     private fun toggleClicks(toggle: Boolean) {
         usernameInput?.isFocusableInTouchMode = toggle
+        usernameInput?.isFocusable = toggle
         passwordInput?.isFocusableInTouchMode = toggle
+        passwordInput?.isFocusable = toggle
         loginButton?.isClickable = toggle
     }
 
