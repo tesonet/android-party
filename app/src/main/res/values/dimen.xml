@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="row_height">72dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="button_height">54dp</dimen>
+</resources>
