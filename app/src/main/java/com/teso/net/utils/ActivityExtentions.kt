@@ -2,8 +2,10 @@ package com.teso.net.utils
 
 import android.app.Activity
 import android.content.Intent
+import android.support.annotation.ColorRes
 import android.support.design.widget.Snackbar
 import android.support.v4.app.FragmentActivity
+import android.support.v4.content.ContextCompat
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.teso.net.ErrorModel
@@ -44,4 +46,8 @@ fun Activity.goToNextScreen(activityClass: Class<out Activity>?) {
 fun FragmentActivity.showNewFragment(fragment: Class<out BaseFragment>?, addToBackStack: Boolean = true,
                                      sharedView: View? = null, sharedName: String? = null) {
     fragment?.let { fragment.newInstance()?.show(supportFragmentManager, addToBackStack, sharedView, sharedName) }
+}
+
+fun Activity.changeStatusBarColor(@ColorRes color: Int) {
+    this.window?.statusBarColor = ContextCompat.getColor(this, color)
 }
