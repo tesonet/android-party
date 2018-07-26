@@ -8,10 +8,10 @@ public final class ApiConstants {
 
     }
 
-    private static final String HTTPS_PREFIX = "https://";
-    private static final String LIVE_INSTANCE = "xyz.com";
+    private static final String PROTOCOL = "http://";
+    private static final String LIVE_INSTANCE = "playground.tesonet.lt/v1/";
 
-    public static final String API_ENDPOINT = HTTPS_PREFIX + LIVE_INSTANCE;
+    public static final String API_ENDPOINT = PROTOCOL + LIVE_INSTANCE;
 
     public static final HttpLoggingInterceptor.Level LOGGING_LEVEL = HttpLoggingInterceptor.Level.BASIC;
 
