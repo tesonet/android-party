@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ import java.util.Map;
 
 public class FeedActivity extends AppCompatActivity {
 
+    RestManager restManager = new RestManager();
 
 
     @Override
@@ -41,11 +43,13 @@ public class FeedActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        restManager.initiateRestCall(getApplicationContext(), (ListView) findViewById(R.id.list));
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new RestManager().initiateRestCall(getApplicationContext(), (TextView) findViewById(R.id.tokenView));
+                restManager.initiateRestCall(getApplicationContext(), (ListView) findViewById(R.id.list));
             }
         });
 
