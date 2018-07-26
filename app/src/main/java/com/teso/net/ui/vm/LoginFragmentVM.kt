@@ -11,6 +11,7 @@ import com.teso.net.ui.base.BaseViewModel
 import com.teso.net.utils.SingleLiveEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 import javax.inject.Inject
 
 class LoginFragmentVM : BaseViewModel() {
@@ -21,7 +22,7 @@ class LoginFragmentVM : BaseViewModel() {
 
     private val error: SingleLiveEvent<ErrorModel> = SingleLiveEvent()
 
-    private val nextScreen: SingleLiveEvent<Void> = SingleLiveEvent()
+    private val nextScreen: SingleLiveEvent<Boolean> = SingleLiveEvent()
 
     init {
         AndroidApplication.component.inject(this)
@@ -29,7 +30,7 @@ class LoginFragmentVM : BaseViewModel() {
 
     fun getError(): LiveData<ErrorModel> = error
 
-    fun getNextScreen(): LiveData<Void> = nextScreen
+    fun getNextScreen(): LiveData<Boolean> = nextScreen
 
     fun login(name: String, password: String) {
         if (name.isBlank() || password.isBlank()) {
@@ -48,9 +49,16 @@ class LoginFragmentVM : BaseViewModel() {
             tokenInteractor.setToken(tokenAnswer.token)
             tokenInteractor.setUserName(name)
             tokenInteractor.setPassword(password)
-            nextScreen.call()
+            nextScreen.postValue(true)
         } else {
             error.value = ErrorModel(stringId = R.string.server_error)
+        }
+    }
+
+    fun checkIfUserAlreadyLogin() {
+        if (tokenInteractor.hasPassword().and(tokenInteractor.hasUserName())) {
+            Timber.d("User already login")
+            nextScreen.postValue(true)
         }
     }
 }

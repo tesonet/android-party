@@ -26,25 +26,6 @@ fun Activity.showSnack(errorModel: ErrorModel?, length: Int = Snackbar.LENGTH_LO
     }
 }
 
-//fun Activity.showSpinner(visibility: Int) {
-//    val spinner: View? = findViewById(R.id.activityRootSpinner)
-//    if (spinner != null) {
-//        spinner.visibility = visibility
-//    } else {
-//        Timber.e("R.id.activityRootSpinner view not found in $localClassName")
-//    }
-//}
-//
-//fun Activity.isSpinnerShowing(): Boolean {
-//    val spinner: View? = findViewById(R.id.activityRootSpinner)
-//    return if (spinner != null && spinner.visibility == View.VISIBLE) {
-//        true
-//    } else {
-//        Timber.e("R.id.activityRootSpinner view not found in $localClassName")
-//        false
-//    }
-//}
-
 fun Activity.hideKeyboard() {
     val imm = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
     var view = currentFocus
@@ -60,6 +41,7 @@ fun Activity.goToNextScreen(activityClass: Class<out Activity>?) {
     finish()
 }
 
-fun FragmentActivity.showNewFragment(fragment: Class<out BaseFragment>?, addToBackStack: Boolean = true) {
-    fragment?.let { fragment.newInstance()?.show(supportFragmentManager, addToBackStack) }
+fun FragmentActivity.showNewFragment(fragment: Class<out BaseFragment>?, addToBackStack: Boolean = true,
+                                     sharedView: View? = null, sharedName: String? = null) {
+    fragment?.let { fragment.newInstance()?.show(supportFragmentManager, addToBackStack, sharedView, sharedName) }
 }

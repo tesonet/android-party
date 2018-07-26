@@ -49,8 +49,8 @@ class NetworkModule {
     @Provides
     fun provideOkHttpClient(loggerInterceptor: HttpLoggingInterceptor,
                             tokenInterceptor: TokenInterceptor,
-                            headerInterceptor: Interceptor): OkHttpClient = OkHttpClient.Builder()
-            //.addInterceptor(headerInterceptor)
+                            headersInterceptor: Interceptor): OkHttpClient = OkHttpClient.Builder()
+            .addInterceptor(headersInterceptor)
             .addInterceptor(tokenInterceptor)
             .addNetworkInterceptor(loggerInterceptor)
             .addNetworkInterceptor(StethoInterceptor())
@@ -78,16 +78,14 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideHeaderInterceptor(): Interceptor {
-        return Interceptor {
-            it.proceed(
-                    it.request().newBuilder()
-                            .addHeader("Accept", "application/json")
-                            .addHeader("Accept-Language", "en")
-                            .addHeader("Content-Type", "application/json")
-                            .build()
-            )
-        }
+    fun provideHeadersInterceptor() = Interceptor {
+        it.proceed(
+                it.request().newBuilder()
+                        .addHeader("Accept", "application/json")
+                        .addHeader("Accept-Language", "en")
+                        .addHeader("Content-Type", "application/json")
+                        .build()
+        )
     }
 
     @Singleton

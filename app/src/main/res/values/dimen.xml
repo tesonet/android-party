@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="row_height">72dp</dimen>
-    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="row_height">54dp</dimen>
+    <dimen name="progress_size">240dp</dimen>
     <dimen name="button_height">54dp</dimen>
+    <dimen name="side_margin">16dp</dimen>
 </resources>

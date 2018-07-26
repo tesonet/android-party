@@ -8,10 +8,8 @@ import com.teso.net.R
 import com.teso.net.data_flow.database.entities.ServerEntity
 import kotlinx.android.synthetic.main.list_item.view.*
 
-/**
- * Created by a.belichenko@gmail.com on 10.10.17.
- */
-class SiteAdapter(private val items: List<ServerEntity>, private val listener: (ServerEntity) -> Unit) : RecyclerView.Adapter<SiteAdapter.ViewHolder>() {
+
+class ServerAdapter(private val items: List<ServerEntity>, private val listener: (ServerEntity) -> Unit) : RecyclerView.Adapter<ServerAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,7 +25,7 @@ class SiteAdapter(private val items: List<ServerEntity>, private val listener: (
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: ServerEntity, listener: (ServerEntity) -> Unit) = with(itemView) {
             serverName.text = item.name
-            serverDistance.text = item.distance.toString()
+            serverDistance.text = item.distance.toString().plus(" ").plus(context.getString(R.string.km))
             setOnClickListener { listener(item) }
         }
     }
