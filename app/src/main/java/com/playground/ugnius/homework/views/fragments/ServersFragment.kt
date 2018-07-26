@@ -25,6 +25,7 @@ import com.playground.ugnius.homework.views.activites.MainActivity
 import com.playground.ugnius.homework.views.adapters.ServersAdapter
 import kotlinx.android.synthetic.main.fragment_servers.*
 import javax.inject.Inject
+import com.playground.ugnius.homework.views.decorations.DividerItemDecorator
 
 class ServersFragment : Fragment() {
 
@@ -50,9 +51,8 @@ class ServersFragment : Fragment() {
         with(serversRecycler) {
             adapter = ServersAdapter(context!!, entries = serversRepository.getServers())
             layoutManager = LinearLayoutManager(context)
-            val divider = ContextCompat.getDrawable(context!!, R.drawable.divider)!!
-            val decoration = DividerItemDecoration(context!!, VERTICAL).apply { setDrawable(divider) }
-            addItemDecoration(decoration)
+            val divider = ContextCompat.getDrawable(context, R.drawable.divider)!!
+            addItemDecoration(DividerItemDecorator(divider))
         }
     }
 
