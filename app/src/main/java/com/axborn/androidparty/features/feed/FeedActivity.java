@@ -21,9 +21,7 @@ import java.util.HashMap;
 public class FeedActivity extends AppCompatActivity {
 
     RestManager restManager = new RestManager();
-
     private ProgressDialog pDialog;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

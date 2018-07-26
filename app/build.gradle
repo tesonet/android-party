@@ -18,6 +18,18 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "TESONET_USERNAME", "\"tesonet\"")
+            buildConfigField("String", "TESONET_PASSWORD", "\"partyanimal\"")
+            buildConfigField("String", "URL_GET_TOKEN", "\"http://playground.tesonet.lt/v1/tokens\"")
+            buildConfigField("String", "URL_GET_SERVERS", "\"http://playground.tesonet.lt/v1/servers\"")
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "TESONET_USERNAME", "\"tesonet\"")
+            buildConfigField("String", "TESONET_PASSWORD", "\"partyanimal\"")
+            buildConfigField("String", "URL_GET_TOKEN", "\"http://playground.tesonet.lt/v1/tokens\"")
+            buildConfigField("String", "URL_GET_SERVERS", "\"http://playground.tesonet.lt/v1/servers\"")
         }
     }
 }

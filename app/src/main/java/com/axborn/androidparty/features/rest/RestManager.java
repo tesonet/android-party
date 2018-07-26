@@ -7,12 +7,12 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.axborn.androidparty.BuildConfig;
 import com.axborn.androidparty.R;
 import com.axborn.androidparty.features.database.DatabaseManager;
 
@@ -29,18 +29,13 @@ import static java.lang.Thread.sleep;
 
 public class RestManager {
 
-    private static final String TAG = RestManager.class.getName();
-    private RequestQueue queue;
-    private String urlGetToken = "http://playground.tesonet.lt/v1/tokens";
-    private String urlGetServers = "http://playground.tesonet.lt/v1/servers";
-
     public RestManager(){
 
     }
 
     public void initiateRestCall(final Context context, final ListView listView) {
         try {
-            //For presentation purposes and prevent spaming
+            //For presentation purposes
             sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -48,15 +43,15 @@ public class RestManager {
 
         JSONObject jsonBody = new JSONObject();
         try {
-            jsonBody.put("username", "tesonet");
-            jsonBody.put("password", "partyanimal");
+            jsonBody.put("username", BuildConfig.TESONET_USERNAME);
+            jsonBody.put("password", BuildConfig.TESONET_PASSWORD);
         } catch (JSONException e) {
             e.printStackTrace();
         }
         final String requestBody = jsonBody.toString();
         //TODO secure credentials
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlGetToken, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, BuildConfig.URL_GET_TOKEN, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.e("Volley Result", ""+response);
@@ -104,7 +99,7 @@ public class RestManager {
     private void retrieveServerList(final Context context, final String token, final ListView listView) {
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, urlGetServers, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, BuildConfig.URL_GET_SERVERS, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.e("Volley Result", ""+response);
@@ -168,7 +163,6 @@ public class RestManager {
                 return params;
             }
         };
-//make the request to your server as indicated in your request url
         Volley.newRequestQueue(context).add(stringRequest);
     }
 

@@ -67,16 +67,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
         database.close();
     }
 
-    public int updateUserPassword (User queryValues){
-        SQLiteDatabase database = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("username", queryValues.username);
-        values.put("password", queryValues.password);
-        queryValues.userId=database.insert("logins", null, values);
-        database.close();
-        return database.update("logins", values, "userId = ?", new String[] {String.valueOf(queryValues.userId)});
-    }
-
     public User getUser (String username){
         String query = "Select userId, password from logins where username ='"+username+"'";
         User myUser = new User(0,username,"");
@@ -88,6 +78,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 myUser.password=cursor.getString(1);
             } while (cursor.moveToNext());
         }
+        cursor.close();
         return myUser;
     }
 
@@ -105,6 +96,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 serverList.add(server);
             } while (cursor.moveToNext());
         }
+        cursor.close();
         return serverList;
     }
 
