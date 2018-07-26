@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.axborn.androidparty.features.utils.User;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class DatabaseManager extends SQLiteOpenHelper {
 
     private final static int    DB_VERSION = 10;
@@ -18,9 +21,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String query = "create table logins (userId Integer primary key autoincrement, "+
-                " username text, password text)";
-        sqLiteDatabase.execSQL(query);
+        executeQuery(sqLiteDatabase, "create table logins (userId Integer primary key autoincrement, "+
+                " username text, password text)");
+        executeQuery(sqLiteDatabase, "create table servers (serverId Integer primary key autoincrement, "+
+                " name text, distance text)");
     }
 
     @Override
@@ -29,9 +33,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
             System.out.println("UPGRADE DB oldVersion="+oldVersion+" - newVersion="+newVersion);
             onCreate(sqLiteDatabase);
             if (oldVersion<10){
-                String query = "create table logins (userId Integer primary key autoincrement, "+
-                        " username text, password text)";
-                sqLiteDatabase.execSQL(query);
+                executeQuery(sqLiteDatabase, "create table logins (userId Integer primary key autoincrement, "+
+                        " username text, password text)");
+                executeQuery(sqLiteDatabase, "create table servers (serverId Integer primary key autoincrement, "+
+                        " name text, distance text)");
             }
         }
         catch (Exception e){e.printStackTrace();}
@@ -51,6 +56,15 @@ public class DatabaseManager extends SQLiteOpenHelper {
         queryValues.userId=database.insert("logins", null, values);
         database.close();
         return queryValues;
+    }
+
+    public void insertServer (String name, String distance){
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("name", name);
+        values.put("distance", distance);
+        database.insert("servers", null, values);
+        database.close();
     }
 
     public int updateUserPassword (User queryValues){
@@ -75,5 +89,31 @@ public class DatabaseManager extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         return myUser;
+    }
+
+    public ArrayList<HashMap<String, String>> getServers (){
+        String query = "Select name, distance from servers";
+        SQLiteDatabase database = this.getReadableDatabase();
+        Cursor cursor = database.rawQuery(query, null);
+
+        ArrayList<HashMap<String, String>> serverList = new ArrayList<>();
+        if (cursor.moveToFirst()){
+            do {
+                HashMap<String, String> server = new HashMap<>();
+                server.put("name", cursor.getString(0));
+                server.put("distance", cursor.getString(1));
+                serverList.add(server);
+            } while (cursor.moveToNext());
+        }
+        return serverList;
+    }
+
+    private void executeQuery(SQLiteDatabase sqLiteDatabase, String query){
+        sqLiteDatabase.execSQL(query);
+    }
+
+    public void cleanServerList() {
+        SQLiteDatabase database = this.getReadableDatabase();
+        executeQuery(database, "DELETE FROM servers ");
     }
 }

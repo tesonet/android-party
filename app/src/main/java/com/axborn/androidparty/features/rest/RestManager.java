@@ -2,13 +2,10 @@ package com.axborn.androidparty.features.rest;
 
 import android.content.Context;
 import android.util.Log;
-import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -17,7 +14,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.axborn.androidparty.R;
-import com.axborn.androidparty.features.feed.FeedActivity;
+import com.axborn.androidparty.features.database.DatabaseManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,6 +24,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import static java.lang.Thread.sleep;
 
 public class RestManager {
 
@@ -40,6 +39,12 @@ public class RestManager {
     }
 
     public void initiateRestCall(final Context context, final ListView listView) {
+        try {
+            //For presentation purposes and prevent spaming
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         JSONObject jsonBody = new JSONObject();
         try {
@@ -108,6 +113,8 @@ public class RestManager {
 
                 try {
                     JSONArray jsonObj = new JSONArray(response);
+                    DatabaseManager databaseManager = new DatabaseManager(context);
+                    databaseManager.cleanServerList();
 
                     for (int i = 0; i < jsonObj.length(); i++) {
                         JSONObject c = jsonObj.getJSONObject(i);
@@ -124,6 +131,7 @@ public class RestManager {
 
                         // adding contact to contact list
                         serverList.add(server);
+                        databaseManager.insertServer(name, distance);
                     }
 
                 } catch (JSONException e) {

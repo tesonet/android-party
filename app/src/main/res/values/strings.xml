@@ -14,9 +14,9 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_feed">FeedActivity</string>
+    <string name="title_activity_feed">Server List</string>
     <string name="confirm_registry">Email not found. You want to create a new user with that email and password?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="updatingReport">UPDATING REPORT WTF</string>
+    <string name="updatingReport">Your account has been created</string>
 </resources>
