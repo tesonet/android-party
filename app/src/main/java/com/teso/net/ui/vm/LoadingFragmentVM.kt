@@ -8,6 +8,7 @@ import com.teso.net.data_flow.interactions.IServerInteractor
 import com.teso.net.ui.base.BaseViewModel
 import com.teso.net.utils.SingleLiveEvent
 import io.reactivex.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class LoadingFragmentVM : BaseViewModel() {
@@ -29,6 +30,7 @@ class LoadingFragmentVM : BaseViewModel() {
 
     fun fetchingList() {
         disposal.add(serverInteractor.updateListOfServers()
+                .delay(2, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .subscribe({
                     serverInteractor.writeServersToDb(it)

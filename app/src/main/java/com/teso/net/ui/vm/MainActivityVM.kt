@@ -2,7 +2,6 @@ package com.teso.net.ui.vm
 
 import android.arch.lifecycle.LiveData
 import com.teso.net.AndroidApplication
-import com.teso.net.ErrorModel
 import com.teso.net.data_flow.interactions.ITokenInteractor
 import com.teso.net.ui.base.BaseFragment
 import com.teso.net.ui.base.BaseViewModel
@@ -15,8 +14,6 @@ import javax.inject.Inject
 class MainActivityVM : BaseViewModel() {
 
     @Inject lateinit var tokenInteractor: ITokenInteractor
-
-    private val error: SingleLiveEvent<ErrorModel> = SingleLiveEvent()
 
     private val nextScreen: SingleLiveEvent<Class<out BaseFragment>> = SingleLiveEvent()
 

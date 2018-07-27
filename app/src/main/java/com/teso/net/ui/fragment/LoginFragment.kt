@@ -40,7 +40,7 @@ class LoginFragment : BaseFragment() {
 
     private fun login() {
         Timber.d("Login was clicked")
-        viewModel.login(loginName.getText(), loginPassword.getText())
+        if (isClickAllowed()) viewModel.login(loginName.getText(), loginPassword.getText())
     }
 
     override fun onStart() {

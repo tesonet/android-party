@@ -10,7 +10,7 @@ import timber.log.Timber
 
 class TokenInterceptor(private val loginInteractor: ITokenInteractor) : Interceptor {
 
-    private val TOKEN_REQUEST = "token"
+    private val TOKEN_REQUEST = "tokens"
 
     override fun intercept(chain: Interceptor.Chain?): Response {
 
@@ -39,7 +39,7 @@ class TokenInterceptor(private val loginInteractor: ITokenInteractor) : Intercep
                             if (!TextUtils.isEmpty(newToken.token)) {
                                 loginInteractor.setToken(newToken.token ?: "")
                                 return chain.proceed(initialRequest.newBuilder()
-                                        .addHeader("Authorization", String.format("Bearer %s", newToken.token))
+                                        .addHeader("Authorization", "Bearer ${newToken.token}")
                                         .build())
                             }
                         }
@@ -61,8 +61,9 @@ class TokenInterceptor(private val loginInteractor: ITokenInteractor) : Intercep
 
         return Request.Builder()
                 .url(BuildConfig.API_BASE_URL + TOKEN_REQUEST)
-                .addHeader("Content-Type", "application/x-www-form-urlencoded")
                 .addHeader("Accept", "application/json")
+                .addHeader("Accept-Language", "en")
+                .addHeader("Content-Type", "application/json")
                 .post(formBody)
                 .build()
     }
