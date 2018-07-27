@@ -41,20 +41,9 @@ public class RestManager {
             e.printStackTrace();
         }
 
-        JSONObject jsonBody = new JSONObject();
-        try {
-            jsonBody.put("username", BuildConfig.TESONET_USERNAME);
-            jsonBody.put("password", BuildConfig.TESONET_PASSWORD);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        final String requestBody = jsonBody.toString();
-        //TODO secure credentials
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST, BuildConfig.URL_GET_TOKEN, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.e("Volley Result", ""+response);
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -71,7 +60,7 @@ public class RestManager {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                error.printStackTrace(); //log the error resulting from the request for diagnosis/debugging
+                error.printStackTrace();
                 //TODO no internet reaction
                 //TODO bad authentication reaction
             }
@@ -84,6 +73,16 @@ public class RestManager {
 
             @Override
             public byte[] getBody() {
+                JSONObject jsonBody = new JSONObject();
+                try {
+                    jsonBody.put("username", BuildConfig.TESONET_USERNAME);
+                    jsonBody.put("password", BuildConfig.TESONET_PASSWORD);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                //TODO secure credentials
+
+                final String requestBody = jsonBody.toString();
                 try {
                     return requestBody == null ? null : requestBody.getBytes("utf-8");
                 } catch (UnsupportedEncodingException uee) {
@@ -98,13 +97,10 @@ public class RestManager {
 
     private void retrieveServerList(final Context context, final String token, final ListView listView) {
 
-
         StringRequest stringRequest = new StringRequest(Request.Method.GET, BuildConfig.URL_GET_SERVERS, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.e("Volley Result", ""+response);
-
-                ArrayList<HashMap<String, String>> serverList = new ArrayList<>();
+               ArrayList<HashMap<String, String>> serverList = new ArrayList<>();
 
                 try {
                     JSONArray jsonObj = new JSONArray(response);
@@ -117,14 +113,11 @@ public class RestManager {
                         String name = c.getString("name");
                         String distance = c.getString("distance");
 
-                        // tmp hash map for single contact
                         HashMap<String, String> server = new HashMap<>();
 
-                        // adding each child node to HashMap key => value
                         server.put("name", name);
                         server.put("distance", distance);
 
-                        // adding contact to contact list
                         serverList.add(server);
                         databaseManager.insertServer(name, distance);
                     }
@@ -145,7 +138,7 @@ public class RestManager {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                error.printStackTrace(); //log the error resulting from the request for diagnosis/debugging
+                error.printStackTrace();
                 //TODO no internet reaction
                 //TODO bad authentication reaction
             }

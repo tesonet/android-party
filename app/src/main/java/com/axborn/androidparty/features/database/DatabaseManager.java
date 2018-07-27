@@ -16,15 +16,15 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private final static int    DB_VERSION = 10;
 
     public DatabaseManager(Context context) {
-        super(context, "myApp.db", null,DB_VERSION);
+        super(context, "myApp.db", null, DB_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        executeQuery(sqLiteDatabase, "create table logins (userId Integer primary key autoincrement, "+
-                " username text, password text)");
-        executeQuery(sqLiteDatabase, "create table servers (serverId Integer primary key autoincrement, "+
-                " name text, distance text)");
+        executeQuery(sqLiteDatabase, "CREATE TABLE logins (userId INTEGER PRIMARY KEY AUTOINCREMENT, "+
+                " username TEXT, password TEXT)");
+        executeQuery(sqLiteDatabase, "CREATE TABLE servers (serverId INTEGER PRIMARY KEY AUTOINCREMENT, "+
+                " name TEXT, distance TEXT)");
     }
 
     @Override
@@ -33,10 +33,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
             System.out.println("UPGRADE DB oldVersion="+oldVersion+" - newVersion="+newVersion);
             onCreate(sqLiteDatabase);
             if (oldVersion<10){
-                executeQuery(sqLiteDatabase, "create table logins (userId Integer primary key autoincrement, "+
-                        " username text, password text)");
-                executeQuery(sqLiteDatabase, "create table servers (serverId Integer primary key autoincrement, "+
-                        " name text, distance text)");
+                executeQuery(sqLiteDatabase, "CREATE TABLE logins (userId INTEGER PRIMARY KEY AUTOINCREMENT, "+
+                        " username TEXT, password TEXT)");
+                executeQuery(sqLiteDatabase, "CREATE TABLE servers (serverId INTEGER PRIMARY KEY AUTOINCREMENT, "+
+                        " name TEXT, distance TEXT)");
             }
         }
         catch (Exception e){e.printStackTrace();}
@@ -68,7 +68,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
     public User getUser (String username){
-        String query = "Select userId, password from logins where username ='"+username+"'";
+        String query = "SELECT userId, password FROM logins WHERE username ='"+username+"'";
         User myUser = new User(0,username,"");
         SQLiteDatabase database = this.getReadableDatabase();
         Cursor cursor = database.rawQuery(query, null);
@@ -83,7 +83,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
     public ArrayList<HashMap<String, String>> getServers (){
-        String query = "Select name, distance from servers";
+        String query = "SELECT name, distance FROM servers";
         SQLiteDatabase database = this.getReadableDatabase();
         Cursor cursor = database.rawQuery(query, null);
 
@@ -106,6 +106,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     public void cleanServerList() {
         SQLiteDatabase database = this.getReadableDatabase();
-        executeQuery(database, "DELETE FROM servers ");
+        executeQuery(database, "DELETE FROM servers");
     }
 }
