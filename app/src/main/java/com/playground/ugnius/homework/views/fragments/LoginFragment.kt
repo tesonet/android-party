@@ -1,5 +1,6 @@
 package com.playground.ugnius.homework.views.fragments
 
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import com.github.florent37.viewanimator.ViewAnimator
 import com.playground.ugnius.homework.R
 import com.playground.ugnius.homework.global.App
+import android.content.Context.CONNECTIVITY_SERVICE
 import com.playground.ugnius.homework.interfaces.LoginView
 import com.playground.ugnius.homework.model.ServersRepository
 import com.playground.ugnius.homework.model.clients.ApiClient
@@ -75,7 +77,11 @@ class LoginFragment : Fragment(), LoginView {
     }
 
     override fun showError() {
-        val message = context!!.getString(R.string.invalid_credentials)
+        val message = if (isConnectionAvailable()) {
+            context!!.getString(R.string.invalid_credentials)
+        } else {
+            context!!.getString(R.string.no_internet_connection)
+        }
         loader?.playErrorAnimation(message) {
             ViewAnimator.animate(loginContainer)
                 .duration(250)
@@ -100,4 +106,9 @@ class LoginFragment : Fragment(), LoginView {
         passwordInput?.text?.toString()?.let { outState.putString("password", it) }
     }
 
+    private fun isConnectionAvailable(): Boolean {
+        val connectivityManager = activity?.getSystemService(CONNECTIVITY_SERVICE) as? ConnectivityManager
+        val networkInfo = connectivityManager?.activeNetworkInfo
+        return networkInfo != null && networkInfo.isConnected
+    }
 }
