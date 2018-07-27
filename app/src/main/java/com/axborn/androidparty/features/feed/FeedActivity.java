@@ -16,6 +16,7 @@ import android.widget.SimpleAdapter;
 import com.axborn.androidparty.R;
 import com.axborn.androidparty.features.database.DatabaseManager;
 import com.axborn.androidparty.features.rest.RestManager;
+import com.axborn.androidparty.features.utils.Sorter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -67,16 +68,24 @@ public class FeedActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
-        System.out.println();
+        ArrayList<HashMap<String, String>> serverList = Sorter.retrieveList((ListView)findViewById(R.id.list));
         switch (item.getItemId()) {
             case R.id.action_name_ascending:
-                return true;
+                Sorter.sortAscending(serverList);
+                break;
             case R.id.action_name_descending:
-                //Collections.reverse(spacecrafts);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+                Sorter.sortDescending(serverList);
+                break;
         }
+
+        ListAdapter adapter = new SimpleAdapter(
+                getApplicationContext(), serverList,
+                R.layout.list_item, new String[]{"name", "distance"},
+                new int[]{R.id.name, R.id.distance});
+
+        ((ListView)findViewById(R.id.list)).setAdapter(adapter);
+
+        return true;
     }
 
 
