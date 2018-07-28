@@ -52,7 +52,7 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/button_height"
         android:layout_marginTop="16dp"
-        android:background="@drawable/login_button_bg"
+        android:background="@drawable/green_ripple_bg"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:gravity="center"
