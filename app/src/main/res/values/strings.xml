@@ -12,4 +12,11 @@
     <string name="log_in_fetching_servers_msg">Fetching the list…</string>
     <string name="log_in_header_pattern">Bearer %1$s</string>
     <!-- Log In Screen -->
+
+    <!-- Servers Screen -->
+    <string name="server_title_name">Server</string>
+    <string name="server_title_distance">Distance</string>
+    <string name="server_distance_pattern">%1$d km</string>
+    <string name="server_no_data">No servers available</string>
+    <!-- Servers Screen -->
 </resources>

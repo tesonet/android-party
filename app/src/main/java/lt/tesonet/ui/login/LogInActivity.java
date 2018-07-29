@@ -1,5 +1,6 @@
-package lt.tesonet;
+package lt.tesonet.ui.login;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -19,21 +20,26 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.concurrent.TimeUnit;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import lt.tesonet.R;
+import lt.tesonet.model.DatabaseUtil;
+import lt.tesonet.model.Server;
+import lt.tesonet.model.Token;
 import lt.tesonet.model.User;
 import lt.tesonet.network.Api;
-import lt.tesonet.model.Token;
+import lt.tesonet.ui.servers.ServersActivity;
 
-import static lt.tesonet.LogInActivity.UIState.LOADING_LOG_IN;
-import static lt.tesonet.LogInActivity.UIState.LOADING_SERVERS;
-import static lt.tesonet.LogInActivity.UIState.LOG_IN;
+import static lt.tesonet.ui.login.LogInActivity.UIState.LOADING_LOG_IN;
+import static lt.tesonet.ui.login.LogInActivity.UIState.LOADING_SERVERS;
+import static lt.tesonet.ui.login.LogInActivity.UIState.LOG_IN;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -60,7 +66,7 @@ public class LogInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
         loading.setImageDrawable(getLoadingDrawable());
@@ -70,6 +76,18 @@ public class LogInActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setUIState(LOG_IN);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        overridePendingTransition(R.anim.enter_new, R.anim.exit_old);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.enter_old, R.anim.exit_new);
     }
 
     private Drawable getLoadingDrawable() {
@@ -156,7 +174,6 @@ public class LogInActivity extends AppCompatActivity {
         User user = new User(inputUsername.getText().toString(), inputPassword.getText().toString());
         compositeDisposable.add(Api.getApiService()
                 .logIn(user)
-                .delay(5, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(logInResponse -> {
@@ -177,19 +194,36 @@ public class LogInActivity extends AppCompatActivity {
         setUIState(LOADING_SERVERS);
         compositeDisposable.add(Api.getApiService()
                 .getServers(getString(R.string.log_in_header_pattern, token))
-                .delay(5, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(listResponse -> {
                     if (listResponse.code() != 200) {
                         showServerErrorMsg();
                     } else {
-                        openServerListScreen();
+                        clearServersBeforeInsertion(listResponse.body());
                     }
                 }, throwable -> showServerErrorMsg()));
     }
 
-    private void openServerListScreen() {
+    private void clearServersBeforeInsertion(List<Server> serversToInsert) {
+        compositeDisposable.add(Completable.fromAction(() ->
+                DatabaseUtil.getServerDatabase(this).getDao().clearServers())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(() -> saveServersResponse(serversToInsert)));
+    }
 
+    private void saveServersResponse(List<Server> servers) {
+        compositeDisposable.add(Completable.fromAction(() ->
+                DatabaseUtil.getServerDatabase(this).getDao().addAll(servers))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::openServerListScreen, throwable -> showServerErrorMsg()));
+    }
+
+    private void openServerListScreen() {
+        Intent i = new Intent(this, ServersActivity.class);
+        startActivity(i);
+        finish();
     }
 }
