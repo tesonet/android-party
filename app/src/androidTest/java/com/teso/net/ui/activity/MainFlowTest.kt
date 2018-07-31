@@ -30,52 +30,52 @@ class MainFlowTest {
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
     @Test
-    fun mainFlowTest() {
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
+    fun mainActivityTest() {
         Thread.sleep(700)
-
         val appCompatEditText = onView(
                 allOf(withId(R.id.logoEdit),
                         childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.loginName),
-                                        0),
+                                allOf(withId(R.id.logoEditRoot),
+                                        childAtPosition(
+                                                withId(R.id.loginName),
+                                                0)),
                                 1),
                         isDisplayed()))
         appCompatEditText.perform(replaceText("tesonet"), closeSoftKeyboard())
-
+        Thread.sleep(700)
         val appCompatEditText2 = onView(
-                allOf(withId(R.id.logoEdit), withText("tesonet"),
+                allOf(withId(R.id.logoEdit),
                         childAtPosition(
-                                childAtPosition(
-                                        allOf(withId(R.id.loginName), withText("tesonet")),
-                                        0),
+                                allOf(withId(R.id.logoEditRoot),
+                                        childAtPosition(
+                                                allOf(withId(R.id.loginName)),
+                                                0)),
                                 1),
                         isDisplayed()))
         appCompatEditText2.perform(pressImeActionButton())
-
+        Thread.sleep(700)
         val appCompatEditText3 = onView(
                 allOf(withId(R.id.logoEdit),
                         childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.loginPassword),
-                                        0),
+                                allOf(withId(R.id.logoEditRoot),
+                                        childAtPosition(
+                                                withId(R.id.loginPassword),
+                                                0)),
                                 1),
                         isDisplayed()))
         appCompatEditText3.perform(replaceText("partyanimal"), closeSoftKeyboard())
-
+        Thread.sleep(700)
         val appCompatEditText4 = onView(
-                allOf(withId(R.id.logoEdit), withText("partyanimal"),
+                allOf(withId(R.id.logoEdit),
                         childAtPosition(
-                                childAtPosition(
-                                        allOf(withId(R.id.loginPassword), withText("partyanimal")),
-                                        0),
+                                allOf(withId(R.id.logoEditRoot),
+                                        childAtPosition(
+                                                allOf(withId(R.id.loginPassword)),
+                                                0)),
                                 1),
                         isDisplayed()))
         appCompatEditText4.perform(pressImeActionButton())
-
+        Thread.sleep(700)
         val appCompatTextView = onView(
                 allOf(withId(R.id.loginButton), withText("Log In"),
                         childAtPosition(
@@ -85,20 +85,31 @@ class MainFlowTest {
                                 4),
                         isDisplayed()))
         appCompatTextView.perform(click())
-
+        Thread.sleep(7000)
         val recyclerView = onView(
                 allOf(withId(R.id.serverList),
                         childAtPosition(
                                 withClassName(`is`("android.support.constraint.ConstraintLayout")),
                                 6)))
         recyclerView.perform(actionOnItemAtPosition<ViewHolder>(0, click()))
-
+        Thread.sleep(700)
         val recyclerView2 = onView(
                 allOf(withId(R.id.serverList),
                         childAtPosition(
                                 withClassName(`is`("android.support.constraint.ConstraintLayout")),
                                 6)))
-        recyclerView2.perform(actionOnItemAtPosition<ViewHolder>(1, click()))
+        recyclerView2.perform(actionOnItemAtPosition<ViewHolder>(2, click()))
+        Thread.sleep(700)
+
+        val appCompatImageView = onView(
+                allOf(withId(R.id.listLogout),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.fragmentContainer),
+                                        0),
+                                2),
+                        isDisplayed()))
+        appCompatImageView.perform(click())
     }
 
     private fun childAtPosition(

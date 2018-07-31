@@ -4,4 +4,5 @@
     <dimen name="progress_size">240dp</dimen>
     <dimen name="button_height">54dp</dimen>
     <dimen name="side_margin">16dp</dimen>
+    <dimen name="corner_radius">6dp</dimen>
 </resources>

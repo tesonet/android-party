@@ -19,10 +19,7 @@
         tools:replace="allowBackup, supportsRtl">
 
         <!-- Activities -->
-        <activity
-            android:name="com.teso.net.ui.activity.MainActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait">
+        <activity android:name="com.teso.net.ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />

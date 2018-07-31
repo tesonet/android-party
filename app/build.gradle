@@ -23,8 +23,7 @@ android {
         testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = ["room.schemaLocation":
-                                     "$projectDir/schemas".toString()]
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
             }
         }
     }
@@ -77,7 +76,6 @@ dependencies {
     def stetho_version = '1.5.0'
     implementation "com.facebook.stetho:stetho:${stetho_version}"
     implementation "com.facebook.stetho:stetho-okhttp3:${stetho_version}"
-    implementation "com.facebook.fresco:fresco:1.8.1"
 
     def retrofit_version = '2.3.0'
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"

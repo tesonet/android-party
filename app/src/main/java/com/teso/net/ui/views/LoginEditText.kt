@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.text.InputType
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.inputmethod.EditorInfo
 import android.widget.FrameLayout
 import com.teso.net.R
 import kotlinx.android.synthetic.main.login_edit_view.view.*
@@ -24,7 +25,8 @@ class LoginEditText @JvmOverloads constructor(
             field = value
             initView()
         }
-    var useMask: Boolean = false
+    private var useMask: Boolean = false
+    private var actionDone: Boolean = false
 
     init {
         LayoutInflater.from(context).inflate(R.layout.login_edit_view, this)
@@ -42,6 +44,7 @@ class LoginEditText @JvmOverloads constructor(
             icon = a.getDrawable(R.styleable.LoginEditText_loginIcon)
         }
         useMask = a.getBoolean(R.styleable.LoginEditText_loginMask, false)
+        actionDone = a.getBoolean(R.styleable.LoginEditText_actionDone, false)
         a.recycle()
     }
 
@@ -51,6 +54,7 @@ class LoginEditText @JvmOverloads constructor(
             logoEditIcon.setImageDrawable(icon)
         }
         if (useMask) logoEdit.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        if (actionDone) logoEdit.imeOptions = EditorInfo.IME_ACTION_DONE
     }
 
     fun getText() = logoEdit.text.toString()

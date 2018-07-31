@@ -1,10 +1,6 @@
 package com.teso.net
 
 import android.app.Application
-import com.facebook.drawee.backends.pipeline.Fresco
-import com.facebook.imagepipeline.core.ImagePipelineConfig
-import com.facebook.imagepipeline.listener.RequestListener
-import com.facebook.imagepipeline.listener.RequestLoggingListener
 import com.facebook.stetho.Stetho
 import com.squareup.leakcanary.LeakCanary
 import com.teso.net.di.AppComponent
@@ -41,13 +37,6 @@ class AndroidApplication : Application() {
                     return super.createStackElementTag(element) + "::Line:" + element.lineNumber + "::" + element.methodName + "()"
                 }
             })
-
-            val debugConfig = ImagePipelineConfig.newBuilder(this)
-                    .setRequestListeners(HashSet<RequestListener>().apply { add(RequestLoggingListener()) })
-                    .build()
-            Fresco.initialize(this, debugConfig)
-        } else {
-            Fresco.initialize(this)
         }
         RxJavaPlugins.setErrorHandler { Timber.e(it) }
         Timber.d("App started")
