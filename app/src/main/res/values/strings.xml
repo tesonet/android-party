@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Test Application</string>
+
+    <!-- Log In Screen -->
+    <string name="log_in_hint_username">Username</string>
+    <string name="log_in_hint_password">Password</string>
+    <string name="log_in_btn">Log In</string>
+    <string name="log_in_field_empty_error">Username and password can\'t be empty</string>
+    <string name="log_in_unauthorized_error">Can\'t log in. Please check your username or password</string>
+    <string name="log_in_server_error">Unknown server error</string>
+    <string name="log_in_logging_in_msg">Logging in…</string>
+    <string name="log_in_fetching_servers_msg">Fetching the list…</string>
+    <string name="log_in_header_pattern">Bearer %1$s</string>
+    <!-- Log In Screen -->
+
+    <!-- Servers Screen -->
+    <string name="server_title_name">Server</string>
+    <string name="server_title_distance">Distance</string>
+    <string name="server_distance_pattern">%1$d km</string>
+    <string name="server_no_data">No servers available</string>
+    <!-- Servers Screen -->
+</resources>
