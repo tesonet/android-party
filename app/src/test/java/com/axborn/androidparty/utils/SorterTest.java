@@ -1,6 +1,6 @@
 package com.axborn.androidparty.utils;
 
-import com.axborn.androidparty.features.utils.Sorter;
+import com.axborn.androidparty.features.feed.Sorter;
 
 import org.junit.Before;
 import org.junit.Test;

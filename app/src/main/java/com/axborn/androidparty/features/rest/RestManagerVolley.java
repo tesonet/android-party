@@ -27,9 +27,9 @@ import java.util.Map;
 
 import static java.lang.Thread.sleep;
 
-public class RestManager {
+public class RestManagerVolley {
 
-    public RestManager(){
+    public RestManagerVolley(){
 
     }
 

@@ -15,15 +15,14 @@ import android.widget.SimpleAdapter;
 
 import com.axborn.androidparty.R;
 import com.axborn.androidparty.features.database.DatabaseManager;
-import com.axborn.androidparty.features.rest.RestManager;
-import com.axborn.androidparty.features.utils.Sorter;
+import com.axborn.androidparty.features.rest.RestManagerVolley;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class FeedActivity extends AppCompatActivity {
 
-    RestManager restManager = new RestManager();
+    RestManagerVolley restManager = new RestManagerVolley();
     private ProgressDialog pDialog;
 
     @Override

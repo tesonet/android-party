@@ -1,4 +1,4 @@
-package com.axborn.androidparty.features.utils;
+package com.axborn.androidparty.features.feed;
 
 import android.widget.ListAdapter;
 import android.widget.ListView;

@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.axborn.androidparty.features.utils.User;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -48,16 +46,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
         System.out.println("DOWNGRADE DB oldVersion="+oldVersion+" - newVersion="+newVersion);
     }
 
-    public User insertUser (User queryValues){
-        SQLiteDatabase database = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("username", queryValues.username);
-        values.put("password", queryValues.password);
-        queryValues.userId=database.insert("logins", null, values);
-        database.close();
-        return queryValues;
-    }
-
     public void insertServer (String name, String distance){
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -67,20 +55,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
         database.close();
     }
 
-    public User getUser (String username){
-        String query = "SELECT userId, password FROM logins WHERE username ='"+username+"'";
-        User myUser = new User(0,username,"");
-        SQLiteDatabase database = this.getReadableDatabase();
-        Cursor cursor = database.rawQuery(query, null);
-        if (cursor.moveToFirst()){
-            do {
-                myUser.userId=cursor.getLong(0);
-                myUser.password=cursor.getString(1);
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        return myUser;
-    }
 
     public ArrayList<HashMap<String, String>> getServers (){
         String query = "SELECT name, distance FROM servers";
