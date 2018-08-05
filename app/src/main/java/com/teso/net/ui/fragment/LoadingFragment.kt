@@ -29,9 +29,8 @@ class LoadingFragment : BaseFragment() {
         activity?.showNewFragment(ServerListFragment::class.java, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onResume() {
+        super.onResume()
         viewModel.fetchingList()
     }
-
 }

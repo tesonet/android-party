@@ -7,6 +7,7 @@ import com.teso.net.R
 import com.teso.net.data_flow.interactions.IServerInteractor
 import com.teso.net.ui.base.BaseViewModel
 import com.teso.net.utils.SingleLiveEvent
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -32,6 +33,7 @@ class LoadingFragmentVM : BaseViewModel() {
         disposal.add(serverInteractor.updateListOfServers()
                 .delay(2, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     serverInteractor.writeServersToDb(it)
                     nextScreen.postValue(true)

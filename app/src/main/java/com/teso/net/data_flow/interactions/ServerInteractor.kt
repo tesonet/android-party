@@ -14,7 +14,7 @@ class ServerInteractor(private val api: Api, private val db: LocalDatabase) : IS
 
     override fun writeServersToDb(sitesList: List<ServerEntity>) {
         Timber.d("Write new server list to DB ${sitesList.size}")
-        db.serverDao().clearAndUpdateServer(sitesList)
+        doAsync { db.serverDao().clearAndUpdateServer(sitesList) }
     }
 
     override fun updateListOfServers(): Single<List<ServerEntity>> {
