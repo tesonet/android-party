@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.axborn.androidparty.R;
-import com.axborn.androidparty.features.loading.LoadingActivity;
+import com.axborn.androidparty.features.feed.FeedActivity;
 import com.axborn.androidparty.features.rest.RestAPI;
 import com.axborn.androidparty.structure.TokensResponse;
 import com.axborn.androidparty.structure.User;
@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity{
     private EditText passwordView;
     private View progressView;
     private View loginFormView;
+    private View progressDescriptionView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,8 @@ public class LoginActivity extends AppCompatActivity{
         usernameView = findViewById(R.id.username_field);
         passwordView = findViewById(R.id.password_field);
         loginFormView = findViewById(R.id.email_login_form);
-        progressView = findViewById(R.id.login_progress);
+        progressView = findViewById(R.id.login_progress_bar);
+        progressDescriptionView = findViewById(R.id.progress_description);
 
         Button logInButton = findViewById(R.id.log_in_button);
         logInButton.setOnClickListener(new View.OnClickListener() {
@@ -72,15 +74,16 @@ public class LoginActivity extends AppCompatActivity{
                 call.enqueue(new Callback<TokensResponse>() {
                     @Override
                     public void onResponse(Call<TokensResponse> call, Response<TokensResponse> response) {
+
+                        showProgress(false);
                         if(response.isSuccessful()) {
                             TokensResponse tokensResponse = response.body();
-                            Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, FeedActivity.class);
                             intent.putExtra("TOKEN", tokensResponse.getToken());
                             //TODO pass serializable
                             LoginActivity.this.startActivity(intent);
                             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         } else {
-                            showProgress(false);
                             passwordView.setError(getString(R.string.error_invalid_credentials));
                             passwordView.requestFocus();
                         }
@@ -109,6 +112,7 @@ public class LoginActivity extends AppCompatActivity{
             }
         });
 
+        progressDescriptionView.setVisibility(show ? View.VISIBLE : View.GONE);
         progressView.setVisibility(show ? View.VISIBLE : View.GONE);
         progressView.animate().setDuration(shortAnimTime).alpha(
                 show ? 1 : 0).setListener(new AnimatorListenerAdapter() {

@@ -26,10 +26,6 @@
             android:name=".features.feed.FeedActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity
-            android:name=".features.loading.LoadingActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-
     </application>
 
 </manifest>

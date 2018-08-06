@@ -66,7 +66,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
             do {
                 HashMap<String, String> server = new HashMap<>();
                 server.put("name", cursor.getString(0));
-                server.put("distance", cursor.getString(1));
+                server.put("distance", cursor.getString(1) + " km");
                 serverList.add(server);
             } while (cursor.moveToNext());
         }

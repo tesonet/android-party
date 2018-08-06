@@ -1,17 +1,21 @@
 package com.axborn.androidparty.features.feed;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.axborn.androidparty.R;
 import com.axborn.androidparty.features.database.DatabaseManager;
@@ -32,6 +36,7 @@ public class FeedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_feed);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
 
         DatabaseManager databaseManager = new DatabaseManager(getApplicationContext());
         ArrayList<HashMap<String, String>> serverList = databaseManager.getServers();
@@ -41,7 +46,18 @@ public class FeedActivity extends AppCompatActivity {
             ListAdapter adapter = new SimpleAdapter(
                     getApplicationContext(), serverList,
                     R.layout.list_item, new String[]{"name", "distance"},
-                    new int[]{R.id.name, R.id.distance});
+                    new int[]{R.id.name, R.id.distance}) {
+
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent) {
+                    View view = super.getView(position, convertView, parent);
+                    if(position == 0)
+                        view.setBackgroundResource(R.drawable.main_header_selector);
+                    else
+                        view.setBackgroundResource(0);
+                    return view;
+                }
+            };
 
             ((ListView)findViewById(R.id.list)).setAdapter(adapter);
         }
@@ -80,7 +96,18 @@ public class FeedActivity extends AppCompatActivity {
         ListAdapter adapter = new SimpleAdapter(
                 getApplicationContext(), serverList,
                 R.layout.list_item, new String[]{"name", "distance"},
-                new int[]{R.id.name, R.id.distance});
+                new int[]{R.id.name, R.id.distance}) {
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                if(position == 0)
+                    view.setBackgroundResource(R.drawable.main_header_selector);
+                else
+                    view.setBackgroundResource(0);
+                return view;
+            }
+        };
 
         ((ListView)findViewById(R.id.list)).setAdapter(adapter);
 

@@ -25,14 +25,36 @@
         android:screenOrientation="portrait"
         tools:context=".features.authentication.LoginActivity">
 
-        <!-- Login progress -->
+    <LinearLayout
+        android:id="@+id/login_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <ProgressBar
-            android:id="@+id/login_progress"
+            android:id="@+id/login_progress_bar"
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:indeterminate="true"
+            android:indeterminateTint="@android:color/background_light"
+            android:indeterminateDrawable="@drawable/progress_bar"
+            android:maxHeight="200dp"
+            android:minHeight="200dp"
+            android:minWidth="200dp"
+            android:maxWidth="200dp"
+            />
+        <TextView
+            android:id="@+id/progress_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:text="Logging in..."
+            android:textColor="#FFF"
+            android:visibility="gone"/>
+        </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/email_login_form"
@@ -61,7 +83,7 @@
                         android:id="@+id/username_field"
                         android:layout_marginLeft="-10dp"
                         android:layout_toRightOf="@+id/username_icon"
-                        android:text=""
+                        android:text="tesonet"
                         android:hint="@string/prompt_username"
                         android:background="@android:color/transparent"
                         android:padding="10dp"
@@ -93,9 +115,10 @@
                     <!-- INPUT -->
                     <EditText
                         android:id="@+id/password_field"
+                        android:inputType="textPassword"
                         android:layout_marginLeft="-10dp"
                         android:layout_toRightOf="@+id/password_icon"
-                        android:text=""
+                        android:text="partyanimal"
                         android:hint="@string/prompt_password"
                         android:background="@android:color/transparent"
                         android:padding="10dp"

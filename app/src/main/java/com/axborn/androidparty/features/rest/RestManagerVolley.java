@@ -116,7 +116,7 @@ public class RestManagerVolley {
                         HashMap<String, String> server = new HashMap<>();
 
                         server.put("name", name);
-                        server.put("distance", distance);
+                        server.put("distance", distance + " km");
 
                         serverList.add(server);
                         databaseManager.insertServer(name, distance);
