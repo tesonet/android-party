@@ -6,6 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".features.feed.FeedActivity">
 
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_background"
+        android:scaleType = "centerCrop" />
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:screenOrientation="portrait"
+        tools:context=".features.feed.FeedActivity">
+
+    <LinearLayout
+        android:id="@+id/feed_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ProgressBar
+            android:id="@+id/feed_progress_bar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone"
+            android:indeterminate="true"
+            android:indeterminateTint="@android:color/background_light"
+            android:indeterminateDrawable="@drawable/progress_bar"
+            android:maxHeight="200dp"
+            android:minHeight="200dp"
+            android:minWidth="200dp"
+            android:maxWidth="200dp"
+            />
+        <TextView
+            android:id="@+id/feed_progress_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:text="Fetching the list..."
+            android:textColor="#FFF"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+</LinearLayout>
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

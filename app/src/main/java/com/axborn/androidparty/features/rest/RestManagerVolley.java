@@ -2,6 +2,8 @@ package com.axborn.androidparty.features.rest;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -129,7 +131,18 @@ public class RestManagerVolley {
                 ListAdapter adapter = new SimpleAdapter(
                         context, serverList,
                         R.layout.list_item, new String[]{"name", "distance"},
-                        new int[]{R.id.name, R.id.distance});
+                        new int[]{R.id.name, R.id.distance}) {
+
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        View view = super.getView(position, convertView, parent);
+                        if(position == 0)
+                            view.setBackgroundResource(R.drawable.main_header_selector);
+                        else
+                            view.setBackgroundResource(0);
+                        return view;
+                    }
+                };
 
                 listView.setAdapter(adapter);
 

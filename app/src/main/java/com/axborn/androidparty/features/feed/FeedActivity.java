@@ -1,5 +1,7 @@
 package com.axborn.androidparty.features.feed;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -42,25 +44,8 @@ public class FeedActivity extends AppCompatActivity {
         ArrayList<HashMap<String, String>> serverList = databaseManager.getServers();
         if (serverList == null || serverList.isEmpty())
             new GetServerList().execute();
-        else{
-            ListAdapter adapter = new SimpleAdapter(
-                    getApplicationContext(), serverList,
-                    R.layout.list_item, new String[]{"name", "distance"},
-                    new int[]{R.id.name, R.id.distance}) {
-
-                @Override
-                public View getView(int position, View convertView, ViewGroup parent) {
-                    View view = super.getView(position, convertView, parent);
-                    if(position == 0)
-                        view.setBackgroundResource(R.drawable.main_header_selector);
-                    else
-                        view.setBackgroundResource(0);
-                    return view;
-                }
-            };
-
-            ((ListView)findViewById(R.id.list)).setAdapter(adapter);
-        }
+        else
+            refreshFeed(serverList);
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -138,11 +123,7 @@ public class FeedActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            // Showing progress dialog
-            pDialog = new ProgressDialog(FeedActivity.this);
-            pDialog.setMessage("Please wait...");
-            pDialog.setCancelable(false);
-            pDialog.show();
+            showProgress(true);
 
         }
 
@@ -155,10 +136,43 @@ public class FeedActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            // Dismiss the progress dialog
-            if (pDialog.isShowing())
-                pDialog.dismiss();
+            showProgress(false);
         }
+
+    }
+
+    View progressView;
+    View loginFormView;
+    View progressDescriptionView;
+    View toolbarView;
+    private void showProgress(final boolean show) {
+
+        loginFormView = findViewById(R.id.feed_content_form);
+        progressView = findViewById(R.id.feed_progress_bar);
+        progressDescriptionView = findViewById(R.id.feed_progress_description);
+        toolbarView = findViewById(R.id.toolbar);
+
+        int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
+
+        toolbarView.setVisibility(show ? View.GONE : View.VISIBLE);
+        loginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+        loginFormView.animate().setDuration(shortAnimTime).alpha(
+                show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                loginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+            }
+        });
+
+        progressDescriptionView.setVisibility(show ? View.VISIBLE : View.GONE);
+        progressView.setVisibility(show ? View.VISIBLE : View.GONE);
+        progressView.animate().setDuration(shortAnimTime).alpha(
+                show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                progressView.setVisibility(show ? View.VISIBLE : View.GONE);
+            }
+        });
 
     }
 }
