@@ -1,23 +1,23 @@
 package com.axborn.androidparty.features.feed;
 
 import android.app.ProgressDialog;
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 
 import com.axborn.androidparty.R;
+import com.axborn.androidparty.features.authentication.LoginActivity;
 import com.axborn.androidparty.features.database.DatabaseManager;
 import com.axborn.androidparty.features.rest.RestManagerVolley;
 
@@ -71,6 +71,16 @@ public class FeedActivity extends AppCompatActivity {
             }
         });
 
+        ImageView imageButton = (ImageView) toolbar.findViewById(R.id.logout);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FeedActivity.this, LoginActivity.class);
+                FeedActivity.this.startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
+
     }
 
     @Override
@@ -83,16 +93,24 @@ public class FeedActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
-        ArrayList<HashMap<String, String>> serverList = Sorter.retrieveList((ListView)findViewById(R.id.list));
         switch (item.getItemId()) {
             case R.id.action_name_ascending:
+                ArrayList<HashMap<String, String>> serverList = Sorter.retrieveList((ListView)findViewById(R.id.list));
                 Sorter.sortAscending(serverList);
+                refreshFeed(serverList);
                 break;
             case R.id.action_name_descending:
-                Sorter.sortDescending(serverList);
+                ArrayList<HashMap<String, String>> serverList2 = Sorter.retrieveList((ListView)findViewById(R.id.list));
+                Sorter.sortDescending(serverList2);
+                refreshFeed(serverList2);
                 break;
         }
 
+
+        return true;
+    }
+
+    private void refreshFeed(ArrayList<HashMap<String, String>> serverList){
         ListAdapter adapter = new SimpleAdapter(
                 getApplicationContext(), serverList,
                 R.layout.list_item, new String[]{"name", "distance"},
@@ -111,7 +129,6 @@ public class FeedActivity extends AppCompatActivity {
 
         ((ListView)findViewById(R.id.list)).setAdapter(adapter);
 
-        return true;
     }
 
 
