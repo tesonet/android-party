@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Testio</string>
+    <string name="server_error">Some server error happens</string>
+    <string name="log_in">Log In</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="server">server</string>
+    <string name="distance">distance</string>
+    <string name="no_internet_title">No Internet Connection</string>
+    <string name="title_loading">Fetching the list…</string>
+    <string name="error_invalid_credentials">Username or password invalid.</string>
+    <string name="fields_empty">Fields should not be empty</string>
+    <string name="incorrect_password">Incorrect password or username</string>
+    <string name="pictureTransitionName">background_transition</string>
+    <string name="km">km</string>
+</resources>

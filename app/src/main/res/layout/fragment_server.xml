@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <View
+        android:id="@+id/listHeader"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:background="@color/colorHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/listLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginStart="@dimen/side_margin"
+        android:layout_marginBottom="16dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/logo_blue"
+        app:layout_constraintBottom_toBottomOf="@+id/listHeader"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/listLogout"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="@dimen/side_margin"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_ico_logout"
+        app:layout_constraintBottom_toBottomOf="@+id/listHeader"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/listServers"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="@dimen/side_margin"
+        android:gravity="center_vertical"
+        android:text="@string/server"
+        android:textAllCaps="true"
+        android:textColor="@color/colorText"
+        android:textSize="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listHeader" />
+
+    <TextView
+        android:id="@+id/listDistance"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="@dimen/side_margin"
+        android:gravity="center_vertical"
+        android:text="@string/distance"
+        android:textAllCaps="true"
+        android:textColor="@color/colorText"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listHeader" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:background="@drawable/list_shadows"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listDistance" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/serverList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/side_margin"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/side_margin"
+        android:overScrollMode="never"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listDistance"
+        tools:listitem="@layout/list_item" />
+
+</android.support.constraint.ConstraintLayout>

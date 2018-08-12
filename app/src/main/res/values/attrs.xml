@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="LoginEditText">
+        <attr name="loginHint" format="string" />
+        <attr name="loginIcon" format="color|reference" />
+        <attr name="loginMask" format="boolean" />
+        <attr name="actionDone" format="boolean" />
+    </declare-styleable>
+</resources>
