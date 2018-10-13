@@ -1,7 +1,9 @@
-package lt.bulevicius.tessonetapp;
+package lt.bulevicius.tessonetapp.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import lt.bulevicius.tessonetapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
