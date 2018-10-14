@@ -3,6 +3,10 @@ package lt.bulevicius.tessonetapp.storage;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 
+import java.util.List;
+
+import lt.bulevicius.tessonetapp.network.entities.data.Country;
+
 import static lt.bulevicius.tessonetapp.app.Constants.KEY_TOKEN;
 
 /**
@@ -30,5 +34,10 @@ public final class SharedPreferenceProvider implements LocalDataProvider {
     @Override
     public String getToken() {
         return sharedPreferences.getString(KEY_TOKEN, null);
+    }
+
+    @Override
+    public void setCountries(List<Country> countries) {
+        // TODO: 15/10/2018 bump!
     }
 }

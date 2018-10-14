@@ -21,6 +21,6 @@ public class Constants {
     /**
      * The constant KM_FORMAT.
      */
-    public static final String KM_FORMAT = "%d%n km";
+    public static final String KM_FORMAT = "%d km";
 
 }

@@ -15,7 +15,7 @@ import retrofit2.HttpException;
 /**
  * The type Error handler.
  */
-public class ErrorHandlerImpl {
+public final class ErrorHandlerImpl {
 
     private Context context;
 
@@ -70,7 +70,7 @@ public class ErrorHandlerImpl {
     }
 
     private Exception getServerError() {
-        return new NetworkError(context.getString(R.string.server_error));
+        return new ServerError(context.getString(R.string.server_error));
     }
 
     private Exception getGenericException() {

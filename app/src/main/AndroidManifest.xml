@@ -14,6 +14,7 @@
         >
         <activity
             android:name=".ui.MainActivity"
+            android:windowSoftInputMode="adjustNothing"
             android:screenOrientation="portrait"
             >
             <intent-filter>

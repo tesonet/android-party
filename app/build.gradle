@@ -55,6 +55,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rxVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rxRetrofitAdapterVersion"
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.2.0'
 
     //UI
     implementation "com.jakewharton:butterknife:$butterKnifeVersion"
@@ -78,5 +79,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation "org.mockito:mockito-core:2.23.0"
 
 }

@@ -38,8 +38,10 @@ public final class LoginPresenter extends BasePresenter<LoginView> {
 
 
     /**
-     * Log's in saves user token.
-     *
+     * Logs in saves user token.
+     * So im doing the country call because of loader stuff... and ignoring countries because of lack of
+     * local storage implementation. Should save the the countries to database or whatever and then
+     * proceed to next window (countryListView) however since im limited on time resources leaving it here.
      * @param username the username
      * @param password the password
      */
@@ -54,6 +56,7 @@ public final class LoginPresenter extends BasePresenter<LoginView> {
                                    })
                                    .subscribe(
                                            countries -> {
+                                               localDataProvider.setCountries(countries);
                                                getView().hideProgress();
                                                getView().onDataSuccess();
                                            },

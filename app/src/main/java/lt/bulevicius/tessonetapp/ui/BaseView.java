@@ -8,10 +8,14 @@ import android.view.ViewGroup;
 
 import com.bluelinelabs.conductor.Controller;
 
+import io.reactivex.disposables.CompositeDisposable;
+
 /**
  * The type Base view.
  */
 public abstract class BaseView extends Controller {
+
+    protected final CompositeDisposable subscriptions = new CompositeDisposable();
 
     @NonNull
     @Override
@@ -25,6 +29,13 @@ public abstract class BaseView extends Controller {
     protected void onContextAvailable(@NonNull Context context) {
         super.onContextAvailable(context);
         doInject();
+    }
+
+
+    @Override
+    protected void onDetach(@NonNull View view) {
+        subscriptions.clear();
+        super.onDetach(view);
     }
 
     /**

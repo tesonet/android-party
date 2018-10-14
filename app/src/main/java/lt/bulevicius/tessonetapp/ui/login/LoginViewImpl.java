@@ -2,6 +2,7 @@ package lt.bulevicius.tessonetapp.ui.login;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +10,15 @@ import android.view.ViewGroup;
 
 import com.bluelinelabs.conductor.RouterTransaction;
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler;
+import com.jakewharton.rxbinding2.view.RxView;
+
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import lt.bulevicius.tessonetapp.R;
 import lt.bulevicius.tessonetapp.app.TessonetApplication;
 import lt.bulevicius.tessonetapp.ui.BaseView;
@@ -38,6 +42,12 @@ public final class LoginViewImpl extends BaseView implements LoginView {
      */
     @BindView(R.id.userNameEditText)
     AppCompatEditText userName;
+
+    /**
+     * The Login button.
+     */
+    @BindView(R.id.loginButton)
+    AppCompatButton loginButton;
 
     /**
      * The Password.
@@ -101,7 +111,6 @@ public final class LoginViewImpl extends BaseView implements LoginView {
     /**
      * On click.
      */
-    @OnClick(R.id.loginButton)
     @SuppressWarnings("ConstantConditions")
     public void onClick() {
         presenter.doLogin(userName.getText().toString(), password.getText().toString());
@@ -121,5 +130,9 @@ public final class LoginViewImpl extends BaseView implements LoginView {
     public void doBindViews(View view) {
         ButterKnife.bind(this, view);
         setRetainViewMode(RetainViewMode.RETAIN_DETACH);
+        subscriptions.add(RxView.clicks(loginButton)
+                                .throttleFirst(1, TimeUnit.SECONDS)
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe(o -> onClick()));
     }
 }
