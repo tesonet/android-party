@@ -23,6 +23,7 @@ import lt.bulevicius.tessonetapp.R;
 import lt.bulevicius.tessonetapp.app.TessonetApplication;
 import lt.bulevicius.tessonetapp.ui.BaseView;
 import lt.bulevicius.tessonetapp.ui.countries.CountryViewImpl;
+import lt.bulevicius.tessonetapp.ui.error.GenericException;
 import lt.bulevicius.tessonetapp.ui.progress.ProgressView;
 import timber.log.Timber;
 
@@ -113,7 +114,17 @@ public final class LoginViewImpl extends BaseView implements LoginView {
      */
     @SuppressWarnings("ConstantConditions")
     public void onClick() {
-        presenter.doLogin(userName.getText().toString(), password.getText().toString());
+        String name = userName.getText().toString();
+        String pass = password.getText().toString();
+        if (name == null || pass == null) {
+            onError(new GenericException(getActivity().getString(R.string.please_fill_all_fields)));
+            return;
+        }
+        if (name.length() == 0 || pass.length() == 0) {
+            onError(new GenericException(getActivity().getString(R.string.please_fill_all_fields)));
+            return;
+        }
+        presenter.doLogin(name, pass);
     }
 
     @Override

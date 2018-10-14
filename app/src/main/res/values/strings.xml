@@ -12,4 +12,5 @@
     <string name="generic_error">Whoops? :(.</string>
     <string name="unauthorized_error">Unauthorized.</string>
     <string name="no_items">No items :)</string>
+    <string name="please_fill_all_fields">All fields must be filled.</string>
 </resources>
