@@ -25,7 +25,7 @@ public class AuthModelTest {
     TessonetApi tessonetApi;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         testScheduler = new TestScheduler();
         NetworkSchedulerProvider mockSchedulerProvider = new NetworkSchedulerProvider(testScheduler, testScheduler);
         MockitoAnnotations.initMocks(this);

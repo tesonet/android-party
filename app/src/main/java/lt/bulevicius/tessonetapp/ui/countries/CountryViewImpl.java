@@ -95,7 +95,7 @@ public final class CountryViewImpl extends BaseView implements CountryView {
 
     @Override
     public void showProgress() {
-
+        // TODO: 15/10/2018 maybe show some progress when loading ? :S
     }
 
     @Override

@@ -36,16 +36,17 @@ public class CountryPresenter extends BasePresenter<CountryView> {
      * Gets countries.
      */
     void getCountries() {
-        subscriptions.add(countryModel.getCountryList()
-                                      .doOnSubscribe(d -> getView().showProgress())
-                                      .subscribe(
-                                              items -> getView().onItems(items),
-                                              e -> {
-                                                  getView().hideProgress();
-                                                  getView().onError(errorHandler.handleError(e));
-                                              },
-                                              () -> getView().hideProgress())
-        );
+        if (hasView())
+            subscriptions.add(countryModel.getCountryList()
+                                          .doOnSubscribe(d -> getView().showProgress())
+                                          .subscribe(
+                                                  items -> getView().onItems(items),
+                                                  e -> {
+                                                      getView().hideProgress();
+                                                      getView().onError(errorHandler.handleError(e));
+                                                  },
+                                                  () -> getView().hideProgress())
+            );
     }
 
     /**

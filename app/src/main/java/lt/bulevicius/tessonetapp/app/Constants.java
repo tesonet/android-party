@@ -3,6 +3,7 @@ package lt.bulevicius.tessonetapp.app;
 /**
  * The type Constants.
  */
+@SuppressWarnings("all")
 public class Constants {
     /**
      * The constant headers.

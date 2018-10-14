@@ -24,7 +24,7 @@ public class ErrorHandlerImplTest {
     Context context;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
         errorHandler = new ErrorHandlerImpl(context);
     }

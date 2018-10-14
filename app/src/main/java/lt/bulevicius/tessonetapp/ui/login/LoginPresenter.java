@@ -46,23 +46,26 @@ public final class LoginPresenter extends BasePresenter<LoginView> {
      * @param password the password
      */
     final void doLogin(@Nullable String username, @Nullable String password) {
-        getView().showProgress();
-        subscriptions.add(authModel.doLogin(new TokenRequest(username, password))
-                                   .doOnNext(tokenResponse -> Timber.d("token: %s", tokenResponse.getToken()))
-                                   .doOnNext(tokenResponse -> getView().loginSuccess())
-                                   .flatMap(tokenResponse -> {
-                                       localDataProvider.setToken(tokenResponse.getToken());
-                                       return countryModel.getCountryList();
-                                   })
-                                   .subscribe(
-                                           countries -> {
-                                               localDataProvider.setCountries(countries);
-                                               getView().hideProgress();
-                                               getView().onDataSuccess();
-                                           },
-                                           e -> {
-                                               getView().hideProgress();
-                                               getView().onError(errorHandler.handleError(e));
-                                           }));
+        if(hasView()) {
+            getView().showProgress();
+            subscriptions.add(authModel.doLogin(new TokenRequest(username, password))
+                                       .doOnNext(tokenResponse -> Timber.d("token: %s", tokenResponse
+                                               .getToken()))
+                                       .doOnNext(tokenResponse -> getView().loginSuccess())
+                                       .flatMap(tokenResponse -> {
+                                           localDataProvider.setToken(tokenResponse.getToken());
+                                           return countryModel.getCountryList();
+                                       })
+                                       .subscribe(
+                                               countries -> {
+                                                   localDataProvider.setCountries(countries);
+                                                   getView().hideProgress();
+                                                   getView().onDataSuccess();
+                                               },
+                                               e -> {
+                                                   getView().hideProgress();
+                                                   getView().onError(errorHandler.handleError(e));
+                                               }));
+        }
     }
 }

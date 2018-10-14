@@ -28,6 +28,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
      * Instantiates a new Country adapter.
      */
     @Inject
+    @SuppressWarnings("all")
     public CountryAdapter() {
 
     }

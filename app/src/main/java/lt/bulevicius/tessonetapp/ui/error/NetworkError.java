@@ -1,8 +1,16 @@
 package lt.bulevicius.tessonetapp.ui.error;
 
-public class NetworkError extends Exception {
+/**
+ * The type Network error.
+ */
+class NetworkError extends Exception {
 
-    public NetworkError(String message) {
+    /**
+     * Instantiates a new Network error.
+     *
+     * @param message the message
+     */
+    NetworkError(String message) {
         super(message);
     }
 }

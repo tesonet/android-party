@@ -54,7 +54,7 @@ public class LoginPresenterTest {
     TestScheduler testScheduler;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
         errorHandler = new ErrorHandlerImpl(context);
         testScheduler = new TestScheduler();

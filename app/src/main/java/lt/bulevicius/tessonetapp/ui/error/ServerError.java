@@ -1,8 +1,16 @@
 package lt.bulevicius.tessonetapp.ui.error;
 
-public class ServerError extends Exception {
+/**
+ * The type Server error.
+ */
+class ServerError extends Exception {
 
-    public ServerError(String message) {
+    /**
+     * Instantiates a new Server error.
+     *
+     * @param message the message
+     */
+    ServerError(String message) {
         super(message);
     }
 }

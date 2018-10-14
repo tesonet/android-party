@@ -1,8 +1,16 @@
 package lt.bulevicius.tessonetapp.ui.error;
 
-public class GenericException extends Exception {
+/**
+ * The type Generic exception.
+ */
+class GenericException extends Exception {
 
-    public GenericException(String message) {
+    /**
+     * Instantiates a new Generic exception.
+     *
+     * @param message the message
+     */
+    GenericException(String message) {
         super(message);
     }
 }
