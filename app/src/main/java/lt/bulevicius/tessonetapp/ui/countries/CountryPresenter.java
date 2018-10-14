@@ -21,10 +21,12 @@ public class CountryPresenter extends BasePresenter<CountryView> {
     /**
      * Instantiates a new Country presenter.
      *
-     * @param countryModel the country model
+     * @param countryModel      the country model
+     * @param localDataProvider the local data provider
+     * @param errorHandler      the error handler
      */
     @Inject
-    public CountryPresenter(CountryModel countryModel, LocalDataProvider localDataProvider, ErrorHandlerImpl errorHandler) {
+    CountryPresenter(CountryModel countryModel, LocalDataProvider localDataProvider, ErrorHandlerImpl errorHandler) {
         this.countryModel = countryModel;
         this.errorHandler = errorHandler;
         this.localDataProvider = localDataProvider;
@@ -36,18 +38,29 @@ public class CountryPresenter extends BasePresenter<CountryView> {
     void getCountries() {
         subscriptions.add(countryModel.getCountryList()
                                       .doOnSubscribe(d -> getView().showProgress())
-                                      .subscribe(items -> getView().onItems(items), e -> {
-                                          getView().hideProgress();
-                                          getView().onError(errorHandler.handleError(e));
-                                      })
+                                      .subscribe(
+                                              items -> getView().onItems(items),
+                                              e -> {
+                                                  getView().hideProgress();
+                                                  getView().onError(errorHandler.handleError(e));
+                                              },
+                                              () -> getView().hideProgress())
         );
     }
 
+    /**
+     * Do logout.
+     */
     void doLogout() {
-        subscriptions.add(getLogoutObs().subscribe(it-> getView().logout()));
+        subscriptions.add(getLogoutObservable().subscribe(it -> getView().logout()));
     }
 
-    Observable<Boolean> getLogoutObs() {
+    /**
+     * Gets logout observable.
+     *
+     * @return the logout observable
+     */
+    private Observable<Boolean> getLogoutObservable() {
         return Observable.fromCallable(() -> {
             localDataProvider.setToken(null);
             return true;

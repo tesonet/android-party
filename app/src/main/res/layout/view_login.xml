@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/back_login"
     >
 
 
@@ -35,7 +35,6 @@
             android:hint="@string/username"
             android:lines="1"
             android:background="@color/transparent"
-            android:text="tesonet"
             />
 
     </RelativeLayout>
@@ -70,7 +69,6 @@
             android:hint="@string/password"
             android:lines="1"
             android:background="@color/transparent"
-            android:text="partyanimal"
             />
     </RelativeLayout>
 
@@ -111,7 +109,6 @@
         />
 
     <android.support.v7.widget.AppCompatImageView
-        android:id="@+id/logo"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/logoBottom"

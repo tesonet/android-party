@@ -10,7 +10,6 @@ import lt.bulevicius.tessonetapp.app.utils.SchedulerProvider;
 import lt.bulevicius.tessonetapp.network.TessonetApi;
 import lt.bulevicius.tessonetapp.network.entities.data.Country;
 import lt.bulevicius.tessonetapp.storage.LocalDataProvider;
-import timber.log.Timber;
 
 /**
  * The type Country model.
@@ -41,7 +40,7 @@ public class CountryModel {
      * @return the country list
      */
     public Observable<List<Country>> getCountryList() {
-        return api.getCountries(Utils.addBearrer(localDataProvider.getToken()))
+        return api.getCountries(Utils.addBearer(localDataProvider.getToken()))
                   .compose(schedulerProvider.applySchedulers());
     }
 }

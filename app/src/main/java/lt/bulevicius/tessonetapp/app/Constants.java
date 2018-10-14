@@ -18,4 +18,9 @@ public class Constants {
      */
     public static final String BEARER = "Bearer %s";
 
+    /**
+     * The constant KM_FORMAT.
+     */
+    public static final String KM_FORMAT = "%d%n km";
+
 }

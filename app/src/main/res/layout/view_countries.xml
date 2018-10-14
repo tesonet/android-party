@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/country_list_header"
+    android:background="@color/countryListHeader"
     >
 
 
@@ -28,7 +28,6 @@
 
 
         <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/serverLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|start"
@@ -36,10 +35,10 @@
             android:gravity="center"
             android:text="@string/server"
             android:textAllCaps="true"
+            android:textColor="@color/tessoGray"
             />
 
         <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/distanceLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|end"
@@ -47,6 +46,7 @@
             android:gravity="center"
             android:text="@string/distance"
             android:textAllCaps="true"
+            android:textColor="@color/tessoGray"
             />
 
     </FrameLayout>
@@ -69,13 +69,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:padding="10dp"
         android:layout_marginBottom="8dp"
+        android:background="@color/transparent"
+        android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/headerGuideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_ico_logout"
-        android:background="@color/transparent"
         />
 
     <android.support.constraint.Guideline
@@ -87,7 +87,6 @@
         />
 
     <ImageView
-        android:id="@+id/fadeImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@drawable/header_fade_background"
@@ -95,6 +94,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/recyclerHeader"
+        tools:ignore="ContentDescription"
+        android:contentDescription=""
         />
 
     <android.support.constraint.Guideline
@@ -106,7 +107,6 @@
         />
 
     <android.support.v7.widget.AppCompatImageView
-        android:id="@+id/list_logo"
         android:layout_width="73dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/item_padding"
@@ -115,4 +115,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logotype_testio_list"
         />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/notItemsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/no_items"
+        android:textColor="@color/tessoGray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        />
+
 </android.support.constraint.ConstraintLayout>

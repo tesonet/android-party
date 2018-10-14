@@ -73,7 +73,9 @@ public final class LoginViewImpl extends BaseView implements LoginView {
 
     @Override
     public void onDataSuccess() {
-        getRouter().setRoot(RouterTransaction.with(new CountryViewImpl()));
+        getRouter().setRoot(RouterTransaction.with(new CountryViewImpl())
+                                             .popChangeHandler(new FadeChangeHandler())
+                                             .pushChangeHandler(new FadeChangeHandler()));
     }
 
     @Override

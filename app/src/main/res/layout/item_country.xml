@@ -8,23 +8,26 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#000"
+        android:background="@color/tessoGray"
         android:layout_gravity="top"
         android:layout_marginStart="@dimen/item_padding"
         android:layout_marginEnd="@dimen/item_padding"
         />
-    <TextView
+    <android.support.v7.widget.AppCompatTextView
         android:padding="@dimen/item_padding"
         android:id="@+id/countryName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/tessoGray"
         android:layout_gravity="center|start"
         tools:text="Italy #3"
         />
 
-    <TextView
+    <android.support.v7.widget.AppCompatTextView
         android:padding="@dimen/item_padding"
+        android:textColor="@color/tessoGray"
         android:id="@+id/countryDistance"
+        android:singleLine="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|end"

@@ -2,6 +2,7 @@ package lt.bulevicius.tessonetapp.ui.countries;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,6 +32,10 @@ public final class CountryViewImpl extends BaseView implements CountryView {
 
     @Inject
     CountryAdapter countryAdapter;
+
+    @SuppressWarnings("all")
+    @BindView(R.id.notItemsLabel)
+    AppCompatTextView noItemsLabel;
 
     @BindView(R.id.countryListRecyclerView)
     RecyclerView recyclerView;
@@ -90,11 +95,14 @@ public final class CountryViewImpl extends BaseView implements CountryView {
 
     @Override
     public void showProgress() {
-        // TODO: 14/10/2018 fetching new list
+
     }
 
     @Override
     public void hideProgress() {
-        // TODO: 14/10/2018 fetching new list
+        if(countryAdapter.getItemCount() == 0)
+            noItemsLabel.setVisibility(View.VISIBLE);
+        else
+            noItemsLabel.setVisibility(View.GONE);
     }
 }

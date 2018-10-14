@@ -14,6 +14,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import lt.bulevicius.tessonetapp.R;
+import lt.bulevicius.tessonetapp.app.Utils;
 import lt.bulevicius.tessonetapp.network.entities.data.Country;
 
 /**
@@ -52,7 +53,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
     public void onBindViewHolder(@NonNull CountryViewHolder countryViewHolder, int i) {
         Country country = items.get(i);
         countryViewHolder.countryName.setText(country.getName());
-        countryViewHolder.distance.setText(String.valueOf(country.getDistance()));
+        countryViewHolder.distance.setText(Utils.addKilometers(country.getDistance()));
     }
 
     @Override
