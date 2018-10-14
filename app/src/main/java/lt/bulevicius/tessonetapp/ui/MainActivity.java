@@ -12,6 +12,8 @@ import javax.inject.Inject;
 
 import lt.bulevicius.tessonetapp.R;
 import lt.bulevicius.tessonetapp.app.TessonetApplication;
+import lt.bulevicius.tessonetapp.storage.LocalDataProvider;
+import lt.bulevicius.tessonetapp.ui.countries.CountryViewImpl;
 import lt.bulevicius.tessonetapp.ui.login.LoginViewImpl;
 import timber.log.Timber;
 
@@ -21,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Inject
     Timber.Tree tree;
+
+    @Inject
+    LocalDataProvider localDataProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
         router = Conductor.attachRouter(this, container, savedInstanceState);
         if (!router.hasRootController()) {
-            router.setRoot(RouterTransaction.with(new LoginViewImpl()));
+            if(localDataProvider.getToken() == null)
+                router.setRoot(RouterTransaction.with(new LoginViewImpl()));
+            else
+                router.setRoot(RouterTransaction.with(new CountryViewImpl()));
         }
     }
 

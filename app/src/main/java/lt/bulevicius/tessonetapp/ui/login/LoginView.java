@@ -11,4 +11,6 @@ interface LoginView extends TessoView {
      * Login success.
      */
     void loginSuccess();
+
+    void onDataSuccess();
 }

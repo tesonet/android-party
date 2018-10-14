@@ -61,13 +61,13 @@
             />
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/userPasswordEditText"
-            android:password="true"
+            android:inputType="textPassword"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/passwordIcon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="start|center"
-            android:hint="@string/username"
+            android:hint="@string/password"
             android:lines="1"
             android:background="@color/transparent"
             android:text="partyanimal"

@@ -16,4 +16,9 @@ public interface CountryView extends TessoView {
      * @param countries the countries
      */
     void onItems(List<Country> countries);
+
+    /**
+     * Logout.
+     */
+    void logout();
 }

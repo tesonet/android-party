@@ -1,12 +1,14 @@
 package lt.bulevicius.tessonetapp.ui.login;
 
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.AppCompatEditText;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.bluelinelabs.conductor.RouterTransaction;
+import com.bluelinelabs.conductor.changehandler.FadeChangeHandler;
 
 import javax.inject.Inject;
 
@@ -17,6 +19,8 @@ import lt.bulevicius.tessonetapp.R;
 import lt.bulevicius.tessonetapp.app.TessonetApplication;
 import lt.bulevicius.tessonetapp.ui.BaseView;
 import lt.bulevicius.tessonetapp.ui.countries.CountryViewImpl;
+import lt.bulevicius.tessonetapp.ui.progress.ProgressView;
+import timber.log.Timber;
 
 /**
  * The type Login view.
@@ -40,6 +44,7 @@ public final class LoginViewImpl extends BaseView implements LoginView {
      */
     @BindView(R.id.userPasswordEditText)
     AppCompatEditText password;
+    private ProgressView controller;
 
     @Override
     protected void onAttach(@NonNull View view) {
@@ -49,31 +54,46 @@ public final class LoginViewImpl extends BaseView implements LoginView {
 
     @Override
     protected void onDetach(@NonNull View view) {
-        presenter.setView(null);
+        Timber.d("onDetach");
         super.onDetach(view);
     }
 
     @Override
+    protected void onDestroyView(@NonNull View view) {
+        Timber.d("onDestroyView");
+        presenter.setView(null);
+        super.onDestroyView(view);
+    }
+
+    @Override
+    @SuppressWarnings("all")
     public void loginSuccess() {
+        controller.setNewProgressTitle(getActivity().getString(R.string.fetching_data));
+    }
+
+    @Override
+    public void onDataSuccess() {
         getRouter().setRoot(RouterTransaction.with(new CountryViewImpl()));
     }
 
     @Override
-    public void countrySuccess() {
-
-    }
-
-    @Override
+    @SuppressWarnings("all")
     public void onError(Throwable error) {
-
+        Snackbar.make(getView(), error.getMessage(), Snackbar.LENGTH_LONG).show();
     }
 
     @Override
+    @SuppressWarnings("all")
     public void showProgress() {
+        controller = new ProgressView(getActivity().getString(R.string.logging_in));
+        getRouter().pushController(RouterTransaction.with(controller)
+                                                    .popChangeHandler(new FadeChangeHandler())
+                                                    .pushChangeHandler(new FadeChangeHandler()));
     }
 
     @Override
     public void hideProgress() {
+        getRouter().popController(controller);
     }
 
     /**
@@ -98,5 +118,6 @@ public final class LoginViewImpl extends BaseView implements LoginView {
     @Override
     public void doBindViews(View view) {
         ButterKnife.bind(this, view);
+        setRetainViewMode(RetainViewMode.RETAIN_DETACH);
     }
 }

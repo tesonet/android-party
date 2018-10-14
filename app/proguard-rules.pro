@@ -44,6 +44,8 @@
 -keep class * implements com.google.gson.JsonSerializer
 -keep class * implements com.google.gson.JsonDeserializer
 -dontwarn okhttp3.**
+-keep class com.wang.avi.** { *; }
+-keep class com.wang.avi.indicators.** { *; }
 -dontwarn okio.**
 -dontwarn javax.annotation.**
 -dontwarn org.conscrypt.**

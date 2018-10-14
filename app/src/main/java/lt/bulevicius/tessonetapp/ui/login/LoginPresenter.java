@@ -6,8 +6,10 @@ import javax.inject.Inject;
 
 import lt.bulevicius.tessonetapp.network.entities.auth.TokenRequest;
 import lt.bulevicius.tessonetapp.network.models.AuthModel;
+import lt.bulevicius.tessonetapp.network.models.CountryModel;
 import lt.bulevicius.tessonetapp.storage.LocalDataProvider;
 import lt.bulevicius.tessonetapp.ui.BasePresenter;
+import lt.bulevicius.tessonetapp.ui.error.ErrorHandlerImpl;
 import timber.log.Timber;
 
 /**
@@ -17,6 +19,8 @@ public final class LoginPresenter extends BasePresenter<LoginView> {
 
     private final AuthModel authModel;
     private final LocalDataProvider localDataProvider;
+    private final CountryModel countryModel;
+    private final ErrorHandlerImpl errorHandler;
 
     /**
      * Instantiates a new Login presenter.
@@ -25,9 +29,11 @@ public final class LoginPresenter extends BasePresenter<LoginView> {
      * @param localDataProvider the local data provider
      */
     @Inject
-    LoginPresenter(AuthModel authModel, LocalDataProvider localDataProvider) {
+    LoginPresenter(AuthModel authModel, CountryModel countryModel, LocalDataProvider localDataProvider, ErrorHandlerImpl errorHandler) {
         this.authModel = authModel;
         this.localDataProvider = localDataProvider;
+        this.countryModel = countryModel;
+        this.errorHandler = errorHandler;
     }
 
 
@@ -38,18 +44,22 @@ public final class LoginPresenter extends BasePresenter<LoginView> {
      * @param password the password
      */
     final void doLogin(@Nullable String username, @Nullable String password) {
+        getView().showProgress();
         subscriptions.add(authModel.doLogin(new TokenRequest(username, password))
-                                   .doOnSubscribe(d -> getView().showProgress())
+                                   .doOnNext(tokenResponse -> Timber.d("token: %s", tokenResponse.getToken()))
+                                   .doOnNext(tokenResponse -> getView().loginSuccess())
+                                   .flatMap(tokenResponse -> {
+                                       localDataProvider.setToken(tokenResponse.getToken());
+                                       return countryModel.getCountryList();
+                                   })
                                    .subscribe(
-                                           tokenResponse -> {
-                                               Timber.d("token: %s", tokenResponse.getToken());
-                                               localDataProvider.setToken(tokenResponse.getToken());
+                                           countries -> {
                                                getView().hideProgress();
-                                               getView().loginSuccess();
+                                               getView().onDataSuccess();
                                            },
                                            e -> {
                                                getView().hideProgress();
-                                               getView().onError(e);
+                                               getView().onError(errorHandler.handleError(e));
                                            }));
     }
 }
