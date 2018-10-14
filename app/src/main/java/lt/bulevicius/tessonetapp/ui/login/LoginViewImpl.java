@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bluelinelabs.conductor.RouterTransaction;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -14,11 +16,12 @@ import butterknife.OnClick;
 import lt.bulevicius.tessonetapp.R;
 import lt.bulevicius.tessonetapp.app.TessonetApplication;
 import lt.bulevicius.tessonetapp.ui.BaseView;
+import lt.bulevicius.tessonetapp.ui.countries.CountryViewImpl;
 
 /**
  * The type Login view.
  */
-public class LoginViewImpl extends BaseView implements LoginView {
+public final class LoginViewImpl extends BaseView implements LoginView {
 
     /**
      * The Presenter.
@@ -52,6 +55,12 @@ public class LoginViewImpl extends BaseView implements LoginView {
 
     @Override
     public void loginSuccess() {
+        getRouter().setRoot(RouterTransaction.with(new CountryViewImpl()));
+    }
+
+    @Override
+    public void countrySuccess() {
+
     }
 
     @Override

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000"
+        android:layout_gravity="top"
+        android:layout_marginStart="@dimen/item_padding"
+        android:layout_marginEnd="@dimen/item_padding"
+        />
+    <TextView
+        android:padding="@dimen/item_padding"
+        android:id="@+id/countryName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|start"
+        tools:text="Italy #3"
+        />
+
+    <TextView
+        android:padding="@dimen/item_padding"
+        android:id="@+id/countryDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|end"
+        tools:text="938"
+        />
+</FrameLayout>

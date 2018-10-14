@@ -1,9 +1,9 @@
 package lt.bulevicius.tessonetapp.network.entities.data;
 
-public class Country {
+public final class Country {
 
     private String name;
-    long distance;
+    private long distance;
 
     public Country(String name, long distance) {
         this.name = name;

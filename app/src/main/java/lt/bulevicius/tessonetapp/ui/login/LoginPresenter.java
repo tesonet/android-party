@@ -8,6 +8,7 @@ import lt.bulevicius.tessonetapp.network.entities.auth.TokenRequest;
 import lt.bulevicius.tessonetapp.network.models.AuthModel;
 import lt.bulevicius.tessonetapp.storage.LocalDataProvider;
 import lt.bulevicius.tessonetapp.ui.BasePresenter;
+import timber.log.Timber;
 
 /**
  * The type Login presenter.
@@ -41,6 +42,7 @@ public final class LoginPresenter extends BasePresenter<LoginView> {
                                    .doOnSubscribe(d -> getView().showProgress())
                                    .subscribe(
                                            tokenResponse -> {
+                                               Timber.d("token: %s", tokenResponse.getToken());
                                                localDataProvider.setToken(tokenResponse.getToken());
                                                getView().hideProgress();
                                                getView().loginSuccess();

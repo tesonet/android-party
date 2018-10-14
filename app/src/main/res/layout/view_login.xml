@@ -1,48 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     >
 
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/userNameEditText"
+
+    <RelativeLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/input_background"
-        android:drawableStart="@drawable/ic_ico_username"
-        android:gravity="center"
-        android:hint="@string/username"
-        android:padding="20dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/centerBottom"
         app:layout_constraintEnd_toStartOf="@+id/endGuide"
         app:layout_constraintStart_toStartOf="@+id/startGuide"
         app:layout_constraintTop_toTopOf="@+id/centerGuide"
-        />
-
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/userPasswordEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:background="@drawable/input_background"
-        android:drawableStart="@drawable/ic_ico_lock"
-        android:gravity="center"
-        android:hint="@string/password"
-        android:padding="20dp"
+        >
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/userIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_ico_username"
+            android:layout_gravity="center|start"
+            android:layout_margin="@dimen/login_icon_margin"
+            />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/userNameEditText"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/userIcon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="start|center"
+            android:hint="@string/username"
+            android:lines="1"
+            android:background="@color/transparent"
+            android:text="tesonet"
+            />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/passwordBottom"
         app:layout_constraintEnd_toStartOf="@+id/endGuide"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/startGuide"
-        app:layout_constraintTop_toBottomOf="@+id/userNameEditText"
-        />
+        app:layout_constraintTop_toTopOf="@+id/centerTwoTop"
+        android:background="@drawable/input_background"
+        >
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/passwordIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_ico_lock"
+            android:layout_gravity="center|start"
+            android:layout_margin="@dimen/login_icon_margin"
+            />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/userPasswordEditText"
+            android:password="true"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/passwordIcon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="start|center"
+            android:hint="@string/username"
+            android:lines="1"
+            android:background="@color/transparent"
+            android:text="partyanimal"
+            />
+    </RelativeLayout>
 
     <android.support.constraint.Guideline
         android:id="@+id/startGuide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.2"
+        app:layout_constraintGuide_percent="0.17"
         />
 
     <android.support.constraint.Guideline
@@ -50,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.8"
+        app:layout_constraintGuide_percent="0.83"
         />
 
     <android.support.constraint.Guideline
@@ -58,19 +95,86 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45"
+        app:layout_constraintGuide_percent="0.44"
         />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/loginButton"
+        style="@style/loginButton"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="0dp"
         android:text="@string/log_in"
-        android:textColor="#fff"
+        app:layout_constraintBottom_toTopOf="@+id/buttonBottom"
         app:layout_constraintEnd_toStartOf="@+id/endGuide"
         app:layout_constraintStart_toStartOf="@+id/startGuide"
-        app:layout_constraintTop_toBottomOf="@+id/userPasswordEditText"
+        app:layout_constraintTop_toTopOf="@+id/buttonTop"
+        />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/logoBottom"
+        app:layout_constraintEnd_toStartOf="@+id/endGuide"
+        app:layout_constraintStart_toStartOf="@+id/startGuide"
+        app:layout_constraintTop_toTopOf="@+id/logoTop"
+        app:srcCompat="@drawable/logotype_testio"
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/logoTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2"
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/logoBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2579666"
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/centerBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.51"
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/centerTwoTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.52807283"
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/passwordBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5978756"
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/buttonTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6145675"
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/buttonBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6858877"
         />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,7 @@
 package lt.bulevicius.tessonetapp.ui.countries;
 
+import javax.inject.Inject;
+
 import lt.bulevicius.tessonetapp.network.models.CountryModel;
 import lt.bulevicius.tessonetapp.ui.BasePresenter;
 
@@ -15,6 +17,7 @@ public class CountryPresenter extends BasePresenter<CountryView> {
      *
      * @param countryModel the country model
      */
+    @Inject
     public CountryPresenter(CountryModel countryModel) {
         this.countryModel = countryModel;
     }

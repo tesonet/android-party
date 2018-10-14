@@ -2,5 +2,12 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#d81b60</color>
+    <color name="country_list_header">#f0f0f0</color>
+    <color name="white">#ffffff</color>
+    <color name="fade_color">#e2e5e8</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="black">#000</color>
+    <color name="buttonNormal">#9fd533</color>
+    <color name="buttonPressed">#648521</color>
 </resources>
