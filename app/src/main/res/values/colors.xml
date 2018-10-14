@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="countryListHeader">#f0f0f0</color>
+    <color name="white">#ffffff</color>
+    <color name="fade_color">#e2e5e8</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="black">#000</color>
+    <color name="buttonNormal">#9fd533</color>
+    <color name="tessoGray">#999999</color>
+</resources>

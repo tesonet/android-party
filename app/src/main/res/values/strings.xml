@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">TessonetApp</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+    <string name="server">Server</string>
+    <string name="distance">Distance</string>
+    <string name="logging_in">Logging in…</string>
+    <string name="fetching_data">Fetching the list…</string>
+    <string name="network_error_generic">Network error, check your internet connection.</string>
+    <string name="server_error">Servers are offline, try again later.</string>
+    <string name="generic_error">Whoops? :(.</string>
+    <string name="unauthorized_error">Unauthorized.</string>
+    <string name="no_items">No items :)</string>
+    <string name="please_fill_all_fields">All fields must be filled.</string>
+</resources>

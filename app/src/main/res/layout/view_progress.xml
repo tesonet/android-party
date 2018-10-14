@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back_loader"
+    >
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:layout_width="294dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        app:indicatorName="BallClipRotateIndicator"
+        app:layout_constraintBottom_toTopOf="@+id/progressBottom"
+        app:layout_constraintEnd_toStartOf="@+id/progressEnd"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/progressTop"
+        />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/progressTitleLabel"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewTop"
+        tools:text="loading..."
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/progressTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.27769348"
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/progressBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.72230655"
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/textViewTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7875569"
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.14"
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/progressEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8613139"
+        />
+
+</android.support.constraint.ConstraintLayout>
