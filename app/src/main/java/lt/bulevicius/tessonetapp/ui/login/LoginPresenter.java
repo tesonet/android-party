@@ -1,5 +1,7 @@
 package lt.bulevicius.tessonetapp.ui.login;
 
+import org.jetbrains.annotations.Nullable;
+
 import javax.inject.Inject;
 
 import lt.bulevicius.tessonetapp.network.entities.auth.TokenRequest;
@@ -22,7 +24,7 @@ public final class LoginPresenter extends BasePresenter<LoginView> {
      * @param localDataProvider the local data provider
      */
     @Inject
-    public LoginPresenter(AuthModel authModel, LocalDataProvider localDataProvider) {
+    LoginPresenter(AuthModel authModel, LocalDataProvider localDataProvider) {
         this.authModel = authModel;
         this.localDataProvider = localDataProvider;
     }
@@ -34,9 +36,9 @@ public final class LoginPresenter extends BasePresenter<LoginView> {
      * @param username the username
      * @param password the password
      */
-    public final void doLogin(String username, String password) {
+    final void doLogin(@Nullable String username, @Nullable String password) {
         subscriptions.add(authModel.doLogin(new TokenRequest(username, password))
-                                   .doOnSubscribe(d -> getView().startProgress())
+                                   .doOnSubscribe(d -> getView().showProgress())
                                    .subscribe(
                                            tokenResponse -> {
                                                localDataProvider.setToken(tokenResponse.getToken());
@@ -45,7 +47,7 @@ public final class LoginPresenter extends BasePresenter<LoginView> {
                                            },
                                            e -> {
                                                getView().hideProgress();
-                                               getView().showError(e);
+                                               getView().onError(e);
                                            }));
     }
 }

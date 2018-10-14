@@ -1,9 +1,11 @@
 package lt.bulevicius.tessonetapp.network;
 
+import java.util.List;
+
 import io.reactivex.Observable;
-import lt.bulevicius.tessonetapp.network.entities.data.Country;
 import lt.bulevicius.tessonetapp.network.entities.auth.TokenRequest;
 import lt.bulevicius.tessonetapp.network.entities.auth.TokenResponse;
+import lt.bulevicius.tessonetapp.network.entities.data.Country;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -32,6 +34,6 @@ public interface TessonetApi {
      * @return the countries
      */
     @GET("v1/servers")
-    Observable<Country> getCountries(@Header(AUTHORISATION) String token);
+    Observable<List<Country>> getCountries(@Header(AUTHORISATION) String token);
 
 }

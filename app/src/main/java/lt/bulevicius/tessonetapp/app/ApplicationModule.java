@@ -23,7 +23,7 @@ public final class ApplicationModule {
 
     @Provides
     @Singleton
-    public Context context() {
+    public final Context context() {
         return context;
     }
 

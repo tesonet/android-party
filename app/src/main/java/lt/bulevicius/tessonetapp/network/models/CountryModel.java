@@ -1,10 +1,13 @@
 package lt.bulevicius.tessonetapp.network.models;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import lt.bulevicius.tessonetapp.app.utils.SchedulerProvider;
 import lt.bulevicius.tessonetapp.network.TessonetApi;
+import lt.bulevicius.tessonetapp.network.entities.data.Country;
 import lt.bulevicius.tessonetapp.storage.LocalDataProvider;
 
 /**
@@ -35,7 +38,7 @@ public class CountryModel {
      *
      * @return the country list
      */
-    public Observable getCountryList() {
+    public Observable<List<Country>> getCountryList() {
         return api.getCountries(localDataProvider.getToken())
                   .compose(schedulerProvider.applySchedulers());
     }

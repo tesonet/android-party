@@ -29,7 +29,7 @@ public abstract class BasePresenter<T> {
      * if view is null, clears all disposables.
      * @param view the view
      */
-    protected final void setView(T view) {
+    public final void setView(T view) {
         this.view = view;
         if(view == null)
             subscriptions.clear();

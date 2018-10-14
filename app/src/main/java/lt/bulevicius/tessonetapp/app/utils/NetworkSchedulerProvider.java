@@ -3,7 +3,7 @@ package lt.bulevicius.tessonetapp.app.utils;
 import io.reactivex.ObservableTransformer;
 import io.reactivex.Scheduler;
 
-public class NetworkSchedulerProvider implements SchedulerProvider {
+public final class NetworkSchedulerProvider implements SchedulerProvider {
 
     private final Scheduler subscribeOn;
     private final Scheduler observeOn;
@@ -14,7 +14,7 @@ public class NetworkSchedulerProvider implements SchedulerProvider {
     }
 
     @Override
-    public <T> ObservableTransformer<T, T> applySchedulers() {
+    public final <T> ObservableTransformer<T, T> applySchedulers() {
         return upstream -> upstream.subscribeOn(subscribeOn).observeOn(observeOn);
     }
 }

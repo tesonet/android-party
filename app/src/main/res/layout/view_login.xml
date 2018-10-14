@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    >
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/userNameEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_background"
+        android:drawableStart="@drawable/ic_ico_username"
+        android:gravity="center"
+        android:hint="@string/username"
+        android:padding="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/endGuide"
+        app:layout_constraintStart_toStartOf="@+id/startGuide"
+        app:layout_constraintTop_toTopOf="@+id/centerGuide"
+        />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/userPasswordEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/input_background"
+        android:drawableStart="@drawable/ic_ico_lock"
+        android:gravity="center"
+        android:hint="@string/password"
+        android:padding="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/endGuide"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/startGuide"
+        app:layout_constraintTop_toBottomOf="@+id/userNameEditText"
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/startGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2"
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/endGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8"
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/centerGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45"
+        />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/loginButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/log_in"
+        android:textColor="#fff"
+        app:layout_constraintEnd_toStartOf="@+id/endGuide"
+        app:layout_constraintStart_toStartOf="@+id/startGuide"
+        app:layout_constraintTop_toBottomOf="@+id/userPasswordEditText"
+        />
+
+</android.support.constraint.ConstraintLayout>

@@ -12,11 +12,14 @@ public class TessonetApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        component = DaggerTesApplicationComponent.builder().build();
+        component = DaggerTesApplicationComponent.builder()
+                                                 .applicationModule(new ApplicationModule(this))
+                                                 .build();
     }
 
     /**
      * Gets app component.
+     *
      * @return the component
      */
     public static TesApplicationComponent getComponent() {

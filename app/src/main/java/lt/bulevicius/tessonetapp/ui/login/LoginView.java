@@ -1,26 +1,11 @@
 package lt.bulevicius.tessonetapp.ui.login;
 
+import lt.bulevicius.tessonetapp.ui.TessoView;
+
 /**
  * The interface Login view.
  */
-interface LoginView {
-
-    /**
-     * Show error.
-     *
-     * @param error the error
-     */
-    void showError(Throwable error);
-
-    /**
-     * Start progress.
-     */
-    void startProgress();
-
-    /**
-     * Hide progress.
-     */
-    void hideProgress();
+interface LoginView extends TessoView {
 
     /**
      * Login success.
