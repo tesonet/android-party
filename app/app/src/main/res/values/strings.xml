@@ -6,4 +6,9 @@
     <string name="login_username">Username</string>
     <string name="login_password">Password</string>
     <string name="login_login">Log In</string>
+
+    <string name="login_empty_password">Password cannot be empty</string>
+    <string name="login_empty_username">Username cannot be empty</string>
+    <string name="login_empty_username_and_password">Username and password cannot be empty</string>
+
 </resources>

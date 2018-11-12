@@ -21,8 +21,33 @@ class LoginFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        view!!.usernameEditText.addTextChangedListener(usernameTextChangeWatcher)
-        view!!.passwordEditText.addTextChangedListener(passwordTextChangeWatcher)
+        view!!.apply {
+            usernameEditText.addTextChangedListener(usernameTextChangeWatcher)
+            passwordEditText.addTextChangedListener(passwordTextChangeWatcher)
+            loginButton.setOnClickListener {
+                if (validateCredentials()) {
+                    // Perform login request
+                }
+            }
+        }
+    }
+
+    private fun validateCredentials(): Boolean {
+        val usernameEmpty = view!!.usernameEditText.text.isNullOrBlank()
+        val passwordEmpty = view!!.passwordEditText.text.isNullOrEmpty()
+        val messageId = when {
+            usernameEmpty && passwordEmpty -> R.string.login_empty_username_and_password
+            passwordEmpty -> R.string.login_empty_password
+            usernameEmpty -> R.string.login_empty_username
+            else -> 0
+        }
+        return if (messageId == 0) {
+            view!!.warningTextView.text = ""
+            true
+        } else {
+            view!!.warningTextView.setText(messageId)
+            false
+        }
     }
 
     override fun onStop() {

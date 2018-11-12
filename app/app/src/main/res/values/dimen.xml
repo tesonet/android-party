@@ -3,6 +3,7 @@
     <!-- Login fragment -->
     <dimen name="login_logo_height">32dp</dimen>
     <dimen name="login_logo_margin_top">104dp</dimen>
+
     <dimen name="login_input_corner_radius">3dp</dimen>
     <dimen name="login_input_width">208dp</dimen>
     <dimen name="login_input_height">40dp</dimen>
@@ -10,5 +11,8 @@
     <dimen name="login_input_icon_padding">12dp</dimen>
     <dimen name="login_input_text_size">12sp</dimen>
     <dimen name="login_fields_gap">8dp</dimen>
+
+    <dimen name="login_warning_text">12sp</dimen>
+    <dimen name="login_warning_text_margin_bottom">8dp</dimen>
 
 </resources>

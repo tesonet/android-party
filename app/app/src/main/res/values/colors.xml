@@ -5,6 +5,7 @@
     <color name="white">#ffffff</color>
     <color name="very_light_grey">#cccccc</color>
     <color name="yellow_green">#9fd533</color>
+    <color name="salmon">#ff7871</color>
 
     <!-- Login fragment -->
     <color name="login_input_text">@color/black_80</color>
@@ -14,5 +15,6 @@
     <color name="login_input_bg">@color/white</color>
     <color name="login_button_text">@color/white</color>
     <color name="login_button_bg">@color/yellow_green</color>
+    <color name="login_warning_text">@color/salmon</color>
 
 </resources>

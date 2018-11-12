@@ -27,6 +27,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/warningTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/login_warning_text_margin_bottom"
+        android:gravity="center"
+        android:textColor="@color/login_warning_text"
+        android:textSize="@dimen/login_warning_text"
+        app:layout_constraintBottom_toTopOf="@id/usernameEditText"
+        app:layout_constraintEnd_toEndOf="@id/usernameEditText"
+        app:layout_constraintStart_toStartOf="@id/usernameEditText" />
+
     <EditText
         android:id="@+id/usernameEditText"
         style="@style/LoginInputField"
