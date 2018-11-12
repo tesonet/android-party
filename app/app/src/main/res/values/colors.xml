@@ -3,13 +3,13 @@
     <!-- Palette -->
     <color name="black_80">#CC000000</color>
     <color name="white">#ffffff</color>
-    <color name="whisper">#ebebeb</color>
+    <color name="very_light_grey">#cccccc</color>
     <color name="yellow_green">#9fd533</color>
 
     <!-- Login fragment -->
     <color name="login_input_text">@color/black_80</color>
-    <color name="login_input_icon_tint">@color/whisper</color>
-    <color name="login_input_hint">@color/whisper</color>
+    <color name="login_input_icon_tint">@color/very_light_grey</color>
+    <color name="login_input_hint">@color/very_light_grey</color>
     <color name="login_input_bg">@color/white</color>
     <color name="login_button_text">@color/white</color>
     <color name="login_button_bg">@color/yellow_green</color>
