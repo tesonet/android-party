@@ -36,6 +36,8 @@
         android:drawablePadding="@dimen/login_input_icon_padding"
         android:hint="@string/login_username"
         android:inputType="text"
+        android:textAppearance="@style/LoginInputFieldTextAppearance"
+        android:textColorHint="@color/login_input_hint"
         app:layout_constraintBottom_toTopOf="@id/passwordEditTExt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,6 +55,8 @@
         android:drawablePadding="@dimen/login_input_icon_padding"
         android:hint="@string/login_password"
         android:inputType="textPassword"
+        android:textAppearance="@style/LoginInputFieldTextAppearance"
+        android:textColorHint="@color/login_input_hint"
         app:layout_constraintBottom_toTopOf="@id/loginButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +65,7 @@
 
     <Button
         android:id="@+id/loginButton"
-        style="@style/LoginInputField"
+        style="@style/LoginButton"
         android:layout_marginTop="@dimen/login_fields_gap"
         android:text="@string/login_login"
         app:layout_constraintBottom_toBottomOf="parent"

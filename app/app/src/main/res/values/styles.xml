@@ -1,17 +1,31 @@
 <resources>
+
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar" />
 
     <style name="LoginInputField">
         <item name="android:layout_width">@dimen/login_input_width</item>
         <item name="android:layout_height">@dimen/login_input_height</item>
-        <item name="android:textAppearance">@style/LoginInputFieldTextAppearance</item>
+        <item name="android:textColor">@color/login_input_text</item>
+        <item name="android:textSize">@dimen/login_input_text_size</item>
         <item name="android:background">@drawable/login_input_bg</item>
         <item name="android:paddingLeft">@dimen/login_input_padding_sides</item>
         <item name="android:paddingRight">@dimen/login_input_padding_sides</item>
     </style>
 
-    <style name="LoginInputFieldTextAppearance" parent="TextAppearance.AppCompat">
+    <style name="LoginInputFieldTextAppearance" parent="TextAppearance.AppCompat.Medium">
         <item name="android:textColor">@color/login_input_text</item>
+        <item name="android:textSize">@dimen/login_input_text_size</item>
+    </style>
+
+    <style name="LoginButton">
+        <item name="android:layout_width">@dimen/login_input_width</item>
+        <item name="android:layout_height">@dimen/login_input_height</item>
+        <item name="android:textAppearance">@style/LoginButtonTextAppearance</item>
+        <item name="android:background">@drawable/login_button_bg</item>
+    </style>
+
+    <style name="LoginButtonTextAppearance" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textColor">@color/login_button_text</item>
         <item name="android:textSize">@dimen/login_input_text_size</item>
     </style>
 </resources>
