@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/usernameEditTExt"
+        android:id="@+id/usernameEditText"
         style="@style/LoginInputField"
         android:autofillHints="username"
         android:drawableStart="@drawable/ic_username"
@@ -38,7 +38,7 @@
         android:inputType="text"
         android:textAppearance="@style/LoginInputFieldTextAppearance"
         android:textColorHint="@color/login_input_hint"
-        app:layout_constraintBottom_toTopOf="@id/passwordEditTExt"
+        app:layout_constraintBottom_toTopOf="@id/passwordEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -46,7 +46,7 @@
         tools:ignore="UnusedAttribute" />
 
     <EditText
-        android:id="@+id/passwordEditTExt"
+        android:id="@+id/passwordEditText"
         style="@style/LoginInputField"
         android:layout_marginTop="@dimen/login_fields_gap"
         android:autofillHints="username"
@@ -60,7 +60,7 @@
         app:layout_constraintBottom_toTopOf="@id/loginButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/usernameEditTExt"
+        app:layout_constraintTop_toBottomOf="@id/usernameEditText"
         tools:ignore="UnusedAttribute" />
 
     <Button
@@ -71,6 +71,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordEditTExt" />
+        app:layout_constraintTop_toBottomOf="@id/passwordEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
