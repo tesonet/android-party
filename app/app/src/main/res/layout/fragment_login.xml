@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/backgroundImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@null"
@@ -42,6 +43,7 @@
     <EditText
         android:id="@+id/usernameEditText"
         style="@style/LoginInputField"
+        android:layout_marginTop="@dimen/login_input_margin_top"
         android:autofillHints="username"
         android:drawableStart="@drawable/ic_username"
         android:drawableLeft="@drawable/ic_username"

@@ -16,6 +16,10 @@ class LoginFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
         usernameTextChangeWatcher = LoginInputTextWatcher(view.usernameEditText)
         passwordTextChangeWatcher = LoginInputTextWatcher(view.passwordEditText)
+        GlideApp.with(this)
+                .load(R.drawable.bg)
+                .centerCrop()
+                .into(view.backgroundImageView)
         return view
     }
 

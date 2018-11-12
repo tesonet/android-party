@@ -4,6 +4,7 @@
     <dimen name="login_logo_height">32dp</dimen>
     <dimen name="login_logo_margin_top">104dp</dimen>
 
+    <dimen name="login_input_margin_top">64dp</dimen>
     <dimen name="login_input_corner_radius">3dp</dimen>
     <dimen name="login_input_width">208dp</dimen>
     <dimen name="login_input_height">40dp</dimen>
