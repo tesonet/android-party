@@ -1,4 +1,4 @@
-package place.holder.androidparty
+package place.holder.androidparty.login
 
 import android.graphics.drawable.Drawable
 import android.os.Build
@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.widget.EditText
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.DrawableCompat
+import place.holder.androidparty.R
 
 class LoginInputTextWatcher(private val editText: EditText) : TextWatcher {
 

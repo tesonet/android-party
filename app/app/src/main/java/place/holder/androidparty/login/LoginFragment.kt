@@ -1,4 +1,4 @@
-package place.holder.androidparty
+package place.holder.androidparty.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_login.view.*
+import place.holder.androidparty.GlideApp
+import place.holder.androidparty.R
 
 class LoginFragment : Fragment() {
 
-    var usernameTextChangeWatcher: LoginInputTextWatcher? = null
-    var passwordTextChangeWatcher: LoginInputTextWatcher? = null
+    private var usernameTextChangeWatcher: LoginInputTextWatcher? = null
+    private var passwordTextChangeWatcher: LoginInputTextWatcher? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
