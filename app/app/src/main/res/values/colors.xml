@@ -3,6 +3,7 @@
     <!-- Palette -->
     <color name="black_80">#CC000000</color>
     <color name="white">#ffffff</color>
+    <color name="white_50">#80ffffff</color>
     <color name="very_light_grey">#cccccc</color>
     <color name="yellow_green">#9fd533</color>
     <color name="salmon">#ff7871</color>
@@ -16,5 +17,6 @@
     <color name="login_button_text">@color/white</color>
     <color name="login_button_bg">@color/yellow_green</color>
     <color name="login_warning_text">@color/salmon</color>
+    <color name="login_progress_text">@color/white_50</color>
 
 </resources>

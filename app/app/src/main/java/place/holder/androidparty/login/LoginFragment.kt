@@ -5,10 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
 import place.holder.androidparty.AppController
 import place.holder.androidparty.GlideApp
 import place.holder.androidparty.R
+import place.holder.androidparty.common.fadeIn
+import place.holder.androidparty.common.fadeInWithTranslation
+import place.holder.androidparty.common.fadeOut
+import place.holder.androidparty.common.fadeOutWithTranslation
 
 class LoginFragment : Fragment() {
 
@@ -33,6 +38,11 @@ class LoginFragment : Fragment() {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        showLoginUi()
+    }
+
     override fun onStart() {
         super.onStart()
         view!!.apply {
@@ -40,16 +50,11 @@ class LoginFragment : Fragment() {
             passwordEditText.addTextChangedListener(passwordTextChangeWatcher)
             loginButton.setOnClickListener {
                 if (validateCredentials()) {
-                    serversProvider?.login(
-                            usernameEditText.text.toString(),
-                            passwordEditText.text.toString(),
-                            { token ->
-                                AppController.instance.token = token
-                            },
-                            { warningTextView.setText(R.string.login_incorrect_credentials) },
-                            { warningTextView.setText(R.string.login_server_error) },
-                            LOGIN_REQUEST_TAG
-                    )
+                    hideLoginUi()
+                    postDelayed({
+                        showProgressSplash(R.string.login_logging_in)
+                        requestLogin()
+                    }, ANIMATE_OUT.toLong())
                 }
             }
         }
@@ -73,8 +78,72 @@ class LoginFragment : Fragment() {
         }
     }
 
+    private fun requestLogin() {
+        view?.apply {
+            serversProvider?.login(
+                    usernameEditText.text.toString(),
+                    passwordEditText.text.toString(),
+                    { token ->
+                        AppController.instance.token = token
+                        // TODO: Request servers list
+                    },
+                    {
+                        warningTextView.setText(R.string.login_incorrect_credentials)
+                        postDelayed({
+                            hideProgressSplash()
+                            postDelayed({ showLoginUi() }, ANIMATE_OUT.toLong())
+                        }, ANIMATE_IN.toLong())
+                    },
+                    {
+                        warningTextView.setText(R.string.login_server_error)
+                        postDelayed({
+                            hideProgressSplash()
+                            postDelayed({ showLoginUi() }, ANIMATE_OUT.toLong())
+                        }, ANIMATE_IN.toLong())
+                    },
+                    LOGIN_REQUEST_TAG
+            )
+        }
+    }
+
+    private fun showProgressSplash(messageResId: Int) {
+        progressTextView.setText(messageResId)
+        view?.apply {
+            progressBar.fadeIn(ANIMATE_IN)
+            progressTextView.fadeInWithTranslation(0f, 0f, ANIMATE_IN)
+        }
+    }
+
+    private fun hideProgressSplash() {
+        val translateY = resources.getDimension(R.dimen.login_animate_progress_text_translate_y)
+        view?.apply {
+            progressBar.fadeOut(ANIMATE_IN)
+            progressTextView.fadeOutWithTranslation(0f, translateY, ANIMATE_OUT)
+        }
+    }
+
+    private fun showLoginUi() {
+        view?.apply {
+            logoImageView.fadeIn(ANIMATE_IN)
+            warningTextView.fadeInWithTranslation(0f, 0f, ANIMATE_IN)
+            usernameEditText.fadeInWithTranslation(0f, 0f, ANIMATE_IN)
+            passwordEditText.fadeInWithTranslation(0f, 0f, ANIMATE_IN)
+            loginButton.fadeInWithTranslation(0f, 0f, ANIMATE_IN)
+        }
+    }
+
+    private fun hideLoginUi() {
+        val translateY = resources.getDimension(R.dimen.login_animate_login_ui_translate_y)
+        view?.apply {
+            logoImageView.fadeOut(ANIMATE_IN)
+            warningTextView.fadeOutWithTranslation(0f, translateY, ANIMATE_OUT)
+            usernameEditText.fadeOutWithTranslation(0f, translateY, ANIMATE_OUT)
+            passwordEditText.fadeOutWithTranslation(0f, translateY, ANIMATE_OUT)
+            loginButton.fadeOutWithTranslation(0f, translateY, ANIMATE_OUT)
+        }
+    }
+
     override fun onStop() {
-        serversProvider?.cancelRequest(LOGIN_REQUEST_TAG)
         view!!.usernameEditText.removeTextChangedListener(usernameTextChangeWatcher)
         view!!.passwordEditText.removeTextChangedListener(passwordTextChangeWatcher)
         super.onStop()
@@ -94,5 +163,8 @@ class LoginFragment : Fragment() {
 
     companion object {
         private const val LOGIN_REQUEST_TAG = "Login Request"
+
+        private const val ANIMATE_IN = 250
+        private const val ANIMATE_OUT = 200
     }
 }
