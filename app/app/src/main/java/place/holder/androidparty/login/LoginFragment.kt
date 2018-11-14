@@ -10,10 +10,7 @@ import kotlinx.android.synthetic.main.fragment_login.view.*
 import place.holder.androidparty.AppController
 import place.holder.androidparty.GlideApp
 import place.holder.androidparty.R
-import place.holder.androidparty.common.fadeIn
-import place.holder.androidparty.common.fadeInWithTranslation
-import place.holder.androidparty.common.fadeOut
-import place.holder.androidparty.common.fadeOutWithTranslation
+import place.holder.androidparty.common.*
 
 class LoginFragment : Fragment() {
 
@@ -129,6 +126,12 @@ class LoginFragment : Fragment() {
             usernameEditText.fadeInWithTranslation(0f, 0f, ANIMATE_IN)
             passwordEditText.fadeInWithTranslation(0f, 0f, ANIMATE_IN)
             loginButton.fadeInWithTranslation(0f, 0f, ANIMATE_IN)
+            backgroundImageView.zoom(1f, ANIMATE_IN) {
+                GlideApp.with(this)
+                        .load(R.drawable.bg)
+                        .centerCrop()
+                        .into(backgroundImageView)
+            }
         }
     }
 
@@ -140,6 +143,7 @@ class LoginFragment : Fragment() {
             usernameEditText.fadeOutWithTranslation(0f, translateY, ANIMATE_OUT)
             passwordEditText.fadeOutWithTranslation(0f, translateY, ANIMATE_OUT)
             loginButton.fadeOutWithTranslation(0f, translateY, ANIMATE_OUT)
+            backgroundImageView.zoom(1.3f, ANIMATE_OUT)
         }
     }
 
