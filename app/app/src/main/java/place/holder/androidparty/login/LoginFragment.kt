@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_login.view.*
+import place.holder.androidparty.AppController
 import place.holder.androidparty.GlideApp
 import place.holder.androidparty.R
 
@@ -26,9 +27,9 @@ class LoginFragment : Fragment() {
         usernameTextChangeWatcher = LoginInputTextWatcher(view.usernameEditText)
         passwordTextChangeWatcher = LoginInputTextWatcher(view.passwordEditText)
         GlideApp.with(this)
-            .load(R.drawable.bg)
-            .centerCrop()
-            .into(view.backgroundImageView)
+                .load(R.drawable.bg)
+                .centerCrop()
+                .into(view.backgroundImageView)
         return view
     }
 
@@ -40,11 +41,14 @@ class LoginFragment : Fragment() {
             loginButton.setOnClickListener {
                 if (validateCredentials()) {
                     serversProvider?.login(
-                        usernameEditText.text.toString(),
-                        passwordEditText.text.toString(), { token -> warningTextView.text = token },
-                        { warningTextView.setText(R.string.login_incorrect_credentials) },
-                        { warningTextView.setText(R.string.login_server_error) },
-                        LOGIN_REQUEST_TAG
+                            usernameEditText.text.toString(),
+                            passwordEditText.text.toString(),
+                            { token ->
+                                AppController.instance.token = token
+                            },
+                            { warningTextView.setText(R.string.login_incorrect_credentials) },
+                            { warningTextView.setText(R.string.login_server_error) },
+                            LOGIN_REQUEST_TAG
                     )
                 }
             }
