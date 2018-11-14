@@ -8,11 +8,13 @@
     <string name="login_login">Log In</string>
 
     <string name="login_logging_in">Logging in…</string>
+    <string name="login_fetching_list">Fetching the list…</string>
 
     <string name="login_empty_password">Password cannot be empty</string>
     <string name="login_empty_username">Username cannot be empty</string>
     <string name="login_empty_username_and_password">Username and password cannot be empty</string>
     <string name="login_incorrect_credentials">Incorrect username or password</string>
+    <string name="login_unauthorized">Unauthorized</string>
     <string name="login_server_error">Something went wrong</string>
 
 </resources>

@@ -82,7 +82,8 @@ class LoginFragment : Fragment() {
                     passwordEditText.text.toString(),
                     { token ->
                         AppController.instance.token = token
-                        // TODO: Request servers list
+                        progressTextView.setText(R.string.login_fetching_list)
+                        requestServers()
                     },
                     {
                         warningTextView.setText(R.string.login_incorrect_credentials)
@@ -97,9 +98,31 @@ class LoginFragment : Fragment() {
                             hideProgressSplash()
                             postDelayed({ showLoginUi() }, ANIMATE_OUT.toLong())
                         }, ANIMATE_IN.toLong())
-                    },
-                    LOGIN_REQUEST_TAG
-            )
+                    }, REQUEST_TAG)
+        }
+    }
+
+    private fun requestServers() {
+        view?.apply {
+            serversProvider?.requestServers({
+                // TODO: Open list fragment
+                hideProgressSplash()
+                postDelayed({ showLoginUi() }, ANIMATE_OUT.toLong())
+                warningTextView.text = ""
+            }, {
+                AppController.instance.token = null
+                warningTextView.setText(R.string.login_unauthorized)
+                postDelayed({
+                    hideProgressSplash()
+                    postDelayed({ showLoginUi() }, ANIMATE_OUT.toLong())
+                }, ANIMATE_IN.toLong())
+            }, {
+                warningTextView.setText(R.string.login_server_error)
+                postDelayed({
+                    hideProgressSplash()
+                    postDelayed({ showLoginUi() }, ANIMATE_OUT.toLong())
+                }, ANIMATE_IN.toLong())
+            }, REQUEST_TAG)
         }
     }
 
@@ -154,7 +177,7 @@ class LoginFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        serversProvider?.cancelRequest(LOGIN_REQUEST_TAG)
+        serversProvider?.cancelRequest(REQUEST_TAG)
         usernameTextChangeWatcher = null
         passwordTextChangeWatcher = null
         super.onDestroyView()
@@ -166,7 +189,7 @@ class LoginFragment : Fragment() {
     }
 
     companion object {
-        private const val LOGIN_REQUEST_TAG = "Login Request"
+        private const val REQUEST_TAG = "Login Request"
 
         private const val ANIMATE_IN = 250
         private const val ANIMATE_OUT = 200
