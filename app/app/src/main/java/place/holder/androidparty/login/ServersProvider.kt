@@ -1,9 +1,13 @@
 package place.holder.androidparty.login
 
 import android.content.Context
+import org.jetbrains.anko.db.delete
+import org.jetbrains.anko.db.insert
 import place.holder.androidparty.common.api.ApiClient
+import place.holder.androidparty.common.database.DatabaseOpenHelper
+import place.holder.androidparty.common.database.database
 
-class ServersProvider(context: Context) {
+class ServersProvider(private val context: Context) {
 
     private val apiClient = ApiClient(context)
 
@@ -27,8 +31,17 @@ class ServersProvider(context: Context) {
             onSuccess: () -> Unit,
             onAuthenticationError: () -> Unit,
             onServerError: () -> Unit,
-            tag: String) {
-        apiClient.requestServers({
+            tag: String
+    ) {
+        apiClient.requestServers({ servers ->
+            context.database.use {
+                delete(DatabaseOpenHelper.TABLE_SERVER)
+                servers.forEach { server ->
+                    insert(DatabaseOpenHelper.TABLE_SERVER,
+                            DatabaseOpenHelper.SERVER_NAME to server.name,
+                            DatabaseOpenHelper.SERVER_DISTANCE to server.distance)
+                }
+            }
             onSuccess()
         }, { status ->
             if (status / 100 == 5) {

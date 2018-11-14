@@ -98,7 +98,8 @@ class LoginFragment : Fragment() {
                             hideProgressSplash()
                             postDelayed({ showLoginUi() }, ANIMATE_OUT.toLong())
                         }, ANIMATE_IN.toLong())
-                    }, REQUEST_TAG)
+                    }, REQUEST_TAG
+            )
         }
     }
 
@@ -108,7 +109,6 @@ class LoginFragment : Fragment() {
                 // TODO: Open list fragment
                 hideProgressSplash()
                 postDelayed({ showLoginUi() }, ANIMATE_OUT.toLong())
-                warningTextView.text = ""
             }, {
                 AppController.instance.token = null
                 warningTextView.setText(R.string.login_unauthorized)
