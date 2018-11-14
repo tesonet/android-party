@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Palette -->
+    <color name="transparent">#00000000</color>
     <color name="black_80">#CC000000</color>
     <color name="white">#ffffff</color>
     <color name="white_50">#80ffffff</color>
@@ -18,5 +19,7 @@
     <color name="login_button_bg">@color/yellow_green</color>
     <color name="login_warning_text">@color/salmon</color>
     <color name="login_progress_text">@color/white_50</color>
+    <color name="login_splash_progress_start">@color/white</color>
+    <color name="login_splash_progress_end">@color/transparent</color>
 
 </resources>
