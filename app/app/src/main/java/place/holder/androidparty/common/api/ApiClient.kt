@@ -23,7 +23,7 @@ class ApiClient(context: Context) {
             "http://playground.tesonet.lt/v1/tokens",
             jsonObject,
             { onSuccess(it.optString("token").orEmpty()) },
-            { onError(it.networkResponse.statusCode) }
+            { onError(it.networkResponse?.statusCode ?: 500) }
         ).setTag(tag))
     }
 
