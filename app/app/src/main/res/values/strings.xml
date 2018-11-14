@@ -10,5 +10,7 @@
     <string name="login_empty_password">Password cannot be empty</string>
     <string name="login_empty_username">Username cannot be empty</string>
     <string name="login_empty_username_and_password">Username and password cannot be empty</string>
+    <string name="login_incorrect_credentials">Incorrect username or password</string>
+    <string name="login_server_error">Something went wrong</string>
 
 </resources>

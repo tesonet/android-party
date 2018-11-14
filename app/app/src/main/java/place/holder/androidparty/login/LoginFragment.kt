@@ -11,17 +11,24 @@ import place.holder.androidparty.R
 
 class LoginFragment : Fragment() {
 
+    private var serversProvider: ServersProvider? = null
+
     private var usernameTextChangeWatcher: LoginInputTextWatcher? = null
     private var passwordTextChangeWatcher: LoginInputTextWatcher? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        serversProvider = ServersProvider(context!!)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
         usernameTextChangeWatcher = LoginInputTextWatcher(view.usernameEditText)
         passwordTextChangeWatcher = LoginInputTextWatcher(view.passwordEditText)
         GlideApp.with(this)
-                .load(R.drawable.bg)
-                .centerCrop()
-                .into(view.backgroundImageView)
+            .load(R.drawable.bg)
+            .centerCrop()
+            .into(view.backgroundImageView)
         return view
     }
 
@@ -32,7 +39,13 @@ class LoginFragment : Fragment() {
             passwordEditText.addTextChangedListener(passwordTextChangeWatcher)
             loginButton.setOnClickListener {
                 if (validateCredentials()) {
-                    // Perform login request
+                    serversProvider?.login(
+                        usernameEditText.text.toString(),
+                        passwordEditText.text.toString(), { token -> warningTextView.text = token },
+                        { warningTextView.setText(R.string.login_incorrect_credentials) },
+                        { warningTextView.setText(R.string.login_server_error) },
+                        LOGIN_REQUEST_TAG
+                    )
                 }
             }
         }
@@ -57,14 +70,25 @@ class LoginFragment : Fragment() {
     }
 
     override fun onStop() {
+        serversProvider?.cancelRequest(LOGIN_REQUEST_TAG)
         view!!.usernameEditText.removeTextChangedListener(usernameTextChangeWatcher)
         view!!.passwordEditText.removeTextChangedListener(passwordTextChangeWatcher)
         super.onStop()
     }
 
     override fun onDestroyView() {
+        serversProvider?.cancelRequest(LOGIN_REQUEST_TAG)
         usernameTextChangeWatcher = null
         passwordTextChangeWatcher = null
         super.onDestroyView()
+    }
+
+    override fun onDestroy() {
+        serversProvider = null
+        super.onDestroy()
+    }
+
+    companion object {
+        private const val LOGIN_REQUEST_TAG = "Login Request"
     }
 }
