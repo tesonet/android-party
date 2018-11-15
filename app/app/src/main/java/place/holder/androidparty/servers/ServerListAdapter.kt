@@ -12,7 +12,7 @@ import place.holder.androidparty.servers.model.Server
 
 class ServerListAdapter : RecyclerView.Adapter<ServerListAdapter.ViewHolder>() {
 
-    var servers: MutableList<Server> = ArrayList()
+    var servers: List<Server> = ArrayList()
         set(value) {
             field = value
             notifyDataSetChanged()

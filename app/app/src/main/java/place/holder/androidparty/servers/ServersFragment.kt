@@ -16,6 +16,12 @@ import place.holder.androidparty.R
 class ServersFragment : Fragment() {
 
     private val serverListAdapter = ServerListAdapter()
+    private var serversProvider: ServersProvider? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        serversProvider = ServersProvider(context!!)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_servers, container, false).also { view ->
@@ -25,6 +31,11 @@ class ServersFragment : Fragment() {
                 it.adapter = serverListAdapter
             }
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        serverListAdapter.servers = serversProvider?.getServers() ?: emptyList()
     }
 
     override fun onStart() {
@@ -52,5 +63,10 @@ class ServersFragment : Fragment() {
     override fun onDestroyView() {
         serverListAdapter.servers = mutableListOf()
         super.onDestroyView()
+    }
+
+    override fun onDestroy() {
+        serversProvider = null
+        super.onDestroy()
     }
 }
