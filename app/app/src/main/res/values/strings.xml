@@ -1,0 +1,27 @@
+<resources>
+    <!-- App -->
+    <string name="app_name">Android Party</string>
+
+    <!-- Login fragment -->
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="login_login">Log In</string>
+
+    <string name="login_logging_in">Logging in…</string>
+    <string name="login_fetching_list">Fetching the list…</string>
+
+    <string name="login_empty_password">Password cannot be empty</string>
+    <string name="login_empty_username">Username cannot be empty</string>
+    <string name="login_empty_username_and_password">Username and password cannot be empty</string>
+    <string name="login_incorrect_credentials">Incorrect username or password</string>
+    <string name="login_unauthorized">Unauthorized</string>
+    <string name="login_server_error">Something went wrong</string>
+    
+    <!-- Servers fragment -->
+    <string name="servers_server">Server</string>
+    <string name="servers_distance">Distance</string>
+    <string name="servers_logout">Logout</string>
+
+    <string name="servers_item_distance">%d km</string>
+
+</resources>
