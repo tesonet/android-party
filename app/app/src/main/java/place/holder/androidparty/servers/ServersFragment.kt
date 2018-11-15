@@ -25,7 +25,11 @@ class ServersFragment : Fragment() {
         view?.apply {
             logoutImageView.setOnClickListener {
                 AppController.instance.token = null
-                val navOptions = NavOptions.Builder().setPopUpTo(R.id.serversFragment, true).build()
+                val navOptions = NavOptions.Builder()
+                        .setPopUpTo(R.id.serversFragment, true)
+                        .setExitAnim(R.anim.slide_out_right)
+                        .setPopEnterAnim(R.anim.idle)
+                        .build()
                 findNavController(this).navigate(ServersFragmentDirections.actionLogout(), navOptions)
             }
         }

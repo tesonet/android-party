@@ -108,7 +108,11 @@ class LoginFragment : Fragment() {
     private fun requestServers() {
         view?.apply {
             serversProvider?.requestServers({
-                val navOptions = NavOptions.Builder().setPopUpTo(R.id.loginFragment, true).build()
+                val navOptions = NavOptions.Builder()
+                        .setPopUpTo(R.id.loginFragment, true)
+                        .setExitAnim(R.anim.slide_out_left)
+                        .setPopEnterAnim(R.anim.idle)
+                        .build()
                 findNavController(this).navigate(LoginFragmentDirections.actionOpenServers(), navOptions)
             }, {
                 AppController.instance.token = null
