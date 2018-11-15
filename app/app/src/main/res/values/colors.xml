@@ -3,11 +3,16 @@
     <!-- Palette -->
     <color name="transparent">#00000000</color>
     <color name="black_80">#CC000000</color>
+    <color name="black_60">#99000000</color>
+    <color name="black_40">#66000000</color>
     <color name="white">#ffffff</color>
     <color name="white_50">#80ffffff</color>
+    <color name="snow">#f0f0f0</color>
     <color name="very_light_grey">#cccccc</color>
     <color name="yellow_green">#9fd533</color>
     <color name="salmon">#ff7871</color>
+    <color name="martinique">#2f3254</color>
+    <color name="martinique_20">#332f3254</color>
 
     <!-- Login fragment -->
     <color name="login_input_text">@color/black_80</color>
@@ -21,5 +26,16 @@
     <color name="login_progress_text">@color/white_50</color>
     <color name="login_splash_progress_start">@color/white</color>
     <color name="login_splash_progress_end">@color/transparent</color>
+
+    <!-- Servers fragment -->
+    <color name="servers_bg">@color/snow</color>
+    <color name="servers_list_bg">@color/white</color>
+    <color name="servers_list_header">@color/white</color>
+    <color name="servers_header_text">@color/black_40</color>
+    <color name="servers_list_text">@color/black_60</color>
+    <color name="servers_list_separator">@color/black_40</color>
+    <color name="servers_logout_icon_tint">@color/martinique</color>
+    <color name="servers_shadow_start_color">@color/martinique_20</color>
+    <color name="servers_shadow_end_color">@color/transparent</color>
 
 </resources>
