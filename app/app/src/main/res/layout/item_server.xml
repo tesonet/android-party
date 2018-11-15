@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/servers_list_bg"
+    tools:layout_height="@dimen/servers_item_height">
+
+    <TextView
+        android:id="@+id/nameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/servers_item_name_padding_start"
+        android:layout_marginLeft="@dimen/servers_item_name_padding_start"
+        android:textColor="@color/servers_list_text"
+        android:textSize="@dimen/servers_item_text"
+        tools:text="Lithuania" />
+
+    <TextView
+        android:id="@+id/distanceTextView"
+        android:layout_width="@dimen/servers_item_distance_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|end"
+        android:textColor="@color/servers_list_text"
+        android:textSize="@dimen/servers_item_text"
+        tools:text="1232 km" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/servers_item_separator_height"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="@dimen/servers_item_separator_padding_side"
+        android:layout_marginEnd="@dimen/servers_item_separator_padding_side"
+        android:background="@color/servers_list_separator" />
+
+</FrameLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Login fragment -->
+    <dimen name="login_logo_height">32dp</dimen>
+    <dimen name="login_logo_margin_top">104dp</dimen>
+
+    <dimen name="login_input_margin_top">64dp</dimen>
+    <dimen name="login_input_corner_radius">3dp</dimen>
+    <dimen name="login_input_width">208dp</dimen>
+    <dimen name="login_input_height">40dp</dimen>
+    <dimen name="login_input_padding_sides">16dp</dimen>
+    <dimen name="login_input_icon_padding">12dp</dimen>
+    <dimen name="login_input_text_size">12sp</dimen>
+    <dimen name="login_fields_gap">8dp</dimen>
+
+    <dimen name="login_warning_text">12sp</dimen>
+    <dimen name="login_warning_text_margin_bottom">8dp</dimen>
+
+    <dimen name="login_splash_progress_size">160dp</dimen>
+    <dimen name="login_splash_progress_thickness">3dp</dimen>
+    <dimen name="login_splash_progress_text">12sp</dimen>
+
+    <dimen name="login_animate_login_ui_translate_y">24dp</dimen>
+    <dimen name="login_animate_progress_text_translate_y">16dp</dimen>
+
+    <!-- Servers fragment -->
+    <dimen name="servers_logo_height">20dp</dimen>
+    <dimen name="servers_logo_margin_start">16dp</dimen>
+    <dimen name="servers_logo_margin_bottom">12dp</dimen>
+    <dimen name="servers_logout_icon_size">40dp</dimen>
+    <dimen name="servers_logout_icon_padding">12dp</dimen>
+
+    <dimen name="servers_list_header_top_shadow_height">16dp</dimen>
+    <dimen name="servers_list_header_bottom_shadow_height">24dp</dimen>
+    <dimen name="servers_list_header_margin_top">50dp</dimen>
+    <dimen name="servers_list_header_text">12sp</dimen>
+
+    <dimen name="servers_list_padding_top">8dp</dimen>
+    <dimen name="servers_list_padding_bottom">8dp</dimen>
+
+    <dimen name="servers_item_text">13sp</dimen>
+    <dimen name="servers_item_name_padding_start">16dp</dimen>
+    <dimen name="servers_item_height">36dp</dimen>
+    <dimen name="servers_item_distance_width">96dp</dimen>
+    <dimen name="servers_item_separator_padding_side">16dp</dimen>
+    <dimen name="servers_item_separator_height">1dp</dimen>
+
+</resources>

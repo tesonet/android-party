@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromDegrees="0"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    android:toDegrees="360">
+    <shape
+        android:shape="ring"
+        android:thickness="@dimen/login_splash_progress_thickness"
+        android:useLevel="false">
+        <size
+            android:width="@dimen/login_splash_progress_size"
+            android:height="@dimen/login_splash_progress_size" />
+        <gradient
+            android:angle="90"
+            android:endColor="@color/login_splash_progress_end"
+            android:startColor="@color/login_splash_progress_start"
+            android:type="sweep"
+            android:useLevel="false" />
+    </shape>
+</rotate>

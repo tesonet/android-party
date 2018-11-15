@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/backgroundImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/login_logo_height"
+        android:layout_marginTop="@dimen/login_logo_margin_top"
+        android:alpha="0"
+        android:contentDescription="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logo_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/warningTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/login_warning_text_margin_bottom"
+        android:alpha="0"
+        android:gravity="center"
+        android:textColor="@color/login_warning_text"
+        android:textSize="@dimen/login_warning_text"
+        android:translationY="@dimen/login_animate_login_ui_translate_y"
+        app:layout_constraintBottom_toTopOf="@id/usernameEditText"
+        app:layout_constraintEnd_toEndOf="@id/usernameEditText"
+        app:layout_constraintStart_toStartOf="@id/usernameEditText" />
+
+    <EditText
+        android:id="@+id/usernameEditText"
+        style="@style/LoginInputField"
+        android:layout_marginTop="@dimen/login_input_margin_top"
+        android:alpha="0"
+        android:autofillHints="username"
+        android:drawableStart="@drawable/ic_username"
+        android:drawableLeft="@drawable/ic_username"
+        android:drawablePadding="@dimen/login_input_icon_padding"
+        android:hint="@string/login_username"
+        android:inputType="text"
+        android:textAppearance="@style/LoginInputFieldTextAppearance"
+        android:textColorHint="@color/login_input_hint"
+        android:translationY="@dimen/login_animate_login_ui_translate_y"
+        app:layout_constraintBottom_toTopOf="@id/passwordEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:ignore="UnusedAttribute" />
+
+    <EditText
+        android:id="@+id/passwordEditText"
+        style="@style/LoginInputField"
+        android:layout_marginTop="@dimen/login_fields_gap"
+        android:alpha="0"
+        android:autofillHints="username"
+        android:drawableStart="@drawable/ic_password"
+        android:drawableLeft="@drawable/ic_password"
+        android:drawablePadding="@dimen/login_input_icon_padding"
+        android:hint="@string/login_password"
+        android:inputType="textPassword"
+        android:textAppearance="@style/LoginInputFieldTextAppearance"
+        android:textColorHint="@color/login_input_hint"
+        android:translationY="@dimen/login_animate_login_ui_translate_y"
+        app:layout_constraintBottom_toTopOf="@id/loginButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/usernameEditText"
+        tools:ignore="UnusedAttribute" />
+
+    <Button
+        android:id="@+id/loginButton"
+        style="@style/LoginButton"
+        android:layout_marginTop="@dimen/login_fields_gap"
+        android:alpha="0"
+        android:text="@string/login_login"
+        android:translationY="@dimen/login_animate_login_ui_translate_y"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passwordEditText" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="@dimen/login_splash_progress_size"
+        android:layout_height="@dimen/login_splash_progress_size"
+        android:alpha="0"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/login_progress"
+        android:indeterminateDuration="500"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/progressTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0"
+        android:textColor="@color/login_progress_text"
+        android:textSize="@dimen/login_splash_progress_text"
+        android:translationY="@dimen/login_animate_progress_text_translate_y"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progressBar"
+        tools:text="Fetching the list..." />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
