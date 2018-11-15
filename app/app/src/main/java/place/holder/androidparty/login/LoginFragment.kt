@@ -37,11 +37,6 @@ class LoginFragment : Fragment() {
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        showLoginUi()
-    }
-
     override fun onStart() {
         super.onStart()
         view!!.apply {
@@ -56,6 +51,13 @@ class LoginFragment : Fragment() {
                     }, ANIMATE_OUT.toLong())
                 }
             }
+        }
+
+        if (AppController.instance.token != null) {
+            showProgressSplash(R.string.login_fetching_list)
+            requestServers()
+        } else {
+            showLoginUi()
         }
     }
 
