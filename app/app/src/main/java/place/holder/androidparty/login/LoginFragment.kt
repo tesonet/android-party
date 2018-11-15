@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
+import androidx.navigation.Navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
 import place.holder.androidparty.AppController
@@ -106,9 +108,8 @@ class LoginFragment : Fragment() {
     private fun requestServers() {
         view?.apply {
             serversProvider?.requestServers({
-                // TODO: Open list fragment
-                hideProgressSplash()
-                postDelayed({ showLoginUi() }, ANIMATE_OUT.toLong())
+                val navOptions = NavOptions.Builder().setPopUpTo(R.id.loginFragment, true).build()
+                findNavController(this).navigate(LoginFragmentDirections.actionOpenServers(), navOptions)
             }, {
                 AppController.instance.token = null
                 warningTextView.setText(R.string.login_unauthorized)
