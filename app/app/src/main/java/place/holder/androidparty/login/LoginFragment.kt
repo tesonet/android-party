@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation.findNavController
@@ -42,6 +43,12 @@ class LoginFragment : Fragment() {
         view!!.apply {
             usernameEditText.addTextChangedListener(usernameTextChangeWatcher)
             passwordEditText.addTextChangedListener(passwordTextChangeWatcher)
+            passwordEditText.setOnEditorActionListener { _, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    loginButton.performClick()
+                }
+                return@setOnEditorActionListener false
+            }
             loginButton.setOnClickListener {
                 if (validateCredentials()) {
                     hideLoginUi()
