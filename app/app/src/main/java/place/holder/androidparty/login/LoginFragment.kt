@@ -31,6 +31,7 @@ class LoginFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
         usernameTextChangeWatcher = LoginInputTextWatcher(view.usernameEditText)
         passwordTextChangeWatcher = LoginInputTextWatcher(view.passwordEditText)
+        view.usernameEditText.setText(AppController.instance.username)
         GlideApp.with(this)
                 .load(R.drawable.bg)
                 .centerCrop()
@@ -42,6 +43,10 @@ class LoginFragment : Fragment() {
         super.onStart()
         view!!.apply {
             usernameEditText.addTextChangedListener(usernameTextChangeWatcher)
+            if (usernameEditText.length() > 0) {
+                // Invoke compound drawable tinting
+                post { usernameTextChangeWatcher?.onTextChanged("0", 0, 0, 0) }
+            }
             passwordEditText.addTextChangedListener(passwordTextChangeWatcher)
             passwordEditText.setOnEditorActionListener { _, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -88,10 +93,12 @@ class LoginFragment : Fragment() {
 
     private fun requestLogin() {
         view?.apply {
+            val username = usernameEditText.text.toString()
+            val password = passwordEditText.text.toString()
             serversProvider?.login(
-                    usernameEditText.text.toString(),
-                    passwordEditText.text.toString(),
+                    username, password,
                     { token ->
+                        AppController.instance.username = username
                         AppController.instance.token = token
                         progressTextView.setText(R.string.login_fetching_list)
                         requestServers()

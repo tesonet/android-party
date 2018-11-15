@@ -12,6 +12,11 @@ class AppController : Application() {
         set(value) {
             internalUsePreferences.edit().putString(TOKEN_KEY, value).apply()
         }
+    var username: String?
+        get() = internalUsePreferences.getString(USERNAME_KEY, null)
+        set(value) {
+            internalUsePreferences.edit().putString(USERNAME_KEY, value).apply()
+        }
 
     override fun onCreate() {
         super.onCreate()
@@ -22,6 +27,7 @@ class AppController : Application() {
     companion object {
         private const val INTERNAL_USE_PREFERENCES = "Internal use preferences"
         private const val TOKEN_KEY = "Token Key"
+        private const val USERNAME_KEY = "Username Key"
 
         private lateinit var appInstance: AppController
         val instance: AppController
