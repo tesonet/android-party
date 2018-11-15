@@ -22,4 +22,6 @@
     <string name="servers_distance">Distance</string>
     <string name="servers_logout">Logout</string>
 
+    <string name="servers_item_distance">%d km</string>
+
 </resources>
