@@ -26,4 +26,12 @@
         android:textSize="@dimen/servers_item_text"
         tools:text="1232 km" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/servers_item_separator_height"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="@dimen/servers_item_separator_padding_side"
+        android:layout_marginEnd="@dimen/servers_item_separator_padding_side"
+        android:background="@color/servers_list_separator" />
+
 </FrameLayout>

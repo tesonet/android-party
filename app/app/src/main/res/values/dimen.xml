@@ -22,7 +22,7 @@
 
     <dimen name="login_animate_login_ui_translate_y">24dp</dimen>
     <dimen name="login_animate_progress_text_translate_y">16dp</dimen>
-    
+
     <!-- Servers fragment -->
     <dimen name="servers_logo_height">20dp</dimen>
     <dimen name="servers_logo_margin_start">16dp</dimen>
@@ -41,7 +41,7 @@
     <dimen name="servers_item_text">13sp</dimen>
     <dimen name="servers_item_name_padding_start">16dp</dimen>
     <dimen name="servers_item_height">36dp</dimen>
-    <dimen name="servers_item_distance_width">80dp</dimen>
+    <dimen name="servers_item_distance_width">96dp</dimen>
     <dimen name="servers_item_separator_padding_side">16dp</dimen>
     <dimen name="servers_item_separator_height">1dp</dimen>
 
