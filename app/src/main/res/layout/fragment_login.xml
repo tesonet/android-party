@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".LoginActivity">
+    tools:background="@drawable/background"
+    tools:context=".ui.login.LoginFragment">
 
     <ImageView
         android:id="@+id/logo"
@@ -30,11 +30,12 @@
         style="@style/EditText"
         android:drawableStart="@drawable/ic_lock"
         android:hint="@string/password"
+        android:inputType="textPassword"
         android:layout_marginTop="@dimen/login_spacing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username" />
-    
+
     <Button
         android:id="@+id/login"
         style="@style/Button"

@@ -4,4 +4,9 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Log In</string>
+
+    <string name="fetching_the_list">Fetching the list&#8230;</string>
+    <string name="invalid_credentials">Invalid credentials</string>
+    <string name="internet_required">Internet is required for the first login</string>
+    <string name="unexpected_error">Unexpected error occurred</string>
 </resources>

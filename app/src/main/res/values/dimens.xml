@@ -12,4 +12,6 @@
     <dimen name="login_logo_margin_top_bottom">120dp</dimen>
     <dimen name="login_spacing">12dp</dimen>
 
+    <dimen name="loading_height">128dp</dimen>
+
 </resources>
