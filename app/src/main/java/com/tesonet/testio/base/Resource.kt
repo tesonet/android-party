@@ -8,10 +8,14 @@ class Resource<T> private constructor(
 ) {
 
     enum class Status {
-        SUCCESS, ERROR
+        SUCCESS, ERROR, LOADING
     }
 
     companion object {
+
+        fun <T> loading(): Resource<T> {
+            return Resource(Status.LOADING)
+        }
 
         fun <T> success(data: T): Resource<T> {
             return Resource(Status.SUCCESS, data)

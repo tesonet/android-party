@@ -9,11 +9,10 @@ import kotlinx.coroutines.launch
 abstract class BaseRepository<T> {
 
     protected var data = MutableLiveData<Resource<T>>()
-    private var loaded = false
 
     protected fun loadOrGetCached(loadAction: suspend () -> T): LiveData<Resource<T>> {
-        if (!loaded) {
-            loaded = true
+        if (data.value == null || data.value?.status == Resource.Status.ERROR) {
+            data.value = Resource.loading()
             GlobalScope.launch { tryLoad(loadAction) }
         }
         return data
@@ -44,6 +43,5 @@ abstract class BaseRepository<T> {
 
     protected fun unsetValue() {
         data = MutableLiveData()
-        loaded = false
     }
 }

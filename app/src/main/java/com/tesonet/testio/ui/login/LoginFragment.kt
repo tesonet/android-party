@@ -10,6 +10,7 @@ import com.tesonet.testio.R
 import com.tesonet.testio.base.BaseFragment
 import com.tesonet.testio.base.Resource
 import com.tesonet.testio.data.local.entity.Credentials
+import com.tesonet.testio.extension.toast
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment: BaseFragment<LoginViewModel>(), Observer<Resource<Credentials?>> {
@@ -29,19 +30,34 @@ class LoginFragment: BaseFragment<LoginViewModel>(), Observer<Resource<Credentia
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         login.setOnClickListener {
-            viewModel.setCredentials(Credentials(username.text.toString(), password.text.toString()))
+            val usernameText = username.text.toString()
+            val passwordText = password.text.toString()
+
+            when {
+                usernameText.isEmpty() -> {
+                    toast(R.string.insert_username)
+                    username.requestFocus()
+                }
+                passwordText.isEmpty() -> {
+                    toast(R.string.insert_password)
+                    password.requestFocus()
+                }
+                else -> viewModel.setCredentials(Credentials(usernameText, passwordText))
+            }
         }
     }
 
     override fun onChanged(resource: Resource<Credentials?>) {
-        // Remove observer to not update input fields when Login button is pressed
-        liveCredentials.removeObserver(this)
+        if (resource.status == Resource.Status.SUCCESS) {
+            // Remove observer to not update input fields when Login button is pressed
+            liveCredentials.removeObserver(this)
 
-        val credentials = resource.data
-        if (credentials != null) {
-            username.setText(credentials.username)
-            password.setText(credentials.password)
-            password.selectAll()
+            val credentials = resource.data
+            if (credentials != null) {
+                username.setText(credentials.username)
+                password.setText(credentials.password)
+                password.selectAll()
+            }
         }
     }
 }

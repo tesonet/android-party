@@ -27,11 +27,9 @@ class LoadingFragment: BaseFragment<LoadingViewModel>() {
     }
 
     private fun onServersReceived(resource: Resource<List<Server>>) {
-        if (resource.status == Resource.Status.ERROR) {
-            handleLoadingError(resource.exception!!)
-        } else {
-            activity?.finish()
-            startActivity(Intent(context, ServersListActivity::class.java))
+        when {
+            resource.status == Resource.Status.ERROR -> handleLoadingError(resource.exception!!)
+            resource.status == Resource.Status.SUCCESS -> goToServersList()
         }
     }
 
@@ -45,5 +43,10 @@ class LoadingFragment: BaseFragment<LoadingViewModel>() {
         fragmentManager?.beginTransaction()
             ?.replace(R.id.container, LoginFragment())
             ?.commit()
+    }
+
+    private fun goToServersList() {
+        activity?.finish()
+        startActivity(Intent(context, ServersListActivity::class.java))
     }
 }

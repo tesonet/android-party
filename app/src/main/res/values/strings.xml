@@ -5,6 +5,8 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Log In</string>
+    <string name="insert_username">Please insert username</string>
+    <string name="insert_password">Please insert password</string>
 
     <!-- LOADING -->
     <string name="fetching_the_list">Fetching the list&#8230;</string>
