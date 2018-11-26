@@ -39,14 +39,19 @@ class LoadingFragment: BaseFragment<LoadingViewModel>() {
             is TokenRepository.InternetRequiredException -> toast(R.string.internet_required)
             else -> toast(R.string.unexpected_error)
         }
-
-        fragmentManager?.beginTransaction()
-            ?.replace(R.id.container, LoginFragment())
-            ?.commit()
+        goToLogin()
     }
 
     private fun goToServersList() {
         activity?.finish()
         startActivity(Intent(context, ServersListActivity::class.java))
+        activity?.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+    }
+
+    private fun goToLogin() {
+        fragmentManager?.beginTransaction()
+                ?.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right)
+                ?.replace(R.id.container, LoginFragment())
+                ?.commit()
     }
 }

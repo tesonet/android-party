@@ -31,6 +31,7 @@ class ServersListActivity: BaseActivity<ServersListViewModel>() {
             finish()
             viewModel.logout()
             startActivity(Intent(this, OnboardingActivity::class.java))
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
     }
 

@@ -1,7 +1,6 @@
 package com.tesonet.testio.ui.onboarding
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import com.tesonet.testio.R
 import com.tesonet.testio.base.BaseActivity
 import com.tesonet.testio.base.Resource
@@ -21,16 +20,20 @@ class OnboardingActivity : BaseActivity<OnboardingViewModel>() {
 
     private fun showFragment(resource: Resource<Credentials?>) {
         if (resource.status == Resource.Status.SUCCESS) {
-            goToFirstFragment(resource.data)
+            goToFragment(resource.data)
         } else if (resource.status == Resource.Status.ERROR) {
             toast(R.string.unexpected_error)
         }
     }
 
-    private fun goToFirstFragment(credentials: Credentials?) {
-        val fragment: Fragment = if (credentials != null) LoadingFragment() else LoginFragment()
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.container, fragment)
+    private fun goToFragment(credentials: Credentials?) {
+        val fragment = if (credentials != null) LoadingFragment() else LoginFragment()
+        val transaction = supportFragmentManager.beginTransaction()
+        // Do not animate initial fragment draw
+        if (supportFragmentManager.fragments.size > 0) {
+            transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
+        transaction.replace(R.id.container, fragment)
                 .commit()
     }
 }
