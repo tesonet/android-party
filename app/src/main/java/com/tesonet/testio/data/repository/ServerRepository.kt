@@ -10,7 +10,8 @@ import com.tesonet.testio.data.local.entity.Token
 import com.tesonet.testio.data.mapper.ServerMapper
 import com.tesonet.testio.data.mapper.TokenMapper
 import com.tesonet.testio.data.remote.PlaygroundApi
-import com.tesonet.testio.util.NetworkAvailability
+import com.tesonet.testio.util.asynclaucher.AsyncLauncher
+import com.tesonet.testio.util.networkavailability.NetworkAvailability
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -18,8 +19,9 @@ import javax.inject.Singleton
 class ServerRepository @Inject constructor(
     private val api: PlaygroundApi,
     private val serverDao: ServerDao,
-    private val networkAvailability: NetworkAvailability
-): BaseRepository<List<Server>>() {
+    private val networkAvailability: NetworkAvailability,
+    asyncLauncher: AsyncLauncher
+): BaseRepository<List<Server>>(asyncLauncher) {
 
     fun getServers(token: Token) = loadOrGetCached {
         if (networkAvailability.isNetworkAvailable()) {

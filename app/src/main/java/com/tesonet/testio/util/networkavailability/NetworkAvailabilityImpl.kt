@@ -1,4 +1,4 @@
-package com.tesonet.testio.util
+package com.tesonet.testio.util.networkavailability
 
 import android.content.Context
 import android.net.ConnectivityManager

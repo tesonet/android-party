@@ -11,7 +11,8 @@ import com.tesonet.testio.data.mapper.CredentialsMapper
 import com.tesonet.testio.data.mapper.TokenMapper
 import com.tesonet.testio.data.remote.PlaygroundApi
 import com.tesonet.testio.data.remote.entity.ApiToken
-import com.tesonet.testio.util.NetworkAvailability
+import com.tesonet.testio.util.asynclaucher.AsyncLauncher
+import com.tesonet.testio.util.networkavailability.NetworkAvailability
 import retrofit2.HttpException
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -20,8 +21,9 @@ import javax.inject.Singleton
 class TokenRepository @Inject constructor(
     private val api: PlaygroundApi,
     private val tokenDao: TokenDao,
-    private val networkAvailability: NetworkAvailability
-): BaseRepository<Token?>() {
+    private val networkAvailability: NetworkAvailability,
+    asyncLauncher: AsyncLauncher
+): BaseRepository<Token?>(asyncLauncher) {
 
     fun getToken(credentials: Credentials) = loadOrGetCached {
         val localToken = tokenDao.selectAsync()

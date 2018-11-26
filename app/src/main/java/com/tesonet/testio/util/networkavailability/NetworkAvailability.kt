@@ -1,4 +1,4 @@
-package com.tesonet.testio.util
+package com.tesonet.testio.util.networkavailability
 
 
 interface NetworkAvailability {
