@@ -19,4 +19,9 @@ class CredentialsRepository @Inject constructor(
         setValue(credentials)
         tryRun { credentialsDao.insertAsync(credentials) }
     }
+
+    fun deleteCredentials() {
+        unsetValue()
+        tryRun { credentialsDao.delete() }
+    }
 }

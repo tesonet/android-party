@@ -1,12 +1,19 @@
 <resources>
     <string name="app_name">Testio</string>
 
+    <!-- LOGIN -->
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Log In</string>
 
+    <!-- LOADING -->
     <string name="fetching_the_list">Fetching the list&#8230;</string>
     <string name="invalid_credentials">Invalid credentials</string>
     <string name="internet_required">Internet is required for the first login</string>
     <string name="unexpected_error">Unexpected error occurred</string>
+
+    <!-- SERVERS LIST -->
+    <string name="server">Server</string>
+    <string name="distance">Distance</string>
+    <string name="km">%s km</string>
 </resources>

@@ -1,7 +1,7 @@
 package com.tesonet.testio.ui.loading
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +12,7 @@ import com.tesonet.testio.data.local.entity.Server
 import com.tesonet.testio.data.repository.TokenRepository
 import com.tesonet.testio.extension.toast
 import com.tesonet.testio.ui.login.LoginFragment
+import com.tesonet.testio.ui.serverslist.ServersListActivity
 
 
 class LoadingFragment: BaseFragment<LoadingViewModel>() {
@@ -29,7 +30,8 @@ class LoadingFragment: BaseFragment<LoadingViewModel>() {
         if (resource.status == Resource.Status.ERROR) {
             handleLoadingError(resource.exception!!)
         } else {
-            Log.e("SUCCESS", "GO TO SERVERS LIST")
+            activity?.finish()
+            startActivity(Intent(context, ServersListActivity::class.java))
         }
     }
 

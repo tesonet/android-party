@@ -2,6 +2,7 @@ package com.tesonet.testio.data.repository
 
 import com.tesonet.testio.base.BaseRepository
 import com.tesonet.testio.data.local.dao.TokenDao
+import com.tesonet.testio.data.local.dao.deleteAsync
 import com.tesonet.testio.data.local.dao.insertAsync
 import com.tesonet.testio.data.local.dao.selectAsync
 import com.tesonet.testio.data.local.entity.Credentials
@@ -13,8 +14,9 @@ import com.tesonet.testio.data.remote.entity.ApiToken
 import com.tesonet.testio.util.NetworkAvailability
 import retrofit2.HttpException
 import javax.inject.Inject
+import javax.inject.Singleton
 
-
+@Singleton
 class TokenRepository @Inject constructor(
     private val api: PlaygroundApi,
     private val tokenDao: TokenDao,
@@ -49,6 +51,11 @@ class TokenRepository @Inject constructor(
             }
             throw ex
         }
+    }
+
+    fun deleteTokenFromLocalDb() {
+        unsetValue()
+        tryRun { tokenDao.deleteAsync() }
     }
 
     class BadCredentialsException: Exception()

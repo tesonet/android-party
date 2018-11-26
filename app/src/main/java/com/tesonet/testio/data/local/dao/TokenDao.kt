@@ -15,6 +15,9 @@ interface TokenDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(token: Token)
+
+    @Query("DELETE FROM token")
+    fun delete()
 }
 
 suspend fun TokenDao.selectAsync()
@@ -22,3 +25,6 @@ suspend fun TokenDao.selectAsync()
 
 suspend fun TokenDao.insertAsync(token: Token)
         = GlobalScope.async { insert(token) }.await()
+
+suspend fun TokenDao.deleteAsync()
+        = GlobalScope.async { delete() }.await()

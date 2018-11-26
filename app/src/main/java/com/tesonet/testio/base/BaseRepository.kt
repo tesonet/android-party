@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 
 abstract class BaseRepository<T> {
 
-    protected val data = MutableLiveData<Resource<T>>()
+    protected var data = MutableLiveData<Resource<T>>()
     private var loaded = false
 
     protected fun loadOrGetCached(loadAction: suspend () -> T): LiveData<Resource<T>> {
@@ -40,5 +40,10 @@ abstract class BaseRepository<T> {
 
     protected fun setValue(value: T) {
         data.value = Resource.success(value)
+    }
+
+    protected fun unsetValue() {
+        data = MutableLiveData()
+        loaded = false
     }
 }

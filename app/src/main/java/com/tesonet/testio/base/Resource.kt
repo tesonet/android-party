@@ -8,7 +8,7 @@ class Resource<T> private constructor(
 ) {
 
     enum class Status {
-        SUCCESS, ERROR, LOADING
+        SUCCESS, ERROR
     }
 
     companion object {

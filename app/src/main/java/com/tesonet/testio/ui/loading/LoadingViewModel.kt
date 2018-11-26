@@ -26,13 +26,15 @@ class LoadingViewModel @Inject constructor(
         }
     }
 
-    fun getServers(): LiveData<Resource<List<Server>>> = Transformations.switchMap(token) {
+    private val servers = Transformations.switchMap(token) {
         if (it.status == Resource.Status.ERROR) {
             mapError(it)
         } else {
             serverRepository.getServers(it.data!!)
         }
     }
+
+    fun getServers(): LiveData<Resource<List<Server>>> = servers
 
     private fun <I, O> mapError(input: Resource<I>): LiveData<Resource<O>> {
         val liveData = MutableLiveData<Resource<O>>()

@@ -29,6 +29,10 @@ class ServerRepository @Inject constructor(
         }
     }
 
+    fun getServersFromLocalDb() = loadOrGetCached {
+        fetchServersFromLocalDb()
+    }
+
     private suspend fun fetchServersFromRemote(token: Token): List<Server> {
         val apiServers = api.getServers(TokenMapper.map(token)).await()
         val servers = apiServers.mapIndexed { index, server ->  ServerMapper.map(server, index) }
@@ -38,4 +42,9 @@ class ServerRepository @Inject constructor(
     }
 
     private suspend fun fetchServersFromLocalDb() = serverDao.selectAllAsync()
+
+    fun deleteAllFromLocalDb() {
+        unsetValue()
+        tryRun { serverDao.deleteAllAsync() }
+    }
 }

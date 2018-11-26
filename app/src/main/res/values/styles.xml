@@ -26,4 +26,19 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="HeaderText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">@dimen/servers_header_text_size</item>
+    </style>
+
+    <style name="ServersListItemText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/xdark_grey</item>
+        <item name="android:textSize">@dimen/servers_list_item_text_size</item>
+    </style>
+
 </resources>

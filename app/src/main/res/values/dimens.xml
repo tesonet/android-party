@@ -9,9 +9,27 @@
     <dimen name="button_padding">18dp</dimen>
     <dimen name="button_text_size">14sp</dimen>
 
+    <!-- LOGIN -->
     <dimen name="login_logo_margin_top_bottom">120dp</dimen>
     <dimen name="login_spacing">12dp</dimen>
 
+    <!-- LOADING -->
     <dimen name="loading_height">128dp</dimen>
+
+    <!-- SERVERS LIST -->
+    <dimen name="servers_side_margin">16dp</dimen>
+    <dimen name="servers_top_margin">24dp</dimen>
+
+    <dimen name="servers_logo_height">24dp</dimen>
+    <dimen name="servers_logout_height">20dp</dimen>
+
+    <dimen name="servers_header_height">48dp</dimen>
+    <dimen name="servers_header_margin_top">16dp</dimen>
+    <dimen name="servers_header_shadow">24dp</dimen>
+    <dimen name="servers_header_text_size">14sp</dimen>
+
+    <dimen name="servers_list_padding_top">16dp</dimen>
+    <dimen name="servers_list_item_text_size">16sp</dimen>
+    <dimen name="servers_list_item_margin_top_bottom">16dp</dimen>
 
 </resources>
