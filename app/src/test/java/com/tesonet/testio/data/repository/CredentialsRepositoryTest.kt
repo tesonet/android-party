@@ -7,11 +7,9 @@ import com.tesonet.testio.data.local.dao.CredentialsDao
 import com.tesonet.testio.data.local.entity.Credentials
 import com.tesonet.testio.util.asynclauncher.BlockingAsyncLauncher
 import junit.framework.TestCase.assertEquals
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
-import org.mockito.MockitoAnnotations
 
 
 class CredentialsRepositoryTest {
@@ -30,15 +28,8 @@ class CredentialsRepositoryTest {
         on { select() } doThrow sampleException
     }
 
-    private lateinit var credentialsRepository: CredentialsRepository
-    private lateinit var errorCredentialsRepository: CredentialsRepository
-
-    @Before
-    fun setUp() {
-        MockitoAnnotations.initMocks(this)
-        credentialsRepository = CredentialsRepository(credentialsDao, BlockingAsyncLauncher())
-        errorCredentialsRepository = CredentialsRepository(errorCredentialsDao, BlockingAsyncLauncher())
-    }
+    private val credentialsRepository = CredentialsRepository(credentialsDao, BlockingAsyncLauncher())
+    private val errorCredentialsRepository = CredentialsRepository(errorCredentialsDao, BlockingAsyncLauncher())
 
     @Test
     fun getCredentials_success() {
