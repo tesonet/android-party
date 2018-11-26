@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <View
+        android:id="@+id/top_background"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/light_grey"
+        app:layout_constraintBottom_toTopOf="@+id/header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/servers_logo_height"
+        android:layout_marginStart="@dimen/servers_side_margin"
+        android:layout_marginTop="@dimen/servers_top_margin"
+        android:adjustViewBounds="true"
+        android:src="@drawable/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/servers_logout_height"
+        android:layout_marginEnd="@dimen/servers_side_margin"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_logout"
+        app:layout_constraintBottom_toBottomOf="@+id/logo"
+        app:layout_constraintEnd_toEndOf="@+id/top_background"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
+
+    <FrameLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/servers_header_height"
+        android:layout_marginTop="@dimen/servers_header_margin_top"
+        android:background="@color/white"
+        android:outlineSpotShadowColor="@color/shadow"
+        app:layout_constraintTop_toBottomOf="@+id/logo">
+
+        <TextView
+            style="@style/HeaderText"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="@dimen/servers_side_margin"
+            android:text="@string/server" />
+
+        <TextView
+            style="@style/HeaderText"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="@dimen/servers_side_margin"
+            android:text="@string/distance" />
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/servers_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/servers_list_padding_top"
+        android:layout_marginStart="@dimen/servers_side_margin"
+        android:layout_marginEnd="@dimen/servers_side_margin"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

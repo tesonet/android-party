@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/servers_list_item_margin_top_bottom"
+    android:layout_marginBottom="@dimen/servers_list_item_margin_top_bottom">
+
+    <TextView
+        android:id="@+id/server"
+        style="@style/ServersListItemText"
+        android:layout_gravity="start|center_vertical" />
+
+    <TextView
+        android:id="@+id/distance"
+        style="@style/ServersListItemText"
+        android:layout_gravity="end|center_vertical" />
+
+</FrameLayout>

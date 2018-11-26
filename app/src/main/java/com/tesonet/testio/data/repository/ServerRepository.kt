@@ -1,0 +1,52 @@
+package com.tesonet.testio.data.repository
+
+import com.tesonet.testio.base.BaseRepository
+import com.tesonet.testio.data.local.dao.ServerDao
+import com.tesonet.testio.data.local.dao.deleteAllAsync
+import com.tesonet.testio.data.local.dao.insertManyAsync
+import com.tesonet.testio.data.local.dao.selectAllAsync
+import com.tesonet.testio.data.local.entity.Server
+import com.tesonet.testio.data.local.entity.Token
+import com.tesonet.testio.data.mapper.ServerMapper
+import com.tesonet.testio.data.mapper.TokenMapper
+import com.tesonet.testio.data.remote.PlaygroundApi
+import com.tesonet.testio.util.asynclaucher.AsyncLauncher
+import com.tesonet.testio.util.networkavailability.NetworkAvailability
+import javax.inject.Inject
+import javax.inject.Singleton
+
+@Singleton
+class ServerRepository @Inject constructor(
+    private val api: PlaygroundApi,
+    private val serverDao: ServerDao,
+    private val networkAvailability: NetworkAvailability,
+    asyncLauncher: AsyncLauncher
+): BaseRepository<List<Server>>(asyncLauncher) {
+
+    fun getServers(token: Token) = loadOrGetCached {
+        if (networkAvailability.isNetworkAvailable()) {
+            fetchServersFromRemote(token)
+        } else {
+            fetchServersFromLocalDb()
+        }
+    }
+
+    fun getServersFromLocalDb() = loadOrGetCached {
+        fetchServersFromLocalDb()
+    }
+
+    private suspend fun fetchServersFromRemote(token: Token): List<Server> {
+        val apiServers = api.getServers(TokenMapper.map(token)).await()
+        val servers = apiServers.mapIndexed { index, server ->  ServerMapper.map(server, index) }
+        serverDao.deleteAllAsync()
+        serverDao.insertManyAsync(servers)
+        return servers
+    }
+
+    private suspend fun fetchServersFromLocalDb() = serverDao.selectAllAsync()
+
+    fun deleteAllFromLocalDb() {
+        unsetValue()
+        tryRun { serverDao.deleteAllAsync() }
+    }
+}
