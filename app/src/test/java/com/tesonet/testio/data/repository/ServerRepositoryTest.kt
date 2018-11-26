@@ -98,7 +98,7 @@ class ServerRepositoryTest {
         networkAvailableRepository.getServers(sampleToken)
 
         // Verify that API is called 2 times: for initial fetch and after deletion
-        // If entries aren't deleted API is called only 1 time because of caching
+        // If entries aren't deleted, API is called only 1 time because of caching
         verify(api, times(2)).getServers(any())
     }
 }
