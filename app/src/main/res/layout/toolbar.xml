@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorToolbarBackground"
+    android:minHeight="?attr/actionBarSize"
+    android:paddingTop="@dimen/global_horizontal_padding"
+    app:contentInsetEnd="@dimen/global_vertical_padding"
+    app:contentInsetLeft="@dimen/global_vertical_padding"
+    app:contentInsetRight="@dimen/global_vertical_padding"
+    app:contentInsetStart="@dimen/global_vertical_padding">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/toolbar_logo_height"
+        android:layout_gravity="start|center_vertical"
+        android:scaleType="fitStart"
+        android:src="@drawable/logo_2" />
+
+    <ImageButton
+        android:id="@+id/log_out_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center_vertical"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_ico_logout" />
+</android.support.v7.widget.Toolbar>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.LoginActivity">
+
+    <ImageView
+        android:layout_width="@dimen/login_logo_width"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_1"
+        app:layout_constraintBottom_toBottomOf="@+id/usernameEditTextLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/usernameEditTextLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/login_edittext_vertical_margin"
+        android:layout_marginBottom="@dimen/login_edittext_vertical_margin"
+        android:background="@drawable/login_edit_text"
+        android:orientation="horizontal"
+        android:padding="@dimen/login_edit_text_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:scaleType="center"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:src="@drawable/ic_ico_username" />
+
+        <EditText
+            android:id="@+id/usernameEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="@dimen/login_edittext_vertical_margin"
+            android:layout_marginLeft="@dimen/login_edittext_vertical_margin"
+            android:background="@null"
+            android:ems="12"
+            android:hint="@string/login_hint_username"
+            android:inputType="textPersonName"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/passwordEditTextLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/login_edittext_vertical_margin"
+        android:layout_marginBottom="@dimen/login_edittext_vertical_margin"
+        android:background="@drawable/login_edit_text"
+        android:orientation="horizontal"
+        android:padding="@dimen/login_edit_text_padding"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameEditTextLayout">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:scaleType="center"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:src="@drawable/ic_ico_lock" />
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="@dimen/login_edittext_vertical_margin"
+            android:layout_marginLeft="@dimen/login_edittext_vertical_margin"
+            android:background="@null"
+            android:ems="12"
+            android:hint="@string/login_hint_password"
+            android:inputType="textPassword"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/login_edittext_vertical_margin"
+        android:background="@drawable/login_button"
+        android:text="@string/log_in"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@+id/passwordEditTextLayout"
+        app:layout_constraintRight_toRightOf="@+id/passwordEditTextLayout"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout" />
+
+</android.support.constraint.ConstraintLayout>

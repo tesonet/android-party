@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/list_row_horizontal_padding"
+    android:paddingBottom="@dimen/list_row_horizontal_padding">
+
+    <TextView
+        android:id="@+id/nameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.75"
+        android:text="Finland"
+        android:textSize="@dimen/server_list_row_text"
+        app:fontFamily="sans-serif-light"
+        tools:ignore="HardcodedText" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_weight="0.25"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/distanceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/global_word_margin"
+            android:layout_marginRight="@dimen/global_word_margin"
+            android:text="870"
+            android:textSize="@dimen/server_list_row_text"
+            app:fontFamily="sans-serif-light"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/unitTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unit_km"
+            android:textSize="@dimen/server_list_row_text"
+            app:fontFamily="sans-serif-light" />
+    </LinearLayout>
+</LinearLayout>

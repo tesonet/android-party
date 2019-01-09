@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17.5" height="20" viewBox="0 0 17.5 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ccc;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="ico-username" class="cls-1" d="M150,1339a5,5,0,0,0-5,5v1.25a5,5,0,0,0,10,0V1344A5,5,0,0,0,150,1339Zm5.045,11.78a7.445,7.445,0,0,1-10.09,0c-2.2.72-3.705,2.36-3.705,4.47V1359h17.5v-3.75C158.75,1353.14,157.246,1351.5,155.045,1350.78Z" transform="translate(-141.25 -1339)"/>
+</svg>
