@@ -22,9 +22,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.LoadingActivity"
-            android:theme="@style/CustomIntroTheme" />
-        <activity
             android:name=".activities.ServersActivity"
             android:theme="@style/CustomLightTheme" />
     </application>

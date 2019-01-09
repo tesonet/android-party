@@ -1,6 +1,5 @@
 package lt.zilinskas.marius.testio.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -21,7 +20,6 @@ import io.reactivex.schedulers.Schedulers;
 import lombok.Getter;
 import lombok.Setter;
 import lt.zilinskas.marius.testio.R;
-import lt.zilinskas.marius.testio.activities.LoadingActivity;
 import lt.zilinskas.marius.testio.api.entities.Token;
 import lt.zilinskas.marius.testio.api.entities.UserInfo;
 import lt.zilinskas.marius.testio.utils.StringUtils;
@@ -87,7 +85,7 @@ public class LoginFragment extends BaseFragment {
             @Override
             public void onNext(Token token) {
                 testioApplication.getSharedPreferences().setToken(token);
-                startLoadingActivity();
+                startLoadingFragment();
             }
 
             @Override
@@ -105,14 +103,14 @@ public class LoginFragment extends BaseFragment {
         };
     }
 
-    private void startLoadingActivity() {
-        if (getContext() == null || getActivity() == null) {
+    private void startLoadingFragment() {
+        if (getActivity() == null) {
             return;
         }
 
-        Intent intent = new Intent(getContext(), LoadingActivity.class);
-        getContext().startActivity(intent);
-        getActivity().finish();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, new LoadingFragment(), LoadingFragment.class.getName())
+                .commit();
     }
 
 
