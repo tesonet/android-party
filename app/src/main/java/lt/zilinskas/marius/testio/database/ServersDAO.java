@@ -72,7 +72,7 @@ public class ServersDAO {
                 servers.add(server);
             } while (serversCursor.moveToNext());
         } catch (Exception e) {
-            Log.e(TAG, "Unable to getAlExpenses", e);
+            Log.e(TAG, "Unable to getAllServers", e);
         }
 
         return servers;

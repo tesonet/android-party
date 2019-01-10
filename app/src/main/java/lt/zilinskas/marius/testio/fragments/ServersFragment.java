@@ -10,7 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -75,13 +77,19 @@ public class ServersFragment extends BaseFragment {
 
     private LoadedData loadDataFromDb(DatabaseHelper databaseHelper) {
         loadedData = new LoadedData();
-        loadedData.setServers(databaseHelper.getExpensesDAO().getAllServers());
+        loadedData.setServers(databaseHelper.getServersDAO().getAllServers());
         return loadedData;
     }
 
     private void dataLoaded(LoadedData loadedData) {
         this.loadedData = loadedData;
-        populateAdapter();
+
+        if (loadedData.getServers().isEmpty()) {
+            customViewHolder.noServersText.setVisibility(View.VISIBLE);
+        } else {
+            customViewHolder.noServersText.setVisibility(View.GONE);
+            populateAdapter();
+        }
     }
 
     private void populateAdapter() {
@@ -120,6 +128,7 @@ public class ServersFragment extends BaseFragment {
     private class CustomViewHolder {
         private View parent;
         private RecyclerView serversList;
+        private TextView noServersText;
 
         CustomViewHolder(@NonNull View parent) {
             this.parent = parent;
@@ -128,6 +137,7 @@ public class ServersFragment extends BaseFragment {
 
         private void initViews() {
             serversList = parent.findViewById(R.id.serversList);
+            noServersText = parent.findViewById(R.id.noServersText);
         }
     }
 }

@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,6 +84,8 @@ public class LoadingFragment extends BaseFragment {
             @Override
             public void onError(Throwable e) {
                 Toast.makeText(getContext(), getString(R.string.unable_to_fetch_servers), Toast.LENGTH_LONG).show();
+                // Delete users token and return user to login screen to try again
+                startLoginFragment();
             }
 
             @Override
@@ -93,7 +97,7 @@ public class LoadingFragment extends BaseFragment {
     private void saveServers(List<Server> servers) {
         Disposable disposable = Completable
                 .fromAction(() ->
-                        testioApplication.getDatabaseHelper().getExpensesDAO().insertOrReplace(servers, true))
+                        testioApplication.getDatabaseHelper().getServersDAO().insertOrReplace(servers, true))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::startServersActivity);
@@ -108,5 +112,16 @@ public class LoadingFragment extends BaseFragment {
         Intent intent = new Intent(getContext(), ServersActivity.class);
         getContext().startActivity(intent);
         getActivity().finish();
+    }
+
+    private void startLoginFragment() {
+        if (getActivity() == null) {
+            return;
+        }
+
+        testioApplication.getSharedPreferences().setToken(null);
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, new LoginFragment(), LoginFragment.class.getName())
+                .commit();
     }
 }

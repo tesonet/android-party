@@ -34,7 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public ServersDAO getExpensesDAO() {
+    public ServersDAO getServersDAO() {
         if (serversDAO == null) {
             serversDAO = new ServersDAO(this);
         }

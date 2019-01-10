@@ -5,11 +5,12 @@
     <string name="log_in">Log In</string>
     <string name="fetching_the_list">Fetching the list…</string>
     <string name="unit_km">km</string>
-    <string name="unable_to_login">Unable to login</string>
-    <string name="incorrect_username_or_password">Either username or password is incorrect</string>
-    <string name="enter_username_and_password">Both username and password should be entered</string>
-    <string name="unable_to_fetch_servers">Unable to fetch servers</string>
+    <string name="unable_to_login">Unable to login.</string>
+    <string name="incorrect_username_or_password">Either username or password is incorrect.</string>
+    <string name="enter_username_and_password">Both username and password should be entered.</string>
+    <string name="unable_to_fetch_servers">Unable to fetch servers. Try again later.</string>
     <string name="server_header">SERVER</string>
     <string name="distance_header">DISTANCE</string>
-    <string name="unexpected_issue_occured">Unexpected issue occurred. Try again later</string>
+    <string name="unexpected_issue_occured">Unexpected issue occurred. Try again later.</string>
+    <string name="no_servers">There are no servers</string>
 </resources>

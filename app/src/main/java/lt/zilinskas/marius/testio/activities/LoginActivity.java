@@ -24,7 +24,7 @@ public class LoginActivity extends BaseActivity {
 
     private void jumpToOtherScreen() {
         // Jump to Servers activity if servers have already been downloaded
-        if (getTestioApplication().getDatabaseHelper().getExpensesDAO().hasObjects()) {
+        if (getTestioApplication().getDatabaseHelper().getServersDAO().hasObjects()) {
             Intent intent = new Intent(this, ServersActivity.class);
             startActivity(intent);
             finish();

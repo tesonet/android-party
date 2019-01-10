@@ -30,7 +30,7 @@ public class BaseActivity extends AppCompatActivity {
 
     protected void logOut() {
         getTestioApplication().getSharedPreferences().setToken(null);
-        getTestioApplication().getDatabaseHelper().getExpensesDAO().deleteAllServers();
+        getTestioApplication().getDatabaseHelper().getServersDAO().deleteAllServers();
 
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
