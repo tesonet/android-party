@@ -23,7 +23,7 @@ class WalkthroughTest {
     fun startMainActivity() {
         val intent = context.packageManager.getLaunchIntentForPackage(APPLICATION_ID)
         context.startActivity(intent)
-        wait1(hasObject(By.pkg(APPLICATION_ID).depth(0)))
+        //wait1(hasObject(By.pkg(APPLICATION_ID).depth(0)))
     }
 
     @Test

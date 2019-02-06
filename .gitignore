@@ -8,7 +8,9 @@ local.properties
 # Views screenshots
 captures/
 # Built apk
-release/
-.*/
+.*/**/*
 build/
+gradle*
+!gradle.properties
 !.idea/dictionaries/
+!.idea/dictionaries/dmytrov.xml
