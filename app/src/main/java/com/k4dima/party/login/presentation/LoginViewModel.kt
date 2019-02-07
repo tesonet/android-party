@@ -16,8 +16,8 @@ constructor(private val useCase: UseCase<Array<String>, String>) : ViewModel() {
     val error = MutableLiveData<String>()
     val token = MutableLiveData<String>()
     private var disposables = CompositeDisposable()
-    var username = "tesonet"
-    var password = "partyanimal"
+    var username = ""
+    var password = ""
     fun login(@Suppress("UNUSED_PARAMETER") button: View) {
         useCase.data(arrayOf(username, password))
                 .subscribe({ token.postValue(it) }, {
