@@ -3,6 +3,7 @@ package com.example.partyapp;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -111,10 +112,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void getServerList(String token) {
+        final Intent intent = new Intent(this, ServersActivity.class);
         new GetServersTask(token, new GetServersTask.AsyncResponse() {
             @Override
-            public void processFinish(List<Server> serverList) {
-
+            public void processFinish(ArrayList<Server> serverList) {
+                intent.putExtra(ServersActivity.keyServers, serverList);
+                startActivity(intent);
             }
         }).execute();
     }

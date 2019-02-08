@@ -1,6 +1,8 @@
 package com.example.partyapp;
 
-public class Server {
+import java.io.Serializable;
+
+public class Server implements Serializable {
     public String name;
     public int distance;
 

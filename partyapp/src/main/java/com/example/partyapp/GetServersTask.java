@@ -19,13 +19,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class GetServersTask extends AsyncTask<String, Void, List<Server>> {
+public class GetServersTask extends AsyncTask<String, Void, ArrayList<Server>> {
 
     private static String baseUrl = "http://playground.tesonet.lt/v1/";
     private String token;
 
     public interface AsyncResponse {
-        void processFinish(List<Server> serverList);
+        void processFinish(ArrayList<Server> serverList);
     }
 
     public AsyncResponse delegate = null;
@@ -36,12 +36,12 @@ public class GetServersTask extends AsyncTask<String, Void, List<Server>> {
     }
 
     @Override
-    protected void onPostExecute(List<Server> serverList) {
+    protected void onPostExecute(ArrayList<Server> serverList) {
         delegate.processFinish(serverList);
     }
 
     @Override
-    protected List<Server> doInBackground(String... args) {
+    protected ArrayList<Server> doInBackground(String... args) {
         try {
 
 
@@ -90,8 +90,8 @@ public class GetServersTask extends AsyncTask<String, Void, List<Server>> {
         return null;
     }
 
-    private List<Server> parseJson(InputStream inputStream) {
-        List<Server> serverList = new ArrayList<>();
+    private ArrayList<Server> parseJson(InputStream inputStream) {
+        ArrayList<Server> serverList = new ArrayList<>();
         try {
             JsonReader jsonReader = new JsonReader(new InputStreamReader(inputStream, "UTF-8"));
             jsonReader.beginArray();
