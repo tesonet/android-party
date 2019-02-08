@@ -102,12 +102,21 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void processFinish(String token){
-                int a = 5;
+                getServerList(token);
+                mProgressView.setVisibility(View.GONE);
+                mLoginFormView.setVisibility(View.VISIBLE);
             }
-        }).execute(mEmailView.getText().toString(), mPasswordView.getText().toString());
-        mProgressView.setVisibility(View.GONE);
-        mLoginFormView.setVisibility(View.VISIBLE);
+//        }).execute(mEmailView.getText().toString(), mPasswordView.getText().toString());
+        }).execute("tesonet", "partyanimal");
+    }
 
+    private void getServerList(String token) {
+        new GetServersTask(token, new GetServersTask.AsyncResponse() {
+            @Override
+            public void processFinish(List<Server> serverList) {
+
+            }
+        }).execute();
     }
 
 }

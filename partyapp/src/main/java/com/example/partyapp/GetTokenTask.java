@@ -1,6 +1,7 @@
 package com.example.partyapp;
 
 import android.os.AsyncTask;
+import android.util.JsonReader;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,11 +10,14 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GetTokenTask extends AsyncTask<String, Void, String> {
 
@@ -66,17 +70,25 @@ public class GetTokenTask extends AsyncTask<String, Void, String> {
             int code = httpCon.getResponseCode();
             String msg = httpCon.getResponseMessage();
             InputStream is = httpCon.getInputStream();
-            BufferedInputStream bis = new BufferedInputStream(is);
-            ByteArrayOutputStream buf = new ByteArrayOutputStream();
-            int result2 = bis.read();
-            while (result2 != -1) {
-                buf.write((byte) result2);
-                result2 = bis.read();
-            }
-            result = buf.toString();
-            return result;
+            return parseJson(is);
         } catch (Exception e) {
             int a = 4;
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    private String parseJson(InputStream inputStream) {
+        try {
+            JsonReader jsonReader = new JsonReader(new InputStreamReader(inputStream, "UTF-8"));
+            jsonReader.beginObject();
+            if (jsonReader.hasNext()) {
+                String key = jsonReader.nextName();
+                if (key.equals("token")) {
+                    return jsonReader.nextString();
+                }
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return "";
