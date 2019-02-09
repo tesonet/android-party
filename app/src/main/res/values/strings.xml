@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">AndroidParty</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button_text">Log In</string>
+    
+    <string name="image_des_logo">testio.</string>
+    
+    <string name="error_empty_username">Username can not be empty</string>
+    <string name="error_empty_password">Password can not be empty</string>
+    <string name="error_internet_connection">Check your internet connection and, try again later</string>
+    <string name="error_server_error">Server error</string>
+
+    <string name="units_distance">km</string>
+
+    <string name="title_server">Server</string>
+    <string name="title_distance">Distance</string>
 </resources>

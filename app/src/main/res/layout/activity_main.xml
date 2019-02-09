@@ -12,12 +12,13 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:elevation="10dp">
 
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorAccent"
+            android:background="@color/md_grey_300"
             android:contentInsetStart="0dp"
             android:contentInsetLeft="0dp"
             android:contentInsetEnd="0dp"
@@ -25,21 +26,29 @@
             app:contentInsetEnd="0dp"
             app:contentInsetLeft="0dp"
             app:contentInsetRight="0dp"
-            app:contentInsetStart="0dp">
+            app:contentInsetStart="0dp"
+            tools:ignore="UnusedAttribute">
 
             <ImageView
                 android:id="@+id/ivIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_test_icon"
-                android:layout_gravity="start"/>
+                app:srcCompat="@drawable/logo_black"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_gravity="start"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:id="@+id/ivLogOut"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_gravity="end"
-                app:srcCompat="@drawable/ic_test_icon"/>
+                android:layout_marginEnd="2dp"
+                android:layout_marginRight="2dp"
+                android:rotation="180"
+                app:srcCompat="@drawable/ic_exit"
+                tools:ignore="ContentDescription" />
 
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
@@ -63,24 +72,36 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:gravity="start"
-            android:text="Server" />
+            android:textColor="@color/md_grey_600"
+            android:text="@string/title_server" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:textColor="@color/md_grey_600"
             android:gravity="end"
-            android:text="Distance" />
+            android:text="@string/title_distance" />
 
     </FrameLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rcServers"
+    <LinearLayout
+        android:id="@+id/rcContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flTitlesContainer" />
+        app:layout_constraintTop_toBottomOf="@+id/flTitlesContainer">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcServers"
+            android:background="@drawable/rc_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>

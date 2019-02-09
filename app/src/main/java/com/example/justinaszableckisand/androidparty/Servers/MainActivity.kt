@@ -4,19 +4,21 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.widget.Toast
 import com.example.justinaszableckisand.androidparty.Constants
 import com.example.justinaszableckisand.androidparty.Login.LoginActivity
 import com.example.justinaszableckisand.androidparty.Models.Server
+import com.example.justinaszableckisand.androidparty.OnServerItemsClick
 import com.example.justinaszableckisand.androidparty.R
 import com.example.justinaszableckisand.androidparty.Utils.ServersAdapter
 import com.irozon.sneaker.Sneaker
 import es.dmoral.prefs.Prefs
 import kotlinx.android.synthetic.main.activity_main.*
+import spencerstudios.com.bungeelib.Bungee
 
-class MainActivity : AppCompatActivity(), ServersContract.View {
-
-    lateinit var mPresenter : ServersContract.Presenter
-    lateinit var mToken : String
+class MainActivity : AppCompatActivity(), ServersContract.View, OnServerItemsClick {
+    private lateinit var mPresenter : ServersContract.Presenter
+    private lateinit var mToken : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +38,8 @@ class MainActivity : AppCompatActivity(), ServersContract.View {
         ivLogOut.setOnClickListener {
             Prefs.with(baseContext).write(Constants.TOKEN_PREFS,"")
             startActivity(Intent(this,LoginActivity::class.java))
+            Bungee.slideUp(this)
+            finish()
         }
     }
 
@@ -45,26 +49,40 @@ class MainActivity : AppCompatActivity(), ServersContract.View {
         } else startActivity(Intent(this,LoginActivity::class.java))
     }
 
-    override fun onSuccess(serversList: List<Server>) {
-        rcServers.adapter = ServersAdapter(this,serversList)
+    private fun showToast(title : String){
+        Toast.makeText(this,title,Toast.LENGTH_SHORT).show()
     }
 
-    override fun setPresenter(presenter: ServersContract.Presenter?) {
-        mPresenter = presenter!!
+    override fun onSuccess(serversList: List<Server>) {
+        rcServers.adapter = ServersAdapter(this,serversList,this)
+    }
+
+    override fun setPresenter(presenter: ServersContract.Presenter) {
+        mPresenter = presenter
+    }
+
+    override fun onError(errorMessage: String) {
+        Sneaker.with(this).setTitle(errorMessage).sneakError()
     }
 
     override fun onError(errorResourceId: Int) {
         when (errorResourceId) {
             401 -> {
                 startActivity(Intent(this,LoginActivity::class.java))
+                Bungee.slideUp(this)
+                finish()
             }
             404 -> {
-                Sneaker.with(this).setTitle("Server error").sneakError()
+                Sneaker.with(this).setTitle(getString(R.string.error_server_error)).sneakError()
             }
         }
     }
 
-    override fun onError(errorMessage: String?) {
-        Sneaker.with(this).setTitle(errorMessage).sneakError()
+    override fun onServerClick(server: Server) {
+        showToast(server.name!!)
+    }
+
+    override fun onDistanceClick(server: Server) {
+        showToast(server.distance.toString())
     }
 }

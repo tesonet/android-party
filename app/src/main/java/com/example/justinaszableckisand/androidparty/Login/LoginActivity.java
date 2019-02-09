@@ -1,6 +1,7 @@
 package com.example.justinaszableckisand.androidparty.Login;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -46,10 +47,10 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                 if(!etPassword.getText().toString().equals("")){
                     mPresenter.logIn(etUsername.getText().toString(),etPassword.getText().toString());
                 } else {
-                    Sneaker.with(LoginActivity.this).setTitle("Password can not be empty!").sneakError();
+                    Sneaker.with(LoginActivity.this).setTitle(getString(R.string.error_empty_password)).sneakError();
                 }
             } else {
-                Sneaker.with(LoginActivity.this).setTitle("Username can not be empty!").sneakError();
+                Sneaker.with(LoginActivity.this).setTitle(getString(R.string.error_empty_username)).sneakError();
             }
         });
     }
@@ -63,7 +64,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     public void onError(int errorResourceId) { }
 
     @Override
-    public void onError(String errorMessage) {
+    public void onError(@NonNull String errorMessage) {
         Sneaker.with(LoginActivity.this).setTitle(errorMessage).sneakError();
     }
 

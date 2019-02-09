@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="defaultCardElevation">10dp</dimen>
+    <dimen name="defaultCardCornerRadius">5dp</dimen>
+    <dimen name="defaultEditTextDrawablePadding">5dp</dimen>
+    <dimen name="defaultButtonTextsSize">14sp</dimen>
+</resources>
