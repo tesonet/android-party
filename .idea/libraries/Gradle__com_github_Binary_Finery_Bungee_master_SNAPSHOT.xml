@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.Binary-Finery:Bungee-master-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/Bungee-master-SNAPSHOT.aar/f84480fe49d9926b58fe92492d67696f/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/Bungee-master-SNAPSHOT.aar/f84480fe49d9926b58fe92492d67696f/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
