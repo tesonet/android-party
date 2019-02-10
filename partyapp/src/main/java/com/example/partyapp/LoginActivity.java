@@ -118,16 +118,18 @@ public class LoginActivity extends AppCompatActivity {
         new GetTokenTask(new GetTokenTask.AsyncResponse() {
 
             @Override
-            public void processFinish(String token) {
+            public void processFinish(final String token) {
                 if (token == "") {
                     runOnUiThread(new Runnable() {
                         public void run() {
-                            animateFormUp();
+                            //for some reason this only works sometimes, but in servers task works fine?..
+                            //animateFormUp();
                             Toast.makeText(LoginActivity.this, "Bad login", Toast.LENGTH_SHORT).show();
                         }
                     });
-                    return;
+//                    return;
                 }
+
                 getServerList(token);
             }
         }).execute(mEmailView.getText().toString(), mPasswordView.getText().toString());
@@ -137,17 +139,19 @@ public class LoginActivity extends AppCompatActivity {
     private void getServerList(String token) {
         final Intent intent = new Intent(this, ServersActivity.class);
         new GetServersTask(token, new GetServersTask.AsyncResponse() {
+
             @Override
             public void processFinish(final ArrayList<Server> serverList) {
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        animateFormUp();
-                        if (serverList == null) {
+                if (serverList == null) {
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            animateFormUp();
                             Toast.makeText(LoginActivity.this, "No servers", Toast.LENGTH_SHORT).show();
-                            return;
                         }
-                    }
-                });
+                    });
+                    return;
+                }
+
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {

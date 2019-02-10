@@ -66,14 +66,9 @@ public class GetTokenTask extends AsyncTask<String, Void, String> {
             os.close();  //don't forget to close the OutputStream
             httpCon.connect();
 
-            //read the inputstream and print it
-            String result;
-            int code = httpCon.getResponseCode();
-            String msg = httpCon.getResponseMessage();
             InputStream is = httpCon.getInputStream();
             return parseJson(is);
         } catch (Exception e) {
-            int a = 4;
             e.printStackTrace();
         }
         return "";

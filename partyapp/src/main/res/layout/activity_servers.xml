@@ -27,7 +27,8 @@
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
     <ListView
-        android:padding="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/servers_list_view"
