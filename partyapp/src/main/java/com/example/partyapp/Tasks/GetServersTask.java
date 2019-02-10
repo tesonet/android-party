@@ -1,18 +1,13 @@
-package com.example.partyapp;
+package com.example.partyapp.Tasks;
 
 
 import android.os.AsyncTask;
 import android.util.JsonReader;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.partyapp.Models.Server;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -28,7 +23,7 @@ public class GetServersTask extends AsyncTask<String, Void, ArrayList<Server>> {
         void processFinish(ArrayList<Server> serverList);
     }
 
-    public AsyncResponse delegate = null;
+    public AsyncResponse delegate;
 
     public GetServersTask(String token, AsyncResponse delegate) {
         this.delegate = delegate;
@@ -43,50 +38,20 @@ public class GetServersTask extends AsyncTask<String, Void, ArrayList<Server>> {
     @Override
     protected ArrayList<Server> doInBackground(String... args) {
         try {
-
-
+            //time to look at the loading dialog
+            Thread.sleep(1000);
             URL url = new URL(baseUrl + "servers");
             HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
-//            httpCon.setDoOutput(true);
             httpCon.setRequestMethod("GET");
             httpCon.setRequestProperty("Authorization", "Bearer " + token);
-//            httpCon.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-
-//            OutputStream os = null;
-//            os = httpCon.getOutputStream();
-//            OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
-//            JSONObject body = new JSONObject();
-//            try {
-//                body.put("username", args[0]);
-//                body.put("password", args[1]);
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//            osw.write(body.toString());
-//            osw.flush();
-//            osw.close();
-//            os.close();  //don't forget to close the OutputStream
-            Map<String, List<String>> headerFields = httpCon.getHeaderFields();
-
             httpCon.connect();
 
-            //read the inputstream and print it
-            String result;
-            int code = httpCon.getResponseCode();
-            String msg = httpCon.getResponseMessage();
             InputStream is = httpCon.getInputStream();
-//            BufferedInputStream bis = new BufferedInputStream(is);
-//            ByteArrayOutputStream buf = new ByteArrayOutputStream();
-//            int result2 = bis.read();
-//            while (result2 != -1) {
-//                buf.write((byte) result2);
-//                result2 = bis.read();
-//            }
-
             return parseJson(is);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return null;
     }
 

@@ -2,43 +2,29 @@ package com.example.partyapp;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.app.LoaderManager.LoaderCallbacks;
 
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
-
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.text.TextUtils;
-import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.io.IOException;
+import com.example.partyapp.Models.Server;
+import com.example.partyapp.Tasks.GetServersTask;
+import com.example.partyapp.Tasks.GetTokenTask;
+
 import java.util.ArrayList;
-import java.util.List;
-
-import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
@@ -46,40 +32,42 @@ import static android.Manifest.permission.READ_CONTACTS;
 public class LoginActivity extends AppCompatActivity {
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
+    private EditText mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+
+    private Boolean formHidden = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mEmailView = findViewById(R.id.email);
+        mPasswordView = findViewById(R.id.password);
+        mLoginFormView = findViewById(R.id.login_form);
+        mProgressView = findViewById(R.id.login_progress);
 
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
+        mProgressView.setVisibility(View.GONE);
+        mLoginFormView.setVisibility(View.VISIBLE);
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        Button mEmailSignInButton = findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
             }
         });
+        getSupportActionBar().hide();
+    }
 
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (formHidden) {
+            animateFormUp();
+        }
     }
 
     /**
@@ -95,29 +83,81 @@ public class LoginActivity extends AppCompatActivity {
 //        }
     }
 
+    private void animateFormDown() {
+        formHidden = true;
+        mLoginFormView.animate()
+                .translationY(mLoginFormView.getHeight())
+                .alpha(0.0f)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        mLoginFormView.setVisibility(View.GONE);
+                        mProgressView.setVisibility(View.VISIBLE);
+                    }
+                });
+    }
+
+    private void animateFormUp() {
+        formHidden = false;
+        mLoginFormView.setVisibility(View.VISIBLE);
+        mLoginFormView.animate()
+                .translationY(0)
+                .alpha(1.0f)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        mProgressView.setVisibility(View.GONE);
+                    }
+                });
+    }
+
     private void attemptLogin() {
-        String token = "";
-        mProgressView.setVisibility(View.VISIBLE);
-        mLoginFormView.setVisibility(View.GONE);
-        new GetTokenTask(new GetTokenTask.AsyncResponse(){
+        animateFormDown();
+        new GetTokenTask(new GetTokenTask.AsyncResponse() {
 
             @Override
-            public void processFinish(String token){
+            public void processFinish(String token) {
+                if (token == "") {
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            animateFormUp();
+                            Toast.makeText(LoginActivity.this, "Bad login", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    return;
+                }
                 getServerList(token);
-                mProgressView.setVisibility(View.GONE);
-                mLoginFormView.setVisibility(View.VISIBLE);
             }
-//        }).execute(mEmailView.getText().toString(), mPasswordView.getText().toString());
-        }).execute("tesonet", "partyanimal");
+        }).execute(mEmailView.getText().toString(), mPasswordView.getText().toString());
+//        }).execute("tesonet", "partyanimal");
     }
 
     private void getServerList(String token) {
         final Intent intent = new Intent(this, ServersActivity.class);
         new GetServersTask(token, new GetServersTask.AsyncResponse() {
             @Override
-            public void processFinish(ArrayList<Server> serverList) {
-                intent.putExtra(ServersActivity.keyServers, serverList);
-                startActivity(intent);
+            public void processFinish(final ArrayList<Server> serverList) {
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        animateFormUp();
+                        if (serverList == null) {
+                            Toast.makeText(LoginActivity.this, "No servers", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
+                });
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        intent.putExtra(ServersActivity.keyServers, serverList);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    }
+                }, 10);
+
+
             }
         }).execute();
     }

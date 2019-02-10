@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 27
     buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "com.example.partyapp"
-        minSdkVersion 15
-        targetSdkVersion 23
+        minSdkVersion 24
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
@@ -25,4 +25,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     implementation 'com.android.support:appcompat-v7:23.1.1'
     implementation 'com.android.support:design:23.1.1'
+
+    compile group: 'com.j256.ormlite', name: 'ormlite-core', version: '5.0'
+    compile group: 'com.j256.ormlite', name: 'ormlite-android', version: '5.0'
 }

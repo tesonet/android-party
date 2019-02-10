@@ -27,8 +27,11 @@
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
     <ListView
+        android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/servers_list_view"></ListView>
+        android:id="@+id/servers_list_view"
+        android:divider="#212121"
+        android:dividerHeight="1dp"/>
 
 </LinearLayout>

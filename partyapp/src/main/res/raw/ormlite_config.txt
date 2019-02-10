@@ -1,0 +1,23 @@
+#
+# generated on 2019/02/10 12:32:34
+#
+# --table-start--
+dataClass=com.example.partyapp.Models.Server
+tableName=server
+# --table-fields-start--
+# --field-start--
+fieldName=serverId
+columnName=server_id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=name
+columnName=name
+# --field-end--
+# --field-start--
+fieldName=distance
+columnName=distance
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################

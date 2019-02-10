@@ -1,14 +1,14 @@
-package com.example.partyapp;
+package com.example.partyapp.Adapters;
 
 import android.content.Context;
-import android.database.DataSetObserver;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.partyapp.Models.Server;
+import com.example.partyapp.R;
 
 import java.util.ArrayList;
 
@@ -45,7 +45,7 @@ public class ServersAdapter extends BaseAdapter {
         Server server = servers.get(position);
 
         nameTextView.setText(server.name);
-        distanceTextView.setText(String.valueOf(server.distance));
+        distanceTextView.setText(String.valueOf(server.distance) + " km");
 
         return view;
     }

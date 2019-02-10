@@ -1,5 +1,6 @@
-package com.example.partyapp;
+package com.example.partyapp.Tasks;
 
+import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.JsonReader;
 
@@ -49,7 +50,7 @@ public class GetTokenTask extends AsyncTask<String, Void, String> {
             httpCon.setRequestMethod("POST");
             httpCon.setRequestProperty("Content-Type", "application/json; charset=utf-8");
 
-            OutputStream os = null;
+            OutputStream os;
             os = httpCon.getOutputStream();
             OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
             JSONObject body = new JSONObject();
