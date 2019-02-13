@@ -1,9 +1,37 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="TestioTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+
+        <item name="editTextStyle">@style/MainEditTextStyle</item>
+        <item name="buttonStyle">@style/MainButtonStyle</item>
+        <item name="android:textViewStyle">@style/LoginTextViewStyle</item>
+
+        <item name="android:windowEnableSplitTouch">false</item>
+        <item name="android:splitMotionEvents">false</item>
+    </style>
+
+    <style name="MainButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:padding">24dp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:background">@drawable/main_button_background</item>
+    </style>
+
+    <style name="MainEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:padding">20dp</item>
+        <item name="android:drawablePadding">20dp</item>
+        <item name="android:background">@drawable/main_edit_text_background</item>
+        <item name="android:textColorHint">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="LoginTextViewStyle">
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
 </resources>

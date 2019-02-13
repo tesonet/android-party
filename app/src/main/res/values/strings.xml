@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Tesonet Application</string>
+    <string name="app_name">testio</string>
+
+    <string name="login_button_title">Log In</string>
+    <string name="login_username_title">Username</string>
+    <string name="login_password_title">Password</string>
+
+    <string name="login_loading_logging_in_title">Logging in</string>
+    <string name="login_loading_fetching_server_list_title">Fetching the list</string>
 </resources>
