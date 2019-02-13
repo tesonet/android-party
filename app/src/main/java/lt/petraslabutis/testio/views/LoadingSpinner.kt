@@ -17,6 +17,10 @@ class LoadingSpinner @JvmOverloads constructor(
 
     private var animator: ViewAnimator? = null
 
+    private companion object {
+        const val SPIN_DURATION = 2000L
+    }
+
     init {
         View.inflate(context, R.layout.view_loading_spinner, this)
     }
@@ -28,7 +32,7 @@ class LoadingSpinner @JvmOverloads constructor(
             .interpolator(LinearInterpolator())
             .rotation(-360F)
             .repeatCount(-1)
-            .duration(2000L)
+            .duration(SPIN_DURATION)
             .start()
     }
 

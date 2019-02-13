@@ -13,7 +13,7 @@
         android:theme="@style/TestioTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name="lt.petraslabutis.testio.MainActivity"
+            android:name="lt.petraslabutis.testio.activities.MainActivity"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

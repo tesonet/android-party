@@ -13,12 +13,22 @@ import lt.petraslabutis.testio.R
 import lt.petraslabutis.testio.TestioApplication
 import lt.petraslabutis.testio.extensions.*
 import lt.petraslabutis.testio.viewmodels.LoginViewModel
+import lt.petraslabutis.testio.viewmodels.NavigationViewModel
 import javax.inject.Inject
 
 class LoginFragment : BaseFragment() {
 
     @Inject
     lateinit var loginViewModel: LoginViewModel
+
+    @Inject
+    lateinit var navigationViewModel: NavigationViewModel
+
+    private var switchAnimation: ViewAnimator? = null
+
+    private companion object {
+        const val ALPHA_CHANGE_DURATION = 500L
+    }
 
     override fun inject() {
         TestioApplication.applicationComponent.inject(this@LoginFragment)
@@ -32,54 +42,60 @@ class LoginFragment : BaseFragment() {
                 passwordEditText.setText(BuildConfig.TEST_LOGIN_CREDENTIALS_PASSWORD)
             }
 
-            passwordEditText.onKeyboardDoneClick(true) {
+            passwordEditText.onKeyboardDoneClick {
                 loginButton.callOnClick()
             }.addTo(disposables)
 
             loginButton.onClick {
+                activity?.closeKeyboard()
                 startLoading()
                 loginViewModel
                     .login(usernameEditText.text.toString(), passwordEditText.text.toString())
                     .scheduleNetworkCall()
                     .subscribeBy(onNext = {
-                        println("token: " + it.token)
+                        switchAnimation?.cancel()
+                        navigationViewModel.replaceTopFragment(ServerListFragment())
                     }, onError = {
                         it.printStackTrace()
+                        stopLoading()
                     }).addTo(disposables)
             }.addTo(disposables)
         }
 
     fun startLoading() {
         loginButton.isClickable = false
-        ViewAnimator
+        switchAnimation = ViewAnimator
             .animate(loginHolder)
-            .alpha(loginHolder.alpha, 0F)
-            .onStop { loginHolder.gone() }
-            .duration(300L)
+            .alpha(loginHolder?.alpha ?: 0F, 0F)
+            .onStop { loginHolder?.gone() }
+            .duration(ALPHA_CHANGE_DURATION)
             .thenAnimate(loadingHolder)
-            .alpha(loadingHolder.alpha, 1F)
+            .alpha(loadingHolder?.alpha ?: 0F, 1F)
             .onStart {
-                loadingHolder.visible()
-                progressBar.start()
+                loadingHolder?.visible()
+                progressBar?.start()
             }
-            .duration(300)
+            .duration(ALPHA_CHANGE_DURATION)
             .start()
     }
 
     fun stopLoading() {
         loginButton.isClickable = true
-        ViewAnimator
+        switchAnimation = ViewAnimator
             .animate(loadingHolder)
-            .alpha(loadingHolder.alpha, 0F)
-            .onStop { loadingHolder.gone() }
-            .duration(300L)
-            .thenAnimate(loginHolder)
-            .alpha(loginHolder.alpha, 1F)
-            .onStart {
-                loginHolder.visible()
-                progressBar.start()
+            .alpha(loadingHolder?.alpha ?: 0F, 0F)
+            .onStop {
+                progressBar?.stop()
+                loadingHolder?.gone()
             }
-            .duration(300)
+            .duration(ALPHA_CHANGE_DURATION)
+            .thenAnimate(loginHolder)
+            .alpha(loginHolder?.alpha ?: 0F, 1F)
+            .onStart {
+                loginHolder?.visible()
+                loadingHolder?.alpha = 0F
+            }
+            .duration(ALPHA_CHANGE_DURATION)
             .start()
     }
 

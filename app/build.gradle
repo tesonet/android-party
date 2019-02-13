@@ -72,7 +72,7 @@ dependencies {
 
     implementation 'com.scottyab:secure-preferences-lib:0.1.4'
 
-    implementation 'com.github.florent37:viewanimator:1.1.0'
+    implementation 'com.github.florent37:viewanimator:1.1.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
