@@ -257,4 +257,6 @@ gradle-app.setting
 ### Gradle Patch ###
 **/build/
 
+*.idea
+
 # End of https://www.gitignore.io/api/kotlin,gradle,android,windows,androidstudio
