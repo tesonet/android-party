@@ -12,14 +12,14 @@ import lt.petraslabutis.testio.BuildConfig
 import lt.petraslabutis.testio.R
 import lt.petraslabutis.testio.TestioApplication
 import lt.petraslabutis.testio.extensions.*
-import lt.petraslabutis.testio.viewmodels.LoginViewModel
+import lt.petraslabutis.testio.viewmodels.AuthenticationViewModel
 import lt.petraslabutis.testio.viewmodels.NavigationViewModel
 import javax.inject.Inject
 
 class LoginFragment : BaseFragment() {
 
     @Inject
-    lateinit var loginViewModel: LoginViewModel
+    lateinit var authenticationViewModel: AuthenticationViewModel
 
     @Inject
     lateinit var navigationViewModel: NavigationViewModel
@@ -41,26 +41,29 @@ class LoginFragment : BaseFragment() {
                 usernameEditText.setText(BuildConfig.TEST_LOGIN_CREDENTIALS_USERNAME)
                 passwordEditText.setText(BuildConfig.TEST_LOGIN_CREDENTIALS_PASSWORD)
             }
-
-            passwordEditText.onKeyboardDoneClick {
-                loginButton.callOnClick()
-            }.addTo(disposables)
-
-            loginButton.onClick {
-                activity?.closeKeyboard()
-                startLoading()
-                loginViewModel
-                    .login(usernameEditText.text.toString(), passwordEditText.text.toString())
-                    .scheduleNetworkCall()
-                    .subscribeBy(onNext = {
-                        switchAnimation?.cancel()
-                        navigationViewModel.replaceTopFragment(ServerListFragment())
-                    }, onError = {
-                        it.printStackTrace()
-                        stopLoading()
-                    }).addTo(disposables)
-            }.addTo(disposables)
         }
+
+    override fun onStart() {
+        super.onStart()
+        passwordEditText.onKeyboardDoneClick {
+            loginButton.callOnClick()
+        }.addTo(disposables)
+
+        loginButton.onClick {
+            activity?.closeKeyboard()
+            startLoading()
+            authenticationViewModel
+                .login(usernameEditText.text.toString(), passwordEditText.text.toString())
+                .scheduleNetworkCall()
+                .subscribeBy(onNext = {
+                    switchAnimation?.cancel()
+                    navigationViewModel.replaceTopFragment(ServerListFragment())
+                }, onError = {
+                    it.printStackTrace()
+                    stopLoading()
+                }).addTo(disposables)
+        }.addTo(disposables)
+    }
 
     fun startLoading() {
         loginButton.isClickable = false

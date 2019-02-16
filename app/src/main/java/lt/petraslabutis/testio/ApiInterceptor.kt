@@ -1,7 +1,7 @@
 package lt.petraslabutis.testio
 
 import com.securepreferences.SecurePreferences
-import lt.petraslabutis.testio.viewmodels.LoginViewModel.Companion.AUTH_TOKEN
+import lt.petraslabutis.testio.viewmodels.AuthenticationViewModel.Companion.AUTH_TOKEN
 import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject

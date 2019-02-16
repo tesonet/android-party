@@ -12,9 +12,12 @@ import lt.petraslabutis.testio.R
 import lt.petraslabutis.testio.TestioApplication
 import lt.petraslabutis.testio.adapters.ServerListAdapter
 import lt.petraslabutis.testio.entities.ServerItem
+import lt.petraslabutis.testio.extensions.onClick
 import lt.petraslabutis.testio.extensions.scheduleNetworkCall
 import lt.petraslabutis.testio.extensions.setRightPadding
 import lt.petraslabutis.testio.extensions.widthInPx
+import lt.petraslabutis.testio.viewmodels.AuthenticationViewModel
+import lt.petraslabutis.testio.viewmodels.NavigationViewModel
 import lt.petraslabutis.testio.viewmodels.ServerListViewModel
 import javax.inject.Inject
 
@@ -22,6 +25,10 @@ class ServerListFragment : BaseFragment() {
 
     @Inject
     lateinit var serverListViewModel: ServerListViewModel
+    @Inject
+    lateinit var authenticationViewModel: AuthenticationViewModel
+    @Inject
+    lateinit var navigationViewModel: NavigationViewModel
 
     override fun inject() {
         TestioApplication.applicationComponent.inject(this)
@@ -31,7 +38,6 @@ class ServerListFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_server_list, container, false).apply {
-
             recyclerView.apply {
                 layoutManager = LinearLayoutManager(context)
                 adapter = ServerListAdapter().apply { listAdapter = this }
@@ -41,6 +47,17 @@ class ServerListFragment : BaseFragment() {
                 refreshList()
             }
         }
+
+    override fun onStart() {
+        super.onStart()
+        view.apply {
+            logoutView.onClick {
+                authenticationViewModel.logout()
+                navigationViewModel.replaceTopFragment(LoginFragment())
+
+            }.addTo(disposables)
+        }
+    }
 
     override fun onEnterAnimationEnd() {
         refreshList()

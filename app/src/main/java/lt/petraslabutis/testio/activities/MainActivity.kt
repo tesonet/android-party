@@ -6,6 +6,8 @@ import io.reactivex.rxkotlin.addTo
 import lt.petraslabutis.testio.R
 import lt.petraslabutis.testio.TestioApplication
 import lt.petraslabutis.testio.fragments.LoginFragment
+import lt.petraslabutis.testio.fragments.ServerListFragment
+import lt.petraslabutis.testio.viewmodels.AuthenticationViewModel
 import lt.petraslabutis.testio.viewmodels.NavigationViewModel
 import lt.petraslabutis.testio.viewmodels.NavigationViewModel.Type.REPLACE
 import javax.inject.Inject
@@ -14,6 +16,8 @@ class MainActivity : BaseActivity() {
 
     @Inject
     lateinit var navigationViewModel: NavigationViewModel
+    @Inject
+    lateinit var authenticationViewModel: AuthenticationViewModel
 
     override fun inject() {
         TestioApplication.applicationComponent.inject(this)
@@ -22,7 +26,12 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportFragmentManager.beginTransaction().add(R.id.mainActivity, LoginFragment()).commit()
+        val fragment = if (authenticationViewModel.isLoggedIn()) ServerListFragment() else LoginFragment()
+        supportFragmentManager.beginTransaction().add(R.id.mainActivity, fragment).commit()
+    }
+
+    override fun onStart() {
+        super.onStart()
 
         navigationViewModel
             .transactionObservable
@@ -37,4 +46,5 @@ class MainActivity : BaseActivity() {
                     }.commit()
             }.addTo(disposables)
     }
+
 }
