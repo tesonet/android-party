@@ -5,7 +5,13 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import io.reactivex.disposables.CompositeDisposable
+import lt.petraslabutis.testio.BuildConfig
+import lt.petraslabutis.testio.R
 import lt.petraslabutis.testio.TestioApplication
+import lt.petraslabutis.testio.extensions.asApiException
+import lt.petraslabutis.testio.extensions.toast
+import retrofit2.HttpException
+import java.net.UnknownHostException
 
 abstract class BaseFragment: Fragment() {
 
@@ -38,6 +44,19 @@ abstract class BaseFragment: Fragment() {
     }
 
     open fun onEnterAnimationEnd() {}
+
+    fun handleError(error: Throwable) {
+        if (error is UnknownHostException) {
+            context?.toast(resources.getString(R.string.error_no_connection))
+        } else if (error is HttpException) {
+            error.asApiException()?.let {
+                context?.toast(it.message)
+            }
+        }
+        if (BuildConfig.DEBUG) {
+            error.printStackTrace()
+        }
+    }
 
     abstract fun inject()
 

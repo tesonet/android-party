@@ -63,8 +63,8 @@ class LoginFragment : BaseFragment() {
                     switchAnimation?.cancel()
                     navigationViewModel.replaceTopFragment(ServerListFragment().newInstance(true))
                 }, onError = {
-                    it.printStackTrace()
                     stopLoading()
+                    handleError(it)
                 }).addTo(disposables)
         }.addTo(disposables)
     }

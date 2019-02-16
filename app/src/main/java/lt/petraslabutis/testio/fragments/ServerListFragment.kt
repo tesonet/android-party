@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.reactivex.rxkotlin.addTo
+import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.fragment_server_list.*
 import kotlinx.android.synthetic.main.fragment_server_list.view.*
 import lt.petraslabutis.testio.R
@@ -19,6 +20,7 @@ import lt.petraslabutis.testio.extensions.widthInPx
 import lt.petraslabutis.testio.viewmodels.AuthenticationViewModel
 import lt.petraslabutis.testio.viewmodels.NavigationViewModel
 import lt.petraslabutis.testio.viewmodels.ServerListViewModel
+import java.net.UnknownHostException
 import javax.inject.Inject
 
 class ServerListFragment : BaseFragment() {
@@ -109,9 +111,15 @@ class ServerListFragment : BaseFragment() {
         serverListViewModel
             .refreshServerData()
             .scheduleNetworkCall()
-            .subscribe {
+            .subscribeBy(onComplete = {
                 updateList()
-            }.addTo(disposables)
+            }, onError = {
+                handleError(it)
+                swipeLayout.isRefreshing = false
+                if (it is UnknownHostException && listAdapter.itemCount == 0) {
+                    updateList()
+                }
+            }).addTo(disposables)
     }
 
     private fun getLongestWidth(items: List<ServerItem>): Int =
