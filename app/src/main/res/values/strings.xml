@@ -7,4 +7,8 @@
 
     <string name="login_loading_logging_in_title">Logging in</string>
     <string name="login_loading_fetching_server_list_title">Fetching the list</string>
+
+    <string name="server_list_header_left">Server</string>
+    <string name="server_list_header_right">Distance</string>
+    <string name="server_list_distance_format">%s km</string>
 </resources>

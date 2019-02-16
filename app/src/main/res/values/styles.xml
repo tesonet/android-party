@@ -34,4 +34,13 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
+    <style name="ServerListHeaderTextViewStyle">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="ServerListEntryTextViewStyle">
+        <item name="android:textColor">@color/serverTableEntryText</item>
+    </style>
+
 </resources>

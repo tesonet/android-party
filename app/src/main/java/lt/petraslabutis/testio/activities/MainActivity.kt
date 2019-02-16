@@ -1,6 +1,7 @@
 package lt.petraslabutis.testio.activities
 
 import android.os.Bundle
+import androidx.fragment.app.FragmentTransaction
 import io.reactivex.rxkotlin.addTo
 import lt.petraslabutis.testio.R
 import lt.petraslabutis.testio.TestioApplication
@@ -28,7 +29,7 @@ class MainActivity : BaseActivity() {
             .subscribe {
                 supportFragmentManager
                     .beginTransaction()
-                    .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .apply {
                         when (it.type) {
                             REPLACE -> replace(R.id.mainActivity, it.fragment)

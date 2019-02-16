@@ -4,6 +4,7 @@ import dagger.Component
 import lt.petraslabutis.testio.activities.MainActivity
 import lt.petraslabutis.testio.fragments.BaseFragment
 import lt.petraslabutis.testio.fragments.LoginFragment
+import lt.petraslabutis.testio.fragments.ServerListFragment
 import javax.inject.Singleton
 
 @Singleton
@@ -11,5 +12,6 @@ import javax.inject.Singleton
 interface ApplicationComponent {
     fun inject(fragment: BaseFragment)
     fun inject(fragment: LoginFragment)
+    fun inject(fragment: ServerListFragment)
     fun inject(activity: MainActivity)
 }

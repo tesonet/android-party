@@ -4,5 +4,8 @@
     <color name="colorPrimaryDark">#B8B8B8</color>
     <color name="colorAccent">#89C829</color>
 
-    <color name="transparent">#00000000</color>
+    <color name="serverScreenBackground">#ECECEC</color>
+    <color name="serverTableHeader">#FFFFFF</color>
+    <color name="serverTableEntryText">#515151</color>
+    <color name="serverTableSeparator">#818383</color>
 </resources>
