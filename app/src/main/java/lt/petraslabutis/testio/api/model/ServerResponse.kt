@@ -1,3 +1,8 @@
 package lt.petraslabutis.testio.api.model
 
-class ServerResponse(val name: String, val distance: Int)
+import io.realm.RealmObject
+
+open class ServerResponse(
+    var name: String = "",
+    var distance: Int = 0
+) : RealmObject()

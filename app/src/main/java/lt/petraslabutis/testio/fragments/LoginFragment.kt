@@ -2,6 +2,7 @@ package lt.petraslabutis.testio.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.github.florent37.viewanimator.ViewAnimator
 import io.reactivex.rxkotlin.addTo
@@ -14,13 +15,15 @@ import lt.petraslabutis.testio.TestioApplication
 import lt.petraslabutis.testio.extensions.*
 import lt.petraslabutis.testio.viewmodels.AuthenticationViewModel
 import lt.petraslabutis.testio.viewmodels.NavigationViewModel
+import lt.petraslabutis.testio.viewmodels.ServerListViewModel
 import javax.inject.Inject
 
 class LoginFragment : BaseFragment() {
 
     @Inject
     lateinit var authenticationViewModel: AuthenticationViewModel
-
+    @Inject
+    lateinit var serverListViewModel: ServerListViewModel
     @Inject
     lateinit var navigationViewModel: NavigationViewModel
 
@@ -34,9 +37,8 @@ class LoginFragment : BaseFragment() {
         TestioApplication.applicationComponent.inject(this@LoginFragment)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         inflater.inflate(R.layout.fragment_login, container, false).apply {
-
             if (BuildConfig.DEBUG) {
                 usernameEditText.setText(BuildConfig.TEST_LOGIN_CREDENTIALS_USERNAME)
                 passwordEditText.setText(BuildConfig.TEST_LOGIN_CREDENTIALS_PASSWORD)
@@ -54,10 +56,12 @@ class LoginFragment : BaseFragment() {
             startLoading()
             authenticationViewModel
                 .login(usernameEditText.text.toString(), passwordEditText.text.toString())
+                .flatMapCompletable { serverListViewModel.refreshServerData() }
                 .scheduleNetworkCall()
-                .subscribeBy(onNext = {
+                .doOnDispose { stopLoading() }
+                .subscribeBy(onComplete = {
                     switchAnimation?.cancel()
-                    navigationViewModel.replaceTopFragment(ServerListFragment())
+                    navigationViewModel.replaceTopFragment(ServerListFragment().newInstance(true))
                 }, onError = {
                     it.printStackTrace()
                     stopLoading()

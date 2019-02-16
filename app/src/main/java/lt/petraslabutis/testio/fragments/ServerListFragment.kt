@@ -30,11 +30,27 @@ class ServerListFragment : BaseFragment() {
     @Inject
     lateinit var navigationViewModel: NavigationViewModel
 
+    private companion object {
+        const val OPENED_FROM_LOGIN_KEY = "opened_from_login"
+    }
+
+    fun newInstance(openedFromLogin: Boolean = false): ServerListFragment =
+        ServerListFragment().apply {
+            arguments = Bundle().apply { putBoolean(OPENED_FROM_LOGIN_KEY, openedFromLogin) }
+        }
+
     override fun inject() {
         TestioApplication.applicationComponent.inject(this)
     }
 
     private lateinit var listAdapter: ServerListAdapter
+    private var openedFromLogin = true
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        openedFromLogin = arguments?.getBoolean(OPENED_FROM_LOGIN_KEY) ?: false
+        arguments?.clear()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_server_list, container, false).apply {
@@ -60,13 +76,18 @@ class ServerListFragment : BaseFragment() {
     }
 
     override fun onEnterAnimationEnd() {
-        refreshList()
+        if (openedFromLogin) {
+            updateList()
+        } else {
+            swipeLayout.isRefreshing = true
+            refreshList()
+        }
     }
 
-    private fun refreshList() {
+    private fun updateList() {
         serverListViewModel
-            .getServerData()
-            .scheduleNetworkCall()
+            .getServerList()
+            .doOnCancel { swipeLayout.isRefreshing = false }
             .subscribe {
                 val items = it.map {
                     ServerItem(
@@ -81,6 +102,15 @@ class ServerListFragment : BaseFragment() {
                 listAdapter.update(items, longestWidth)
                 rightText.setRightPadding(longestWidth - rightText.text.toString().widthInPx(rightText))
                 swipeLayout.isRefreshing = false
+            }.addTo(disposables)
+    }
+
+    private fun refreshList() {
+        serverListViewModel
+            .refreshServerData()
+            .scheduleNetworkCall()
+            .subscribe {
+                updateList()
             }.addTo(disposables)
     }
 

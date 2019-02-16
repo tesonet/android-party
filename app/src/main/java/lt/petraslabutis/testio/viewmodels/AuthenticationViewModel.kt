@@ -3,6 +3,7 @@ package lt.petraslabutis.testio.viewmodels
 import androidx.lifecycle.ViewModel
 import com.securepreferences.SecurePreferences
 import io.reactivex.Observable
+import io.realm.Realm
 import lt.petraslabutis.testio.api.AuthenticationService
 import lt.petraslabutis.testio.api.model.LoginRequest
 import lt.petraslabutis.testio.api.model.LoginResponse
@@ -29,7 +30,8 @@ class AuthenticationViewModel @Inject constructor(
     fun isLoggedIn(): Boolean = preferences.getString(AUTH_TOKEN, "")?.isNotEmpty() == true
 
     fun logout() {
-        preferences.edit().clear().apply()
+        preferences.edit().remove(AUTH_TOKEN).apply()
+        Realm.getDefaultInstance().executeTransaction { it.deleteAll() }
     }
 
 
