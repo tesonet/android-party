@@ -16,6 +16,7 @@ import lt.petraslabutis.testio.extensions.*
 import lt.petraslabutis.testio.viewmodels.AuthenticationViewModel
 import lt.petraslabutis.testio.viewmodels.NavigationViewModel
 import lt.petraslabutis.testio.viewmodels.ServerListViewModel
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class LoginFragment : BaseFragment() {
@@ -31,6 +32,7 @@ class LoginFragment : BaseFragment() {
 
     private companion object {
         const val ALPHA_CHANGE_DURATION = 500L
+        val LOGIN_DELAY = if(BuildConfig.DEBUG) 700L else 0L
     }
 
     override fun inject() {
@@ -54,9 +56,15 @@ class LoginFragment : BaseFragment() {
         loginButton.onClick {
             activity?.closeKeyboard()
             startLoading()
+            loadingStatus.text = resources.getString(R.string.login_loading_logging_in_title)
             authenticationViewModel
                 .login(usernameEditText.text.toString(), passwordEditText.text.toString())
+                .delay(LOGIN_DELAY, TimeUnit.MILLISECONDS)
+                .doOnNext {
+                    activity?.runOnUiThread { loadingStatus.text = resources.getString(R.string.login_loading_fetching_server_list_title) }
+                }
                 .flatMapCompletable { serverListViewModel.refreshServerData() }
+                .delay(LOGIN_DELAY, TimeUnit.MILLISECONDS)
                 .scheduleNetworkCall()
                 .doOnDispose { stopLoading() }
                 .subscribeBy(onComplete = {
@@ -87,6 +95,7 @@ class LoginFragment : BaseFragment() {
     }
 
     fun stopLoading() {
+        loadingStatus.text = ""
         loginButton.isClickable = true
         switchAnimation = ViewAnimator
             .animate(loadingHolder)
