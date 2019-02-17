@@ -77,7 +77,7 @@ class LoginFragment : BaseFragment() {
         }.addTo(stopDisposables)
     }
 
-    fun startLoading() {
+    private fun startLoading() {
         loginButton.isClickable = false
         switchAnimation = ViewAnimator
             .animate(loginHolder)
@@ -94,7 +94,7 @@ class LoginFragment : BaseFragment() {
             .start()
     }
 
-    fun stopLoading() {
+    private fun stopLoading() {
         loadingStatus.text = ""
         loginButton.isClickable = true
         switchAnimation = ViewAnimator

@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 
 fun EditText.onKeyboardDoneClick(action: () -> Unit): Disposable {
     val subject = PublishSubject.create<Any>()
-    this.setOnEditorActionListener { v, actionId, event ->
+    this.setOnEditorActionListener { _, actionId, _ ->
         if (actionId == EditorInfo.IME_ACTION_DONE) {
             subject.onNext(0)
             return@setOnEditorActionListener true

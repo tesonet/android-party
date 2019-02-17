@@ -54,14 +54,10 @@ abstract class BaseFragment: Fragment() {
     open fun onEnterAnimationEnd() {}
 
     fun handleError(error: Throwable) {
-        if (error is UnknownHostException) {
-            context?.toast(resources.getString(R.string.error_no_connection))
-        } else if (error is HttpException) {
-            error.asApiException()?.let {
-                context?.toast(it.message)
-            }
-        } else {
-            context?.toast(resources.getString(R.string.error_unknown))
+        when (error) {
+            is UnknownHostException -> context?.toast(resources.getString(R.string.error_no_connection))
+            is HttpException -> error.asApiException()?.let { context?.toast(it.message) }
+            else -> context?.toast(resources.getString(R.string.error_unknown))
         }
         if (BuildConfig.DEBUG) {
             error.printStackTrace()

@@ -88,12 +88,12 @@ class ServerListFragment : BaseFragment() {
         serverListViewModel
             .getServerList()
             .subscribe {
-                val items = it.map {
+                val items = it.map { serverResponse ->
                     ServerItem(
-                        it.name,
+                        serverResponse.name,
                         String.format(
                             resources.getString(R.string.server_list_distance_format),
-                            it.distance
+                            serverResponse.distance
                         )
                     )
                 }
