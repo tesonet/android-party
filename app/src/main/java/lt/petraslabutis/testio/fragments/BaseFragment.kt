@@ -60,6 +60,8 @@ abstract class BaseFragment: Fragment() {
             error.asApiException()?.let {
                 context?.toast(it.message)
             }
+        } else {
+            context?.toast(resources.getString(R.string.error_unknown))
         }
         if (BuildConfig.DEBUG) {
             error.printStackTrace()

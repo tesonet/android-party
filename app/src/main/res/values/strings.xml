@@ -13,4 +13,5 @@
     <string name="server_list_distance_format">%s km</string>
 
     <string name="error_no_connection">Unable to connect, check your network settings</string>
+    <string name="error_unknown">Wild error appeared, run for your life!</string>
 </resources>
