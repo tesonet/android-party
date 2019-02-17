@@ -108,6 +108,9 @@ class ServerListFragment : BaseFragment() {
         serverListViewModel
             .refreshServerData()
             .scheduleNetworkCall()
+            .doOnDispose {
+                swipeLayout.isRefreshing = false
+            }
             .subscribeBy(onComplete = {
                 swipeLayout.isRefreshing = false
             }, onError = {
