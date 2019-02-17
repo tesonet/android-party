@@ -51,7 +51,7 @@ class LoginFragment : BaseFragment() {
         super.onStart()
         passwordEditText.onKeyboardDoneClick {
             loginButton.callOnClick()
-        }.addTo(disposables)
+        }.addTo(stopDisposables)
 
         loginButton.onClick {
             activity?.closeKeyboard()
@@ -73,8 +73,8 @@ class LoginFragment : BaseFragment() {
                 }, onError = {
                     stopLoading()
                     handleError(it)
-                }).addTo(disposables)
-        }.addTo(disposables)
+                }).addTo(stopDisposables)
+        }.addTo(stopDisposables)
     }
 
     fun startLoading() {

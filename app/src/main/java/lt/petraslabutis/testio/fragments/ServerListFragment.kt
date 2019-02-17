@@ -20,7 +20,6 @@ import lt.petraslabutis.testio.extensions.widthInPx
 import lt.petraslabutis.testio.viewmodels.AuthenticationViewModel
 import lt.petraslabutis.testio.viewmodels.NavigationViewModel
 import lt.petraslabutis.testio.viewmodels.ServerListViewModel
-import java.net.UnknownHostException
 import javax.inject.Inject
 
 class ServerListFragment : BaseFragment() {
@@ -64,6 +63,10 @@ class ServerListFragment : BaseFragment() {
             swipeLayout.setOnRefreshListener {
                 refreshList()
             }
+
+            if (!openedFromLogin) {
+                post { refreshList() }
+            }
         }
 
     override fun onStart() {
@@ -73,23 +76,17 @@ class ServerListFragment : BaseFragment() {
                 authenticationViewModel.logout()
                 navigationViewModel.replaceTopFragment(LoginFragment())
 
-            }.addTo(disposables)
+            }.addTo(stopDisposables)
         }
     }
 
     override fun onEnterAnimationEnd() {
-        if (openedFromLogin) {
-            updateList()
-        } else {
-            swipeLayout.isRefreshing = true
-            refreshList()
-        }
+        listenForUpdate()
     }
 
-    private fun updateList() {
+    private fun listenForUpdate() {
         serverListViewModel
             .getServerList()
-            .doOnCancel { swipeLayout.isRefreshing = false }
             .subscribe {
                 val items = it.map {
                     ServerItem(
@@ -103,23 +100,20 @@ class ServerListFragment : BaseFragment() {
                 val longestWidth = getLongestWidth(items)
                 listAdapter.update(items, longestWidth)
                 rightText.setRightPadding(longestWidth - rightText.text.toString().widthInPx(rightText))
-                swipeLayout.isRefreshing = false
-            }.addTo(disposables)
+            }.addTo(destroyDisposables)
     }
 
     private fun refreshList() {
+        swipeLayout.isRefreshing = true
         serverListViewModel
             .refreshServerData()
             .scheduleNetworkCall()
             .subscribeBy(onComplete = {
-                updateList()
+                swipeLayout.isRefreshing = false
             }, onError = {
                 handleError(it)
                 swipeLayout.isRefreshing = false
-                if (it is UnknownHostException && listAdapter.itemCount == 0) {
-                    updateList()
-                }
-            }).addTo(disposables)
+            }).addTo(stopDisposables)
     }
 
     private fun getLongestWidth(items: List<ServerItem>): Int =

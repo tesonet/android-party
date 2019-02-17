@@ -15,7 +15,10 @@ import java.net.UnknownHostException
 
 abstract class BaseFragment: Fragment() {
 
-    val disposables by lazy {
+    val stopDisposables by lazy {
+        CompositeDisposable()
+    }
+    val destroyDisposables by lazy {
         CompositeDisposable()
     }
 
@@ -26,8 +29,13 @@ abstract class BaseFragment: Fragment() {
     }
 
     override fun onStop() {
-        disposables.clear()
+        stopDisposables.clear()
         super.onStop()
+    }
+
+    override fun onDestroy() {
+        destroyDisposables.clear()
+        super.onDestroy()
     }
 
     override fun onCreateAnimation(transit: Int, enter: Boolean, nextAnim: Int): Animation {
