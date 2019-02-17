@@ -17,11 +17,11 @@ android {
         buildConfigField "String", "API_URL", '"http://playground.tesonet.lt/v1/"'
         buildConfigField "String", "TEST_LOGIN_CREDENTIALS_USERNAME", '""'
         buildConfigField "String", "TEST_LOGIN_CREDENTIALS_PASSWORD", '""'
+        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
     buildTypes {
         release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled false
         }
         debug {
             minifyEnabled false
