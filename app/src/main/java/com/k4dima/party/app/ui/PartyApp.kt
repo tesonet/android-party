@@ -1,6 +1,6 @@
-package com.k4dima.androidparty.features.app.ui
+package com.k4dima.party.app.ui
 
-import com.k4dima.androidparty.features.app.ui.di.DaggerApplicationComponent
+import com.k4dima.party.app.ui.di.DaggerApplicationComponent
 import dagger.android.support.DaggerApplication
 
 class PartyApp : DaggerApplication() {

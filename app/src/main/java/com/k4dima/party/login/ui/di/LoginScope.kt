@@ -1,4 +1,4 @@
-package com.k4dima.androidparty.features.login.ui.di
+package com.k4dima.party.login.ui.di
 
 import javax.inject.Scope
 

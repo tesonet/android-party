@@ -4,7 +4,7 @@
 
         <variable
             name="model"
-            type="com.k4dima.androidparty.features.login.presentation.LoginViewModel" />
+            type="com.k4dima.party.login.presentation.LoginViewModel" />
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"

@@ -1,7 +1,7 @@
 package com.k4dima.androidparty.features.app.data.api
 
 import com.k4dima.androidparty.features.login.data.model.Token
-import com.k4dima.androidparty.features.main.data.model.Server
+import com.k4dima.party.main.data.model.Server
 import io.reactivex.Single
 import okhttp3.RequestBody
 import retrofit2.http.*

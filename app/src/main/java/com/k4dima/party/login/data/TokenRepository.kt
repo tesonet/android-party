@@ -3,7 +3,7 @@ package com.k4dima.androidparty.features.login.data
 import com.k4dima.androidparty.features.app.data.DataRepository
 import com.k4dima.androidparty.features.app.data.api.TesonetService
 import com.k4dima.androidparty.features.login.data.model.Token
-import com.k4dima.androidparty.features.login.ui.di.LoginScope
+import com.k4dima.party.login.ui.di.LoginScope
 import okhttp3.RequestBody
 import javax.inject.Inject
 

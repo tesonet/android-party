@@ -1,4 +1,4 @@
-package com.k4dima.androidparty.features.login.ui
+package com.k4dima.party.login.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.k4dima.androidparty.R
 import com.k4dima.androidparty.databinding.ActivityLoginBinding
-import com.k4dima.androidparty.features.login.presentation.LoginViewModel
+import com.k4dima.party.login.presentation.LoginViewModel
 import com.k4dima.androidparty.features.main.ui.MainActivity
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject

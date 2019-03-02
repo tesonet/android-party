@@ -3,8 +3,8 @@ package com.k4dima.androidparty.features.main.ui
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import androidx.test.runner.AndroidJUnit4
 import com.k4dima.androidparty.R
 import org.junit.Rule
 import org.junit.Test

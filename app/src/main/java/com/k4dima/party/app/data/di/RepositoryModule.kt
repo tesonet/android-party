@@ -1,6 +1,6 @@
-package com.k4dima.androidparty.features.app.data.di
+package com.k4dima.party.app.data.di
 
-import com.k4dima.androidparty.features.app.data.AppPreferenceRepository
+import com.k4dima.party.app.data.AppPreferenceRepository
 import com.k4dima.androidparty.features.app.data.PreferenceRepository
 import dagger.Binds
 import dagger.Module

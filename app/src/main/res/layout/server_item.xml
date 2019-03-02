@@ -4,7 +4,7 @@
 
         <variable
             name="server"
-            type="com.k4dima.androidparty.features.main.data.model.Server" />
+            type="com.k4dima.party.main.data.model.Server" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

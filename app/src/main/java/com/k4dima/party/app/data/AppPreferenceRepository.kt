@@ -1,9 +1,10 @@
-package com.k4dima.androidparty.features.app.data
+package com.k4dima.party.app.data
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import androidx.core.content.edit
+import com.k4dima.androidparty.features.app.data.PreferenceRepository
 import javax.inject.Inject
 import javax.inject.Singleton
 

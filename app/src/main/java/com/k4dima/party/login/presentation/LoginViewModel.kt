@@ -1,10 +1,10 @@
-package com.k4dima.androidparty.features.login.presentation
+package com.k4dima.party.login.presentation
 
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.k4dima.androidparty.features.app.domain.UseCase
-import com.k4dima.androidparty.features.login.ui.di.LoginScope
+import com.k4dima.party.login.ui.di.LoginScope
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject

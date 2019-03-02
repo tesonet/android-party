@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.k4dima.androidparty.R
 import com.k4dima.androidparty.databinding.ActivityMainBinding
-import com.k4dima.androidparty.features.login.ui.LoginActivity
+import com.k4dima.party.login.ui.LoginActivity
 import com.k4dima.androidparty.features.main.presentation.MainViewModel
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
