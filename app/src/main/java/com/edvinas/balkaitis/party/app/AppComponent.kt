@@ -1,5 +1,6 @@
 package com.edvinas.balkaitis.party.app
 
+import com.edvinas.balkaitis.party.utils.network.NetworkModule
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
@@ -10,6 +11,7 @@ import javax.inject.Singleton
     modules = [
         AndroidSupportInjectionModule::class,
         AppContributorsModule::class,
+        NetworkModule::class,
         AppModule::class
     ]
 )
