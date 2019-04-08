@@ -3,4 +3,11 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="buttonRipple">#55000000</color>
+    <color name="buttonLogin">#9fd533</color>
+
+    <color name="backgroundInput">#FFFFFF</color>
+
+    <color name="buttonTextWhite">#FFFFFF</color>
 </resources>

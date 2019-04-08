@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Party</string>
+    <string name="hint_username">Username</string>
+    <string name="login_button_log_in">Log in</string>
 </resources>
