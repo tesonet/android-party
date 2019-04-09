@@ -3,6 +3,7 @@ package com.edvinas.balkaitis.party.login
 import android.os.Bundle
 import com.edvinas.balkaitis.party.R
 import com.edvinas.balkaitis.party.base.BaseDaggerActivity
+import com.edvinas.balkaitis.party.login.fragment.LoginFragment
 import com.edvinas.balkaitis.party.utils.extensions.replaceFragment
 
 class LoginActivity : BaseDaggerActivity() {
