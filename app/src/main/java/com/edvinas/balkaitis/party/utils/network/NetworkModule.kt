@@ -28,11 +28,11 @@ abstract class NetworkModule {
         @Provides
         fun provideNoAuthRetrofit(@NoAuth client: OkHttpClient, @Io scheduler: Scheduler): Retrofit {
             return Retrofit.Builder()
-                    .baseUrl(BuildConfig.BASE_URL)
-                    .client(client)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(scheduler))
-                    .build()
+                .baseUrl(BuildConfig.BASE_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(scheduler))
+                .build()
         }
 
         @Auth
@@ -53,8 +53,8 @@ abstract class NetworkModule {
         @Provides
         fun provideNoAuthOkHttpClient(): OkHttpClient {
             return OkHttpClient.Builder()
-                    .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                    .build()
+                .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                .build()
         }
 
         @Auth
@@ -76,10 +76,14 @@ abstract class NetworkModule {
         }
 
         @JvmStatic @Provides
-        fun provideLoginService(@NoAuth retrofit: Retrofit) = retrofit.create(LoginService::class.java)
+        fun provideLoginService(@NoAuth retrofit: Retrofit): LoginService {
+            return retrofit.create(LoginService::class.java)
+        }
 
         @JvmStatic
         @Provides
-        fun provideServersService(@Auth retrofit: Retrofit) = retrofit.create(ServersService::class.java)
+        fun provideServersService(@Auth retrofit: Retrofit): ServersService {
+            return retrofit.create(ServersService::class.java)
+        }
     }
 }
