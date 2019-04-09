@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">Party</string>
-    <string name="hint_username">Username</string>
-    <string name="login_button_log_in">Log in</string>
+    <string name="appName">Party</string>
+    <string name="hintUsername">Username</string>
+    <string name="loginButtonLogIn">Log in</string>
+    <string name="hintPassword">Password</string>
+    <string name="label_login_loading_fetching_list">Fetching the list…</string>
 </resources>
