@@ -11,7 +11,8 @@ import io.reactivex.schedulers.TestScheduler
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.BDDMockito.*
+import org.mockito.BDDMockito.given
+import org.mockito.BDDMockito.verify
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
@@ -82,19 +83,6 @@ class LoginPresenterTest {
 
         verify(view).hideLoadingView()
         verify(view).showError(ERROR_MESSAGE)
-    }
-
-    @Test
-    fun onLoginClicked_afterDropView_doesNotCallView() {
-        val loginResponse = LoginResponse(TOKEN)
-        val loginBody = LoginBody(USERNAME, PASSWORD)
-        given(loginService.login(loginBody)).willReturn(Single.just(loginResponse))
-
-        presenter.onLoginClicked(USERNAME, PASSWORD)
-        presenter.dropView()
-        testScheduler.triggerActions()
-
-        verifyZeroInteractions(view)
     }
 
     companion object {

@@ -16,7 +16,7 @@ class MainActivity : BaseDaggerActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
-            if (tokenStorage.getToken().isNotEmpty()) {
+            if (tokenStorage.getToken().isEmpty()) {
                 replaceFragment(LoginFragment.newInstance())
             } else {
                 replaceFragment(ServersFragment.newInstance())

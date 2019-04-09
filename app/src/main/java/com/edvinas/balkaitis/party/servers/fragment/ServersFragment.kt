@@ -33,6 +33,10 @@ class ServersFragment : BaseDaggerFragment(), ServersContract.View {
         iconLogout.setOnClickListener { presenter.onLogoutClicked() }
     }
 
+    override fun showError(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
+    }
+
     override fun showLogin() {
         val generalErrorMessage = getString(R.string.general_error_something_wrong)
         activity?.replaceFragment(LoginFragment.newInstance())
