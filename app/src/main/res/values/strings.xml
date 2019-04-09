@@ -5,4 +5,5 @@
     <string name="hintPassword">Password</string>
     <string name="label_login_loading_fetching_list">Fetching the list…</string>
     <string name="general_error_something_wrong">Something went wrong</string>
+    <string name="error_login">Login failed, check your details</string>
 </resources>
