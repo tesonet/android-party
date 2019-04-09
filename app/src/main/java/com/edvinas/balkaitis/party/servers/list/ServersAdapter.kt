@@ -7,6 +7,7 @@ import com.edvinas.balkaitis.party.servers.network.Server
 class ServersAdapter(
         private val factory: ServersViewHolderFactory
 ) : RecyclerView.Adapter<ServersViewHolder>() {
+
     private val servers = mutableListOf<Server>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServersViewHolder {
@@ -19,9 +20,9 @@ class ServersAdapter(
         holder.bind(servers[position])
     }
 
-    fun setAll(posts: List<Server>) {
+    fun setAll(servers: List<Server>) {
         this.servers.clear()
-        this.servers.addAll(posts)
+        this.servers.addAll(servers)
         notifyDataSetChanged()
     }
 }

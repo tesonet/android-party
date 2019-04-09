@@ -4,6 +4,7 @@ import com.edvinas.balkaitis.party.servers.network.Server
 import com.edvinas.balkaitis.party.utils.mvp.BasePresenter
 
 interface LoginContract {
+
     interface View {
         fun showError(message: String)
         fun showLoadingView()

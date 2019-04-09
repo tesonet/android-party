@@ -1,6 +1,6 @@
 package com.edvinas.balkaitis.party.servers.mvp
 
-import com.edvinas.balkaitis.party.login.repository.TokenStorage
+import com.edvinas.balkaitis.party.repository.TokenStorage
 import com.edvinas.balkaitis.party.servers.network.Server
 import com.edvinas.balkaitis.party.servers.network.ServersService
 import io.reactivex.Single
@@ -15,9 +15,12 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 class ServersPresenterTest {
-    @Mock private lateinit var tokenStorage: TokenStorage
-    @Mock private lateinit var view: ServersContract.View
-    @Mock private lateinit var serversService: ServersService
+    @Mock
+    private lateinit var tokenStorage: TokenStorage
+    @Mock
+    private lateinit var view: ServersContract.View
+    @Mock
+    private lateinit var serversService: ServersService
 
     private lateinit var presenter: ServersPresenter
 
@@ -56,7 +59,8 @@ class ServersPresenterTest {
     @Test
     fun onCreated_whenArrayIsNullAndServerDownloadSucceeds_populatesServers() {
         val serversList = listOf(Server(COUNTRY, DISTANCE))
-        given(serversService.getServers()).willReturn(Single.just(serversList))
+        given(tokenStorage.getToken()).willReturn(TOKEN)
+        given(serversService.getServers("Bearer $TOKEN")).willReturn(Single.just(serversList))
 
         presenter.onCreated(null)
         testScheduler.triggerActions()
@@ -67,7 +71,8 @@ class ServersPresenterTest {
     @Test
     fun onCreated_whenArrayIsNullAndServerDownloadFails_showsError() {
         val throwable = Throwable(ERROR_MESSAGE)
-        given(serversService.getServers()).willReturn(Single.error(throwable))
+        given(tokenStorage.getToken()).willReturn(TOKEN)
+        given(serversService.getServers("Bearer $TOKEN")).willReturn(Single.error(throwable))
 
         presenter.onCreated(null)
         testScheduler.triggerActions()
@@ -76,8 +81,9 @@ class ServersPresenterTest {
     }
 
     companion object {
-        private const val COUNTRY = "Lithuania #1"
+        private const val TOKEN = "token"
         private const val DISTANCE = "0 km"
+        private const val COUNTRY = "Lithuania #1"
         private const val ERROR_MESSAGE = "errorMessage"
     }
 }

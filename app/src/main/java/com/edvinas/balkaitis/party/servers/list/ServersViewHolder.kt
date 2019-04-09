@@ -7,6 +7,7 @@ import com.edvinas.balkaitis.party.servers.network.Server
 import kotlinx.android.synthetic.main.item_server.view.*
 
 class ServersViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+
     fun bind(server: Server) {
         itemView.country.text = server.country
         val distanceLabelId = R.string.server_item_label_distance

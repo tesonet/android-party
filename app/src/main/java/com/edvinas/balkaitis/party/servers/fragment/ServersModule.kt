@@ -1,6 +1,6 @@
 package com.edvinas.balkaitis.party.servers.fragment
 
-import com.edvinas.balkaitis.party.login.repository.TokenStorage
+import com.edvinas.balkaitis.party.repository.TokenStorage
 import com.edvinas.balkaitis.party.servers.list.ServersAdapter
 import com.edvinas.balkaitis.party.servers.list.ServersViewHolderFactory
 import com.edvinas.balkaitis.party.servers.mvp.ServersContract
@@ -14,6 +14,7 @@ import io.reactivex.Scheduler
 
 @Module
 abstract class ServersModule {
+
     @Module
     companion object {
         @FragmentScope @JvmStatic @Provides

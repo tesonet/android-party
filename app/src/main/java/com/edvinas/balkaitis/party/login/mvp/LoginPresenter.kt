@@ -2,7 +2,7 @@ package com.edvinas.balkaitis.party.login.mvp
 
 import com.edvinas.balkaitis.party.login.network.LoginBody
 import com.edvinas.balkaitis.party.login.network.LoginService
-import com.edvinas.balkaitis.party.login.repository.TokenStorage
+import com.edvinas.balkaitis.party.repository.TokenStorage
 import com.edvinas.balkaitis.party.servers.network.Server
 import com.edvinas.balkaitis.party.servers.network.ServersService
 import com.edvinas.balkaitis.party.utils.mvp.ViewPresenter
@@ -11,6 +11,7 @@ import io.reactivex.rxkotlin.addTo
 import timber.log.Timber
 
 class LoginPresenter(
+
     private val mainScheduler: Scheduler,
     private val loginService: LoginService,
     private val tokenStorage: TokenStorage,
@@ -24,7 +25,8 @@ class LoginPresenter(
                 tokenStorage.saveToken(response.token)
                 onView { showLoadingView() }
             }
-            .flatMap { serversService.getServers() }
+            .flatMap { response -> serversService.getServers("Bearer ${response.token}") }
+            .observeOn(mainScheduler)
             .subscribe(::onServersDownloaded, ::onError)
             .addTo(subscription)
     }

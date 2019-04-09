@@ -1,6 +1,6 @@
 package com.edvinas.balkaitis.party.servers.mvp
 
-import com.edvinas.balkaitis.party.login.repository.TokenStorage
+import com.edvinas.balkaitis.party.repository.TokenStorage
 import com.edvinas.balkaitis.party.servers.network.Server
 import com.edvinas.balkaitis.party.servers.network.ServersService
 import com.edvinas.balkaitis.party.utils.mvp.ViewPresenter
@@ -13,6 +13,7 @@ class ServersPresenter(
         private val tokenStorage: TokenStorage,
         private val serversService: ServersService
 ) : ServersContract.Presenter, ViewPresenter<ServersContract.View>() {
+
     override fun onLogoutClicked() {
         tokenStorage.removeToken()
         onView { showLogin() }
@@ -22,7 +23,7 @@ class ServersPresenter(
         onView { setList() }
         servers?.let { nonNullServers ->
             onView { populateServers(nonNullServers) }
-        } ?: serversService.getServers()
+        } ?: serversService.getServers("Bearer ${tokenStorage.getToken()}")
                 .observeOn(mainScheduler)
                 .subscribe(::onServersReceived, ::onServersDownloadFailed)
                 .addTo(subscription)

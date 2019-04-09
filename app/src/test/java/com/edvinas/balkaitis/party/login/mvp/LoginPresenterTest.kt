@@ -3,7 +3,7 @@ package com.edvinas.balkaitis.party.login.mvp
 import com.edvinas.balkaitis.party.login.network.LoginBody
 import com.edvinas.balkaitis.party.login.network.LoginResponse
 import com.edvinas.balkaitis.party.login.network.LoginService
-import com.edvinas.balkaitis.party.login.repository.TokenStorage
+import com.edvinas.balkaitis.party.repository.TokenStorage
 import com.edvinas.balkaitis.party.servers.network.Server
 import com.edvinas.balkaitis.party.servers.network.ServersService
 import io.reactivex.Single
@@ -64,7 +64,7 @@ class LoginPresenterTest {
         val servers = listOf(Server("Spain", "9001"))
         val loginBody = LoginBody(USERNAME, PASSWORD)
         given(loginService.login(loginBody)).willReturn(Single.just(loginResponse))
-        given(serversService.getServers()).willReturn(Single.just(servers))
+        given(serversService.getServers("Bearer $TOKEN")).willReturn(Single.just(servers))
 
         presenter.onLoginClicked(USERNAME, PASSWORD)
         testScheduler.triggerActions()
@@ -76,7 +76,7 @@ class LoginPresenterTest {
     fun onLoginClicked_onGetServersError_showsErrorMessageAndHidesLoadingView() {
         val loginBody = LoginBody(USERNAME, PASSWORD)
         given(loginService.login(loginBody)).willReturn(Single.just(LoginResponse(TOKEN)))
-        given(serversService.getServers()).willReturn(Single.error(Throwable(ERROR_MESSAGE)))
+        given(serversService.getServers("Bearer $TOKEN")).willReturn(Single.error(Throwable(ERROR_MESSAGE)))
 
         presenter.onLoginClicked(USERNAME, PASSWORD)
         testScheduler.triggerActions()

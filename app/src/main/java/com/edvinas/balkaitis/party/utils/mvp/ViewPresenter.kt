@@ -3,6 +3,7 @@ package com.edvinas.balkaitis.party.utils.mvp
 import io.reactivex.disposables.CompositeDisposable
 
 open class ViewPresenter<T> : BasePresenter<T> {
+
     val subscription = CompositeDisposable()
 
     private var view: T? = null

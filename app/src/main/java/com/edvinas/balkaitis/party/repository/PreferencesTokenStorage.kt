@@ -1,10 +1,11 @@
-package com.edvinas.balkaitis.party.login.repository
+package com.edvinas.balkaitis.party.repository
 
 import android.content.SharedPreferences
 
 class PreferencesTokenStorage(
         private val sharedPreferences: SharedPreferences
 ) : TokenStorage {
+
     override fun removeToken() {
         sharedPreferences.edit().remove(KEY_TOKEN).apply()
     }

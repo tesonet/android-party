@@ -15,6 +15,7 @@ import javax.inject.Inject
 
 
 class LoginFragment : BaseDaggerFragment(), LoginContract.View {
+
     @Inject
     lateinit var presenter: LoginContract.Presenter
 

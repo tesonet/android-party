@@ -3,7 +3,7 @@ package com.edvinas.balkaitis.party.login.fragment
 import com.edvinas.balkaitis.party.login.mvp.LoginContract
 import com.edvinas.balkaitis.party.login.mvp.LoginPresenter
 import com.edvinas.balkaitis.party.login.network.LoginService
-import com.edvinas.balkaitis.party.login.repository.TokenStorage
+import com.edvinas.balkaitis.party.repository.TokenStorage
 import com.edvinas.balkaitis.party.servers.network.ServersService
 import com.edvinas.balkaitis.party.utils.schedulers.Main
 import com.edvinas.balkaitis.party.utils.scopes.FragmentScope
@@ -13,6 +13,7 @@ import io.reactivex.Scheduler
 
 @Module
 abstract class LoginModule {
+
     @Module
     companion object {
         @FragmentScope @JvmStatic @Provides

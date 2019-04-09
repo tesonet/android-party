@@ -8,7 +8,8 @@ import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class AppContributorsModule {
+
     @ActivityScope
     @ContributesAndroidInjector(modules = [MainActivityModule::class])
-    abstract fun contributePostsActivity(): MainActivity
+    abstract fun contributeMainActivity(): MainActivity
 }
