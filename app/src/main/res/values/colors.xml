@@ -6,12 +6,14 @@
 
     <color name="buttonRipple">#55000000</color>
     <color name="buttonBackgroundLogin">#9fd533</color>
-
-    <color name="backgroundInput">#FFFFFF</color>
-
     <color name="buttonTextWhite">#FFFFFF</color>
 
-    <color name="textWhite">#FFFFFF</color>
+    <color name="backgroundWhite">#1DFFFFFF</color>
+    <color name="backgroundServersHeader">#f0f0f0</color>
+    <color name="backgroundServersHeaderStart">#E9E8E8</color>
+    <color name="backgroundServersHeaderEnd">#25F0F0F0</color>
 
+    <color name="textWhite">#FFFFFF</color>
     <color name="textHintLogin">#cecece</color>
+    <color name="textServersHeader">#868686</color>
 </resources>

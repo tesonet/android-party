@@ -1,6 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundWhite"
+    tools:ignore="ContentDescription">
 
+    <Space
+        android:id="@+id/verticalPaddingStart"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Space
+        android:id="@+id/verticalPaddingEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Space
+        android:id="@+id/horizontalPaddingTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/headerBackground"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:background="@color/backgroundServersHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iconLogo"
+        android:layout_width="80dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="22dp"
+        android:src="@drawable/logo_testio_dark"
+        app:layout_constraintBottom_toBottomOf="@id/headerBackground"
+        app:layout_constraintStart_toEndOf="@id/verticalPaddingStart"
+        app:layout_constraintTop_toBottomOf="@id/horizontalPaddingTop" />
+
+    <ImageView
+        android:id="@+id/iconLogout"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="22dp"
+        android:src="@drawable/ic_logout"
+        app:layout_constraintBottom_toBottomOf="@id/headerBackground"
+        app:layout_constraintEnd_toStartOf="@id/verticalPaddingEnd"
+        app:layout_constraintTop_toBottomOf="@id/horizontalPaddingTop" />
+
+    <View
+        android:id="@+id/backgroundGradient"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:background="@drawable/background_header_gradient_light_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backgroundServerAndDistance" />
+
+    <View
+        android:id="@+id/backgroundServerAndDistance"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:background="@color/backgroundWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerBackground" />
+
+    <TextView
+        android:id="@+id/labelServer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/servers_label_server"
+        android:textAllCaps="true"
+        android:textColor="@color/textHintLogin"
+        app:layout_constraintBottom_toBottomOf="@id/backgroundServerAndDistance"
+        app:layout_constraintStart_toEndOf="@id/verticalPaddingStart"
+        app:layout_constraintTop_toTopOf="@id/backgroundServerAndDistance" />
+
+    <TextView
+        android:id="@+id/labelDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="@string/servers_label_distance"
+        android:textAllCaps="true"
+        android:textColor="@color/textHintLogin"
+        app:layout_constraintBottom_toBottomOf="@id/backgroundServerAndDistance"
+        app:layout_constraintEnd_toStartOf="@id/verticalPaddingEnd"
+        app:layout_constraintTop_toTopOf="@id/backgroundServerAndDistance" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/serversList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/backgroundWhite"
+        android:overScrollMode="never"
+        android:paddingStart="22dp"
+        android:paddingEnd="42dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backgroundServerAndDistance" />
 </androidx.constraintlayout.widget.ConstraintLayout>

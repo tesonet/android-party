@@ -6,4 +6,7 @@
     <string name="label_login_loading_fetching_list">Fetching the list…</string>
     <string name="general_error_something_wrong">Something went wrong</string>
     <string name="error_login">Login failed, check your details</string>
+    <string name="servers_label_server">Server</string>
+    <string name="servers_label_distance">Distance</string>
+    <string name="server_item_label_distance">%s km</string>
 </resources>

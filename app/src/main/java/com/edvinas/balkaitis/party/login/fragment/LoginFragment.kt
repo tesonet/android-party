@@ -59,6 +59,11 @@ class LoginFragment : BaseDaggerFragment(), LoginContract.View {
             ?: Toast.makeText(requireContext(), generalErrorMessage, Toast.LENGTH_LONG).show()
     }
 
+    override fun onDestroy() {
+        presenter.dropView()
+        super.onDestroy()
+    }
+
     companion object {
         fun newInstance() = LoginFragment()
     }
