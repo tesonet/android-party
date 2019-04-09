@@ -1,10 +1,9 @@
 package com.edvinas.balkaitis.party.utils.mvp
 
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 
-class ViewPresenter<T> : BasePresenter<T> {
-    private val disposables = CompositeDisposable()
+open class ViewPresenter<T> : BasePresenter<T> {
+    val subscription = CompositeDisposable()
 
     private var view: T? = null
 
@@ -12,8 +11,16 @@ class ViewPresenter<T> : BasePresenter<T> {
         this.view = view
     }
 
+    private fun hasView() = view != null
+
+    fun onView(action: T.() -> Unit) {
+        if (hasView()) {
+            action.invoke(view!!)
+        }
+    }
+
     override fun dropView() {
-        disposables.dispose()
+        subscription.dispose()
         view = null
     }
 }
