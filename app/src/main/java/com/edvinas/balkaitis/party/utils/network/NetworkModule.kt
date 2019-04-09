@@ -1,6 +1,7 @@
 package com.edvinas.balkaitis.party.utils.network
 
 import com.edvinas.balkaitis.party.BuildConfig
+import com.edvinas.balkaitis.party.login.network.LoginService
 import com.edvinas.balkaitis.party.utils.schedulers.Io
 import dagger.Module
 import dagger.Provides
@@ -19,18 +20,21 @@ abstract class NetworkModule {
         @JvmStatic @Singleton @Provides
         fun createRetrofit(client: OkHttpClient, @Io scheduler: Scheduler): Retrofit {
             return Retrofit.Builder()
-                .baseUrl(BuildConfig.BASE_URL)
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(scheduler))
-                .build()
+                    .baseUrl(BuildConfig.BASE_URL)
+                    .client(client)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(scheduler))
+                    .build()
         }
 
         @JvmStatic @Provides
         fun provideOkHttpClient(): OkHttpClient {
             return OkHttpClient.Builder()
-                .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                .build()
+                    .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                    .build()
         }
+
+        @JvmStatic @Provides
+        fun provideLoginService(retrofit: Retrofit): LoginService = retrofit.create(LoginService::class.java)
     }
 }
