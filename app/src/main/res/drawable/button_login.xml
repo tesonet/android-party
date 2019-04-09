@@ -5,7 +5,7 @@
             <item>
                 <shape android:shape="rectangle" android:layout_width="wrap_content">
                     <corners android:radius="2dp" />
-                    <solid android:color="@color/buttonLogin" />
+                    <solid android:color="@color/buttonBackgroundLogin" />
                 </shape>
             </item>
         </ripple>
