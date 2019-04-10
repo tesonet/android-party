@@ -3,4 +3,5 @@
     xmlns:tools="http://schemas.android.com/tools">
     <dimen name="login_input_rounding">4dp</dimen>
     <dimen name="login_input_height">60dp</dimen>
+    <dimen name="input_text_size">15sp</dimen>
 </resources>

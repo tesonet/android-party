@@ -16,13 +16,34 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
+
+def conductor_version = "3.0.0-rc1"
+def butterknife_version = "10.1.0"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0-alpha01'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0-alpha03'
+
+    // Conductor
+    implementation "com.bluelinelabs:conductor:${conductor_version}"
+    implementation "com.bluelinelabs:conductor-support:${conductor_version}"
+    implementation "com.bluelinelabs:conductor-rxlifecycle2:${conductor_version}"
+
+    // Butterknife
+    implementation "com.jakewharton:butterknife:${butterknife_version}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${butterknife_version}"
+
+
+
     //androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
 }
