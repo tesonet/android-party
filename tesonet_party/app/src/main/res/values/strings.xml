@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Tesonet Android party</string>
+    <string name="login">Log In</string>
 </resources>
