@@ -1,4 +1,4 @@
-package lt.liutkevicius.tesonetandroidparty.ui.progress;
+package lt.liutkevicius.tesonetandroidparty.ui.servers;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import lt.liutkevicius.tesonetandroidparty.R;
 import lt.liutkevicius.tesonetandroidparty.ui.base.BaseController;
 
-public class ProgressController extends BaseController {
+public class ServersController extends BaseController {
 
     @Override
     protected View inflateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container) {

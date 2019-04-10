@@ -1,6 +1,5 @@
 package lt.liutkevicius.tesonetandroidparty.ui.login;
 
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,7 @@ public class LoginController extends BaseController {
 
     @Override
     protected View inflateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container) {
-        return inflater.inflate(R.layout.login_screen, container, false);
+        return inflater.inflate(R.layout.screen_login, container, false);
     }
 
     @OnClick(R.id.bt_login)
