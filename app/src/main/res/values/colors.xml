@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#01579b</color>
+    <color name="colorPrimaryDark">#002f6c</color>
+    <color name="colorAccent">#4f83cc</color>
+
+    <color name="buttonRipple">#55000000</color>
+    <color name="buttonBackgroundLogin">#9fd533</color>
+    <color name="buttonTextWhite">#FFFFFF</color>
+
+    <color name="backgroundWhite">#FFFFFF</color>
+    <color name="backgroundServersHeader">#f0f0f0</color>
+    <color name="backgroundServersHeaderStart">#E2E2E2</color>
+    <color name="backgroundServersHeaderEnd">#1DE9E9E9</color>
+
+    <color name="textWhite">#FFFFFF</color>
+    <color name="textHintLogin">#cecece</color>
+    <color name="textServersHeader">#868686</color>
+</resources>

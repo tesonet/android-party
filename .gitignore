@@ -1,1 +1,30 @@
-.DS_Store
+# Built application
+*.apk
+*.ap_
+
+# Java class
+*.class
+
+# Windows thumbnail db
+Thumbs.db
+
+# OSX
+*.DS_Store
+
+# Android Studio
+*.iml
+.idea/*
+.gradle
+/build
+
+# Analytics
+*.tap
+*.trace
+
+# Signing
+*.jks
+*.keystore
+
+# Local configuration
+local.properties
+signing.properties
