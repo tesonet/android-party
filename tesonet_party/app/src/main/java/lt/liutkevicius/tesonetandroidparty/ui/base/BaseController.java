@@ -1,4 +1,4 @@
-package lt.liutkevicius.tesonetandroidparty.base;
+package lt.liutkevicius.tesonetandroidparty.ui.base;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

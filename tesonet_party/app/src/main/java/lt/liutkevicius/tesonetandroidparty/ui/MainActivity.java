@@ -1,4 +1,4 @@
-package lt.liutkevicius.tesonetandroidparty;
+package lt.liutkevicius.tesonetandroidparty.ui;
 
 import android.view.ViewGroup;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +8,8 @@ import butterknife.ButterKnife;
 import com.bluelinelabs.conductor.Conductor;
 import com.bluelinelabs.conductor.Router;
 import com.bluelinelabs.conductor.RouterTransaction;
-import lt.liutkevicius.tesonetandroidparty.login.LoginController;
+import lt.liutkevicius.tesonetandroidparty.R;
+import lt.liutkevicius.tesonetandroidparty.ui.login.LoginController;
 
 public class MainActivity extends AppCompatActivity {
 

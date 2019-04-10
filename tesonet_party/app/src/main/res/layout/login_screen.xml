@@ -3,8 +3,14 @@
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    android:orientation="vertical"
                                                    android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-                                                   android:background="@drawable/login_bg">
+                                                   android:layout_height="match_parent">
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:maxHeight="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg"/>
 
     <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
@@ -20,13 +26,14 @@
     <LinearLayout
             android:id="@+id/username_layout"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@id/password_layout"
             app:layout_constraintStart_toStartOf="@+id/guideline_left"
             app:layout_constraintEnd_toStartOf="@+id/guideline_right"
             android:layout_marginBottom="16dp"
             android:background="@drawable/input_bg"
-            android:layout_height="wrap_content">
+            >
 
         <ImageView
                 android:layout_width="wrap_content"
@@ -92,7 +99,7 @@
     <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:id="@+id/bt_login"
-            android:background="@drawable/button_bg"
+            style="@style/GreenButton"
             app:layout_constraintBottom_toTopOf="@id/guideline_input"
             android:layout_height="@dimen/login_input_height"
             android:text="@string/login"
