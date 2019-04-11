@@ -3,5 +3,7 @@
     <string name="login">Log In</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="fetching_list">Fetching the list...</string>
+    <string name="fetching_list">Fetching the list&#8230;</string>
+    <string name="server">Server</string>
+    <string name="distance">Distance</string>
 </resources>

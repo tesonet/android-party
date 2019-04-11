@@ -11,6 +11,6 @@ public class ServersController extends BaseController {
 
     @Override
     protected View inflateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container) {
-        return inflater.inflate(R.layout.screen_progress, container, false);
+        return inflater.inflate(R.layout.screen_servers, container, false);
     }
 }
