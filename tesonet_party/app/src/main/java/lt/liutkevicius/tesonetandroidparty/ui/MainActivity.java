@@ -8,8 +8,9 @@ import butterknife.ButterKnife;
 import com.bluelinelabs.conductor.Conductor;
 import com.bluelinelabs.conductor.Router;
 import com.bluelinelabs.conductor.RouterTransaction;
+import lt.liutkevicius.tesonetandroidparty.PartyApp;
 import lt.liutkevicius.tesonetandroidparty.R;
-import lt.liutkevicius.tesonetandroidparty.ui.login.LoginController;
+import lt.liutkevicius.tesonetandroidparty.ui.login.LoginViewImpl;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,12 +22,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        PartyApp.getAppComponent().inject(this);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
         router = Conductor.attachRouter(this, container, savedInstanceState);
         if (!router.hasRootController()) {
-            router.setRoot(RouterTransaction.with(new LoginController()));
+            router.setRoot(RouterTransaction.with(new LoginViewImpl()));
         }
     }
 

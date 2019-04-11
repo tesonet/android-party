@@ -4,13 +4,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
+import lt.liutkevicius.tesonetandroidparty.PartyApp;
 import lt.liutkevicius.tesonetandroidparty.R;
-import lt.liutkevicius.tesonetandroidparty.ui.base.BaseController;
+import lt.liutkevicius.tesonetandroidparty.ui.base.BaseView;
 
-public class ServersController extends BaseController {
+public class ServersViewImpl extends BaseView {
 
     @Override
     protected View inflateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container) {
         return inflater.inflate(R.layout.screen_servers, container, false);
+    }
+
+    @Override
+    public void doInjection() {
+        PartyApp.getAppComponent().inject(this);
     }
 }

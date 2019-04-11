@@ -1,5 +1,6 @@
 package lt.liutkevicius.tesonetandroidparty.ui.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +10,13 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.bluelinelabs.conductor.Controller;
 
-public abstract class BaseController extends Controller {
+public abstract class BaseView extends Controller {
     private Unbinder unbinder;
 
-    protected BaseController() {
+    protected BaseView() {
     }
 
-    protected BaseController(Bundle args) {
+    protected BaseView(Bundle args) {
         super(args);
     }
 
@@ -30,7 +31,14 @@ public abstract class BaseController extends Controller {
         return view;
     }
 
-    protected void onViewBound(@NonNull View view) { }
+    @Override
+    protected void onContextAvailable(@NonNull Context context) {
+        super.onContextAvailable(context);
+        doInjection();
+    }
+
+    protected void onViewBound(@NonNull View view) {
+    }
 
     @Override
     protected void onDestroyView(@NonNull View view) {
@@ -38,4 +46,6 @@ public abstract class BaseController extends Controller {
         unbinder.unbind();
         unbinder = null;
     }
+
+    public abstract void doInjection();
 }
