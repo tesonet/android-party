@@ -55,9 +55,9 @@ public class NetworkModule {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.addInterceptor(chain -> {
             Request original = chain.request();
-            Request request = original.newBuilder()
-                    .build();
-            return chain.proceed(request);
+            Request.Builder request = original.newBuilder();
+            request.header("Content-Type", "application/json");
+            return chain.proceed(request.build());
         })
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)

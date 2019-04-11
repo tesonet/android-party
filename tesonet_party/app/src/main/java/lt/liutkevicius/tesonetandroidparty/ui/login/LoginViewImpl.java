@@ -67,11 +67,6 @@ public class LoginViewImpl extends BaseView implements LoginView {
     }
 
     @Override
-    public void hideLoading() {
-        // TODO
-    }
-
-    @Override
     public void showServers() {
         // TODO
     }

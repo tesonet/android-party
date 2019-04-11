@@ -30,6 +30,10 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                     sharedPrefs.setToken(tokenResponse.getToken());
                     Log.d("LoginPresenter", "token = " + sharedPrefs.getToken());
                 })
+                .flatMap(token -> repository.getServers())
+                .doOnNext(jsonElement -> {
+                    Log.d("LoginPresenter", "Json data: " + jsonElement.toString());
+                })
                 .subscribe(token -> {
                 }, throwable -> {
                     Log.d("err", throwable.getMessage());
