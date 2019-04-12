@@ -10,8 +10,8 @@ import lt.liutkevicius.tesonetandroidparty.ui.servers.ServersViewImpl;
 
 import javax.inject.Singleton;
 
-@Component(modules = {ApplicationModule.class, NetworkModule.class})
 @Singleton
+@Component(modules = {ApplicationModule.class, NetworkModule.class})
 public interface IApplicationComponent {
 
     SharedPrefs getSharedPrefs();

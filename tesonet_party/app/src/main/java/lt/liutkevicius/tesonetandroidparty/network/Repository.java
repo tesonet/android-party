@@ -7,6 +7,7 @@ import lt.liutkevicius.tesonetandroidparty.network.model.Token;
 import lt.liutkevicius.tesonetandroidparty.network.request.LoginRequest;
 import lt.liutkevicius.tesonetandroidparty.network.schedulers.SchedulerProvider;
 import lt.liutkevicius.tesonetandroidparty.storage.SharedPrefs;
+import lt.liutkevicius.tesonetandroidparty.utils.Constants;
 
 import javax.inject.Inject;
 
@@ -27,6 +28,7 @@ public class Repository {
     }
 
     public final Observable<JsonElement> getServers() {
-        return partyApi.getServers(sharedPrefs.getToken()).compose(schedulerProvider.applySchedulers());
+        return partyApi.getServers(String.format(Constants.BEARER + " %s", sharedPrefs.getToken()))
+                .compose(schedulerProvider.applySchedulers());
     }
 }

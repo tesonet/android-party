@@ -9,10 +9,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import lt.liutkevicius.tesonetandroidparty.BuildConfig;
 import lt.liutkevicius.tesonetandroidparty.network.PartyApi;
-import lt.liutkevicius.tesonetandroidparty.network.Repository;
 import lt.liutkevicius.tesonetandroidparty.network.schedulers.SchedulerProvider;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -53,6 +53,9 @@ public class NetworkModule {
     @Singleton
     OkHttpClient provideOkHttpClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        builder.addInterceptor(interceptor);
         builder.addInterceptor(chain -> {
             Request original = chain.request();
             Request.Builder request = original.newBuilder();

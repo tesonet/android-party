@@ -8,10 +8,12 @@ import androidx.appcompat.widget.AppCompatEditText;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.bluelinelabs.conductor.RouterTransaction;
+import com.bluelinelabs.conductor.changehandler.HorizontalChangeHandler;
 import lt.liutkevicius.tesonetandroidparty.PartyApp;
 import lt.liutkevicius.tesonetandroidparty.R;
 import lt.liutkevicius.tesonetandroidparty.ui.base.BaseView;
 import lt.liutkevicius.tesonetandroidparty.ui.progress.ProgressViewImpl;
+import lt.liutkevicius.tesonetandroidparty.ui.servers.ServersViewImpl;
 
 import javax.inject.Inject;
 
@@ -63,11 +65,15 @@ public class LoginViewImpl extends BaseView implements LoginView {
     @Override
     public void showLoading() {
         progressView = new ProgressViewImpl(getActivity().getString(R.string.logging_in));
-        getRouter().pushController(RouterTransaction.with(progressView));
+        getRouter().pushController(RouterTransaction.with(progressView)
+                .pushChangeHandler(new HorizontalChangeHandler())
+                .popChangeHandler(new HorizontalChangeHandler()));
     }
 
     @Override
     public void showServers() {
-        // TODO
+        getRouter().setRoot(RouterTransaction.with(new ServersViewImpl())
+                .pushChangeHandler(new HorizontalChangeHandler())
+                .popChangeHandler(new HorizontalChangeHandler()));
     }
 }

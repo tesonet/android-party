@@ -3,13 +3,23 @@ package lt.liutkevicius.tesonetandroidparty.ui.servers;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import lt.liutkevicius.tesonetandroidparty.R;
+import lt.liutkevicius.tesonetandroidparty.network.model.Server;
+
+import java.util.List;
 
 public class ServersAdapter extends RecyclerView.Adapter<ServersAdapter.ViewHolder> {
-    //private List<Server> serverList;
+    private static final String TAG = "ServersAdapter";
+    private List<Server> serverList;
+
+    ServersAdapter(List<Server> serverList) {
+        this.serverList = serverList;
+    }
 
     @NonNull
     @Override
@@ -20,23 +30,25 @@ public class ServersAdapter extends RecyclerView.Adapter<ServersAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ServersAdapter.ViewHolder holder, int position) {
-
+        holder.name.setText(serverList.get(position).getName());
+        holder.distance.setText(String.valueOf(serverList.get(position).getDistance()));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return serverList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView server;
-        public TextView distance;
+        @BindView(R.id.server_name)
+        AppCompatTextView name;
+        @BindView(R.id.server_distance)
+        public AppCompatTextView distance;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
-            server = itemView.findViewById(R.id.server_name);
-            distance = itemView.findViewById(R.id.server_distance);
+            ButterKnife.bind(this, itemView);
         }
     }
 }

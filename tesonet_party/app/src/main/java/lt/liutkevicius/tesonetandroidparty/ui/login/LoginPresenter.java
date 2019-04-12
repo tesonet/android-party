@@ -9,6 +9,7 @@ import lt.liutkevicius.tesonetandroidparty.ui.base.BasePresenter;
 import javax.inject.Inject;
 
 public class LoginPresenter extends BasePresenter<LoginView> {
+    private static final String TAG = "LoginPresenter";
     private final Repository repository;
     private final SharedPrefs sharedPrefs;
 
@@ -17,7 +18,6 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         this.repository = repository;
         this.sharedPrefs = sharedPrefs;
     }
-
 
     public void login(String username, String pass) {
         if (!hasView()) {
@@ -28,11 +28,13 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                 .doOnNext(tokenResponse -> {
                     getView().onLoggedIn();
                     sharedPrefs.setToken(tokenResponse.getToken());
-                    Log.d("LoginPresenter", "token = " + sharedPrefs.getToken());
+                    Log.d(TAG, "token = " + sharedPrefs.getToken());
                 })
                 .flatMap(token -> repository.getServers())
                 .doOnNext(jsonElement -> {
-                    Log.d("LoginPresenter", "Json data: " + jsonElement.toString());
+                    Log.d(TAG, "Json data: " + jsonElement.toString());
+                    sharedPrefs.setServers(jsonElement.toString());
+                    getView().showServers();
                 })
                 .subscribe(token -> {
                 }, throwable -> {
