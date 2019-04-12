@@ -5,19 +5,19 @@ import com.google.gson.JsonElement;
 import io.reactivex.Observable;
 import lt.liutkevicius.tesonetandroidparty.network.model.Token;
 import lt.liutkevicius.tesonetandroidparty.network.request.LoginRequest;
-import lt.liutkevicius.tesonetandroidparty.network.schedulers.SchedulerProvider;
-import lt.liutkevicius.tesonetandroidparty.storage.SharedPrefs;
+import lt.liutkevicius.tesonetandroidparty.network.schedulers.ISchedulerProvider;
+import lt.liutkevicius.tesonetandroidparty.storage.ISharedPrefs;
 import lt.liutkevicius.tesonetandroidparty.utils.Constants;
 
 import javax.inject.Inject;
 
 public class Repository {
     private final PartyApi partyApi;
-    private final SchedulerProvider schedulerProvider;
-    private final SharedPrefs sharedPrefs;
+    private final ISchedulerProvider schedulerProvider;
+    private final ISharedPrefs sharedPrefs;
 
     @Inject
-    public Repository(PartyApi partyApi, SchedulerProvider schedulerProvider, SharedPrefs sharedPrefs) {
+    public Repository(PartyApi partyApi, ISchedulerProvider schedulerProvider, ISharedPrefs sharedPrefs) {
         this.partyApi = partyApi;
         this.schedulerProvider = schedulerProvider;
         this.sharedPrefs = sharedPrefs;

@@ -3,6 +3,7 @@
               android:layout_width="match_parent"
               android:layout_marginStart="@dimen/servers_list_margin"
               android:layout_marginEnd="@dimen/servers_list_margin"
+             android:background="@android:color/transparent"
               android:layout_height="50dp">
 
     <androidx.appcompat.widget.AppCompatTextView

@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
 
-public class SharedPrefs {
+public class SharedPrefs implements ISharedPrefs {
     private static final String PREF_FILE_NAME = "app_pref_file";
     private static final String KEY_TOKEN = "token";
     public static final String KEY_SERVERS = "serversList";

@@ -3,18 +3,18 @@ package lt.liutkevicius.tesonetandroidparty.ui.login;
 import lt.liutkevicius.tesonetandroidparty.network.Repository;
 import lt.liutkevicius.tesonetandroidparty.network.error.ErrorHandler;
 import lt.liutkevicius.tesonetandroidparty.network.request.LoginRequest;
-import lt.liutkevicius.tesonetandroidparty.storage.SharedPrefs;
+import lt.liutkevicius.tesonetandroidparty.storage.ISharedPrefs;
 import lt.liutkevicius.tesonetandroidparty.ui.base.BasePresenter;
 
 import javax.inject.Inject;
 
 public class LoginPresenter extends BasePresenter<LoginView> {
     private final Repository repository;
-    private final SharedPrefs sharedPrefs;
+    private final ISharedPrefs sharedPrefs;
     private final ErrorHandler errorHandler;
 
     @Inject
-    public LoginPresenter(Repository repository, SharedPrefs sharedPrefs, ErrorHandler errorHandler) {
+    public LoginPresenter(Repository repository, ISharedPrefs sharedPrefs, ErrorHandler errorHandler) {
         this.repository = repository;
         this.sharedPrefs = sharedPrefs;
         this.errorHandler = errorHandler;
@@ -35,7 +35,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                     sharedPrefs.setServers(jsonElement.toString());
                     getView().showServers();
                 })
-                .subscribe(token -> {
+                .subscribe(element -> {
                 }, throwable -> {
                     getView().hideLoading();
                     getView().onError(new Exception(errorHandler.getErrorMessage(throwable)));

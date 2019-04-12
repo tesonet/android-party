@@ -9,6 +9,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import lt.liutkevicius.tesonetandroidparty.BuildConfig;
 import lt.liutkevicius.tesonetandroidparty.network.PartyApi;
+import lt.liutkevicius.tesonetandroidparty.network.schedulers.ISchedulerProvider;
 import lt.liutkevicius.tesonetandroidparty.network.schedulers.SchedulerProvider;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -71,7 +72,7 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    final SchedulerProvider provideSchedulerProvider() {
+    final ISchedulerProvider provideSchedulerProvider() {
         return new SchedulerProvider(Schedulers.io(), AndroidSchedulers.mainThread());
     }
 }

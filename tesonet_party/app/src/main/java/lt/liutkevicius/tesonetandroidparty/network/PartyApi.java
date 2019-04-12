@@ -7,7 +7,6 @@ import lt.liutkevicius.tesonetandroidparty.network.request.LoginRequest;
 import lt.liutkevicius.tesonetandroidparty.utils.Constants;
 import retrofit2.http.*;
 
-
 public interface PartyApi {
 
     @POST("v1/tokens")

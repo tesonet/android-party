@@ -1,9 +1,12 @@
 package lt.liutkevicius.tesonetandroidparty.ui.servers;
 
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
@@ -38,9 +41,16 @@ public class ServersViewImpl extends BaseView implements ServersView {
     protected void onViewBound(@NonNull View view) {
         super.onViewBound(view);
         presenter.setView(this);
+
         recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                layoutManager.getOrientation());
+        Drawable horizontalDivider = ContextCompat.getDrawable(getActivity(), R.drawable.divider_server_list);
+        dividerItemDecoration.setDrawable(horizontalDivider);
+        recyclerView.addItemDecoration(dividerItemDecoration);
 
         ServersAdapter adapter = new ServersAdapter(sharedPrefs.getServers());
         recyclerView.setAdapter(adapter);

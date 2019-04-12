@@ -48,7 +48,7 @@ public class LoginViewImpl extends BaseView implements LoginView {
     }
 
     @OnClick(R.id.bt_login)
-    public void onLoginClicked() {
+    void onLoginClicked() {
         String usernameStr = username.getText().toString().toLowerCase().trim();
         String passStr = password.getText().toString().toLowerCase().trim();
         if (usernameStr.isEmpty() || passStr.isEmpty()) {

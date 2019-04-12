@@ -11,7 +11,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        debug{
+        debug {
             minifyEnabled true
             buildConfigField "String", "BASE_URL", "\"http://playground.tesonet.lt/\""
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -33,6 +33,7 @@ def conductor_version = "3.0.0-rc1"
 def butterknife_version = "10.1.0"
 def retrofit_version = "2.5.0"
 def dagger_version = "2.13"
+def mockito_version = "2.23.0"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -40,6 +41,9 @@ dependencies {
     // Test
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0-alpha03'
+    testImplementation "org.mockito:mockito-core:${mockito_version}"
+    androidTestImplementation "org.mockito:mockito-android:${mockito_version}"
+    //androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha03'
 
     // Ui
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
@@ -73,5 +77,4 @@ dependencies {
     implementation "com.google.dagger:dagger:${dagger_version}"
     annotationProcessor "com.google.dagger:dagger-compiler:${dagger_version}"
 
-    //androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
 }

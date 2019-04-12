@@ -1,18 +1,13 @@
 package lt.liutkevicius.tesonetandroidparty.ui.progress;
 
-import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 import butterknife.BindView;
-import com.bluelinelabs.conductor.RouterTransaction;
-import lt.liutkevicius.tesonetandroidparty.PartyApp;
 import lt.liutkevicius.tesonetandroidparty.R;
 import lt.liutkevicius.tesonetandroidparty.ui.base.BaseView;
-import lt.liutkevicius.tesonetandroidparty.ui.servers.ServersViewImpl;
 
 public class ProgressViewImpl extends BaseView {
 
@@ -20,9 +15,6 @@ public class ProgressViewImpl extends BaseView {
     AppCompatTextView mLoadingText;
 
     private String loadingText;
-
-    public ProgressViewImpl() {
-    }
 
     public ProgressViewImpl(String loadingText) {
         this.loadingText = loadingText;
