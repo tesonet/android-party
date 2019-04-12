@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Tesonet Android party</string>
+    <string name="login">Log In</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="fetching_list">Fetching the list&#8230;</string>
+    <string name="server">Server</string>
+    <string name="distance">Distance</string>
+    <string name="logging_in">Logging in</string>
+    <string name="input_validation_error">Fill all fields</string>
+    <string name="unknown_error">Unknown Error</string>
+    <string name="unauthorized">Unauthorised</string>
+    <string name="forbidden">Forbidden</string>
+    <string name="server_error">Internal Server Error</string>
+    <string name="bad_request">Bad Request</string>
+    <string name="no_internet">No internet connection</string>
+</resources>

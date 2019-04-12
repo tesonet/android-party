@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_marginStart="@dimen/servers_list_margin"
+              android:layout_marginEnd="@dimen/servers_list_margin"
+             android:background="@android:color/transparent"
+              android:layout_height="50dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/server_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Canada #10"
+            android:layout_gravity="start|center_vertical"
+            />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/server_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4073 km"
+            android:layout_gravity="end|center_vertical"
+            />
+</FrameLayout>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   android:orientation="vertical"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:maxHeight="0dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/bg"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:adjustViewBounds="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/logo_white"
+            app:layout_constraintBottom_toTopOf="@+id/username_layout"
+            android:id="@+id/logo"/>
+
+    <LinearLayout
+            android:id="@+id/username_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/password_layout"
+            app:layout_constraintStart_toStartOf="@+id/guideline_left"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_input"
+            >
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:adjustViewBounds="true"
+                android:layout_marginStart="20dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_username"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/username"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:lines="1"
+                android:textCursorDrawable="@null"
+                android:paddingStart="15dp"
+                android:hint="@string/username"
+                android:textSize="@dimen/input_text_size"
+                android:layout_height="@dimen/login_input_height"
+                app:layout_constraintStart_toStartOf="@+id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_right"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/password_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/bt_login"
+            app:layout_constraintStart_toStartOf="@+id/guideline_left"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_input"
+            >
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:adjustViewBounds="true"
+                android:layout_marginStart="20dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_lock"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/password"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:lines="1"
+                android:textCursorDrawable="@null"
+                android:paddingStart="15dp"
+                android:inputType="textPassword"
+                android:hint="@string/password"
+                android:textSize="@dimen/input_text_size"
+                android:layout_height="@dimen/login_input_height"
+                app:layout_constraintStart_toStartOf="@+id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_right"/>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:id="@+id/bt_login"
+            style="@style/GreenButton"
+            app:layout_constraintBottom_toTopOf="@id/guideline_input"
+            android:layout_height="@dimen/login_input_height"
+            android:text="@string/login"
+            android:textColor="@color/colorSecondary"
+            android:textAllCaps="false"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+            app:layout_constraintStart_toStartOf="@+id/guideline_left"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline_left"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1"
+            />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline_right"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline_input"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
