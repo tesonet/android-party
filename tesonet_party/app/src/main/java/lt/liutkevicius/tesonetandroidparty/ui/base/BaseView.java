@@ -1,7 +1,6 @@
 package lt.liutkevicius.tesonetandroidparty.ui.base;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +11,6 @@ import com.bluelinelabs.conductor.Controller;
 
 public abstract class BaseView extends Controller {
     private Unbinder unbinder;
-
-    protected BaseView() {
-    }
-
-    protected BaseView(Bundle args) {
-        super(args);
-    }
 
     protected abstract View inflateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container);
 

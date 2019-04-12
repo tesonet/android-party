@@ -1,7 +1,7 @@
 package lt.liutkevicius.tesonetandroidparty.ui.login;
 
-import android.util.Log;
 import lt.liutkevicius.tesonetandroidparty.network.Repository;
+import lt.liutkevicius.tesonetandroidparty.network.error.ErrorHandler;
 import lt.liutkevicius.tesonetandroidparty.network.request.LoginRequest;
 import lt.liutkevicius.tesonetandroidparty.storage.SharedPrefs;
 import lt.liutkevicius.tesonetandroidparty.ui.base.BasePresenter;
@@ -9,14 +9,15 @@ import lt.liutkevicius.tesonetandroidparty.ui.base.BasePresenter;
 import javax.inject.Inject;
 
 public class LoginPresenter extends BasePresenter<LoginView> {
-    private static final String TAG = "LoginPresenter";
     private final Repository repository;
     private final SharedPrefs sharedPrefs;
+    private final ErrorHandler errorHandler;
 
     @Inject
-    public LoginPresenter(Repository repository, SharedPrefs sharedPrefs) {
+    public LoginPresenter(Repository repository, SharedPrefs sharedPrefs, ErrorHandler errorHandler) {
         this.repository = repository;
         this.sharedPrefs = sharedPrefs;
+        this.errorHandler = errorHandler;
     }
 
     public void login(String username, String pass) {
@@ -28,17 +29,16 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                 .doOnNext(tokenResponse -> {
                     getView().onLoggedIn();
                     sharedPrefs.setToken(tokenResponse.getToken());
-                    Log.d(TAG, "token = " + sharedPrefs.getToken());
                 })
                 .flatMap(token -> repository.getServers())
                 .doOnNext(jsonElement -> {
-                    Log.d(TAG, "Json data: " + jsonElement.toString());
                     sharedPrefs.setServers(jsonElement.toString());
                     getView().showServers();
                 })
                 .subscribe(token -> {
                 }, throwable -> {
-                    Log.d("err", throwable.getMessage());
+                    getView().hideLoading();
+                    getView().onError(new Exception(errorHandler.getErrorMessage(throwable)));
                 }));
     }
 }

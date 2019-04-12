@@ -3,6 +3,7 @@ package lt.liutkevicius.tesonetandroidparty.ui.login;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatEditText;
 import butterknife.BindView;
@@ -28,7 +29,7 @@ public class LoginViewImpl extends BaseView implements LoginView {
     @BindView(R.id.password)
     AppCompatEditText password;
 
-    ProgressViewImpl progressView;
+    private ProgressViewImpl progressView;
 
     @Override
     protected View inflateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container) {
@@ -48,13 +49,18 @@ public class LoginViewImpl extends BaseView implements LoginView {
 
     @OnClick(R.id.bt_login)
     public void onLoginClicked() {
-        loginPresenter.login(username.getText().toString().toLowerCase().trim(),
-                password.getText().toString().toLowerCase().trim());
+        String usernameStr = username.getText().toString().toLowerCase().trim();
+        String passStr = password.getText().toString().toLowerCase().trim();
+        if (usernameStr.isEmpty() || passStr.isEmpty()) {
+            onError(new Exception(getActivity().getString(R.string.input_validation_error)));
+        } else {
+            loginPresenter.login(usernameStr, passStr);
+        }
     }
 
     @Override
-    public void onError() {
-        // TODO implement
+    public void onError(Exception e) {
+        Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -65,10 +71,17 @@ public class LoginViewImpl extends BaseView implements LoginView {
     @Override
     public void showLoading() {
         progressView = new ProgressViewImpl(getActivity().getString(R.string.logging_in));
+
         getRouter().pushController(RouterTransaction.with(progressView)
                 .pushChangeHandler(new HorizontalChangeHandler())
                 .popChangeHandler(new HorizontalChangeHandler()));
     }
+
+    @Override
+    public void hideLoading() {
+        getRouter().popCurrentController();
+    }
+
 
     @Override
     public void showServers() {

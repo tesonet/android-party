@@ -4,7 +4,9 @@ public interface LoginView {
 
     void showLoading();
 
-    void onError();
+    void hideLoading();
+
+    void onError(Exception e);
 
     void onLoggedIn();
 
