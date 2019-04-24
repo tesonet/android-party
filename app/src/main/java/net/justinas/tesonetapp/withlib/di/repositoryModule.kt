@@ -1,6 +1,6 @@
 package net.justinas.tesonetapp.withlib.di
 
-import net.justinas.minitemplate.domain.ListRepository
+import net.justinas.minilist.domain.item.ListRepository
 import net.justinas.minitemplate.domain.UserRepository
 import net.justinas.tesonetapp.withlib.domain.ListRepositoryRemote
 import net.justinas.tesonetapp.withlib.domain.UserRepositoryRemote

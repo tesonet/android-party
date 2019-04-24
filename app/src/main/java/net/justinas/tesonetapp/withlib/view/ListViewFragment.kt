@@ -6,15 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
-import net.justinas.minilist.databinding.FragmentListBinding
-import net.justinas.minilist.domain.IdEntity
-import net.justinas.minilist.view.list.IdEntityAdapter
-import net.justinas.minilist.view.list.ListViewModel
-import net.justinas.tesonetapp.withlib.R
+import kotlinx.android.synthetic.main.fragment_list.*
+import net.justinas.minilist.domain.item.IdEntity
+import net.justinas.tesonetapp.withlib.databinding.FragmentListBinding
+import net.justinas.tesonetapp.withlib.view.adapter.IdLinearEntityAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
-class ListViewFragment : Fragment(), IdEntityAdapter.Callbacks {
+class ListViewFragment : Fragment(), IdLinearEntityAdapter.Callbacks {
 
     val viewModel: ListViewModel by viewModel()
 
@@ -25,9 +23,14 @@ class ListViewFragment : Fragment(), IdEntityAdapter.Callbacks {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
         binding.callback = this
-        binding.header.item = IdEntity(0, "SERVER", "DISTANCE")
-        binding.toolbar.setLogo(R.drawable.ic_tesonet_logo)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        exit.setOnClickListener {
+            fragmentManager?.popBackStack()
+        }
     }
 
     override fun onItemClick(view: View, item: IdEntity) {

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="net.justinas.minitemplate.view.LoginFragment">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="net.justinas.tesonetapp.withlib.view.LoginViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary">
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/bg"
+                android:scaleType="center"
+                />
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:textSize="40sp"
+                app:layout_constraintStart_toStartOf="@+id/guideline_vertical_20"
+                app:layout_constraintEnd_toEndOf="@+id/guideline_vertical_80"
+                app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_20"
+                />
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/login_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"/>
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_horizontal_20"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.2"/>
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_horizontal_60"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.6"/>
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_horizontal_80"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.8"/>
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_vertical_80"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.8"/>
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_vertical_20"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.2"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_username"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top"
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false"
+                app:layout_constraintStart_toStartOf="@+id/guideline_vertical_20"
+                app:layout_constraintEnd_toEndOf="@+id/guideline_vertical_80"
+                app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_60">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:text="@={viewModel.username}"
+                    android:hint="user name"
+                    tools:ignore="HardcodedText"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top"
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false"
+                app:layout_constraintStart_toStartOf="@+id/guideline_vertical_20"
+                app:layout_constraintEnd_toEndOf="@+id/guideline_vertical_80"
+                app:layout_constraintTop_toBottomOf="@+id/layout_username">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:text="@={viewModel.password}"
+                    android:hint="password"
+                    tools:ignore="HardcodedText"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_login"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:onClick="@{() -> viewModel.onLoginClick()}"
+                android:layout_marginTop="@dimen/margin_top"
+                app:layout_constraintStart_toStartOf="@+id/guideline_vertical_20"
+                app:layout_constraintEnd_toEndOf="@+id/guideline_vertical_80"
+                app:layout_constraintTop_toBottomOf="@+id/layout_password"
+                android:text="Login"
+                tools:ignore="HardcodedText"/>
+
+        <ProgressBar
+                android:id="@+id/progressBar"
+                style="@style/CustomProgressBar"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:clickable="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:showLoading="@{viewModel.result}"
+                app:showErrorSnack="@{viewModel.result}"
+                android:visibility="visible"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
