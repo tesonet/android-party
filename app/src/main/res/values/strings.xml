@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Tesonet</string>
+    <string name="fetching_data">Fetching the list…</string>
+    <string name="app_title">testio</string>
+    <string name="server">SERVER</string>
+    <string name="distance">DISTANCE</string>
+</resources>
