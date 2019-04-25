@@ -14,8 +14,8 @@ class LoginViewModel(val userRepo: UserRepository) : ViewModel() {
 
     val disposable = CompositeDisposable()
 
-    val username = MutableLiveData<String>().apply { postValue("tesonet") }
-    val password = MutableLiveData<String>().apply { postValue("partyanimal") }
+    val username = MutableLiveData<String>()
+    val password = MutableLiveData<String>()
 
     val successLogin = SingleLiveEvent<Any>()
 
