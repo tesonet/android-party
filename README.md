@@ -23,6 +23,8 @@ If you found this task it means we are looking for you!
 
 ## Implementation
 
+- for first time i was concentrated on separating and publishing libraries, and lost focus on UI, i changed it now.
+
 - Login added.
 - For data fetching Retrofit with Moshi and RX adapter is used.
 - Few logos svg are invalid for android studio import.
