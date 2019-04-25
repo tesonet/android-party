@@ -20,3 +20,16 @@ If you found this task it means we are looking for you!
 - Bonus: have a good set of unit tests
 
 *Note:* The bonus requirements are optional. While they are nice to have, it's much more important to have the basics nailed.
+
+## Implementation
+
+- Login added.
+- For data fetching Retrofit with Moshi and RX adapter is used.
+- Few logos svg are invalid for android studio import.
+- Simple animation added.
+- Could add global cache if needed.
+- Unit mocked tests added for list.
+- architecture by http://kaunas-jug.lt/material/meetup46/JUG46_Faster_testing_with_Kotlin.pptx
+- Repository for my personal demo. https://gitlab.com/dzastinas/mini-list
+- Custom lib used is in https://gitlab.com/dzastinas/mini-list/tree/master/minilist
+- Custom lib featured app published https://play.google.com/store/apps/details?id=net.justinas.minitemplate&hl=en
