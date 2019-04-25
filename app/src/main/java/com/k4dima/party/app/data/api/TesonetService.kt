@@ -1,6 +1,6 @@
-package com.k4dima.androidparty.features.app.data.api
+package com.k4dima.party.app.data.api
 
-import com.k4dima.androidparty.features.login.data.model.Token
+import com.k4dima.party.login.data.model.Token
 import com.k4dima.party.main.data.model.Server
 import io.reactivex.Single
 import okhttp3.RequestBody

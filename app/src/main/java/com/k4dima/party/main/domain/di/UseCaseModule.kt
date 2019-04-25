@@ -1,8 +1,8 @@
-package com.k4dima.androidparty.features.main.domain.di
+package com.k4dima.party.main.domain.di
 
-import com.k4dima.androidparty.features.main.domain.MainUseCase
-import com.k4dima.androidparty.features.main.domain.ServersUseCase
-import com.k4dima.androidparty.features.main.ui.di.MainScope
+import com.k4dima.party.main.domain.MainUseCase
+import com.k4dima.party.main.domain.ServersUseCase
+import com.k4dima.party.main.ui.di.MainScope
 import dagger.Module
 import dagger.Provides
 

@@ -1,8 +1,8 @@
-package com.k4dima.androidparty.features.main.presentation.di
+package com.k4dima.party.main.presentation.di
 
 import androidx.lifecycle.ViewModel
-import com.k4dima.androidparty.features.app.presentation.di.ViewModelKey
-import com.k4dima.androidparty.features.main.presentation.MainViewModel
+import com.k4dima.party.app.presentation.di.ViewModelKey
+import com.k4dima.party.main.presentation.MainViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

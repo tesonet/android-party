@@ -1,4 +1,4 @@
-package com.k4dima.androidparty.features.app.domain
+package com.k4dima.party.app.domain
 
 import io.reactivex.Single
 

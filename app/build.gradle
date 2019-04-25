@@ -2,6 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 android {
+    signingConfigs {
+        config {
+            keyAlias 'key0'
+            keyPassword 'hyperloop'
+            storeFile file('keystore')
+            storePassword 'hyperloop'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         minSdkVersion 21
@@ -9,6 +17,7 @@ android {
         versionCode 1
         versionName '1.0'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        signingConfig signingConfigs.config
     }
     dataBinding.enabled = true
     testOptions.unitTests.includeAndroidResources = true

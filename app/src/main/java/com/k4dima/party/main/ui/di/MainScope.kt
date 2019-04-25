@@ -1,4 +1,4 @@
-package com.k4dima.androidparty.features.main.ui.di
+package com.k4dima.party.main.ui.di
 
 import javax.inject.Scope
 

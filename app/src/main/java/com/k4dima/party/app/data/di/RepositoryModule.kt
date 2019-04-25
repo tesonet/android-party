@@ -1,7 +1,7 @@
 package com.k4dima.party.app.data.di
 
 import com.k4dima.party.app.data.AppPreferenceRepository
-import com.k4dima.androidparty.features.app.data.PreferenceRepository
+import com.k4dima.party.app.data.PreferenceRepository
 import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton

@@ -4,7 +4,7 @@
 
         <variable
             name="model"
-            type="com.k4dima.androidparty.features.main.presentation.MainViewModel" />
+            type="com.k4dima.party.main.presentation.MainViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

@@ -1,9 +1,9 @@
-package com.k4dima.androidparty.features.main.data.di
+package com.k4dima.party.main.data.di
 
-import com.k4dima.androidparty.features.app.data.DataRepository
-import com.k4dima.androidparty.features.main.data.ServersRepository
+import com.k4dima.party.app.data.DataRepository
+import com.k4dima.party.main.data.ServersRepository
 import com.k4dima.party.main.data.model.Server
-import com.k4dima.androidparty.features.main.ui.di.MainScope
+import com.k4dima.party.main.ui.di.MainScope
 import dagger.Module
 import dagger.Provides
 

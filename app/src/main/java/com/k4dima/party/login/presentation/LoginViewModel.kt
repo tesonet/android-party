@@ -3,7 +3,7 @@ package com.k4dima.party.login.presentation
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.k4dima.androidparty.features.app.domain.UseCase
+import com.k4dima.party.app.domain.UseCase
 import com.k4dima.party.login.ui.di.LoginScope
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -15,7 +15,7 @@ class LoginViewModel
 constructor(private val useCase: UseCase<Array<String>, String>) : ViewModel() {
     val error = MutableLiveData<String>()
     val token = MutableLiveData<String>()
-    private var disposables = CompositeDisposable()
+    private val disposables = CompositeDisposable()
     var username = ""
     var password = ""
     fun login(@Suppress("UNUSED_PARAMETER") button: View) {

@@ -1,9 +1,9 @@
-package com.k4dima.androidparty.features.main.data
+package com.k4dima.party.main.data
 
-import com.k4dima.androidparty.features.app.data.DataRepository
-import com.k4dima.androidparty.features.app.data.api.TesonetService
+import com.k4dima.party.app.data.DataRepository
+import com.k4dima.party.app.data.api.TesonetService
 import com.k4dima.party.main.data.model.Server
-import com.k4dima.androidparty.features.main.ui.di.MainScope
+import com.k4dima.party.main.ui.di.MainScope
 import javax.inject.Inject
 
 @MainScope

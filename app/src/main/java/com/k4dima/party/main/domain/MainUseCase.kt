@@ -1,9 +1,9 @@
-package com.k4dima.androidparty.features.main.domain
+package com.k4dima.party.main.domain
 
-import com.k4dima.androidparty.features.app.data.DataRepository
-import com.k4dima.androidparty.features.app.data.PreferenceRepository
+import com.k4dima.party.app.data.DataRepository
+import com.k4dima.party.app.data.PreferenceRepository
 import com.k4dima.party.main.data.model.Server
-import com.k4dima.androidparty.features.main.ui.di.MainScope
+import com.k4dima.party.main.ui.di.MainScope
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject

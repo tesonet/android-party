@@ -1,4 +1,4 @@
-package com.k4dima.androidparty.features.app.presentation
+package com.k4dima.party.app.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -9,8 +9,8 @@ import javax.inject.Provider
 @Reusable
 class ViewModelFactory
 @Inject
-internal constructor(private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>) :
-        ViewModelProvider.Factory {
+internal constructor(private val creators: Map<Class<out ViewModel>,
+        @JvmSuppressWildcards Provider<ViewModel>>) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>) =
             creators[modelClass]!!.get() as T
 }

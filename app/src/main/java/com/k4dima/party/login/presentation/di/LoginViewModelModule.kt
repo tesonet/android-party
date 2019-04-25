@@ -1,7 +1,7 @@
-package com.k4dima.androidparty.features.login.presentation.di
+package com.k4dima.party.login.presentation.di
 
 import androidx.lifecycle.ViewModel
-import com.k4dima.androidparty.features.app.presentation.di.ViewModelKey
+import com.k4dima.party.app.presentation.di.ViewModelKey
 import com.k4dima.party.login.presentation.LoginViewModel
 import dagger.Binds
 import dagger.Module

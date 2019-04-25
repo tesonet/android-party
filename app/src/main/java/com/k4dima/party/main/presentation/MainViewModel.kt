@@ -1,9 +1,9 @@
-package com.k4dima.androidparty.features.main.presentation
+package com.k4dima.party.main.presentation
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.k4dima.party.main.data.model.Server
-import com.k4dima.androidparty.features.main.domain.ServersUseCase
+import com.k4dima.party.main.domain.ServersUseCase
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 

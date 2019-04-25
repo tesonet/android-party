@@ -1,6 +1,5 @@
 package com.k4dima.party.app.data.api
 
-import com.k4dima.androidparty.features.app.data.api.TesonetService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

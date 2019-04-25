@@ -8,7 +8,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.content.IntentSubject
 import com.k4dima.party.login.ui.LoginActivity
-import com.k4dima.androidparty.features.main.ui.MainActivity
+import com.k4dima.party.main.ui.MainActivity
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

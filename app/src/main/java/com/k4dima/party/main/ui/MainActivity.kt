@@ -1,4 +1,4 @@
-package com.k4dima.androidparty.features.main.ui
+package com.k4dima.party.main.ui
 
 import android.content.Intent
 import android.graphics.Typeface
@@ -14,10 +14,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
-import com.k4dima.androidparty.R
-import com.k4dima.androidparty.databinding.ActivityMainBinding
+import com.k4dima.party.main.presentation.MainViewModel
+import com.k4dima.party.R
+import com.k4dima.party.databinding.ActivityMainBinding
 import com.k4dima.party.login.ui.LoginActivity
-import com.k4dima.androidparty.features.main.presentation.MainViewModel
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 

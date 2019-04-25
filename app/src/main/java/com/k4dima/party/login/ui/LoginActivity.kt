@@ -8,10 +8,10 @@ import androidx.core.text.toSpannable
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import com.k4dima.androidparty.R
-import com.k4dima.androidparty.databinding.ActivityLoginBinding
+import com.k4dima.party.R
+import com.k4dima.party.databinding.ActivityLoginBinding
 import com.k4dima.party.login.presentation.LoginViewModel
-import com.k4dima.androidparty.features.main.ui.MainActivity
+import com.k4dima.party.main.ui.MainActivity
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
@@ -35,7 +35,8 @@ class LoginActivity : DaggerAppCompatActivity() {
         })
         val appName = getString(R.string.app_name).toSpannable()
         val length = appName.length
-        appName[length - 1..length] = ForegroundColorSpan(resources.getColor(R.color.color_secondary))
+        appName[length - 1..length] =
+                ForegroundColorSpan(resources.getColor(R.color.color_secondary))
         binding.title.text = appName
     }
 

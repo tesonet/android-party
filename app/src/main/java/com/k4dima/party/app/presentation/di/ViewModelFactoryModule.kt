@@ -1,7 +1,7 @@
-package com.k4dima.androidparty.features.app.presentation.di
+package com.k4dima.party.app.presentation.di
 
 import androidx.lifecycle.ViewModelProvider
-import com.k4dima.androidparty.features.app.presentation.ViewModelFactory
+import com.k4dima.party.app.presentation.ViewModelFactory
 import dagger.Binds
 import dagger.Module
 

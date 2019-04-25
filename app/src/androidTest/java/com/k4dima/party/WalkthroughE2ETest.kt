@@ -11,7 +11,7 @@ import androidx.test.uiautomator.UiObject2
 import androidx.test.uiautomator.Until.findObject
 import com.k4dima.androidparty.BuildConfig.APPLICATION_ID
 import com.k4dima.androidparty.R.string.*
-import com.k4dima.party.app.ui.PartyApp
+import com.k4dima.party.app.ui.Party
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -22,7 +22,7 @@ class WalkthroughE2ETest {
     @Test
     fun testWalkthrough() {
         // Given
-        val context = ApplicationProvider.getApplicationContext<PartyApp>()
+        val context = ApplicationProvider.getApplicationContext<Party>()
                 .apply { startActivity(packageManager.getLaunchIntentForPackage(APPLICATION_ID)) }
         // When
         val element: (BySelector) -> UiObject2? = {

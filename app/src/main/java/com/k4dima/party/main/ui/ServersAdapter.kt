@@ -1,12 +1,13 @@
-package com.k4dima.androidparty.features.main.ui
+package com.k4dima.party.main.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.k4dima.androidparty.databinding.ServerItemBinding
+import com.k4dima.party.databinding.ServerItemBinding
 import com.k4dima.party.main.data.model.Server
 
-class ServersAdapter(val servers: List<Server>) : RecyclerView.Adapter<ServersAdapter.ServersViewHolder>() {
+class ServersAdapter(private val servers: List<Server>) :
+        RecyclerView.Adapter<ServersAdapter.ServersViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServersViewHolder {
         val binding = ServerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ServersViewHolder(binding)
