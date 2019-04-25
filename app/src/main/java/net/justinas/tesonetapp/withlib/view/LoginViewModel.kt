@@ -6,9 +6,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
+import net.justinas.minilist.domain.user.UserRepository
 import net.justinas.minilist.util.LoadResult
 import net.justinas.minilist.util.SingleLiveEvent
-import net.justinas.minitemplate.domain.UserRepository
 
 class LoginViewModel(val userRepo: UserRepository) : ViewModel() {
 

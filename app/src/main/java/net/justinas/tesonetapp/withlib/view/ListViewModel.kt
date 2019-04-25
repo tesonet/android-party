@@ -7,9 +7,10 @@ import io.reactivex.rxkotlin.subscribeBy
 import net.justinas.minilist.domain.item.GetListItemsInteractor
 import net.justinas.minilist.domain.item.IdEntity
 import net.justinas.minilist.util.LoadResult
+import net.justinas.tesonetapp.withlib.network.HeaderInterceptor
 import java.util.concurrent.TimeUnit
 
-class ListViewModel(private val getListItemsInteractor: GetListItemsInteractor) : ViewModel() {
+class ListViewModel(private val getListItemsInteractor: GetListItemsInteractor, val interactor: HeaderInterceptor) : ViewModel() {
 
     var result = MutableLiveData<LoadResult<List<IdEntity>>>()
 
@@ -34,6 +35,10 @@ class ListViewModel(private val getListItemsInteractor: GetListItemsInteractor) 
                     },
                     onError = { result.postValue(LoadResult.Error(it)) })
         )
+    }
+
+    fun logout(){
+        interactor.token = null
     }
 
     override fun onCleared() {

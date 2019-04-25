@@ -30,8 +30,8 @@ class LoginFragment : Fragment() {
         viewModel.successLogin.observe(viewLifecycleOwner, Observer {
             requireActivity().supportFragmentManager.beginTransaction()
                 .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
-                .replace(R.id.container, ListViewFragment(), "h")
-                .addToBackStack("h")
+                .replace(R.id.container, ListViewFragment(), "list")
+                .addToBackStack("list")
                 .commit()
         })
     }

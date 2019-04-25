@@ -5,7 +5,6 @@
         tools:context="net.justinas.minitemplate.view.LoginFragment">
 
     <data>
-
         <variable
                 name="viewModel"
                 type="net.justinas.tesonetapp.withlib.view.LoginViewModel"/>
@@ -26,7 +25,7 @@
         <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/app_name"
+                android:text="@string/app_title"
                 android:fontFamily="sans-serif-medium"
                 android:textColor="@color/white"
                 android:textAlignment="center"
@@ -94,6 +93,9 @@
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
+                    android:drawablePadding="@dimen/margin_drawable"
+                    android:drawableStart="@drawable/ic_ico_username"
+                    android:background="@drawable/edit_corners"
                     android:text="@={viewModel.username}"
                     android:hint="user name"
                     tools:ignore="HardcodedText"/>
@@ -116,6 +118,9 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:maxLines="1"
+                    android:drawablePadding="@dimen/margin_drawable"
+                    android:drawableStart="@drawable/ic_ico_lock"
+                    android:background="@drawable/edit_corners"
                     android:text="@={viewModel.password}"
                     android:hint="password"
                     tools:ignore="HardcodedText"/>
@@ -124,13 +129,15 @@
         <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_login"
                 android:layout_width="0dp"
-                android:layout_height="42dp"
+                android:layout_height="52dp"
                 android:onClick="@{() -> viewModel.onLoginClick()}"
                 android:layout_marginTop="@dimen/margin_top"
+                android:background="@drawable/btn_corners"
                 app:layout_constraintStart_toStartOf="@+id/guideline_vertical_20"
                 app:layout_constraintEnd_toEndOf="@+id/guideline_vertical_80"
                 app:layout_constraintTop_toBottomOf="@+id/layout_password"
-                android:text="Login"
+                android:textColor="@color/white"
+                android:text="Log In"
                 tools:ignore="HardcodedText"/>
 
         <ProgressBar
@@ -144,7 +151,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:showLoading="@{viewModel.result}"
-                app:showErrorSnack="@{viewModel.result}"
+                app:showCustomErrorSnack="@{viewModel.result}"
                 android:visibility="visible"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
