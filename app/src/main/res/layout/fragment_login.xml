@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ImageView android:id="@+id/bg"
+               android:layout_width="0dp"
+               android:layout_height="0dp"
+               android:scaleType="centerCrop"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent"
+               android:src="@drawable/bg_login"/>
+
+    <LinearLayout android:id="@+id/container_login"
+                  android:visibility="visible"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginEnd="80dp"
+                  android:layout_marginStart="80dp"
+                  android:orientation="vertical"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView android:id="@+id/logo"
+                   android:visibility="visible"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/logo_1"
+                   android:layout_marginBottom="80dp"
+                   android:contentDescription="@string/testio_logo"/>
+
+        <EditText android:id="@+id/input_username"
+                  android:layout_width="match_parent"
+                  android:layout_height="48dp"
+                  android:hint="@string/username"
+                  android:layout_marginBottom="12dp"
+                  android:background="@drawable/rounded_bg_white"
+                  android:drawableStart="@drawable/ic_username"
+                  android:drawablePadding="12dp"
+                  android:inputType="text"
+                  android:paddingStart="16dp"
+                  android:paddingEnd="16dp"
+                  android:textColorHint="@color/colorPrimary"
+                  android:textSize="12sp"/>
+
+        <EditText android:id="@+id/input_password"
+                  android:layout_width="match_parent"
+                  android:layout_height="48dp"
+                  android:hint="@string/password"
+                  android:layout_marginBottom="12dp"
+                  android:background="@drawable/rounded_bg_white"
+                  android:drawableStart="@drawable/ic_lock"
+                  android:drawablePadding="12dp"
+                  android:inputType="textPassword"
+                  android:paddingStart="16dp"
+                  android:paddingEnd="16dp"
+                  android:textColorHint="@color/colorPrimary"
+                  android:textSize="12sp"/>
+
+        <Button android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/rounded_bg_green"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="12sp"
+                android:textAllCaps="false"
+                android:text="@string/log_in"
+                android:textColor="@color/colorSecondary"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="0dp" android:layout_height="0dp"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"
+                  android:gravity="center"
+                  android:orientation="vertical"
+                  android:visibility="gone"
+                  android:id="@+id/container_loading">
+
+        <ProgressBar android:id="@+id/progress_bar"
+                     android:layout_width="match_parent"
+                     android:layout_height="400dp"
+                     android:indeterminate="true"
+                     android:indeterminateDrawable="@drawable/custom_progress_bar"/>
+
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="@string/fetching_the_list"
+                  android:textColor="@color/colorSecondary"
+                  android:gravity="center"/>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
