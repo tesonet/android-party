@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Android party</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+    <string name="fetching_the_list">Fetching the list…</string>
+    <string name="server">Server</string>
+    <string name="distance">Distance</string>
+    <string name="distance_in_km">%1$s km</string>
+    <string name="testio_logo">testio logo</string>
+</resources>
