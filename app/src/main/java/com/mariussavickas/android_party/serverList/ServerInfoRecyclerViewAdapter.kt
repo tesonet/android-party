@@ -13,7 +13,7 @@ class ServerInfoRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHold
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ServerInfoViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.layout_sever_list_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.sever_list_item, parent, false)
         )
     }
 

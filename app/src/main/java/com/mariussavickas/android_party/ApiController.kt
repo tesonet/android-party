@@ -5,7 +5,11 @@ import com.codecave.outmatch.shared.server.HttpService
 import com.google.gson.JsonObject
 import com.mariussavickas.android_party.persistance.ServerInfo
 import com.mariussavickas.android_party.persistance.User
+import io.reactivex.Completable
+import io.reactivex.CompletableOnSubscribe
 import io.reactivex.Single
+import io.reactivex.SingleOnSubscribe
+import io.reactivex.schedulers.Schedulers
 import okhttp3.RequestBody
 
 object ApiController {
@@ -40,5 +44,14 @@ object ApiController {
 
                 serverInfoDao
             }
+    }
+
+    fun logout(): Completable {
+        return Completable.create { emitter ->
+            RootApplication.appDatabase.serverInfoDao().clear()
+            RootApplication.appDatabase.userDao().clear()
+            emitter.onComplete()
+        }
+        .subscribeOn(Schedulers.io())
     }
 }

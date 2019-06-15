@@ -8,7 +8,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.mariussavickas.android_party.ApiController
-import com.mariussavickas.android_party.RootApplication
 import com.mariussavickas.android_party.persistance.User
 import com.mariussavickas.android_party.serverList.ServerListActivity
 
@@ -26,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.login)
 
         llLoginForm = findViewById(R.id.ll_login_form)
         ivLogo = findViewById(R.id.iv_login_logo)
@@ -55,8 +54,8 @@ class LoginActivity : AppCompatActivity() {
                 }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe{ serverList ->
-                    val intent = Intent(this@LoginActivity, ServerListActivity::class.java)
-                    this@LoginActivity.startActivity(intent)
+//                    val intent = Intent(this@LoginActivity, ServerListActivity::class.java)
+//                    this@LoginActivity.startActivity(intent)
                 }
 
         }
