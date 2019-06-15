@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">android-party</string>
+    <string name="login_background_image_description">Background of login page. Showing surfboarder on a wave</string>
+    <string name="login_input_placeholder_username">Username</string>
+    <string name="login_input_placeholder_password">Password</string>
+    <string name="login_button">Log in</string>
+
+    <string name="server_list_table_label_server">SERVER</string>
+    <string name="server_list_table_label_distance">DISTANCE</string>
+</resources>
