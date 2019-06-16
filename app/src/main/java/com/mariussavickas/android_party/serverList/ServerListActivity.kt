@@ -9,8 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mariussavickas.android_party.R
 import com.mariussavickas.android_party.RootApplication
 import androidx.recyclerview.widget.DividerItemDecoration
-import com.mariussavickas.android_party.ApiController
+import com.mariussavickas.android_party.Repository
 import io.reactivex.android.schedulers.AndroidSchedulers
+import android.app.Activity
+import android.content.Intent
+
+
 
 
 class ServerListActivity : AppCompatActivity() {
@@ -33,11 +37,13 @@ class ServerListActivity : AppCompatActivity() {
         val dividerItemDecoration = DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
         rvServerList.addItemDecoration(dividerItemDecoration)
 
+        val repository = (application as RootApplication).repository
         findViewById<ImageView>(R.id.iv_server_list_logout).setOnClickListener {
-            ApiController.logout()
+            repository.logout()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe{
-                    this@ServerListActivity.onBackPressed()
+                    setResult(Activity.RESULT_OK, Intent())
+                    finish()
             }
         }
 
@@ -45,8 +51,8 @@ class ServerListActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-
-        RootApplication.appDatabase.serverInfoDao().getServerInfoAll()
+        val appDatabase = (application as RootApplication).appDatabase
+        appDatabase.serverInfoDao().getServerInfoAll()
             .subscribe { serverInfoList ->
                 serverInfoAdapter.data = serverInfoList
             }

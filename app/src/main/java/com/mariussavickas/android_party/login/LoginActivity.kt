@@ -1,25 +1,23 @@
 package com.mariussavickas.android_party.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import com.mariussavickas.android_party.R
 import io.reactivex.android.schedulers.AndroidSchedulers
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import com.mariussavickas.android_party.ApiController
+import com.mariussavickas.android_party.Repository
 import com.mariussavickas.android_party.persistance.User
 import com.mariussavickas.android_party.serverList.ServerListActivity
+import android.app.Activity
+import com.mariussavickas.android_party.RootApplication
 
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), Login {
 
-    lateinit var etLoginUsername: EditText
-    lateinit var etLoginPassword: EditText
-    lateinit var ivLogo: ImageView
-    lateinit var llLoginForm: LinearLayout
-    lateinit var pbLoading: ProgressBar
-    lateinit var tvLoadingText: TextView
+    private val SERVER_ACTIVITY_ID = 1
+    private lateinit var flFragmentContainer: FrameLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,37 +25,38 @@ class LoginActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         setContentView(R.layout.login)
 
-        llLoginForm = findViewById(R.id.ll_login_form)
-        ivLogo = findViewById(R.id.iv_login_logo)
-        pbLoading = findViewById(R.id.pb_login_fetching_loading)
-        tvLoadingText = findViewById(R.id.tv_login_fetching_text)
+        flFragmentContainer = findViewById(R.id.fl_fragment_container)
+        supportFragmentManager.beginTransaction()
+            .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+            .add(R.id.fl_fragment_container, LoginFormFragment())
+            .commit()
+    }
 
-        etLoginUsername = findViewById(R.id.et_login_username)
-        etLoginPassword = findViewById(R.id.et_login_password)
+    override fun onLogin(user: User) {
+        supportFragmentManager.beginTransaction()
+            .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+            .replace(R.id.fl_fragment_container, LoginLoadingFragment())
+            .commit()
 
-        findViewById<Button>(R.id.btn_login).setOnClickListener {
-            llLoginForm.visibility = View.INVISIBLE
-            ivLogo.visibility = View.INVISIBLE
+        val repository = (application as RootApplication).repository
+        repository.fetchAccessToken(user)
+            .flatMap { user ->
+                repository.fetchServerList(user)
+            }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe{ serverList ->
+                val intent = Intent(this@LoginActivity, ServerListActivity::class.java)
+                this@LoginActivity.startActivityForResult(intent, SERVER_ACTIVITY_ID)
+            }
+    }
 
-            pbLoading.visibility = View.VISIBLE
-            tvLoadingText.visibility = View.VISIBLE
-
-            val user = User(
-                etLoginUsername.text.toString(),
-                etLoginPassword.text.toString(),
-                null
-            )
-
-            ApiController.fetchAccessToken(user)
-                .flatMap { user ->
-                    ApiController.fetchServerList(user)
-                }
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe{ serverList ->
-//                    val intent = Intent(this@LoginActivity, ServerListActivity::class.java)
-//                    this@LoginActivity.startActivity(intent)
-                }
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == SERVER_ACTIVITY_ID) {
+            if (resultCode == Activity.RESULT_OK) {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fl_fragment_container, LoginFormFragment())
+                    .commitAllowingStateLoss()
+            }
         }
     }
 }
