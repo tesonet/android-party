@@ -51,7 +51,8 @@
                         app:layout_constraintTop_toTopOf="@+id/imageView" android:layout_marginEnd="24dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                        android:hint="@string/login_input_placeholder_username" android:text="tesonet"/>
+                        android:hint="@string/login_input_placeholder_username"
+                        android:background="@android:color/transparent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
@@ -79,7 +80,7 @@
                         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
                         app:layout_constraintTop_toTopOf="@+id/imageView2" android:layout_marginEnd="24dp"
                         android:singleLine="true" android:hint="@string/login_input_placeholder_password"
-                        android:text="partyanimal"/>
+                        android:background="@android:color/transparent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView

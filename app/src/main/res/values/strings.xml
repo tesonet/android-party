@@ -7,4 +7,7 @@
 
     <string name="server_list_table_label_server">SERVER</string>
     <string name="server_list_table_label_distance">DISTANCE</string>
+
+    <string name="login_fetching_label">Fetching the list...</string>
+
 </resources>

@@ -11,6 +11,7 @@ import com.mariussavickas.android_party.Repository
 import com.mariussavickas.android_party.persistance.User
 import com.mariussavickas.android_party.serverList.ServerListActivity
 import android.app.Activity
+import com.codecave.outmatch.shared.exceptions.HttpCodeException
 import com.mariussavickas.android_party.RootApplication
 import org.aviran.cookiebar2.CookieBar
 
@@ -49,10 +50,17 @@ class LoginActivity : AppCompatActivity(), Login {
                 val intent = Intent(this@LoginActivity, ServerListActivity::class.java)
                 this@LoginActivity.startActivityForResult(intent, SERVER_ACTIVITY_ID)
             }, { error ->
+                var message = "Unexpected error"
+                if (error is HttpCodeException) {
+                    when (error.code) {
+                        401 -> message = "Bad username or password"
+                    }
+                }
+
                 CookieBar.Build(this)
                     .setDuration(4000)
                     .setTitle("Error")
-                    .setMessage("Unhandled exception")
+                    .setMessage(message)
                     .setBackgroundColor(R.color.colorRed)
                     .show()
 
@@ -65,7 +73,7 @@ class LoginActivity : AppCompatActivity(), Login {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == SERVER_ACTIVITY_ID) {
-            if (resultCode == Activity.RESULT_OK) {
+            if (resultCode == Activity.RESULT_OK || resultCode == Activity.RESULT_CANCELED) {
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.fl_fragment_container, LoginFormFragment())
                     .commitAllowingStateLoss()

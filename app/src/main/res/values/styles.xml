@@ -31,7 +31,7 @@
     </style>
 
     <style name="LoginProgressBar" parent="@style/Widget.AppCompat.ProgressBar">
-        <item name="android:indeterminateDrawable">@drawable/login_progress_bar</item>
+        <item name="android:indeterminateDrawable">@drawable/custom_progress_bar</item>
     </style>
 
     <style name="ServerListTheme" parent="Theme.AppCompat.Light.NoActionBar">
