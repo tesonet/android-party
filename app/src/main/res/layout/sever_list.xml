@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".serverList.ServerListActivity" android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp" android:background="#F0F0F0">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="24dp" app:srcCompat="@drawable/logo_2" android:id="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.79"
+                tools:visibility="visible"/>
+        <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp" app:srcCompat="@drawable/ic_ico_logout"
+                android:id="@+id/iv_server_list_logout"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="@+id/imageView3"
+                app:layout_constraintVertical_bias="0.59000003" android:padding="8dp" android:layout_marginEnd="8dp"/>
+        <ImageView
+                android:layout_width="0dp"
+                android:layout_height="10dp" app:srcCompat="@drawable/server_info_gradient_background_inverse"
+                android:id="@+id/imageView5"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" tools:visibility="visible"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+        <TextView
+                android:text="@string/server_list_table_label_server"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textView"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="24dp"/>
+        <TextView
+                android:text="@string/server_list_table_label_distance"
+                android:layout_width="72dp"
+                android:layout_height="wrap_content" android:id="@+id/textView2"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="0dp" android:id="@+id/rv_server_list"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                android:paddingTop="16dp" android:clipToPadding="false"/>
+        <ImageView
+                android:layout_width="0dp"
+                android:layout_height="40dp" app:srcCompat="@drawable/server_info_gradient_background"
+                android:id="@+id/imageView4"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
