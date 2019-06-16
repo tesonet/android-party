@@ -12,6 +12,7 @@ import com.mariussavickas.android_party.persistance.User
 import com.mariussavickas.android_party.serverList.ServerListActivity
 import android.app.Activity
 import com.mariussavickas.android_party.RootApplication
+import org.aviran.cookiebar2.CookieBar
 
 
 class LoginActivity : AppCompatActivity(), Login {
@@ -44,10 +45,22 @@ class LoginActivity : AppCompatActivity(), Login {
                 repository.fetchServerList(user)
             }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe{ serverList ->
+            .subscribe({ serverList ->
                 val intent = Intent(this@LoginActivity, ServerListActivity::class.java)
                 this@LoginActivity.startActivityForResult(intent, SERVER_ACTIVITY_ID)
-            }
+            }, { error ->
+                CookieBar.Build(this)
+                    .setDuration(4000)
+                    .setTitle("Error")
+                    .setMessage("Unhandled exception")
+                    .setBackgroundColor(R.color.colorRed)
+                    .show()
+
+                supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+                    .replace(R.id.fl_fragment_container, LoginFormFragment())
+                    .commit()
+            })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

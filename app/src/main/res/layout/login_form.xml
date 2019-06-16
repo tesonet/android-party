@@ -13,17 +13,20 @@
             android:layout_height="40dp" android:id="@+id/iv_login_logo2"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.25"
-    />
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.22000003"
+            android:layout_marginTop="24dp"/>
 
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/ll_login_form" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="128dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_login_logo2" android:layout_marginStart="64dp"
-            android:layout_marginEnd="64dp">
+            android:layout_marginEnd="64dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="64dp" android:layout_marginTop="64dp"
+            app:layout_constraintVertical_bias="0.39">
         <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="60dp" app:cardUseCompatPadding="true" android:layout_marginBottom="10dp">

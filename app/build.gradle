@@ -36,6 +36,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
     implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'org.aviran.cookiebar2:cookiebar2:1.0.5'
 
     def room_version = "2.1.0"
     implementation "androidx.room:room-runtime:$room_version"
