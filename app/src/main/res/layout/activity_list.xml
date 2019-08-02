@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ListActivity">
+
+        <LinearLayout
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout style="@style/Top"
+                android:layout_width="match_parent"
+                android:layout_height="61dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="100">
+
+
+                <LinearLayout
+                    android:layout_weight="50"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="start|bottom"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingTop="12dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/listLogo"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:gravity="start|bottom"
+                        app:srcCompat="@drawable/logo_2" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/Top"
+                    android:layout_weight="50"
+                    android:gravity="end|bottom"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="19dp"
+                    android:paddingBottom="14dp"
+                    android:color="@android:color/transparent">
+
+                    <Button
+                        android:id="@+id/back_button"
+                        android:background="@drawable/ic_ico_logout"
+                        android:color="@android:color/transparent"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+                </LinearLayout>
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <TableLayout android:layout_height="43dp"
+                android:layout_width="match_parent">
+
+                <TableRow style="@style/HeaderRow"
+                    android:layout_weight="100"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        style="@style/HeaderText"
+                        android:layout_weight="85"
+                        android:fontFamily="@font/kanit_light"
+                        android:text="@string/server"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        style="@style/HeaderText"
+                        android:layout_weight="15"
+                        android:fontFamily="@font/kanit_light"
+                        android:text="@string/distance"
+                        android:textSize="13sp" />
+                </TableRow>
+            </TableLayout>
+
+            <RelativeLayout
+                android:background="@drawable/shadow"
+                android:id="@+id/activity_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ListView
+                    android:paddingTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/listView"
+                    android:divider="@drawable/divider"
+                    android:clipToPadding="false"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
