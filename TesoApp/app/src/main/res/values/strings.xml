@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TesoApp</string>
+    <string name="hintUsername">Username</string>
+    <string name="hintPassword">Password</string>
+    <string name="txtBtnLogin">Log in</string>
+    <string name="txtFetching">Fetching the list...</string>
+    <string name="txtServer">SERVER</string>
+    <string name="txtDistance">DISTANCE</string>
+</resources>

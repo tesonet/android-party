@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="paddingLogin">64dp</dimen>
+    <dimen name="progBarSize">170dp</dimen>
+    <dimen name="listLogoSize">90dp</dimen>
+    <dimen name="listUpperPartSize">60dp</dimen>
+    <dimen name="listColumnSizeDistance">25dp</dimen>
+
+
+</resources>
