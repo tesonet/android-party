@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
@@ -42,6 +44,10 @@ dependencies {
 
     //material design
     implementation 'com.google.android.material:material:1.0.0'
+
+    //Room database
+    implementation 'androidx.room:room-runtime:2.1.0'
+    kapt 'androidx.room:room-compiler:2.1.0'
 
     //testing
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
