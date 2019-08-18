@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#fff</color>
+    <color name="grey_100">#F5F5F5</color>
+    <color name="grey_300">#E0E0E0</color>
+    <color name="app_bar">#F0F0F0</color>
+    <color name="color_primary">#2F3254</color>
+    <color name="color_secondary">#9FD533</color>
+</resources>

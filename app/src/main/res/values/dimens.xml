@@ -1,0 +1,5 @@
+<resources>
+    <dimen name="side_margin">16dp</dimen>
+    <dimen name="login_bottom_margin">72dp</dimen>
+    <dimen name="login_margin_title">96dp</dimen>
+</resources>
