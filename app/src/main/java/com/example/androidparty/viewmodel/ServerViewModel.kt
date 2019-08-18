@@ -1,4 +1,3 @@
 package com.example.androidparty.viewmodel
 
-class ServerViewModel {
-}
+data class ServerViewModel( val serverName: String, val distance: Int, val distanceUnits: String = "km")
