@@ -2,9 +2,10 @@ package com.k4dima.party.main.presentation
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.k4dima.party.main.data.model.Server
 import com.k4dima.party.main.domain.ServersUseCase
-import io.reactivex.disposables.Disposable
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MainViewModel
@@ -15,18 +16,18 @@ constructor(private val useCase: ServersUseCase) : ViewModel() {
     val servers = object : MutableLiveData<List<Server>>() {
         override fun onActive() {
             if (value == null)
-                disposable = useCase.data(Unit)
-                        .subscribe({ postValue(it) },
-                                { failure.postValue(it.localizedMessage) })
+                viewModelScope.launch {
+                    try {
+                        postValue(useCase.data(Unit))
+                    } catch (e: Exception) {
+                        failure.postValue(e.localizedMessage)
+                    }
+                }
         }
     }
-    private lateinit var disposable: Disposable
-
     fun logout() {
         useCase.logout()
         //servers.value = null
         failure.value = "logout"
     }
-
-    override fun onCleared() = disposable.dispose()
 }

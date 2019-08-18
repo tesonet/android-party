@@ -23,7 +23,8 @@ class LoginActivityTest {
     fun successfulLogin() {
         // WHEN
         onView(withId(R.id.user_name)).perform(typeText("tesonet"))
-        onView(withId(R.id.password)).perform(typeText("partyanimal"), closeSoftKeyboard())
+        onView(withId(R.id.password)).perform(typeText("partyanimal"),
+                closeSoftKeyboard())
         onView(withId(R.id.login)).perform(click())
         // THEN
         IntentSubject.assertThat(Intents.getIntents().first())

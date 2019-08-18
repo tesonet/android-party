@@ -1,4 +1,4 @@
-package com.k4dima.androidparty
+package com.k4dima.party
 
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -9,8 +9,7 @@ import androidx.test.uiautomator.BySelector
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObject2
 import androidx.test.uiautomator.Until.findObject
-import com.k4dima.androidparty.BuildConfig.APPLICATION_ID
-import com.k4dima.androidparty.R.string.*
+import com.k4dima.party.BuildConfig.APPLICATION_ID
 import com.k4dima.party.app.ui.Party
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -33,9 +32,9 @@ class WalkthroughE2ETest {
         val elementByText: (String) -> UiObject2? = { element(text(it)) }
         val string: (Int) -> String = { context.getString(it) }
         elementByRes("logout")?.click()
-        elementByText(string(username))!!.text = "tesonet"
-        elementByText(string(password))!!.text = "partyanimal"
-        elementByText(string(log_in).toUpperCase())!!.click()
+        elementByText(string(R.id.user_name))!!.text = "tesonet"
+        elementByText(string(R.id.password))!!.text = "partyanimal"
+        elementByText(string(R.id.login).toUpperCase())!!.click()
         // Then
         assertTrue(elementByRes("servers")!!.childCount > 0)
     }

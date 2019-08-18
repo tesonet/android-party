@@ -11,5 +11,5 @@ import javax.inject.Inject
 class TokenRepository
 @Inject
 constructor(private val tesonetService: TesonetService) : DataRepository<Map<String, RequestBody>, Token> {
-    override fun data(parameter: Map<String, RequestBody>) = tesonetService.token(parameter)
+    override suspend fun data(parameter: Map<String, RequestBody>) = tesonetService.token(parameter)
 }

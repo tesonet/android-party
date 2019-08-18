@@ -10,5 +10,5 @@ import javax.inject.Inject
 class ServersRepository
 @Inject
 constructor(private val tesonetService: TesonetService) : DataRepository<String, List<Server>> {
-    override fun data(parameter: String) = tesonetService.servers("Bearer $parameter")
+    override suspend fun data(parameter: String) = tesonetService.servers("Bearer $parameter")
 }

@@ -1,6 +1,5 @@
 package com.k4dima.party.login.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.style.ForegroundColorSpan
 import androidx.core.text.set
@@ -11,7 +10,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.k4dima.party.R
 import com.k4dima.party.databinding.ActivityLoginBinding
 import com.k4dima.party.login.presentation.LoginViewModel
-import com.k4dima.party.main.ui.MainActivity
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
@@ -27,8 +25,7 @@ class LoginActivity : DaggerAppCompatActivity() {
                 .get(LoginViewModel::class.java)
         binding.model = model
         model.token.observe(this, Observer {
-            //finish()
-            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         })
         model.error.observe(this, Observer {
             binding.password.error = it
@@ -39,8 +36,4 @@ class LoginActivity : DaggerAppCompatActivity() {
                 ForegroundColorSpan(resources.getColor(R.color.color_secondary))
         binding.title.text = appName
     }
-
-    /*override fun onBackPressed() {
-        finishAffinity()
-    }*/
 }

@@ -1,11 +1,11 @@
-package com.k4dima.androidparty.features.main.ui
+package com.k4dima.party.features.main.ui
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import com.k4dima.androidparty.R
+import com.k4dima.party.R
 import com.k4dima.party.main.ui.MainActivity
 import org.junit.Rule
 import org.junit.Test

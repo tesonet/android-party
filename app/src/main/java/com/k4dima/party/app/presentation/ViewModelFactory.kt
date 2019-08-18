@@ -12,5 +12,5 @@ class ViewModelFactory
 internal constructor(private val creators: Map<Class<out ViewModel>,
         @JvmSuppressWildcards Provider<ViewModel>>) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>) =
-            creators[modelClass]!!.get() as T
+            creators.getValue(modelClass).get() as T
 }

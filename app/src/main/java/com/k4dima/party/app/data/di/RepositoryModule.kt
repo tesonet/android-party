@@ -10,5 +10,6 @@ import javax.inject.Singleton
 interface RepositoryModule {
     @Singleton
     @Binds
-    fun providePreferenceRepository(appPreferenceRepository: AppPreferenceRepository): PreferenceRepository
+    fun providePreferenceRepository(appPreferenceRepository: AppPreferenceRepository):
+            PreferenceRepository
 }

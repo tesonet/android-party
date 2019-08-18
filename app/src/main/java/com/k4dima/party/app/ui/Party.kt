@@ -6,7 +6,8 @@ import com.k4dima.party.app.ui.di.DaggerApplicationComponent
 import dagger.android.support.DaggerApplication
 
 class Party : DaggerApplication() {
-    override fun applicationInjector() = DaggerApplicationComponent.builder().context(this).build()
+    override fun applicationInjector() =
+            DaggerApplicationComponent.builder().context(this).build()
 
     init {
         if (DEBUG) StrictMode.enableDefaults()
