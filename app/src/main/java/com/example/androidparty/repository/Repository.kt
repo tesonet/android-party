@@ -1,16 +1,9 @@
 package com.example.androidparty.repository
 
-class Repository() {
+import com.example.androidparty.ResponseListener
+import com.example.androidparty.model.Server
 
-
-    companion object {
-        private var instance: Repository? = null
-
-        fun getInstance(): Repository {
-            if (instance == null) {
-                instance = Repository()
-            }
-            return instance!!
-        }
-    }
+interface Repository {
+    fun getServersList(listener: ResponseListener<List<Server>>)
+    fun getToken(username: String, password: String, listener: ResponseListener<String>)
 }

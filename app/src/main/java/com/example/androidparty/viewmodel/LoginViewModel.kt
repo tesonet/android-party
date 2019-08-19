@@ -1,4 +1,7 @@
 package com.example.androidparty.viewmodel
 
-class LoginViewModel {
+import com.example.androidparty.repository.Repository
+
+class LoginViewModel(val repository: Repository) {
+
 }
