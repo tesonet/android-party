@@ -10,28 +10,28 @@ import com.example.androidparty.repository.Repository
 import com.example.androidparty.repository.RepositoryImpl
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class ApplicationModule {
 
     @Provides
-    fun provideDatabase(context: Context): ServersDB = ServersDB.getInstance(context)
-
-
-    @Provides
     fun provideRepository(authClient: AuthClient, prefs: SharedPreferences, serversDB: ServersDB): Repository = RepositoryImpl.getInstance(authClient, prefs, serversDB)
 
     @Provides
+    @Singleton
     fun provideServersDatabase(context: Context): ServersDB = ServersDB.getInstance(context)
 
     @Provides
     fun provideAuthClient(): AuthClient = AuthClientImpl()
 
     @Provides
+    @Singleton
     fun provideSharedPreferences(context: Context): SharedPreferences = context.getSharedPreferences("LogIn",
         Context.MODE_PRIVATE
     )
 
     @Provides
+    @Singleton
     fun provideContext(app: AndroidPartyApplication): Context = app.applicationContext
 }

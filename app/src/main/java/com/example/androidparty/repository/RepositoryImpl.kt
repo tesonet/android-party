@@ -11,6 +11,7 @@ import com.example.androidparty.model.UserRequest
 import com.example.androidparty.networking.AuthClient
 import com.example.androidparty.networking.DataClient
 import com.example.androidparty.networking.DataClientImpl
+import com.example.androidparty.networking.LoginResult
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -21,13 +22,16 @@ class RepositoryImpl(private val authClient: AuthClient, val prefs: SharedPrefer
     val job = Job()
     val ioScope = CoroutineScope(Dispatchers.IO + job)
 
-    override fun getToken(username: String, password: String, listener: ResponseListener<String>) {
+    override fun getToken(username: String, password: String, listener: ResponseListener<LoginResult>) {
         authClient.sendCredentials(UserRequest(username, password), object : ResponseListener<AuthToken> {
             override fun <T> onResult(data: T) {
                 if (data is AuthToken) {
-                    listener.onResult(data.token)
                     prefs.edit().putString("token", data.token).apply()
+                    listener.onResult(LoginResult.Success)
+                } else {
+                    listener.onResult(LoginResult.Failed)
                 }
+
             }
         })
     }
@@ -46,8 +50,9 @@ class RepositoryImpl(private val authClient: AuthClient, val prefs: SharedPrefer
                         prefs.edit().putLong(DataRefreshRates.Server.ID, System.currentTimeMillis()).apply()
                         ioScope.launch {
                             val serversEntity = servers.map {server -> ServerEntity(server.name, server.distance) }
-                            for(server in serversEntity)
-                            serversDB.serverDao().updateServer(server)
+                            for(server in serversEntity) {
+                                serversDB.serverDao().addServer(server)
+                            }
                         }
                     }
                 }

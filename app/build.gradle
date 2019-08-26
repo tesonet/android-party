@@ -26,6 +26,12 @@ android {
     dataBinding {
         enabled = true
     }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+            unitTests.returnDefaultValues = true
+        }
+    }
 }
 
 dependencies {
@@ -44,6 +50,13 @@ dependencies {
 
     //material design
     implementation 'com.google.android.material:material:1.0.0'
+
+    //databinding
+    kapt 'com.android.databinding:compiler:3.1.4'
+
+    //Lifecycle
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
 
     //Room database
     implementation 'androidx.room:room-runtime:2.1.0'
@@ -65,6 +78,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:2.19.0'
+    androidTestImplementation 'androidx.test.ext:junit-ktx:1.1.1'
     androidTestImplementation "org.mockito:mockito-android:2.11.0"
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

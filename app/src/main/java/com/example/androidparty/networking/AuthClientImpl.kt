@@ -31,7 +31,6 @@ class AuthClientImpl : AuthClient {
         val call = clientCalls.getAuthToken(userRequest)
         call.enqueue(object : Callback<AuthToken> {
             override fun onResponse(call: Call<AuthToken>, response: Response<AuthToken>) {
-                Log.e("Dtag", response.body().toString())
                 listener.onResult(response.body())
             }
 

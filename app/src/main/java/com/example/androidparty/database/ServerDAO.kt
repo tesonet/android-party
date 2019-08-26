@@ -10,9 +10,9 @@ interface ServerDAO {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateServer(server: ServerEntity)
 
-    @Insert
-    fun addServer(game: ServerEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun addServer(server: ServerEntity)
 
     @Delete
-    fun deleteServer(game: ServerEntity)
+    fun deleteServer(server: ServerEntity)
 }

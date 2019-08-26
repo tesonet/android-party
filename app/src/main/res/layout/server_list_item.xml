@@ -1,31 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
                 name="server"
                 type="com.example.androidparty.viewmodel.ServerViewModel"/>
     </data>
     <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
         <TextView
                 android:id="@+id/server_name"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:fontFamily="sans-serif-thin"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
                 android:text="@{server.serverName}"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
-        <TextView
-                android:id="@+id/server_distance"
-                android:text="@{server.distance}"
-                android:layout_width="wrap_content"
+                />
+        <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="end"/>
-        <TextView
-                android:id="@+id/server_distance_units"
-                android:text="@{server.distanceUnits}"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="end"/>
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+            <TextView
+                    android:id="@+id/server_distance"
+                    android:text="@{String.valueOf(server.distance)}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-thin"
+                    android:textColor="@android:color/black"
+                    android:paddingEnd="4dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+            <TextView
+                    android:id="@+id/server_distance_units"
+                    android:text="@{server.distanceUnits}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-thin"
+                    android:textColor="@android:color/black"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+        </LinearLayout>
+
     </LinearLayout>
 </layout>

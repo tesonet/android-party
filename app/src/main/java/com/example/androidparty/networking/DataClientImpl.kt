@@ -39,7 +39,6 @@ class DataClientImpl(private val token: String): DataClient {
         val call = clientCalls.getServers()
         call.enqueue(object : Callback<List<Server>> {
             override fun onResponse(call: Call<List<Server>>, response: Response<List<Server>>) {
-                Log.e("Dtag", response.body().toString())
                 listener.onResult(response.body())
             }
 
