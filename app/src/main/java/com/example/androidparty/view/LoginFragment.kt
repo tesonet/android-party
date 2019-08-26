@@ -62,6 +62,7 @@ class LoginFragment(
                         binder.password.error = "Field cannot be empty"
                     }
                     LoginResult.FallbackError -> {
+                        setUIBack()
                         Toast.makeText(activity, "Unknown error occurred", Toast.LENGTH_LONG).show()
                     }
                 }
