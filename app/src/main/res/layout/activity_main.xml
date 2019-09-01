@@ -7,7 +7,6 @@
     tools:context=".Activity.MainActivity"
     android:orientation="vertical">
 
-
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,7 +16,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:id="@+id/loginLayout"
-
         android:layout_height="match_parent">
 
         <ImageView
@@ -133,4 +131,5 @@
             android:layout_height="wrap_content"
             android:text="@string/fetching_the_list" />
     </RelativeLayout>
+
 </FrameLayout>
