@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">testio</string>
+    <string name="BTN_LOGIN_TEXT">Log In</string>
+    <string name="TEXT_USERNAME">Username</string>
+    <string name="TEXT_PASSWORD">Password</string>
+    <string name="TEXT_FETCHING_THE_LIST">Fetching the list...</string>
+    <string name="TEXT_DISTANCE">%s km</string>
+    <string name="TEXT_PRESS_BACK_ONE_MORE_TIME">Please click back again to exit</string>
+    <string name="TEXT_SOMETHING_WENT_WRONG">Something went wrong!</string>
+    <string name="TEXT_VALIDATION">Fields must not be empty!</string>
+</resources>

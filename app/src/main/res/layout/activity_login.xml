@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".ui.LoginActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/logoGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35"/>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_1"
+        app:layout_constraintBottom_toTopOf="@id/logoGuide"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:drawableLeft="@drawable/ic_ico_username"
+        android:paddingLeft="16dp"
+        android:maxLines="1"
+        android:drawablePadding="16dp"
+        android:hint="@string/TEXT_USERNAME"
+        android:textSize="14dp"
+        android:inputType="text"
+        android:paddingRight="8dp"
+        android:background="@drawable/background_login_text_field"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintBottom_toTopOf="@+id/password"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:drawableLeft="@drawable/ic_ico_lock"
+        android:background="@drawable/background_login_text_field"
+        android:hint="@string/TEXT_PASSWORD"
+        android:drawablePadding="16dp"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="16dp"
+        android:textSize="14dp"
+        android:maxLines="1"
+        android:paddingRight="8dp"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/login"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/BTN_LOGIN_TEXT"
+        android:textAllCaps="false"
+        android:textColor="@color/color_white"
+        android:background="@drawable/background_login_button"
+        android:textSize="14dp"
+        android:foreground="?attr/selectableItemBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
