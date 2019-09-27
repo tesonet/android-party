@@ -25,6 +25,7 @@ public class ServerListViewModel extends AndroidViewModel {
     private ApiInterface apiInterface;
     private String token;
     private MutableLiveData<List<Server>> serverList;
+    private MutableLiveData<String> error;
     private Context context;
 
     public ServerListViewModel(@NonNull Application application) {
@@ -32,6 +33,7 @@ public class ServerListViewModel extends AndroidViewModel {
         context = application.getApplicationContext();
         apiInterface = Service.getRetrofitInstance().create(ApiInterface.class);
         serverRepository = new ServerRepository(application);
+        error = new MutableLiveData<>();
     }
 
     public void setToken(String token) {
@@ -46,12 +48,14 @@ public class ServerListViewModel extends AndroidViewModel {
                 if (response.isSuccessful()) {
                     serverList.setValue(response.body());
                 } else {
+                    error.setValue("error");
                     Toast.makeText(context, "Token is not correct!", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<Server>> call, Throwable t) {
+                error.setValue("error");
                 Toast.makeText(context, "Something went wrong!", Toast.LENGTH_SHORT).show();
             }
         });
@@ -59,6 +63,10 @@ public class ServerListViewModel extends AndroidViewModel {
 
     public void deleteServers() {
         serverRepository.deleteServers();
+    }
+
+    public LiveData<String> getError(){
+        return error;
     }
 
     public LiveData<List<Server>> getServerList() {

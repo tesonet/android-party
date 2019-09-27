@@ -76,6 +76,15 @@ public class ServerListActivity extends AppCompatActivity {
                 loadingConstraintLayout.setVisibility(View.INVISIBLE);
             }
         });
+
+        serverListViewModel.getError().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                if(s.equals("error")){
+                    destroyActivity();
+                }
+            }
+        });
     }
 
     public void loadingScreen() {
