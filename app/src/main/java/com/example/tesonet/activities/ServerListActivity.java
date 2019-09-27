@@ -85,8 +85,6 @@ public class ServerListActivity extends AppCompatActivity {
     }
 
     public void destroyActivity() {
-        Intent intent = new Intent();
-        intent.putExtra("finished", true);
         serverListViewModel.deleteServers();
         finish();
     }

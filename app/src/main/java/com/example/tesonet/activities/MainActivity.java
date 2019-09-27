@@ -31,12 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
         //ViewModel
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        mainViewModel.insert(new Token(""));
         mainViewModel.getToken().observe(this, new Observer<Token>() {
             @Override
             public void onChanged(Token token) {
-                tokenString = token.getToken();
-                changeActivity();
+                if (token != null){
+                    tokenString = token.getToken();
+                    changeActivity();
+                }
             }
         });
     }
