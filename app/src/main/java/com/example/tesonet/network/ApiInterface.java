@@ -1,18 +1,20 @@
-package com.example.tesonet;
+package com.example.tesonet.network;
+
+import com.example.tesonet.database.models.Server;
+import com.example.tesonet.database.models.Token;
+import com.example.tesonet.database.models.User;
 
 import java.util.List;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 
-public interface UserClient {
-
+public interface ApiInterface {
     @POST("tokens")
-    Call<User> login(@Body Login login);
+    Call<Token> login(@Body User user);
 
     @GET("servers")
     Call<List<Server>> getServer(@Header("Authorization") String authToken);
