@@ -42,11 +42,11 @@ public class MainViewModel extends AndroidViewModel {
             @Override
             public void onResponse(Call<Token> call, Response<Token> response) {
                 if (response.isSuccessful()) {
-                    tokenRepository.insert(response.body());
+                    tokenRepository.deleteToken();
                     tokenString = response.body().getToken();
+                    tokenRepository.insert(new Token(tokenString));
                     loginSucceded = true;
                 } else {
-                    tokenString = "";
                     Toast.makeText(context, "Login not correct!", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -62,7 +62,11 @@ public class MainViewModel extends AndroidViewModel {
         return loginSucceded;
     }
 
-    public void deleteToken() {
+    public void insert(Token token) {
+        tokenRepository.insert(token);
+    }
+
+    public void deleteToken(){
         tokenRepository.deleteToken();
     }
 

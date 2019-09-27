@@ -24,6 +24,10 @@ public class TokenRepository {
         new InsertTokenAsyncTask(tokenDao).execute(token);
     }
 
+    public void update(Token token){
+        new UpdateTokenAsyncTask(tokenDao).execute(token);
+    }
+
     public void deleteToken() {
         new DeleteTokenAsyncTask(tokenDao).execute();
     }
@@ -42,6 +46,20 @@ public class TokenRepository {
         @Override
         protected Void doInBackground(Token... tokens) {
             tokenDao.insert(tokens[0]);
+            return null;
+        }
+    }
+
+    private static class UpdateTokenAsyncTask extends AsyncTask<Token, Void, Void>{
+        private TokenDao tokenDao;
+
+        private UpdateTokenAsyncTask(TokenDao tokenDao) {
+            this.tokenDao = tokenDao;
+        }
+
+        @Override
+        protected Void doInBackground(Token... tokens) {
+            tokenDao.update(tokens[0]);
             return null;
         }
     }

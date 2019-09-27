@@ -37,8 +37,6 @@ public class ServerListActivity extends AppCompatActivity {
         tokenString = intent.getStringExtra("token");
 
         init();
-
-        serverListViewModel.sendServerListRequest();
     }
 
     public void logout(View view) {

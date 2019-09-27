@@ -46,7 +46,7 @@ public abstract class TokenDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            tokenDao.insert(new Token("342fadf4"));
+            tokenDao.insert(new Token("0"));
             return null;
         }
     }

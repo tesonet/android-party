@@ -26,8 +26,6 @@ public class ServerListViewModel extends AndroidViewModel {
     private String token;
     private MutableLiveData<List<Server>> serverList;
     private Context context;
-    public static final String ERROR = "ERROR";
-
 
     public ServerListViewModel(@NonNull Application application) {
         super(application);
@@ -49,7 +47,6 @@ public class ServerListViewModel extends AndroidViewModel {
                     serverList.setValue(response.body());
                 } else {
                     Toast.makeText(context, "Token is not correct!", Toast.LENGTH_SHORT).show();
-
                 }
             }
 

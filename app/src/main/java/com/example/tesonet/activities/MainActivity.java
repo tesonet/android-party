@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -23,33 +25,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        init();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Intent intent = getIntent();
-        if (intent.getBooleanExtra("finished", false)) {
-            mainViewModel.deleteToken();
-        }
-    }
-
-    private void init() {
         //Input
         username = findViewById(R.id.usernameEditText);
         password = findViewById(R.id.passwordEditText);
 
         //ViewModel
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        mainViewModel.insert(new Token(""));
         mainViewModel.getToken().observe(this, new Observer<Token>() {
             @Override
             public void onChanged(Token token) {
                 tokenString = token.getToken();
-                if (mainViewModel.isLoginSucceded()) {
-                    changeActivity();
-                }
+                changeActivity();
             }
         });
     }
@@ -59,8 +46,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeActivity() {
-        Intent intent = new Intent(MainActivity.this, ServerListActivity.class);
-        intent.putExtra("token", tokenString);
-        startActivity(intent);
+        if (mainViewModel.isLoginSucceded()) {
+            Intent intent = new Intent(MainActivity.this, ServerListActivity.class);
+            intent.putExtra("token", tokenString);
+            startActivity(intent);
+        }
     }
 }
