@@ -1,7 +1,7 @@
 package com.giedrius.androidparty.task.server.login
 
-import com.giedrius.androidparty.task.model.Token
-import com.giedrius.androidparty.task.model.LoginBody
+import com.giedrius.androidparty.task.viewmodel.Token
+import com.giedrius.androidparty.task.viewmodel.LoginBody
 import com.giedrius.androidparty.task.utils.ApiListener
 
 interface LoginClient {

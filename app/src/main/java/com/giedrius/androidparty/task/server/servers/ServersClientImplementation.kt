@@ -1,7 +1,7 @@
 package com.giedrius.androidparty.task.server.servers
 
 import android.util.Log
-import com.giedrius.androidparty.task.model.Server
+import com.giedrius.androidparty.task.viewmodel.Server
 import com.giedrius.androidparty.task.server.Api
 import com.giedrius.androidparty.task.utils.ApiListener
 import com.giedrius.androidparty.task.utils.Constants

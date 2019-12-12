@@ -1,8 +1,8 @@
 package com.giedrius.androidparty.task.server
 
-import com.giedrius.androidparty.task.model.Token
-import com.giedrius.androidparty.task.model.Server
-import com.giedrius.androidparty.task.model.LoginBody
+import com.giedrius.androidparty.task.viewmodel.Token
+import com.giedrius.androidparty.task.viewmodel.Server
+import com.giedrius.androidparty.task.viewmodel.LoginBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
