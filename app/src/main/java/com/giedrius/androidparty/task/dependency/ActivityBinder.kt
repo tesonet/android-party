@@ -10,5 +10,5 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityBinder {
     @ContributesAndroidInjector(modules = [ApplicationViewModelsModule::class]) internal abstract fun bindMainActivity(): MainActivity
     @ContributesAndroidInjector(modules = [ApplicationViewModelsModule::class]) internal abstract fun bindLoginFragment(): LoginFragment
-    @ContributesAndroidInjector(modules = [ApplicationViewModelsModule::class]) internal abstract fun bindServerListFragment(): ServersFragment
+    @ContributesAndroidInjector(modules = [ApplicationViewModelsModule::class]) internal abstract fun bindServersFragment(): ServersFragment
 }

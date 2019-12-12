@@ -4,11 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import com.giedrius.androidparty.R
-import com.giedrius.androidparty.databinding.FragmentLoginBinding
 import com.giedrius.androidparty.task.navigation.NavigationListener
 import com.giedrius.androidparty.task.utils.ApiListener
 import com.giedrius.androidparty.task.server.login.LoginOutcome
@@ -17,7 +14,6 @@ import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
-import java.util.*
 import javax.inject.Inject
 
 class LoginFragment(val navListener: NavigationListener) : DaggerFragment() {

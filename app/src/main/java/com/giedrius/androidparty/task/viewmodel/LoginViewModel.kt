@@ -1,6 +1,5 @@
 package com.giedrius.androidparty.task.viewmodel
 
-import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import com.giedrius.androidparty.task.utils.ApiListener
 import com.giedrius.androidparty.task.server.login.LoginOutcome
