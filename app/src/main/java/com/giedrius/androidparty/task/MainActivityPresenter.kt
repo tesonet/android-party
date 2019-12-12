@@ -1,6 +1,6 @@
-package com.giedrius.androidparty.ui
+package com.giedrius.androidparty.task
 
-import com.giedrius.androidparty.ui.MainActivityContract.*
+import com.giedrius.androidparty.task.MainActivityContract.*
 
 class MainActivityPresenter(view: View) : Presenter {
 

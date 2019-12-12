@@ -1,4 +1,4 @@
-package com.giedrius.androidparty.ui
+package com.giedrius.androidparty.task
 
 
 interface MainActivityContract {
@@ -13,6 +13,4 @@ interface MainActivityContract {
   interface Model {
   }
 
-  interface FxModel {
-  }
 }

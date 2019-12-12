@@ -1,9 +1,9 @@
-package com.giedrius.androidparty.ui
+package com.giedrius.androidparty.task
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.giedrius.androidparty.R
-import com.giedrius.androidparty.ui.MainActivityContract.*
+import com.giedrius.androidparty.task.MainActivityContract.*
 
 
 class MainActivity : AppCompatActivity(), View {
