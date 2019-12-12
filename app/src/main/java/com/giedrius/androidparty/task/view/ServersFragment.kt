@@ -40,7 +40,7 @@ class ServersFragment(val navListener: NavigationListener): DaggerFragment() {
 
     private fun createServersObserver() {
         serversViewModel.servers.observe(this, Observer {
-            serversAdapter.setData(it)
+            serversAdapter.setData(it.sortedBy { it.distance })
             serversAdapter.notifyDataSetChanged()
         })
     }
