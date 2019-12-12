@@ -11,22 +11,14 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class LoginViewModel(val repository: Repository) : ViewModel() {
-
     private val scope = CoroutineScope(Dispatchers.IO + Job())
-    var username: ObservableField<String> = ObservableField()
-    var password: ObservableField<String> = ObservableField()
 
-    fun login(apiListener: ApiListener<LoginOutcome>) {
-        val userName = username.get()
-        val pass = password.get()
-        if (userName != null && pass != null) {
-            scope.launch { repository.getToken(userName, pass, object :
-                        ApiListener<LoginOutcome> {
+    fun login(apiListener: ApiListener<LoginOutcome>, username: String, password: String) {
+            scope.launch { repository.getToken(username, password, object : ApiListener<LoginOutcome> {
                         override fun <T> onResult(data: T) {
                             apiListener.onResult(data)
                         }
                     })
             }
-        }
     }
 }
