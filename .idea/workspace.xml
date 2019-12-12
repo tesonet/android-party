@@ -11,38 +11,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17843a40-37c2-4189-bcd9-db7afe1f075d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_databinding_adapters_3_5_2_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_databinding_common_3_5_2_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_databinding_runtime_3_5_2_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_transition_transition_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_material_material_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/AndroidPartyApplication.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/ResponseListener.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/adapters/ServersAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dagger/ActivityBinder.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dagger/ApplicationComponent.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dagger/ApplicationModule.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dagger/ViewModelsModule.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/model/AuthToken.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/model/Server.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/model/UserRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/networking/AuthClient.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/networking/AuthClientImpl.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/networking/ClientCalls.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/networking/DataClient.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/networking/DataClientImpl.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/networking/LoginResult.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/repository/Repository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/repository/RepositoryImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/App.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/adapter/ServerAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/data/Repository.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/data/RepositoryImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dependency/ActivityBinder.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dependency/ApplicationComponent.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dependency/ApplicationModule.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dependency/ViewModelsModule.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/server/AuthClient.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/server/AuthClientImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/server/ClientCalls.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/server/DataClient.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/server/DataClientImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/server/LoginResult.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/server/ResponseListener.kt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/view/FragmentsNavigationListener.kt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/view/LoginFragment.kt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/view/MainActivity.kt" afterDir="false" />
@@ -62,27 +45,18 @@
       <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_server_list.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/server_list_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_ktx_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cardview_cardview_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_extensions_2_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_process_2_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_service_2_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_core_1_2_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_2_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_2_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_ext_junit_1_1_1_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_2_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_2_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_adapter_rxjava2_2_3_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxandroid_2_0_2_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxjava_2_1_9_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_12_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_reactivestreams_reactive_streams_1_0_2_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/MainActivity.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/MainActivityContract.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/MainActivityPresenter.kt" beforeDir="false" />
@@ -114,8 +88,8 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/networking/LoginResult.kt">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/server/LoginResult.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
               <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
@@ -124,31 +98,73 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/adapters/ServersAdapter.kt">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/model/Token.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="10" column="59" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="59" />
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dagger/ApplicationModule.kt">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/adapter/ServerAdapter.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+            <state relative-caret-position="165">
+              <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dagger/ViewModelsModule.kt">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dependency/ActivityBinder.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+              <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
               <folding>
-                <element signature="e#47#282#0" expanded="true" />
+                <element signature="e#47#291#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dependency/ApplicationComponent.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+              <folding>
+                <element signature="e#47#273#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/view/ServerListFragment.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="30" column="34" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dependency/ApplicationModule.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="31" column="1" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+              <folding>
+                <element signature="e#47#462#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/data/Repository.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -156,8 +172,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/model/Server.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="53" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
+            <state relative-caret-position="75">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/model/LoginBody.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -198,6 +223,9 @@
       <find>room</find>
       <find>AndroidPartyApplication</find>
       <find>DataClientImpl</find>
+      <find>serverListAdapter</find>
+      <find>SharedPreferences</find>
+      <find>sharedPre</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task</dir>
@@ -209,21 +237,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/test/java/com/giedrius/currencyexchanger/ExampleUnitTest.kt" />
-        <option value="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/giedrius/currencyexchanger/BuildConfig.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/ui/MainActivityPresenter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/ui/MainActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/MainActivityContract.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/api/AuthClient.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/api/AuthClientImpl.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/api/DataClient.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/api/DataClientImpl.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/api/LoginResult.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/adapter/ServersAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/ResponseListener.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/database/DataRefreshRates.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/model/AuthToken.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/model/Server.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/model/UserRequest.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/networking/LoginResult.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/view/FragmentsNavigationListener.kt" />
@@ -248,18 +270,24 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/view/ServerListFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/viewmodel/ServersListViewModel.kt" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/repository/RepositoryImpl.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/networking/Api.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/networking/DataClientImpl.kt" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dagger/ApplicationModule.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dagger/ApplicationComponent.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/AndroidPartyApplication.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/App.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/networking/AuthClientImpl.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/viewmodel/ServerViewModel.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/model/Token.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/model/Server.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/model/LoginBody.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/adapter/ServersAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/adapter/ServerAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/repository/RepositoryImpl.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dagger/ApplicationModule.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dependency/ApplicationModule.kt" />
       </list>
     </option>
   </component>
@@ -327,7 +355,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="task" type="462c0819:PsiDirectoryNode" />
-              <item name="adapters" type="462c0819:PsiDirectoryNode" />
+              <item name="adapter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="android-party" type="b2602c69:ProjectViewProjectNode" />
@@ -337,7 +365,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="task" type="462c0819:PsiDirectoryNode" />
-              <item name="dagger" type="462c0819:PsiDirectoryNode" />
+              <item name="dependency" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="android-party" type="b2602c69:ProjectViewProjectNode" />
@@ -347,17 +375,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="task" type="462c0819:PsiDirectoryNode" />
-              <item name="networking" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="android-party" type="b2602c69:ProjectViewProjectNode" />
-              <item name="android-party" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="task" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="android-party" type="b2602c69:ProjectViewProjectNode" />
@@ -419,6 +437,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.giedrius.androidparty.task.server" />
       <recent name="com.giedrius.androidparty.task.view" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
@@ -521,7 +540,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1381" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.27243844" />
@@ -536,10 +554,10 @@
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.34367728" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Android Profiler" order="3" />
-      <window_info anchor="bottom" id="Find" order="4" visible="true" weight="0.29712957" />
+      <window_info anchor="bottom" id="Find" order="4" weight="0.023273855" />
       <window_info anchor="bottom" id="Terminal" order="5" />
       <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.28782" />
+      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.28782" />
       <window_info anchor="bottom" id="Run" order="8" />
       <window_info anchor="bottom" id="Debug" order="9" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
@@ -552,28 +570,7 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/database/ServersDB.kt" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/model/AuthToken.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/model/Server.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="53" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/model/UserRequest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/networking/AuthClient.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/server/AuthClient.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
@@ -615,27 +612,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dagger/ActivityBinder.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
-          <folding>
-            <element signature="e#47#291#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dagger/ApplicationComponent.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
-          <folding>
-            <element signature="e#47#273#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dagger/ViewModelsModule.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dependency/ViewModelsModule.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
@@ -666,13 +643,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
           <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/view/ServerListFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>
@@ -708,17 +678,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/giedrius/androidparty/task/dagger/ApplicationModule_ProvideRepositoryFactory.java">
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/giedrius/androidparty/task/dependency/ApplicationModule_ProvideRepositoryFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="740">
           <caret line="60" column="17" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dagger/ApplicationModule.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -781,14 +744,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/App.kt" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/networking/AuthClientImpl.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/server/AuthClientImpl.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="15" column="44" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/networking/DataClient.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/server/DataClient.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
@@ -797,7 +760,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/networking/Api.kt" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/networking/ResponseListener.kt" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/networking/DataClientImpl.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/server/DataClientImpl.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="20" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="20" />
@@ -807,17 +770,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/repository/RepositoryImpl.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/data/RepositoryImpl.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/repository/Repository.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -835,17 +791,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/adapters/ServersAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="10" column="59" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/networking/LoginResult.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/server/LoginResult.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/model/Token.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/model/Server.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/model/LoginBody.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/view/ServerListFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="30" column="34" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dependency/ActivityBinder.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding>
+            <element signature="e#47#291#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dependency/ApplicationComponent.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+          <folding>
+            <element signature="e#47#273#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/data/Repository.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/dependency/ApplicationModule.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="1" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+          <folding>
+            <element signature="e#47#462#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/giedrius/androidparty/task/adapter/ServerAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
         </state>
       </provider>
     </entry>
