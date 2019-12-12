@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Android Party</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="login_in_progress">Fetching the list&#8230;</string>
+    <string name="server">Server</string>
+    <string name="distance">Distance</string>
 </resources>

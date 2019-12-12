@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/default_margin">
+
+    <TextView
+        android:id="@+id/server_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/server_distance"
+        app:layout_constraintEnd_toStartOf="@+id/server_distance"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Test server" />
+
+    <TextView
+        android:id="@+id/server_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/server_distance_units"
+        app:layout_constraintStart_toEndOf="@+id/server_name"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="23" />
+
+    <TextView
+        android:id="@+id/server_distance_units"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        app:layout_constraintBaseline_toBaselineOf="@+id/server_distance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/server_distance"
+        tools:text="km" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

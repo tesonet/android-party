@@ -2,4 +2,9 @@
 <resources>
     <dimen name="default_margin">16dp</dimen>
     <dimen name="big_margin">32dp</dimen>
+    <dimen name="text_input_layout_default_width">300dp</dimen>
+    <dimen name="progress_dialog_size">100dp</dimen>
+
+    //textSizes
+    <dimen name="default_subtitle_font_size">14sp</dimen>
 </resources>

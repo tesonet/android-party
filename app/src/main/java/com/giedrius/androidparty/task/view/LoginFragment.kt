@@ -29,7 +29,7 @@ class LoginFragment(val navListener: NavigationListener) : DaggerFragment() {
         view.login_button.setOnClickListener {
             login_progress_bar.visibility = View.VISIBLE
             login_text.visibility = View.VISIBLE
-            sendCredentials(view.user_name.text.toString(), view.password.text.toString())
+            sendCredentials(view.user_name_edit_text.text.toString(), view.password_edit_text.text.toString())
         }
         return view
     }
