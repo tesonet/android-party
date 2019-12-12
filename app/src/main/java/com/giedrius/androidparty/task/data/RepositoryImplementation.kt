@@ -25,6 +25,8 @@ class RepositoryImplementation(private val loginClient: LoginClient, val sharedP
     }
 
     override fun getServers(apiListener: ApiListener<List<Server>>) {
+        //This should be reused in order to prevent user from entering credentials everytime.
+        //If saved token value is not null - launch servers list from the start of application and skip login
         val token = sharedPreferences.getString(Constants.TOKEN_KEY_IN_SHARED_PREFERENCES, null)
         val mServersClient: ServersClient = ServersClientImplementation(token!!)
         mServersClient.getServersList(object : ApiListener<List<Server>> {
