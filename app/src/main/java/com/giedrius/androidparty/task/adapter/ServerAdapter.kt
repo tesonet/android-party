@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.giedrius.androidparty.R
-import com.giedrius.androidparty.task.utils.Constants
 import com.giedrius.androidparty.task.viewmodel.ServerViewModel
 import kotlinx.android.synthetic.main.server_item.view.*
 
