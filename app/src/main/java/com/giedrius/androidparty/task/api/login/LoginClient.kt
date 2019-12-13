@@ -1,4 +1,4 @@
-package com.giedrius.androidparty.task.server.login
+package com.giedrius.androidparty.task.api.login
 
 import com.giedrius.androidparty.task.viewmodel.Token
 import com.giedrius.androidparty.task.viewmodel.LoginBody

@@ -1,9 +1,9 @@
-package com.giedrius.androidparty.task.server.login
+package com.giedrius.androidparty.task.api.login
 
 import android.util.Log
 import com.giedrius.androidparty.task.viewmodel.Token
 import com.giedrius.androidparty.task.viewmodel.LoginBody
-import com.giedrius.androidparty.task.server.Api
+import com.giedrius.androidparty.task.api.ApiClient
 import com.giedrius.androidparty.task.utils.ApiListener
 import com.giedrius.androidparty.task.utils.Constants
 import retrofit2.Call
@@ -14,17 +14,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class LoginClientImplementation : LoginClient {
     private var retrofit: Retrofit
-    private var api: Api
+    private var mApiClient: ApiClient
 
     init {
         retrofit = Retrofit.Builder().baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        api = retrofit.create(Api::class.java)
+        mApiClient = retrofit.create(ApiClient::class.java)
     }
 
     override fun login(body: LoginBody, apiListener: ApiListener<Token>) {
-        val call: Call<Token> = api.getToken(body)
+        val call: Call<Token> = mApiClient.getToken(body)
         call.enqueue(object : Callback<Token> {
             override fun onResponse(call: Call<Token>, response: Response<Token>) {
                 apiListener.onResult(response.body())

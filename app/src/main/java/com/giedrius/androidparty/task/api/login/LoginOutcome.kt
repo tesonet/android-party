@@ -1,4 +1,4 @@
-package com.giedrius.androidparty.task.server.login
+package com.giedrius.androidparty.task.api.login
 
 enum class LoginOutcome {
     SUCCESSFUL,

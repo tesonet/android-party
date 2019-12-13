@@ -7,5 +7,6 @@ class Constants {
         const val SERVERS_HEADER_VALUE = "Bearer"
         const val SHARED_PREFERENCES_NAME = "DB"
         const val TOKEN_KEY_IN_SHARED_PREFERENCES = "Token"
+        const val SERVER_DISTANCE_UNIT = "km"
     }
 }

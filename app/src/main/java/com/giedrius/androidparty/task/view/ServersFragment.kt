@@ -16,9 +16,10 @@ import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_servers.view.*
 import javax.inject.Inject
 
-class ServersFragment(val navListener: NavigationListener): DaggerFragment() {
+class ServersFragment(val navListener: NavigationListener) : DaggerFragment() {
 
-    @Inject lateinit var serversViewModel: ServersListViewModel
+    @Inject
+    lateinit var serversViewModel: ServersListViewModel
     lateinit var serversAdapter: ServerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +47,7 @@ class ServersFragment(val navListener: NavigationListener): DaggerFragment() {
     }
 
     companion object {
-        @JvmStatic fun newInstance(navlistener: NavigationListener) = ServersFragment(navlistener).apply{}
+        @JvmStatic
+        fun newInstance(navlistener: NavigationListener) = ServersFragment(navlistener).apply {}
     }
 }

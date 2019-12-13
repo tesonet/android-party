@@ -5,13 +5,14 @@ import com.giedrius.androidparty.task.utils.ApiListener
 import com.giedrius.androidparty.task.viewmodel.Token
 import com.giedrius.androidparty.task.viewmodel.Server
 import com.giedrius.androidparty.task.viewmodel.LoginBody
-import com.giedrius.androidparty.task.server.login.LoginClient
-import com.giedrius.androidparty.task.server.servers.ServersClient
-import com.giedrius.androidparty.task.server.servers.ServersClientImplementation
-import com.giedrius.androidparty.task.server.login.LoginOutcome
+import com.giedrius.androidparty.task.api.login.LoginClient
+import com.giedrius.androidparty.task.api.servers.ServersClient
+import com.giedrius.androidparty.task.api.servers.ServersClientImplementation
+import com.giedrius.androidparty.task.api.login.LoginOutcome
 import com.giedrius.androidparty.task.utils.Constants
 
-class RepositoryImplementation(private val loginClient: LoginClient, val sharedPreferences: SharedPreferences) : Repository {
+class RepositoryImplementation(private val loginClient: LoginClient, val sharedPreferences: SharedPreferences) :
+    Repository {
 
     override fun getToken(username: String, password: String, apiListener: ApiListener<LoginOutcome>) {
         loginClient.login(LoginBody(username, password), object : ApiListener<Token> {
@@ -19,7 +20,9 @@ class RepositoryImplementation(private val loginClient: LoginClient, val sharedP
                 if (data is Token) {
                     sharedPreferences.edit().putString(Constants.TOKEN_KEY_IN_SHARED_PREFERENCES, data.token).apply()
                     apiListener.onResult(LoginOutcome.SUCCESSFUL)
-                } else { apiListener.onResult(LoginOutcome.UNSUCCESSFUL) }
+                } else {
+                    apiListener.onResult(LoginOutcome.UNSUCCESSFUL)
+                }
             }
         })
     }
@@ -40,7 +43,9 @@ class RepositoryImplementation(private val loginClient: LoginClient, val sharedP
     companion object {
         private var instance: RepositoryImplementation? = null
         fun getInstance(loginClient: LoginClient, sharedPreferences: SharedPreferences): RepositoryImplementation {
-            if (instance == null) { instance = RepositoryImplementation(loginClient, sharedPreferences) }
+            if (instance == null) {
+                instance = RepositoryImplementation(loginClient, sharedPreferences)
+            }
             return instance!!
         }
     }

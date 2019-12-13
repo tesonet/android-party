@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.giedrius.androidparty.task.utils.ApiListener
 import com.giedrius.androidparty.task.data.Repository
+import com.giedrius.androidparty.task.utils.Constants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -16,11 +17,12 @@ class ServersListViewModel(val repository: Repository) : ViewModel() {
     val servers = MutableLiveData<List<ServerViewModel>>()
 
     fun getServers() {
-        ioScope.launch { repository.getServers(object :
+        ioScope.launch {
+            repository.getServers(object :
                 ApiListener<List<Server>> {
                 override fun <T> onResult(data: T) {
                     data as List<Server>
-                    val server: List<ServerViewModel> = data.map { ServerViewModel(it.name, it.distance) }
+                    val server: List<ServerViewModel> = data.map { ServerViewModel(it.name, it.distance, Constants.SERVER_DISTANCE_UNIT) }
                     uiScope.launch { servers.value = server }
                 }
             })

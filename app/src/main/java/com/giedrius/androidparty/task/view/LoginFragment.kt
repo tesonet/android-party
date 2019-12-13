@@ -8,7 +8,7 @@ import android.widget.Toast
 import com.giedrius.androidparty.R
 import com.giedrius.androidparty.task.navigation.NavigationListener
 import com.giedrius.androidparty.task.utils.ApiListener
-import com.giedrius.androidparty.task.server.login.LoginOutcome
+import com.giedrius.androidparty.task.api.login.LoginOutcome
 import com.giedrius.androidparty.task.viewmodel.LoginViewModel
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
@@ -17,7 +17,8 @@ import kotlinx.android.synthetic.main.fragment_login.view.*
 import javax.inject.Inject
 
 class LoginFragment(val navListener: NavigationListener) : DaggerFragment() {
-    @Inject lateinit var loginViewModel: LoginViewModel
+    @Inject
+    lateinit var loginViewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,8 +39,12 @@ class LoginFragment(val navListener: NavigationListener) : DaggerFragment() {
         loginViewModel.login(object : ApiListener<LoginOutcome> {
             override fun <T> onResult(data: T) {
                 when (data as LoginOutcome) {
-                    LoginOutcome.SUCCESSFUL -> { navListener.onLoginPerformed() }
-                    LoginOutcome.UNSUCCESSFUL -> { Toast.makeText(activity, "Login unsuccessful", Toast.LENGTH_LONG).show() }
+                    LoginOutcome.SUCCESSFUL -> {
+                        navListener.onLoginPerformed()
+                    }
+                    LoginOutcome.UNSUCCESSFUL -> {
+                        Toast.makeText(activity, "Login unsuccessful", Toast.LENGTH_LONG).show()
+                    }
                 }
                 login_text.visibility = View.GONE
                 login_progress_bar.visibility = View.GONE
@@ -48,6 +53,7 @@ class LoginFragment(val navListener: NavigationListener) : DaggerFragment() {
     }
 
     companion object {
-        @JvmStatic fun newInstance(listener: NavigationListener) = LoginFragment(listener).apply {}
+        @JvmStatic
+        fun newInstance(listener: NavigationListener) = LoginFragment(listener).apply {}
     }
 }

@@ -11,8 +11,10 @@ import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
 class App : Application(), HasActivityInjector, HasSupportFragmentInjector {
-    @Inject lateinit var activity: DispatchingAndroidInjector<Activity>
-    @Inject lateinit var fragment: DispatchingAndroidInjector<Fragment>
+    @Inject
+    lateinit var activity: DispatchingAndroidInjector<Activity>
+    @Inject
+    lateinit var fragment: DispatchingAndroidInjector<Fragment>
 
     override fun onCreate() {
         super.onCreate()

@@ -1,8 +1,8 @@
-package com.giedrius.androidparty.task.server.servers
+package com.giedrius.androidparty.task.api.servers
 
 import android.util.Log
 import com.giedrius.androidparty.task.viewmodel.Server
-import com.giedrius.androidparty.task.server.Api
+import com.giedrius.androidparty.task.api.ApiClient
 import com.giedrius.androidparty.task.utils.ApiListener
 import com.giedrius.androidparty.task.utils.Constants
 import okhttp3.OkHttpClient
@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ServersClientImplementation(private val token: String): ServersClient {
     private var okClient: OkHttpClient
     private var retrofit: Retrofit
-    private var api: Api
+    private var mApiClient: ApiClient
 
     init {
         okClient = OkHttpClient().newBuilder().addInterceptor { chain ->
@@ -32,11 +32,11 @@ class ServersClientImplementation(private val token: String): ServersClient {
             .client(okClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        api = retrofit.create(Api::class.java)
+        mApiClient = retrofit.create(ApiClient::class.java)
     }
 
     override fun getServersList(apiListener: ApiListener<List<Server>>) {
-        val call: Call<List<Server>> = api.getServers()
+        val call: Call<List<Server>> = mApiClient.getServers()
         call.enqueue(object : Callback<List<Server>> {
             override fun onResponse(call: Call<List<Server>>, response: Response<List<Server>>) {
                 apiListener.onResult(response.body())
