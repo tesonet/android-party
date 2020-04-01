@@ -5,18 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusedByDefault="true"
+    tools:ignore="RtlSymmetry"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription" />
+    <include
+        layout="@layout/background_layout"
+        />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/view_start_vertical_guideline"
@@ -46,45 +40,33 @@
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/view_username"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:background="@drawable/login_input_background"
+        style="@style/LoginInputFieldStyle"
         android:drawableStart="@drawable/ic_username"
-        android:drawablePadding="20dp"
         android:hint="@string/username"
-        android:textColor="#cccccc"
-        android:textColorHint="#cccccc"
-        android:paddingStart="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/view_end_vertical_guideline"
         app:layout_constraintStart_toEndOf="@id/view_start_vertical_guideline"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45"
-        tools:ignore="RtlSymmetry" />
+        app:layout_constraintVertical_bias="0.55"
+        />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/view_password"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
+        style="@style/LoginInputFieldStyle"
         android:layout_marginTop="20dp"
-        android:background="@drawable/login_input_background"
         android:drawableStart="@drawable/ic_lock"
-        android:textColor="#cccccc"
-        android:textColorHint="#cccccc"
-        android:drawablePadding="20dp"
         android:hint="@string/password"
-        android:paddingStart="20dp"
         app:layout_constraintEnd_toStartOf="@id/view_end_vertical_guideline"
         app:layout_constraintStart_toEndOf="@id/view_start_vertical_guideline"
         app:layout_constraintTop_toBottomOf="@id/view_username"
-        tools:ignore="RtlSymmetry" />
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/login_button_background"
-        android:text="Log In"
+        android:text="@string/login"
         android:textAllCaps="false"
         android:textColor="#FFF"
         android:textSize="16sp"

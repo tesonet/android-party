@@ -8,4 +8,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="LoginInputFieldStyle" parent="Widget.AppCompat.EditText">
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColorHint">@color/colorTextGrey</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:drawablePadding">20dp</item>
+        <item name="android:background">@drawable/login_input_background</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_width">0dp</item>
+    </style>
+
+    <style name="FadeProgressBar" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:progressTint">@color/colorWhite</item>
+        <item name="android:indeterminateDrawable">@drawable/circular_progress_bar</item>
+    </style>
 </resources>
