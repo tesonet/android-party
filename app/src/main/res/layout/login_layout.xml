@@ -6,28 +6,28 @@
     android:layout_height="match_parent"
     android:focusedByDefault="true"
     tools:ignore="RtlSymmetry"
-    tools:context=".MainActivity">
+    tools:context=".ui.login.LoginActivity">
 
     <include
         layout="@layout/background_layout"
         />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/view_start_vertical_guideline"
+        android:id="@+id/viewStartVerticalGuideline"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.1" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/view_end_vertical_guideline"
+        android:id="@+id/viewEndVerticalGuideline"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.9" />
 
     <ImageView
-        android:id="@+id/view_logo"
+        android:id="@+id/viewLogo"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:src="@drawable/logo_1"
@@ -39,29 +39,33 @@
         tools:ignore="ContentDescription" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/view_username"
+        android:id="@+id/viewEditTextUsername"
         style="@style/LoginInputFieldStyle"
         android:drawableStart="@drawable/ic_username"
         android:hint="@string/username"
+        android:imeOptions="actionNext"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/view_end_vertical_guideline"
-        app:layout_constraintStart_toEndOf="@id/view_start_vertical_guideline"
+        app:layout_constraintEnd_toStartOf="@id/viewEndVerticalGuideline"
+        app:layout_constraintStart_toEndOf="@id/viewStartVerticalGuideline"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.55"
         />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/view_password"
+        android:id="@+id/viewEditTextPassword"
         style="@style/LoginInputFieldStyle"
         android:layout_marginTop="20dp"
         android:drawableStart="@drawable/ic_lock"
         android:hint="@string/password"
-        app:layout_constraintEnd_toStartOf="@id/view_end_vertical_guideline"
-        app:layout_constraintStart_toEndOf="@id/view_start_vertical_guideline"
-        app:layout_constraintTop_toBottomOf="@id/view_username"
+        android:inputType="textPassword"
+        android:imeOptions="actionGo"
+        app:layout_constraintEnd_toStartOf="@id/viewEndVerticalGuideline"
+        app:layout_constraintStart_toEndOf="@id/viewStartVerticalGuideline"
+        app:layout_constraintTop_toBottomOf="@id/viewEditTextUsername"
         />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/viewButtonLogIn"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
@@ -70,7 +74,7 @@
         android:textAllCaps="false"
         android:textColor="#FFF"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@id/view_end_vertical_guideline"
-        app:layout_constraintStart_toEndOf="@id/view_start_vertical_guideline"
-        app:layout_constraintTop_toBottomOf="@id/view_password" />
+        app:layout_constraintEnd_toStartOf="@id/viewEndVerticalGuideline"
+        app:layout_constraintStart_toEndOf="@id/viewStartVerticalGuideline"
+        app:layout_constraintTop_toBottomOf="@id/viewEditTextPassword" />
 </androidx.constraintlayout.widget.ConstraintLayout>

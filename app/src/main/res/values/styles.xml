@@ -17,10 +17,16 @@
         <item name="android:background">@drawable/login_input_background</item>
         <item name="android:layout_height">60dp</item>
         <item name="android:layout_width">0dp</item>
+        <item name="android:singleLine">true</item>
     </style>
 
     <style name="FadeProgressBar" parent="Widget.AppCompat.ProgressBar">
         <item name="android:progressTint">@color/colorWhite</item>
         <item name="android:indeterminateDrawable">@drawable/circular_progress_bar</item>
+    </style>
+
+    <style name="ServerListItemTextStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorTextGrey</item>
     </style>
 </resources>

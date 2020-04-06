@@ -6,4 +6,7 @@
     <string name="fetchingTheList">Fetching the list…</string>
     <string name="server">Server</string>
     <string name="distance">Distance</string>
+    <string name="generic_error">Something went wrong</string>
+    <string name="check_login_credentials">Check login credentials</string>
+    <string name="check_internet">Check internet</string>
 </resources>
