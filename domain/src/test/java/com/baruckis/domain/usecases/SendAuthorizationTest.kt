@@ -2,7 +2,7 @@ package com.baruckis.domain.usecases
 
 import com.baruckis.domain.entity.TokenEntity
 import com.baruckis.domain.executor.ExecutionThreadScheduler
-import com.baruckis.domain.repository.LoginRepository
+import com.baruckis.domain.repository.MainRepository
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
@@ -16,7 +16,7 @@ class SendAuthorizationTest {
     private lateinit var sendAuthorization: SendAuthorization
 
     @Mock
-    lateinit var loginRepository: LoginRepository
+    lateinit var mainRepository: MainRepository
 
     @Mock
     lateinit var backgroundExecutor: ExecutionThreadScheduler
@@ -28,7 +28,7 @@ class SendAuthorizationTest {
     fun setup() {
         MockitoAnnotations.initMocks(this)
         sendAuthorization =
-            SendAuthorization(loginRepository, backgroundExecutor, foregroundExecutor)
+            SendAuthorization(mainRepository, backgroundExecutor, foregroundExecutor)
     }
 
     @Test
@@ -51,7 +51,7 @@ class SendAuthorizationTest {
     }
 
     private fun stubSendAuthorization(single: Single<TokenEntity>) {
-        Mockito.`when`(loginRepository.sendAuthorization(anyString(), anyString()))
+        Mockito.`when`(mainRepository.sendAuthorization(anyString(), anyString()))
             .thenReturn(single)
     }
 
