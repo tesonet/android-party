@@ -1,3 +1,4 @@
 rootProject.name='Android Party'
 include ':app'
 include ':domain'
+include ':data'
