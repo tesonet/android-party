@@ -13,8 +13,11 @@ buildscript {
         rx_java_version = '2.2.19'          // RxJava.
         rx_kotlin_version = '2.4.0'         // RxKotlin.
 
+        okhttp_version = '4.7.1'            // OkHttp.
+        retrofit_version = '2.8.2'          // Retrofit.
+
         // Testing
-        mockito_version = '3.3.3'
+        mockito_version = '3.3.3'           // Mockito.
 
 
         domainDependencies = [
@@ -36,6 +39,22 @@ buildscript {
         ]
 
         dataTestDependencies = [
+                kotlinJUnit  : "org.jetbrains.kotlin:kotlin-test-junit:${kotlin_version}",
+                mockito      : "org.mockito:mockito-core:${mockito_version}"
+        ]
+
+        remoteDependencies = [
+                javaxInject      : "javax.inject:javax.inject:${javax_inject_version}",
+                kotlin           : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}",
+                okHttp           : "com.squareup.okhttp3:okhttp:${okhttp_version}",
+                okHttpLogger     : "com.squareup.okhttp3:logging-interceptor:${okhttp_version}",
+                rxKotlin         : "io.reactivex.rxjava2:rxkotlin:${rx_kotlin_version}",
+                retrofit         : "com.squareup.retrofit2:retrofit:${retrofit_version}",
+                retrofitAdapter  : "com.squareup.retrofit2:adapter-rxjava2:${retrofit_version}",
+                retrofitConverter: "com.squareup.retrofit2:converter-gson:${retrofit_version}"
+        ]
+
+        remoteTestDependencies = [
                 kotlinJUnit  : "org.jetbrains.kotlin:kotlin-test-junit:${kotlin_version}",
                 mockito      : "org.mockito:mockito-core:${mockito_version}"
         ]

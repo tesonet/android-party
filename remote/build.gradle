@@ -1,0 +1,25 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+
+    def remoteDependencies = rootProject.ext.remoteDependencies
+    def remoteTestDependencies = rootProject.ext.remoteTestDependencies
+
+    implementation project(':data')
+
+    implementation remoteDependencies.javaxInject
+    implementation remoteDependencies.kotlin
+    implementation remoteDependencies.okHttp
+    implementation remoteDependencies.okHttpLogger
+    implementation remoteDependencies.rxKotlin
+    implementation remoteDependencies.retrofit
+    implementation remoteDependencies.retrofitAdapter
+    implementation remoteDependencies.retrofitConverter
+
+    testImplementation remoteTestDependencies.kotlinJUnit
+    testImplementation remoteTestDependencies.mockito
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
