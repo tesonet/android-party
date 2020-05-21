@@ -75,6 +75,17 @@ buildscript {
                 mockito      : "org.mockito:mockito-core:${mockito_version}"
         ]
 
+        presentationDependencies = [
+                javaxInject        : "javax.inject:javax.inject:${javax_inject_version}",
+                kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}",
+                rxKotlin           : "io.reactivex.rxjava2:rxkotlin:${rx_kotlin_version}"
+        ]
+
+        presentationTestDependencies = [
+                kotlinJUnit  : "org.jetbrains.kotlin:kotlin-test-junit:${kotlin_version}",
+                mockito      : "org.mockito:mockito-core:${mockito_version}"
+        ]
+
     }
 
 
