@@ -1,4 +1,4 @@
-package com.baruckis.androidparty
+package com.baruckis.androidparty.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

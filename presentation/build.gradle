@@ -35,6 +35,7 @@ dependencies {
     implementation presentationDependencies.javaxInject
     implementation presentationDependencies.kotlin
     implementation presentationDependencies.rxKotlin
+    implementation presentationDependencies.lifecycleExtensions
 
     testImplementation presentationTestDependencies.kotlinJUnit
     testImplementation presentationTestDependencies.mockito

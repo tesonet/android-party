@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+
+    compileSdkVersion rootProject.ext.android_compile_sdk_version
+    buildToolsVersion rootProject.ext.android_build_tools_version
+
+    defaultConfig {
+        applicationId "com.baruckis.androidparty"
+
+        minSdkVersion rootProject.ext.android_min_sdk_version
+        targetSdkVersion rootProject.ext.android_target_sdk_version
+
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+
+    def uiDependencies = rootProject.ext.uiDependencies
+    def uiTestDependencies = rootProject.ext.uiTestDependencies
+
+    // UI layer should depend only on Presentation module in theory, but because we use Dagger
+    // for DI, it needs other modules to be included to generate dependencies graph.
+    implementation project(':presentation')
+    implementation project(':data')
+    implementation project(':remote')
+    implementation project(':local')
+
+    implementation uiDependencies.appCompat
+    implementation uiDependencies.constraintLayout
+    implementation uiDependencies.dagger
+    implementation uiDependencies.daggerSupport
+    implementation uiDependencies.javaxInject
+    implementation uiDependencies.kotlin
+
+    kapt uiDependencies.daggerCompiler
+    kapt uiDependencies.daggerProcessor
+
+    testImplementation uiTestDependencies.kotlinJUnit
+    testImplementation uiTestDependencies.mockito
+
+    androidTestImplementation uiTestDependencies.espresso
+    androidTestImplementation uiTestDependencies.androidJUnit
+
+}
