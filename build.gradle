@@ -26,6 +26,7 @@ buildscript {
 
         lifecycle_version = '2.2.0'         // Android Lifecycle Extensions.
 
+        rx_android_version = '2.1.1'        // RxAndroid.
         rx_java_version = '2.2.19'          // RxJava.
         rx_kotlin_version = '2.4.0'         // RxKotlin.
 
@@ -107,7 +108,8 @@ buildscript {
                 daggerProcessor    : "com.google.dagger:dagger-android-processor:${dagger_version}",
                 daggerSupport      : "com.google.dagger:dagger-android-support:${dagger_version}",
                 javaxInject        : "javax.inject:javax.inject:${javax_inject_version}",
-                kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
+                kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}",
+                rxAndroid          : "io.reactivex.rxjava2:rxandroid:${rx_android_version}"
         ]
 
         uiTestDependencies = [
@@ -118,7 +120,7 @@ buildscript {
                 daggerSupport      : "com.google.dagger:dagger-android-support:${dagger_version}",
                 espresso           : "androidx.test.espresso:espresso-core:${espresso_version}",
                 kotlinJUnit        : "org.jetbrains.kotlin:kotlin-test-junit:${kotlin_version}",
-                mockito            : "org.mockito:mockito-core:${mockito_version}",
+                mockito            : "org.mockito:mockito-core:${mockito_version}"
         ]
 
     }
