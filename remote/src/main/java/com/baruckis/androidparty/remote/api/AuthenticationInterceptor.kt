@@ -3,6 +3,8 @@ package com.baruckis.androidparty.remote.api
 import com.baruckis.androidparty.data.repository.LocalDataSource
 import com.baruckis.androidparty.remote.API_SERVICE_AUTHENTICATION_KEY_START
 import com.baruckis.androidparty.remote.API_SERVICE_AUTHENTICATION_NAME
+import com.baruckis.androidparty.remote.API_SERVICE_CONTENT_TYPE_KEY
+import com.baruckis.androidparty.remote.API_SERVICE_CONTENT_TYPE_NAME
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -15,9 +17,11 @@ class AuthenticationInterceptor(private val localDataSource: LocalDataSource) : 
     override fun intercept(chain: Interceptor.Chain): Response {
 
         val newRequest = chain.request().newBuilder()
+            .addHeader(API_SERVICE_CONTENT_TYPE_NAME, API_SERVICE_CONTENT_TYPE_KEY)
             .addHeader(
                 API_SERVICE_AUTHENTICATION_NAME,
-                API_SERVICE_AUTHENTICATION_KEY_START + localDataSource.getToken())
+                API_SERVICE_AUTHENTICATION_KEY_START + localDataSource.getToken()
+            )
             .build()
 
         return chain.proceed(newRequest)

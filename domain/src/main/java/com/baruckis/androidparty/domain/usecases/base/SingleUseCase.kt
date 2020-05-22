@@ -1,12 +1,12 @@
 package com.baruckis.androidparty.domain.usecases.base
 
-import com.baruckis.androidparty.domain.executor.ExecutionThreadScheduler
+import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.observers.DisposableSingleObserver
 
 abstract class SingleUseCase<Results, in Params> constructor(
-    private val backgroundExecutor: ExecutionThreadScheduler,
-    private val foregroundExecutor: ExecutionThreadScheduler
+    private val backgroundScheduler: Scheduler,
+    private val foregroundScheduler: Scheduler
 ) : BaseReactiveUseCase() {
 
     /**
@@ -23,8 +23,8 @@ abstract class SingleUseCase<Results, in Params> constructor(
      */
     fun execute(observer: DisposableSingleObserver<Results>, params: Params? = null) {
         val single = buildUseCaseSingle(params)
-            .subscribeOn(backgroundExecutor.scheduler)  // Thread you need the work to perform on.
-            .observeOn(foregroundExecutor.scheduler) // Thread you need to handle the result on.
+            .subscribeOn(backgroundScheduler)  // Thread you need the work to perform on.
+            .observeOn(foregroundScheduler) // Thread you need to handle the result on.
         addDisposable(single.subscribeWith(observer)) // Handle the result here.
     }
 

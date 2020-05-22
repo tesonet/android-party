@@ -5,6 +5,7 @@ import com.baruckis.androidparty.data.repository.RemoteDataSource
 import com.baruckis.androidparty.remote.RemoteDataSourceImpl
 import com.baruckis.androidparty.remote.api.TesonetApiService
 import com.baruckis.androidparty.remote.api.TesonetApiServiceFactory
+import com.baruckis.androidparty.ui.BuildConfig
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -18,10 +19,14 @@ abstract class RemoteModule {
         @Provides
         @JvmStatic
         fun provideTesonetApi(localDataSource: LocalDataSource): TesonetApiService {
-            return TesonetApiServiceFactory.createTesonetApiService(true, localDataSource)
+            return TesonetApiServiceFactory.createTesonetApiService(
+                BuildConfig.DEBUG,
+                localDataSource
+            )
         }
     }
 
     @Binds
     abstract fun bindRemoteSource(remoteDataSourceImpl: RemoteDataSourceImpl): RemoteDataSource
+
 }
