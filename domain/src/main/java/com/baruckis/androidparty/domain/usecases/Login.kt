@@ -9,15 +9,15 @@ import io.reactivex.Scheduler
 import io.reactivex.Single
 import javax.inject.Inject
 
-class SendAuthorization @Inject constructor(
+class Login @Inject constructor(
     private val mainRepository: MainRepository,
     @Background backgroundScheduler: Scheduler,
     @Foreground foregroundScheduler: Scheduler
-) : SingleUseCase<TokenEntity, SendAuthorization.Params>(backgroundScheduler, foregroundScheduler) {
+) : SingleUseCase<TokenEntity, Login.Params>(backgroundScheduler, foregroundScheduler) {
 
     override fun buildUseCaseSingle(params: Params?): Single<TokenEntity> {
         requireNotNull(params) { "Params can't be null!" }
-        return mainRepository.sendAuthorization(params.username, params.password)
+        return mainRepository.login(params.username, params.password)
     }
 
     data class Params constructor(val username: String, val password: String) {

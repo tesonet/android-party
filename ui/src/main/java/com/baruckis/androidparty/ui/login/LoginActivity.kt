@@ -22,7 +22,6 @@ class LoginActivity : AppCompatActivity() {
 
         AndroidInjection.inject(this)
 
-        // Obtain ViewModel from ViewModelProviders, using this activity as LifecycleOwner.
         loginViewModel = ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
 
         binding = ActivityLoginBinding.inflate(layoutInflater).apply {

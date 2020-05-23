@@ -1,6 +1,5 @@
 package com.baruckis.androidparty.data.mapper
 
-import com.baruckis.androidparty.data.mapper.TokenMapper
 import com.baruckis.androidparty.data.TestDataFactory
 import com.baruckis.androidparty.data.model.TokenData
 import com.baruckis.androidparty.domain.entity.TokenEntity

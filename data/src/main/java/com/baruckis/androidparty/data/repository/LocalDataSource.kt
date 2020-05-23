@@ -4,8 +4,10 @@ import com.baruckis.androidparty.data.model.LoggedInUserData
 
 interface LocalDataSource {
 
+    fun getToken(): String
+
     fun getLoggedInUser(): LoggedInUserData?
 
-    fun getToken(): String
+    fun setLoggedInUser(user: LoggedInUserData?)
 
 }

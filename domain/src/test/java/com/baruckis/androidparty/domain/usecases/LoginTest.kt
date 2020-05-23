@@ -1,9 +1,10 @@
 package com.baruckis.androidparty.domain.usecases
 
 import com.baruckis.androidparty.domain.entity.TokenEntity
-import com.baruckis.androidparty.domain.executor.ExecutionThreadScheduler
+import com.baruckis.androidparty.domain.qualifiers.Background
+import com.baruckis.androidparty.domain.qualifiers.Foreground
 import com.baruckis.androidparty.domain.repository.MainRepository
-import com.baruckis.androidparty.domain.usecases.SendAuthorization
+import io.reactivex.Scheduler
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
@@ -12,35 +13,37 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 
-class SendAuthorizationTest {
+class LoginTest {
 
-    private lateinit var sendAuthorization: SendAuthorization
+    private lateinit var login: Login
 
     @Mock
     lateinit var mainRepository: MainRepository
 
     @Mock
-    lateinit var backgroundExecutor: ExecutionThreadScheduler
+    @Background
+    lateinit var backgroundScheduler: Scheduler
 
     @Mock
-    lateinit var foregroundExecutor: ExecutionThreadScheduler
+    @Foreground
+    lateinit var foregroundScheduler: Scheduler
 
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        sendAuthorization =
-            SendAuthorization(
+        login =
+            Login(
                 mainRepository,
-                backgroundExecutor,
-                foregroundExecutor
+                backgroundScheduler,
+                foregroundScheduler
             )
     }
 
     @Test
     fun sendAuthorizationCompletes() {
         stubSendAuthorization(Single.just(makeToken()))
-        val testObserver = sendAuthorization.buildUseCaseSingle(
-            SendAuthorization.Params.authorization(anyString(), anyString())
+        val testObserver = login.buildUseCaseSingle(
+            Login.Params.authorization(anyString(), anyString())
         ).test()
         testObserver.assertComplete()
     }
@@ -49,14 +52,14 @@ class SendAuthorizationTest {
     fun sendAuthorizationReturnsData() {
         val token = makeToken()
         stubSendAuthorization(Single.just(token))
-        val testObserver = sendAuthorization.buildUseCaseSingle(
-            SendAuthorization.Params.authorization(anyString(), anyString())
+        val testObserver = login.buildUseCaseSingle(
+            Login.Params.authorization(anyString(), anyString())
         ).test()
         testObserver.assertValue(token)
     }
 
     private fun stubSendAuthorization(single: Single<TokenEntity>) {
-        Mockito.`when`(mainRepository.sendAuthorization(anyString(), anyString()))
+        Mockito.`when`(mainRepository.login(anyString(), anyString()))
             .thenReturn(single)
     }
 

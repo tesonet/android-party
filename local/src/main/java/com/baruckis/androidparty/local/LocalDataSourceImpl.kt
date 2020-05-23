@@ -19,4 +19,9 @@ class LocalDataSourceImpl @Inject constructor(
             LoggedInUserData(token, username)
     }
 
+    override fun setLoggedInUser(user: LoggedInUserData?) {
+        sharedPreferenceStorage.token = user?.token
+        sharedPreferenceStorage.username = user?.username
+    }
+
 }

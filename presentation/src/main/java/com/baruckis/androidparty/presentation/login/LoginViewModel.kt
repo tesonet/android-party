@@ -3,31 +3,31 @@ package com.baruckis.androidparty.presentation.login
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.baruckis.androidparty.domain.entity.TokenEntity
-import com.baruckis.androidparty.domain.usecases.SendAuthorization
+import com.baruckis.androidparty.domain.usecases.Login
 import io.reactivex.observers.DisposableSingleObserver
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(
-    private val sendAuthorization: SendAuthorization
+    private val login: Login
 ) : ViewModel() {
 
-    fun sendAuthorization(username: String, password: String) {
-        sendAuthorization.execute(
-            TokenSubscriber(),
-            SendAuthorization.Params.authorization(username, password)
+    fun login(username: String, password: String) {
+        login.execute(
+            LoginSubscriber(),
+            Login.Params.authorization(username, password)
         )
     }
 
-    fun sendAuthorizationClick() {
-        sendAuthorization("tesonet", "partyanimal")
+    fun loginClick() {
+        login("tesonet", "partyanimala")
     }
 
     override fun onCleared() {
-        sendAuthorization.dispose()
+        login.dispose()
         super.onCleared()
     }
 
-    inner class TokenSubscriber : DisposableSingleObserver<TokenEntity>() {
+    inner class LoginSubscriber : DisposableSingleObserver<TokenEntity>() {
 
         override fun onSuccess(t: TokenEntity) {
             Log.d("AndroidParty", "onSuccess - Token " + t.token)
