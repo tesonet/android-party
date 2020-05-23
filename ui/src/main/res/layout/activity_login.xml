@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".LoginActivity">
+        tools:context=".login.LoginActivity">
 
         <TextView
             android:layout_width="wrap_content"
@@ -34,7 +34,7 @@
 
         <variable
             name="viewModel"
-            type="com.baruckis.androidparty.presentation.viewmodels.LoginViewModel" />
+            type="com.baruckis.androidparty.presentation.login.LoginViewModel" />
     </data>
 
 </layout>

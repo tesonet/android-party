@@ -1,4 +1,4 @@
-package com.baruckis.androidparty.presentation.viewmodels
+package com.baruckis.androidparty.presentation.login
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

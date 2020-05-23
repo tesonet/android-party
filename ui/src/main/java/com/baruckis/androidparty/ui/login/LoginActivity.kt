@@ -1,9 +1,9 @@
-package com.baruckis.androidparty.ui
+package com.baruckis.androidparty.ui.login
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.baruckis.androidparty.presentation.viewmodels.LoginViewModel
+import com.baruckis.androidparty.presentation.login.LoginViewModel
 import com.baruckis.androidparty.ui.databinding.ActivityLoginBinding
 import dagger.android.AndroidInjection
 import javax.inject.Inject

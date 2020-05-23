@@ -32,6 +32,7 @@ dependencies {
 
     implementation project(':data')
 
+    implementation localDependencies.annotation
     implementation localDependencies.javaxInject
     implementation localDependencies.kotlin
     implementation localDependencies.rxKotlin
