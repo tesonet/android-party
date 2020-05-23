@@ -3,11 +3,11 @@ package com.baruckis.androidparty.presentation.launcher
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.baruckis.androidparty.domain.usecases.GetLoggedInUser
+import com.baruckis.androidparty.domain.usecases.GetLoggedInUserUseCase
 import com.baruckis.androidparty.presentation.Event
 import javax.inject.Inject
 
-class LauncherViewModel @Inject constructor(getLoggedInUser: GetLoggedInUser) : ViewModel() {
+class LauncherViewModel @Inject constructor(getLoggedInUserUseCase: GetLoggedInUserUseCase) : ViewModel() {
 
     private val launchDestinationMutableLiveData = MutableLiveData<Event<LaunchDestination>>()
 
@@ -16,7 +16,7 @@ class LauncherViewModel @Inject constructor(getLoggedInUser: GetLoggedInUser) : 
 
     init {
         // Check if user has already been logged in before and then navigate the user accordingly.
-        val loggedInUser = getLoggedInUser.execute()
+        val loggedInUser = getLoggedInUserUseCase.execute()
         if (loggedInUser != null) {
             launchDestinationMutableLiveData.postValue(Event(LaunchDestination.MAIN_ACTIVITY))
         } else {

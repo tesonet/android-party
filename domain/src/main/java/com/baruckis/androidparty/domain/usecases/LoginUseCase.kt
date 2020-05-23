@@ -9,11 +9,11 @@ import io.reactivex.Scheduler
 import io.reactivex.Single
 import javax.inject.Inject
 
-class Login @Inject constructor(
+class LoginUseCase @Inject constructor(
     private val mainRepository: MainRepository,
     @Background backgroundScheduler: Scheduler,
     @Foreground foregroundScheduler: Scheduler
-) : SingleUseCase<TokenEntity, Login.Params>(backgroundScheduler, foregroundScheduler) {
+) : SingleUseCase<TokenEntity, LoginUseCase.Params>(backgroundScheduler, foregroundScheduler) {
 
     override fun buildUseCaseSingle(params: Params?): Single<TokenEntity> {
         requireNotNull(params) { "Params can't be null!" }

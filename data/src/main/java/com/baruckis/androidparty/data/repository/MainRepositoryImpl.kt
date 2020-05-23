@@ -29,7 +29,7 @@ class MainRepositoryImpl @Inject constructor(
     }
 
     override fun logout() {
-        TODO("Not yet implemented")
+        localDataSource.setLoggedInUser(null)
     }
 
 }

@@ -3,27 +3,27 @@ package com.baruckis.androidparty.presentation.login
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.baruckis.androidparty.domain.entity.TokenEntity
-import com.baruckis.androidparty.domain.usecases.Login
+import com.baruckis.androidparty.domain.usecases.LoginUseCase
 import io.reactivex.observers.DisposableSingleObserver
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(
-    private val login: Login
+    private val loginUseCase: LoginUseCase
 ) : ViewModel() {
 
     fun login(username: String, password: String) {
-        login.execute(
+        loginUseCase.execute(
             LoginSubscriber(),
-            Login.Params.authorization(username, password)
+            LoginUseCase.Params.authorization(username, password)
         )
     }
 
     fun loginClick() {
-        login("tesonet", "partyanimala")
+        login("tesonet", "partyanimal")
     }
 
     override fun onCleared() {
-        login.dispose()
+        loginUseCase.dispose()
         super.onCleared()
     }
 

@@ -28,6 +28,8 @@ buildscript {
 
         lifecycle_version = '2.2.0'         // Android Lifecycle Extensions.
 
+        recyclerview_version = '1.1.0'      // RecyclerView.
+
         rx_android_version = '2.1.1'        // RxAndroid.
         rx_java_version = '2.2.19'          // RxJava.
         rx_kotlin_version = '2.4.0'         // RxKotlin.
@@ -112,6 +114,7 @@ buildscript {
                 daggerSupport      : "com.google.dagger:dagger-android-support:${dagger_version}",
                 javaxInject        : "javax.inject:javax.inject:${javax_inject_version}",
                 kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}",
+                recyclerView       : "androidx.recyclerview:recyclerview:${recyclerview_version}",
                 rxAndroid          : "io.reactivex.rxjava2:rxandroid:${rx_android_version}"
         ]
 

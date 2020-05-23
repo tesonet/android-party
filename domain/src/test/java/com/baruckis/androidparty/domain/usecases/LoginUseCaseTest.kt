@@ -13,9 +13,9 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 
-class LoginTest {
+class LoginUseCaseTest {
 
-    private lateinit var login: Login
+    private lateinit var loginUseCase: LoginUseCase
 
     @Mock
     lateinit var mainRepository: MainRepository
@@ -31,8 +31,8 @@ class LoginTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        login =
-            Login(
+        loginUseCase =
+            LoginUseCase(
                 mainRepository,
                 backgroundScheduler,
                 foregroundScheduler
@@ -42,8 +42,8 @@ class LoginTest {
     @Test
     fun sendAuthorizationCompletes() {
         stubSendAuthorization(Single.just(makeToken()))
-        val testObserver = login.buildUseCaseSingle(
-            Login.Params.authorization(anyString(), anyString())
+        val testObserver = loginUseCase.buildUseCaseSingle(
+            LoginUseCase.Params.authorization(anyString(), anyString())
         ).test()
         testObserver.assertComplete()
     }
@@ -52,8 +52,8 @@ class LoginTest {
     fun sendAuthorizationReturnsData() {
         val token = makeToken()
         stubSendAuthorization(Single.just(token))
-        val testObserver = login.buildUseCaseSingle(
-            Login.Params.authorization(anyString(), anyString())
+        val testObserver = loginUseCase.buildUseCaseSingle(
+            LoginUseCase.Params.authorization(anyString(), anyString())
         ).test()
         testObserver.assertValue(token)
     }

@@ -6,7 +6,7 @@ import com.baruckis.androidparty.domain.usecases.base.SynchronousUseCase
 import javax.inject.Inject
 
 
-class GetLoggedInUser @Inject constructor(
+class GetLoggedInUserUseCase @Inject constructor(
     private val mainRepository: MainRepository
 ) : SynchronousUseCase<LoggedInUserEntity?, Any> {
 

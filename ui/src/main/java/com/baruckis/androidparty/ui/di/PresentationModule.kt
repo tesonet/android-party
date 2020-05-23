@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.baruckis.androidparty.presentation.launcher.LauncherViewModel
 import com.baruckis.androidparty.presentation.login.LoginViewModel
+import com.baruckis.androidparty.presentation.main.MainViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -31,6 +32,11 @@ abstract class PresentationModule {
     // and if don't need any, we should use @ClassKey annotation provided by Dagger.
     @ViewModelKey(LoginViewModel::class)
     abstract fun bindLoginViewModel(loginViewModel: LoginViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainViewModel::class)
+    abstract fun bindMainViewModel(mainViewModel: MainViewModel): ViewModel
 
 
     @Binds
