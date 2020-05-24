@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Android Party</string>
+    <string name="app_name" translatable="false">Android Party</string>
+    <string name="username_input_hint" translatable="true">Username</string>
+    <string name="password_input_hint" translatable="true">Password</string>
+    <string name="login_btn_label" translatable="true">Log In</string>
+
+    <string name="tools_fetching_the_list">Fetching the list…</string>
 </resources>

@@ -8,7 +8,7 @@ interface MainRepository {
 
     fun getLoggedInUser(): LoggedInUserEntity?
 
-    fun login(username: String, password: String): Single<TokenEntity>
+    fun login(username: String, password: String): Single<LoggedInUserEntity>
 
     fun logout()
 }

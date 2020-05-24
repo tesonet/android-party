@@ -1,17 +1,14 @@
 package com.baruckis.androidparty.data.repository
 
 import com.baruckis.androidparty.data.mapper.LoggedInUserMapper
-import com.baruckis.androidparty.data.mapper.TokenMapper
 import com.baruckis.androidparty.data.model.LoggedInUserData
 import com.baruckis.androidparty.data.model.TokenData
 import com.baruckis.androidparty.domain.entity.LoggedInUserEntity
-import com.baruckis.androidparty.domain.entity.TokenEntity
 import com.baruckis.androidparty.domain.repository.MainRepository
 import io.reactivex.Single
 import javax.inject.Inject
 
 class MainRepositoryImpl @Inject constructor(
-    private val tokenMapper: TokenMapper,
     private val loggedInUserMapper: LoggedInUserMapper,
     private val localDataSource: LocalDataSource,
     private val remoteDataSource: RemoteDataSource
@@ -21,10 +18,11 @@ class MainRepositoryImpl @Inject constructor(
         return localDataSource.getLoggedInUser()?.let { loggedInUserMapper.mapFrom(it) }
     }
 
-    override fun login(username: String, password: String): Single<TokenEntity> {
+    override fun login(username: String, password: String): Single<LoggedInUserEntity> {
         return remoteDataSource.sendAuthorization(username, password).map { tokenData: TokenData ->
-            localDataSource.setLoggedInUser(LoggedInUserData(tokenData.token, username))
-            tokenMapper.mapFrom(tokenData)
+            val loggedInUserData = LoggedInUserData(tokenData.token, username)
+            localDataSource.setLoggedInUser(loggedInUserData)
+            loggedInUserMapper.mapFrom(loggedInUserData)
         }
     }
 
