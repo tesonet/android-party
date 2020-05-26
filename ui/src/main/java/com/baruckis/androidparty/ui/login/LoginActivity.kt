@@ -10,13 +10,14 @@ import com.baruckis.androidparty.presentation.model.LoginPresentation
 import com.baruckis.androidparty.presentation.state.Resource
 import com.baruckis.androidparty.presentation.state.Status
 import com.baruckis.androidparty.ui.R
+import com.baruckis.androidparty.ui.callback.BackCallback
 import com.baruckis.androidparty.ui.main.MainActivity
 import dagger.android.AndroidInjection
 import java.util.*
 import javax.inject.Inject
 import kotlin.concurrent.schedule
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), BackCallback {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -60,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
                             )
                             .replace(
                                 R.id.fragment_container_view,
-                                LoadingFragment(),
+                                LoadingFragment(this@LoginActivity),
                                 LoadingFragment.TAG
                             )
                             .commit()
@@ -79,4 +80,19 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun backButtonClick() {
+        supportFragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.enter_from_left, R.anim.exit_to_right,
+                R.anim.enter_from_right, R.anim.exit_to_left
+            )
+            .replace(
+                R.id.fragment_container_view,
+                LoginFragment(),
+                LoginFragment.TAG
+            )
+            .commit()
+    }
+
 }

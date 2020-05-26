@@ -7,6 +7,87 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/middle_vertical_guideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/start_vertical_guideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/end_vertical_guideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.85" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_back"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/login_button"
+            android:onClick="@{() -> backCallback.backButtonClick()}"
+            android:text="@string/go_back_btn_label"
+            android:textAllCaps="false"
+            android:textColor="#FFF"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/middle_vertical_guideline"
+            app:visibleGone="@{stateResource.status == Status.ERROR}" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_retry"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/login_button"
+            android:onClick="@{() -> viewModel.retryButtonClick()}"
+            android:text="@string/retry_btn_label"
+            android:textAllCaps="false"
+            android:textColor="#FFF"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/middle_vertical_guideline"
+            app:visibleGone="@{stateResource.status == Status.ERROR}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/status_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/button_retry"
+            app:layout_constraintEnd_toEndOf="@id/end_vertical_guideline"
+            app:layout_constraintStart_toStartOf="@id/start_vertical_guideline"
+            app:layout_constraintTop_toBottomOf="@id/progress_bar"
+            tools:text="@string/tools_fetching_the_list" />
+
+        <ImageView
+            android:id="@+id/error_image"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/ic_error_outline"
+            app:layout_constraintBottom_toTopOf="@id/status_message"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:visibleGone="@{stateResource.status == Status.ERROR}"
+            tools:ignore="ContentDescription" />
+
         <ProgressBar
             android:id="@+id/progress_bar"
             style="@style/Widget.AppCompat.ProgressBar"
@@ -18,22 +99,29 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/status_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/progress_bar"
-            app:layout_constraintVertical_bias="0.4"
-            tools:text="@string/tools_fetching_the_list" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:visibleGone="@{stateResource.status == Status.LOADING || stateResource.status == Status.SUCCESS}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <import type="com.baruckis.androidparty.presentation.state.Resource" />
+
+        <import type="com.baruckis.androidparty.presentation.state.Status" />
+
+        <variable
+            name="stateResource"
+            type="Resource" />
+
+        <variable
+            name="backCallback"
+            type="com.baruckis.androidparty.ui.callback.BackCallback" />
+
+        <variable
+            name="viewModel"
+            type="com.baruckis.androidparty.presentation.login.LoginViewModel" />
+
+    </data>
 
 </layout>

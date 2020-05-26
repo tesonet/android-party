@@ -23,8 +23,16 @@ class LoginViewModel @Inject constructor(
     private val _loginResource = MutableLiveData<Resource<LoginPresentation>>()
     val loginResource: LiveData<Resource<LoginPresentation>> = _loginResource
 
+    private lateinit var username: String
+    private lateinit var password: String
+
+    private var isLoggedIn: Boolean = false
+
     fun login(username: String, password: String) {
         _loginResource.postValue(Resource(Status.LOADING, null, null))
+
+        this.username = username
+        this.password = password
 
         Timer().schedule(1000){
             // do something after 1 second
@@ -35,8 +43,12 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun loginClick() {
-        login("tesonet", "partyanimal")
+    fun retryButtonClick() {
+        if (isLoggedIn) {
+            // TODO fetch list.
+        } else {
+            login(username, password)
+        }
     }
 
     override fun onCleared() {
@@ -47,6 +59,8 @@ class LoginViewModel @Inject constructor(
     inner class LoginSubscriber : DisposableSingleObserver<LoggedInUserEntity>() {
 
         override fun onSuccess(loggedInUser: LoggedInUserEntity) {
+            isLoggedIn = true
+
             _loginResource.postValue(
                 Resource(
                     Status.SUCCESS,
@@ -59,6 +73,8 @@ class LoginViewModel @Inject constructor(
         }
 
         override fun onError(e: Throwable) {
+            isLoggedIn = false
+
             _loginResource.postValue(
                 Resource(
                     Status.ERROR,

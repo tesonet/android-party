@@ -20,6 +20,7 @@
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textColorHint">@color/colorTextGrey</item>
         <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
         <item name="android:drawablePadding">20dp</item>
         <item name="android:background">@drawable/login_input</item>
         <item name="android:layout_height">60dp</item>

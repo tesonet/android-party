@@ -10,11 +10,13 @@ import com.baruckis.androidparty.presentation.login.LoginViewModel
 import com.baruckis.androidparty.presentation.model.LoginPresentation
 import com.baruckis.androidparty.presentation.state.Resource
 import com.baruckis.androidparty.presentation.state.Status
+import com.baruckis.androidparty.ui.R
+import com.baruckis.androidparty.ui.callback.BackCallback
 import com.baruckis.androidparty.ui.databinding.FragmentLoadingBinding
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class LoadingFragment : DaggerFragment() {
+class LoadingFragment(private var backCallback: BackCallback? = null) : DaggerFragment() {
 
     companion object {
         const val TAG = "loading_fragment_tag"
@@ -39,12 +41,19 @@ class LoadingFragment : DaggerFragment() {
                 ViewModelProvider(activity, viewModelFactory).get(LoginViewModel::class.java)
 
             binding = FragmentLoadingBinding.inflate(inflater, container, false).apply {
-
+                viewModel = loginViewModel
             }
 
             loginViewModel.loginResource.observe(activity, Observer { resource ->
+                binding.stateResource = resource
                 handleLoginPresentationResourceStatus(resource)
             })
+
+            binding.backCallback = object : BackCallback {
+                override fun backButtonClick() {
+                    backCallback?.backButtonClick()
+                }
+            }
 
         }
 
@@ -55,12 +64,14 @@ class LoadingFragment : DaggerFragment() {
 
         when (dataResource.status) {
             Status.LOADING -> {
-                binding.statusMessage.text = "Logging in..."
+                binding.statusMessage.text = getString(R.string.status_msg_logging_in)
             }
             Status.SUCCESS -> {
-                binding.statusMessage.text = "Logged in as " + dataResource.data!!.username
+                binding.statusMessage.text =
+                    getString(R.string.status_msg_logged_in_as, dataResource.data!!.username)
             }
             Status.ERROR -> {
+                binding.statusMessage.text = getString(R.string.status_msg_error)
             }
         }
     }

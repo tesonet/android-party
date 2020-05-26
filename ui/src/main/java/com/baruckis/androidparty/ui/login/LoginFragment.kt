@@ -38,13 +38,28 @@ class LoginFragment : DaggerFragment() {
             loginViewModel =
                 ViewModelProvider(activity, viewModelFactory).get(LoginViewModel::class.java)
 
-            binding = FragmentLoginBinding.inflate(inflater, container, false).apply {
-                viewModel = loginViewModel
-            }
+            binding = FragmentLoginBinding.inflate(inflater, container, false)
 
-            loginViewModel.loginResource.observe(activity, Observer {resource ->
+            loginViewModel.loginResource.observe(activity, Observer { resource ->
                 handleLoginPresentationResourceStatus(resource)
             })
+
+            binding.buttonLogin.setOnClickListener {
+                if (binding.inputUsername.text.isNullOrBlank()) {
+                    binding.inputUsername.error = "Enter username, please."
+                    binding.inputUsername.requestFocus()
+                    return@setOnClickListener
+                }
+                if (binding.inputPassword.text.isNullOrBlank()) {
+                    binding.inputPassword.error = "Enter password, please."
+                    binding.inputPassword.requestFocus()
+                    return@setOnClickListener
+                }
+                loginViewModel.login(
+                    binding.inputUsername.text.toString(),
+                    binding.inputPassword.text.toString()
+                )
+            }
 
         }
 
