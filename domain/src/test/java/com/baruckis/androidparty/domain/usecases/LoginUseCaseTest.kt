@@ -1,6 +1,7 @@
 package com.baruckis.androidparty.domain.usecases
 
-import com.baruckis.androidparty.domain.entity.TokenEntity
+import com.baruckis.androidparty.domain.TestDataFactory
+import com.baruckis.androidparty.domain.entity.LoggedInUserEntity
 import com.baruckis.androidparty.domain.qualifiers.Background
 import com.baruckis.androidparty.domain.qualifiers.Foreground
 import com.baruckis.androidparty.domain.repository.MainRepository
@@ -41,7 +42,7 @@ class LoginUseCaseTest {
 
     @Test
     fun sendAuthorizationCompletes() {
-        stubSendAuthorization(Single.just(makeToken()))
+        stubSendAuthorization(Single.just(TestDataFactory.createLoggedInUserEntity()))
         val testObserver = loginUseCase.buildUseCaseSingle(
             LoginUseCase.Params.authorization(anyString(), anyString())
         ).test()
@@ -50,21 +51,17 @@ class LoginUseCaseTest {
 
     @Test
     fun sendAuthorizationReturnsData() {
-        val token = makeToken()
-        stubSendAuthorization(Single.just(token))
+        val loggedInUserEntity = TestDataFactory.createLoggedInUserEntity()
+        stubSendAuthorization(Single.just(loggedInUserEntity))
         val testObserver = loginUseCase.buildUseCaseSingle(
             LoginUseCase.Params.authorization(anyString(), anyString())
         ).test()
-        testObserver.assertValue(token)
+        testObserver.assertValue(loggedInUserEntity)
     }
 
-    private fun stubSendAuthorization(single: Single<TokenEntity>) {
+    private fun stubSendAuthorization(single: Single<LoggedInUserEntity>) {
         Mockito.`when`(mainRepository.login(anyString(), anyString()))
             .thenReturn(single)
-    }
-
-    private fun makeToken(): TokenEntity {
-        return TokenEntity("f9731b590611a5a9377fbd02f247fcdf")
     }
 
 }

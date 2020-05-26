@@ -1,7 +1,6 @@
 package com.baruckis.androidparty.remote.mapper
 
 import com.baruckis.androidparty.data.model.TokenData
-import com.baruckis.androidparty.remote.mapper.ResponseTokenMapper
 import com.baruckis.androidparty.remote.TestDataFactory
 import com.baruckis.androidparty.remote.model.ResponseToken
 import org.junit.Test

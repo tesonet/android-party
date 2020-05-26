@@ -1,6 +1,5 @@
 package com.baruckis.androidparty.presentation.login
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,10 +9,12 @@ import com.baruckis.androidparty.presentation.mapper.LoginPresentationMapper
 import com.baruckis.androidparty.presentation.model.LoginPresentation
 import com.baruckis.androidparty.presentation.state.Resource
 import com.baruckis.androidparty.presentation.state.Status
+import com.baruckis.androidparty.presentation.util.logConsoleVerbose
 import io.reactivex.observers.DisposableSingleObserver
-import java.util.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.concurrent.schedule
 
 class LoginViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase,
@@ -28,14 +29,16 @@ class LoginViewModel @Inject constructor(
 
     private var isLoggedIn: Boolean = false
 
-    fun login(username: String, password: String) {
+    fun login(username: String, password: String, delayTime: Long = DELAY) {
         _loginResource.postValue(Resource(Status.LOADING, null, null))
 
         this.username = username
         this.password = password
 
-        Timer().schedule(1000){
-            // do something after 1 second
+        // Start a coroutine
+        GlobalScope.launch {
+            delay(delayTime)
+            // do something after time delay
             loginUseCase.execute(
                 LoginSubscriber(),
                 LoginUseCase.Params.authorization(username, password)
@@ -69,7 +72,7 @@ class LoginViewModel @Inject constructor(
                 )
             )
 
-            Log.d("AndroidParty", "onSuccess - Token " + loggedInUser.token)
+            //logConsoleVerbose("onSuccess - Token " + loggedInUser.token)
         }
 
         override fun onError(e: Throwable) {
@@ -79,11 +82,17 @@ class LoginViewModel @Inject constructor(
                 Resource(
                     Status.ERROR,
                     null,
-                    e.localizedMessage))
+                    e.localizedMessage
+                )
+            )
 
-            Log.d("AndroidParty", "onError")
+            //logConsoleVerbose("onError - " + e.localizedMessage)
         }
 
+    }
+
+    companion object {
+        private const val DELAY: Long = 1000
     }
 
 }

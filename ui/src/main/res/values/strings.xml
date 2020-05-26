@@ -9,7 +9,7 @@
     <string name="go_back_btn_label" translatable="true">Go Back</string>
 
     <string name="status_msg_logging_in" translatable="true">Logging in…</string>
-    <string name="status_msg_logged_in_as" translatable="true">Logged in as %s$</string>
+    <string name="status_msg_logged_in_as" translatable="true">Logged in as %s</string>
     <string name="status_msg_error" translatable="true">Oops! Error while logging in. Please try again or go back.</string>
 
     <string name="tools_fetching_the_list">Fetching the list…</string>

@@ -4,12 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.baruckis.androidparty.presentation.login.LoginViewModel
-import com.baruckis.androidparty.presentation.model.LoginPresentation
-import com.baruckis.androidparty.presentation.state.Resource
-import com.baruckis.androidparty.presentation.state.Status
 import com.baruckis.androidparty.ui.databinding.FragmentLoginBinding
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
@@ -40,10 +36,6 @@ class LoginFragment : DaggerFragment() {
 
             binding = FragmentLoginBinding.inflate(inflater, container, false)
 
-            loginViewModel.loginResource.observe(activity, Observer { resource ->
-                handleLoginPresentationResourceStatus(resource)
-            })
-
             binding.buttonLogin.setOnClickListener {
                 if (binding.inputUsername.text.isNullOrBlank()) {
                     binding.inputUsername.error = "Enter username, please."
@@ -64,19 +56,6 @@ class LoginFragment : DaggerFragment() {
         }
 
         return binding.root
-    }
-
-    private fun handleLoginPresentationResourceStatus(dataResource: Resource<LoginPresentation>) {
-
-        when (dataResource.status) {
-            Status.LOADING -> {
-            }
-            Status.SUCCESS -> {
-
-            }
-            Status.ERROR -> {
-            }
-        }
     }
 
 }

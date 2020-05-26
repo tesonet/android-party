@@ -1,7 +1,5 @@
-package com.baruckis.androidparty.data
+package com.baruckis.androidparty.domain
 
-import com.baruckis.androidparty.data.model.LoggedInUserData
-import com.baruckis.androidparty.data.model.TokenData
 import com.baruckis.androidparty.domain.entity.LoggedInUserEntity
 
 object TestDataFactory {
@@ -12,14 +10,6 @@ object TestDataFactory {
 
     fun createLoggedInUserEntity(): LoggedInUserEntity {
         return LoggedInUserEntity(TOKEN, USERNAME)
-    }
-
-    fun createLoggedInUserData(): LoggedInUserData {
-        return LoggedInUserData(TOKEN, USERNAME)
-    }
-
-    fun createTokenData(): TokenData {
-        return TokenData(TOKEN)
     }
 
     val username = USERNAME

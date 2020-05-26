@@ -32,11 +32,13 @@ dependencies {
 
     implementation project(':domain')
 
+    implementation presentationDependencies.coroutines
     implementation presentationDependencies.javaxInject
     implementation presentationDependencies.kotlin
     implementation presentationDependencies.rxKotlin
     implementation presentationDependencies.lifecycleExtensions
 
+    testImplementation presentationTestDependencies.archTesting
     testImplementation presentationTestDependencies.kotlinJUnit
     testImplementation presentationTestDependencies.mockito
 

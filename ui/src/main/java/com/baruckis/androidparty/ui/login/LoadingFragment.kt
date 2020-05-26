@@ -13,10 +13,11 @@ import com.baruckis.androidparty.presentation.state.Status
 import com.baruckis.androidparty.ui.R
 import com.baruckis.androidparty.ui.callback.BackCallback
 import com.baruckis.androidparty.ui.databinding.FragmentLoadingBinding
+import com.baruckis.androidparty.ui.mapper.LoginUiMapper
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class LoadingFragment(private var backCallback: BackCallback? = null) : DaggerFragment() {
+class LoadingFragment(internal var callback: BackCallback) : DaggerFragment() {
 
     companion object {
         const val TAG = "loading_fragment_tag"
@@ -24,6 +25,9 @@ class LoadingFragment(private var backCallback: BackCallback? = null) : DaggerFr
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var loginUiMapper: LoginUiMapper
 
     private lateinit var loginViewModel: LoginViewModel
 
@@ -51,7 +55,7 @@ class LoadingFragment(private var backCallback: BackCallback? = null) : DaggerFr
 
             binding.backCallback = object : BackCallback {
                 override fun backButtonClick() {
-                    backCallback?.backButtonClick()
+                    callback.backButtonClick()
                 }
             }
 
@@ -68,7 +72,8 @@ class LoadingFragment(private var backCallback: BackCallback? = null) : DaggerFr
             }
             Status.SUCCESS -> {
                 binding.statusMessage.text =
-                    getString(R.string.status_msg_logged_in_as, dataResource.data!!.username)
+                    getString(R.string.status_msg_logged_in_as,
+                        dataResource.data?.let { loginUiMapper.mapTo(it).username })
             }
             Status.ERROR -> {
                 binding.statusMessage.text = getString(R.string.status_msg_error)
