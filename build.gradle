@@ -113,6 +113,7 @@ buildscript {
         uiDependencies = [
                 appCompat          : "androidx.appcompat:appcompat:${app_compat_version}",
                 constraintLayout   : "androidx.constraintlayout:constraintlayout:${constraint_layout_version}",
+                coroutines         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutines_version}",
                 dagger             : "com.google.dagger:dagger:${dagger_version}",
                 daggerCompiler     : "com.google.dagger:dagger-compiler:${dagger_version}",
                 daggerProcessor    : "com.google.dagger:dagger-android-processor:${dagger_version}",

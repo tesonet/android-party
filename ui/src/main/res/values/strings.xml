@@ -4,14 +4,21 @@
     <string name="username_input_hint" translatable="true">Username</string>
     <string name="password_input_hint" translatable="true">Password</string>
 
+    <string name="username_input_error" translatable="true">Enter username, please.</string>
+    <string name="password_input_error" translatable="true">Enter password, please.</string>
+
     <string name="login_btn_label" translatable="true">Log In</string>
     <string name="retry_btn_label" translatable="true">Retry</string>
     <string name="go_back_btn_label" translatable="true">Go Back</string>
 
+    <string name="header_server_label" translatable="true">Server</string>
+    <string name="header_distance_label" translatable="true">Distance</string>
+
     <string name="status_msg_logging_in" translatable="true">Logging in…</string>
     <string name="status_msg_logged_in_as" translatable="true">Logged in as %s</string>
     <string name="status_msg_error" translatable="true">Oops! Error while logging in. Please try again or go back.</string>
+    <string name="status_msg_fetching_list" translatable="true">Fetching the list…</string>
 
-    <string name="tools_fetching_the_list">Fetching the list…</string>
+    <string name="toast_msg_welcome" translatable="true">Welcome %s!</string>
 
 </resources>

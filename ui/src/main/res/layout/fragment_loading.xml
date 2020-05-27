@@ -74,7 +74,7 @@
             app:layout_constraintEnd_toEndOf="@id/end_vertical_guideline"
             app:layout_constraintStart_toStartOf="@id/start_vertical_guideline"
             app:layout_constraintTop_toBottomOf="@id/progress_bar"
-            tools:text="@string/tools_fetching_the_list" />
+            tools:text="@string/status_msg_fetching_list" />
 
         <ImageView
             android:id="@+id/error_image"

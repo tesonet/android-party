@@ -3,8 +3,13 @@
     <color name="colorPrimary">#2f3254</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#9fd533</color>
-    <color name="colorWhiteOpacity20">#33ffffff</color> <!-- 20% white / opacity -->
 
+    <color name="colorWhiteOpacity20">#33ffffff</color> <!-- 20% white / opacity -->
     <color name="colorTextGrey">#cccccc</color>
+
+    <color name="colorToolbar">#F0F0F0</color>
+
+    <color name="colorHeadersBar">#ffffff</color>
+    <color name="colorHeadersTextDarkerGrey">#999999</color>
 
 </resources>

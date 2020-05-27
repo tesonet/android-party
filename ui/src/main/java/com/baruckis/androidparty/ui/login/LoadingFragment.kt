@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.baruckis.androidparty.presentation.login.LoginViewModel
 import com.baruckis.androidparty.presentation.model.LoginPresentation
+import com.baruckis.androidparty.presentation.model.ServerPresentation
 import com.baruckis.androidparty.presentation.state.Resource
 import com.baruckis.androidparty.presentation.state.Status
 import com.baruckis.androidparty.ui.R
@@ -53,6 +54,11 @@ class LoadingFragment(internal var callback: BackCallback) : DaggerFragment() {
                 handleLoginPresentationResourceStatus(resource)
             })
 
+            loginViewModel.serversResource.observe(activity, Observer { resource ->
+                binding.stateResource = resource
+                handleServersListPresentationResourceStatus(resource)
+            })
+
             binding.backCallback = object : BackCallback {
                 override fun backButtonClick() {
                     callback.backButtonClick()
@@ -77,6 +83,21 @@ class LoadingFragment(internal var callback: BackCallback) : DaggerFragment() {
             }
             Status.ERROR -> {
                 binding.statusMessage.text = getString(R.string.status_msg_error)
+            }
+        }
+    }
+
+    private fun handleServersListPresentationResourceStatus(dataResource: Resource<List<ServerPresentation>>) {
+
+        when (dataResource.status) {
+            Status.LOADING -> {
+                binding.statusMessage.text = getString(R.string.status_msg_fetching_list)
+            }
+            Status.SUCCESS -> {
+
+            }
+            Status.ERROR -> {
+
             }
         }
     }

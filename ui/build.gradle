@@ -53,6 +53,7 @@ dependencies {
 
     implementation uiDependencies.appCompat
     implementation uiDependencies.constraintLayout
+    implementation uiDependencies.coroutines
     implementation uiDependencies.dagger
     implementation uiDependencies.daggerSupport
     implementation uiDependencies.javaxInject

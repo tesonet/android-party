@@ -4,12 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.baruckis.androidparty.domain.entity.LoggedInUserEntity
+import com.baruckis.androidparty.domain.entity.ServerEntity
+import com.baruckis.androidparty.domain.usecases.GetServersUseCase
 import com.baruckis.androidparty.domain.usecases.LoginUseCase
 import com.baruckis.androidparty.presentation.mapper.LoginPresentationMapper
+import com.baruckis.androidparty.presentation.mapper.ServerPresentationMapper
 import com.baruckis.androidparty.presentation.model.LoginPresentation
+import com.baruckis.androidparty.presentation.model.ServerPresentation
 import com.baruckis.androidparty.presentation.state.Resource
 import com.baruckis.androidparty.presentation.state.Status
-import com.baruckis.androidparty.presentation.util.logConsoleVerbose
 import io.reactivex.observers.DisposableSingleObserver
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -18,13 +21,20 @@ import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase,
-    private val loginPresentationMapper: LoginPresentationMapper
+    private val getServersUseCase: GetServersUseCase,
+    private val loginPresentationMapper: LoginPresentationMapper,
+    private val serverPresentationMapper: ServerPresentationMapper
 ) : ViewModel() {
 
     private val _loginResource = MutableLiveData<Resource<LoginPresentation>>()
     val loginResource: LiveData<Resource<LoginPresentation>> = _loginResource
 
-    private lateinit var username: String
+    private val _serversResource = MutableLiveData<Resource<List<ServerPresentation>>>()
+    val serversResource: LiveData<Resource<List<ServerPresentation>>> = _serversResource
+
+    lateinit var username: String
+        private set
+
     private lateinit var password: String
 
     private var isLoggedIn: Boolean = false
@@ -54,12 +64,26 @@ class LoginViewModel @Inject constructor(
         }
     }
 
+    fun getServers(delayTime: Long = DELAY) {
+        _serversResource.postValue(Resource(Status.LOADING, null, null))
+
+        GlobalScope.launch {
+            delay(delayTime)
+            getServersUseCase.execute(
+                GetServersSubscriber(),
+                null
+            )
+        }
+
+    }
+
+
     override fun onCleared() {
         loginUseCase.dispose()
         super.onCleared()
     }
 
-    inner class LoginSubscriber : DisposableSingleObserver<LoggedInUserEntity>() {
+    private inner class LoginSubscriber : DisposableSingleObserver<LoggedInUserEntity>() {
 
         override fun onSuccess(loggedInUser: LoggedInUserEntity) {
             isLoggedIn = true
@@ -91,8 +115,32 @@ class LoginViewModel @Inject constructor(
 
     }
 
+    private inner class GetServersSubscriber : DisposableSingleObserver<List<ServerEntity>>() {
+
+        override fun onSuccess(serversList: List<ServerEntity>) {
+            _serversResource.postValue(
+                Resource(
+                    Status.SUCCESS,
+                    serversList.map { server -> serverPresentationMapper.mapTo(server) },
+                    null
+                )
+            )
+        }
+
+        override fun onError(e: Throwable) {
+            _serversResource.postValue(
+                Resource(
+                    Status.ERROR,
+                    null,
+                    e.localizedMessage
+                )
+            )
+        }
+
+    }
+
     companion object {
-        private const val DELAY: Long = 1000
+        private const val DELAY: Long = 1500
     }
 
 }

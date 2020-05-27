@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.baruckis.androidparty.presentation.login.LoginViewModel
+import com.baruckis.androidparty.ui.R
 import com.baruckis.androidparty.ui.databinding.FragmentLoginBinding
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
@@ -38,12 +39,12 @@ class LoginFragment : DaggerFragment() {
 
             binding.buttonLogin.setOnClickListener {
                 if (binding.inputUsername.text.isNullOrBlank()) {
-                    binding.inputUsername.error = "Enter username, please."
+                    binding.inputUsername.error = getString(R.string.username_input_error)
                     binding.inputUsername.requestFocus()
                     return@setOnClickListener
                 }
                 if (binding.inputPassword.text.isNullOrBlank()) {
-                    binding.inputPassword.error = "Enter password, please."
+                    binding.inputPassword.error = getString(R.string.password_input_error)
                     binding.inputPassword.requestFocus()
                     return@setOnClickListener
                 }
