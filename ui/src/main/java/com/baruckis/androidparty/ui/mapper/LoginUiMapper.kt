@@ -6,8 +6,8 @@ import javax.inject.Inject
 
 class LoginUiMapper @Inject constructor() : UiMapper<LoginPresentation, LoginUi> {
 
-    override fun mapTo(presentation: LoginPresentation): LoginUi {
-        return LoginUi(presentation.username)
+    override fun mapToUi(presentationModel: LoginPresentation): LoginUi {
+        return LoginUi(presentationModel.username)
     }
 
 }

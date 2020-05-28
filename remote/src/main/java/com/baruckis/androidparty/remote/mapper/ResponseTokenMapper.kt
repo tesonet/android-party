@@ -7,8 +7,8 @@ import javax.inject.Inject
 class ResponseTokenMapper @Inject constructor() :
     ApiResponseMapper<ResponseToken, TokenData> {
 
-    override fun mapFrom(remote: ResponseToken): TokenData {
-        return TokenData(remote.token)
+    override fun mapFromRemote(remoteModel: ResponseToken): TokenData {
+        return TokenData(remoteModel.token)
     }
 
 }

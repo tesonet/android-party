@@ -14,7 +14,7 @@ class LoginPresentationMapperTest {
     fun mapToPresentation() {
 
         val domainModel = TestDataFactory.createLoggedInUserEntity()
-        val presentationModel = mapper.mapTo(domainModel)
+        val presentationModel = mapper.mapToPresentation(domainModel)
 
         assertMapsDataCorrectly(domainModel, presentationModel)
     }

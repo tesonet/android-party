@@ -14,7 +14,7 @@ class LoggedInUserMapperTest {
     fun mapFrom() {
 
         val dataModel = TestDataFactory.createLoggedInUserData()
-        val domainEntity = mapper.mapFrom(dataModel)
+        val domainEntity = mapper.mapFromData(dataModel)
 
         assertMapsDataCorrectly(dataModel, domainEntity)
     }
@@ -23,7 +23,7 @@ class LoggedInUserMapperTest {
     fun mapTo() {
 
         val domainEntity = TestDataFactory.createLoggedInUserEntity()
-        val dataModel = mapper.mapTo(domainEntity)
+        val dataModel = mapper.mapToData(domainEntity)
 
         assertMapsDataCorrectly(dataModel, domainEntity)
     }

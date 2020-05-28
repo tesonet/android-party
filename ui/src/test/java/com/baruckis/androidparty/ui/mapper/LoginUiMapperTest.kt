@@ -14,7 +14,7 @@ class LoginUiMapperTest {
     fun mapToUi() {
 
         val presentationModel = TestDataFactory.createLoginPresentation()
-        val uiModel = mapper.mapTo(presentationModel)
+        val uiModel = mapper.mapToUi(presentationModel)
 
         assertMapsDataCorrectly(presentationModel, uiModel)
     }

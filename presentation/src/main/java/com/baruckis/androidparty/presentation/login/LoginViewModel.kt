@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.baruckis.androidparty.domain.entity.LoggedInUserEntity
 import com.baruckis.androidparty.domain.entity.ServerEntity
-import com.baruckis.androidparty.domain.usecases.GetServersUseCase
+import com.baruckis.androidparty.domain.usecases.FetchServersUseCase
 import com.baruckis.androidparty.domain.usecases.LoginUseCase
 import com.baruckis.androidparty.presentation.mapper.LoginPresentationMapper
 import com.baruckis.androidparty.presentation.mapper.ServerPresentationMapper
@@ -21,7 +21,7 @@ import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase,
-    private val getServersUseCase: GetServersUseCase,
+    private val fetchServersUseCase: FetchServersUseCase,
     private val loginPresentationMapper: LoginPresentationMapper,
     private val serverPresentationMapper: ServerPresentationMapper
 ) : ViewModel() {
@@ -64,14 +64,14 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun getServers(delayTime: Long = DELAY) {
+    fun fetchServersRemotely(delayTime: Long = DELAY) {
         _serversResource.postValue(Resource(Status.LOADING, null, null))
 
         GlobalScope.launch {
             delay(delayTime)
-            getServersUseCase.execute(
+            fetchServersUseCase.execute(
                 GetServersSubscriber(),
-                null
+                FetchServersUseCase.DataSource.REMOTE
             )
         }
 
@@ -80,6 +80,7 @@ class LoginViewModel @Inject constructor(
 
     override fun onCleared() {
         loginUseCase.dispose()
+        fetchServersUseCase.dispose()
         super.onCleared()
     }
 
@@ -91,7 +92,7 @@ class LoginViewModel @Inject constructor(
             _loginResource.postValue(
                 Resource(
                     Status.SUCCESS,
-                    loginPresentationMapper.mapTo(loggedInUser),
+                    loginPresentationMapper.mapToPresentation(loggedInUser),
                     null
                 )
             )
@@ -121,7 +122,7 @@ class LoginViewModel @Inject constructor(
             _serversResource.postValue(
                 Resource(
                     Status.SUCCESS,
-                    serversList.map { server -> serverPresentationMapper.mapTo(server) },
+                    serversList.map { server -> serverPresentationMapper.mapToPresentation(server) },
                     null
                 )
             )

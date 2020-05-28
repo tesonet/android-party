@@ -7,8 +7,8 @@ import javax.inject.Inject
 class ResponseServerMapper @Inject constructor() :
     ApiResponseMapper<ResponseServer, ServerData> {
 
-    override fun mapFrom(remote: ResponseServer): ServerData {
-        return ServerData(remote.name, remote.distance)
+    override fun mapFromRemote(remoteModel: ResponseServer): ServerData {
+        return ServerData(remoteModel.name, remoteModel.distance)
     }
 
 }

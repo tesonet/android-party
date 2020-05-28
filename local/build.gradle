@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
 
@@ -35,6 +36,12 @@ dependencies {
     implementation localDependencies.annotation
     implementation localDependencies.javaxInject
     implementation localDependencies.kotlin
+
+    kapt localDependencies.roomCompiler
+
+    api localDependencies.roomRuntime
+
+    implementation localDependencies.roomRxJava
     implementation localDependencies.rxKotlin
 
     testImplementation localTestDependencies.kotlinJUnit

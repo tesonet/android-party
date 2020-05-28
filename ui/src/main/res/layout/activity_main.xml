@@ -26,9 +26,9 @@
             android:id="@+id/headers"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@color/colorHeadersBar"
             android:elevation="1dp"
             android:weightSum="2"
-            android:background="@color/colorHeadersBar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/custom_toolbar">
@@ -56,21 +56,21 @@
                 android:textColor="@color/colorHeadersTextDarkerGrey" />
         </LinearLayout>
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="24dp"
-            android:elevation="1dp"
-            android:background="@drawable/shadow_header"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/headers" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@android:color/white"
+            android:scrollbars="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/headers" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:background="@drawable/shadow_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/headers" />

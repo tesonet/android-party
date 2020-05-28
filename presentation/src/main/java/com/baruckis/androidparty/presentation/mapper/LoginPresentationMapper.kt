@@ -7,7 +7,7 @@ import javax.inject.Inject
 class LoginPresentationMapper @Inject constructor() :
     PresentationMapper<LoginPresentation, LoggedInUserEntity> {
 
-    override fun mapTo(domainEntity: LoggedInUserEntity): LoginPresentation {
+    override fun mapToPresentation(domainEntity: LoggedInUserEntity): LoginPresentation {
         return LoginPresentation(
             domainEntity.username
         )

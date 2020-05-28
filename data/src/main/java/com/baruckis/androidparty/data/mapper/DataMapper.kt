@@ -2,8 +2,8 @@ package com.baruckis.androidparty.data.mapper
 
 interface DataMapper<DataModel, DomainEntity> {
 
-    fun mapFrom(dataModel: DataModel): DomainEntity
+    fun mapFromData(dataModel: DataModel): DomainEntity
 
-    fun mapTo(domainEntity: DomainEntity): DataModel
+    fun mapToData(domainEntity: DomainEntity): DataModel
 
 }

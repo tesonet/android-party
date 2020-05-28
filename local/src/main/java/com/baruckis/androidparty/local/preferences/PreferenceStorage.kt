@@ -1,4 +1,4 @@
-package com.baruckis.androidparty.local
+package com.baruckis.androidparty.local.preferences
 
 /**
  * Storage for app and user preferences.

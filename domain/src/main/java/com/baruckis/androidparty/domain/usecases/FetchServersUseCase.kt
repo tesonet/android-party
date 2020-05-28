@@ -9,17 +9,31 @@ import io.reactivex.Scheduler
 import io.reactivex.Single
 import javax.inject.Inject
 
-class GetServersUseCase @Inject constructor(
+class FetchServersUseCase @Inject constructor(
     private val mainRepository: MainRepository,
     @Background backgroundScheduler: Scheduler,
     @Foreground foregroundScheduler: Scheduler
-) : SingleUseCase<List<ServerEntity>, Any>(
+) : SingleUseCase<List<ServerEntity>, FetchServersUseCase.DataSource>(
     backgroundScheduler,
     foregroundScheduler
 ) {
 
-    override fun buildUseCaseSingle(params: Any?): Single<List<ServerEntity>> {
-        return mainRepository.getServers()
+    override fun buildUseCaseSingle(params: DataSource?): Single<List<ServerEntity>> {
+        if (params == null) throw IllegalArgumentException("Params can't be null!")
+        return when (params) {
+            DataSource.LOCAL -> {
+                mainRepository.fetchServersFromLocalCache()
+            }
+            DataSource.REMOTE -> {
+                mainRepository.fetchServersFromRemoteApiSaveToDb()
+            }
+        }
+    }
+
+    enum class DataSource {
+        LOCAL,
+        REMOTE
     }
 
 }
+

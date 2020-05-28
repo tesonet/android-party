@@ -2,6 +2,7 @@ package com.baruckis.androidparty.data.repository
 
 import com.baruckis.androidparty.data.TestDataFactory
 import com.baruckis.androidparty.data.mapper.LoggedInUserMapper
+import com.baruckis.androidparty.data.mapper.ServerMapper
 import com.baruckis.androidparty.data.model.LoggedInUserData
 import com.baruckis.androidparty.data.model.TokenData
 import com.baruckis.androidparty.domain.entity.LoggedInUserEntity
@@ -16,12 +17,14 @@ import org.mockito.Mockito.mock
 class MainRepositoryImplTest {
 
     private val loggedInUserMapper = mock(LoggedInUserMapper::class.java)
+    private val serverMapper = mock(ServerMapper::class.java)
     private val localDataSource = mock(LocalDataSource::class.java)
     private val remoteDataSource = mock(RemoteDataSource::class.java)
 
     private val mainRepository =
         MainRepositoryImpl(
             loggedInUserMapper,
+            serverMapper,
             localDataSource,
             remoteDataSource
         )
@@ -60,7 +63,7 @@ class MainRepositoryImplTest {
         dataModel: LoggedInUserData,
         domainEntity: LoggedInUserEntity
     ) {
-        Mockito.`when`(loggedInUserMapper.mapFrom(dataModel))
+        Mockito.`when`(loggedInUserMapper.mapFromData(dataModel))
             .thenReturn(domainEntity)
     }
 

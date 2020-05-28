@@ -26,13 +26,13 @@ class RemoteDataSourceImpl @Inject constructor(
             )
         )
             .map { response: ResponseToken ->
-                apiResponseTokenMapper.mapFrom(response)
+                apiResponseTokenMapper.mapFromRemote(response)
             }
     }
 
     override fun getServers(): Single<List<ServerData>> {
         return apiService.getServers().map { response: List<ResponseServer> ->
-            response.map { item: ResponseServer -> apiResponseServerMapper.mapFrom(item) }
+            response.map { item: ResponseServer -> apiResponseServerMapper.mapFromRemote(item) }
         }
     }
 

@@ -1,8 +1,8 @@
 package com.baruckis.androidparty.remote
 
 import com.baruckis.androidparty.data.model.TokenData
-import com.baruckis.androidparty.remote.RemoteDataSourceImpl
 import com.baruckis.androidparty.remote.api.TesonetApiService
+import com.baruckis.androidparty.remote.mapper.ResponseServerMapper
 import com.baruckis.androidparty.remote.mapper.ResponseTokenMapper
 import com.baruckis.androidparty.remote.model.ResponseToken
 import io.reactivex.Single
@@ -14,11 +14,14 @@ import org.mockito.Mockito.mock
 class RemoteDataSourceImplTest {
 
     private val apiService = mock(TesonetApiService::class.java)
-    private val tokenMapper = mock(ResponseTokenMapper::class.java)
+    private val apiResponseTokenMapper = mock(ResponseTokenMapper::class.java)
+    private val apiResponseServerMapper = mock(ResponseServerMapper::class.java)
+
     private val remoteDataSource =
         RemoteDataSourceImpl(
             apiService,
-            tokenMapper
+            apiResponseTokenMapper,
+            apiResponseServerMapper
         )
 
     private val responseToken =
@@ -57,7 +60,7 @@ class RemoteDataSourceImplTest {
     }
 
     private fun stubMapFrom(remoteModel: ResponseToken, dataModel: TokenData) {
-        Mockito.`when`(tokenMapper.mapFrom(remoteModel))
+        Mockito.`when`(apiResponseTokenMapper.mapFromRemote(remoteModel))
             .thenReturn(dataModel)
     }
 

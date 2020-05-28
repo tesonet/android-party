@@ -15,7 +15,7 @@ class ResponseTokenMapperTest {
     fun mapFrom() {
 
         val remoteModel = TestDataFactory.createResponseToken()
-        val dataModel = mapper.mapFrom(remoteModel)
+        val dataModel = mapper.mapFromRemote(remoteModel)
 
         assertMapsDataCorrectly(remoteModel, dataModel)
     }

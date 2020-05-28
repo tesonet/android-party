@@ -2,8 +2,8 @@ package com.baruckis.androidparty.ui.di
 
 import android.app.Application
 import android.content.Context
-import com.baruckis.androidparty.local.PreferenceStorage
-import com.baruckis.androidparty.local.SharedPreferenceStorage
+import com.baruckis.androidparty.local.preferences.PreferenceStorage
+import com.baruckis.androidparty.local.preferences.SharedPreferenceStorage
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -24,6 +24,8 @@ class AppModule {
     @Provides
     @Singleton
     fun provideSharedPreferences(context: Context): PreferenceStorage =
-        SharedPreferenceStorage(context)
+        SharedPreferenceStorage(
+            context
+        )
 
 }

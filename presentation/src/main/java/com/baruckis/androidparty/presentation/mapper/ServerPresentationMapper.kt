@@ -7,7 +7,7 @@ import javax.inject.Inject
 class ServerPresentationMapper @Inject constructor() :
     PresentationMapper<ServerPresentation, ServerEntity> {
 
-    override fun mapTo(domainEntity: ServerEntity): ServerPresentation {
+    override fun mapToPresentation(domainEntity: ServerEntity): ServerPresentation {
         return ServerPresentation(
             domainEntity.name, domainEntity.distance
         )

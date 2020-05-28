@@ -12,6 +12,8 @@ interface MainRepository {
 
     fun logout()
 
-    fun getServers(): Single<List<ServerEntity>>
+    fun fetchServersFromRemoteApiSaveToDb(): Single<List<ServerEntity>>
+
+    fun fetchServersFromLocalCache(): Single<List<ServerEntity>>
 
 }

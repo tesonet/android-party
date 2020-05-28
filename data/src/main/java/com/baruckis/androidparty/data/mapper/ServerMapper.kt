@@ -7,11 +7,11 @@ import javax.inject.Inject
 class ServerMapper @Inject constructor() :
     DataMapper<ServerData, ServerEntity> {
 
-    override fun mapFrom(dataModel: ServerData): ServerEntity {
+    override fun mapFromData(dataModel: ServerData): ServerEntity {
         return ServerEntity(dataModel.name, dataModel.distance)
     }
 
-    override fun mapTo(domainEntity: ServerEntity): ServerData {
+    override fun mapToData(domainEntity: ServerEntity): ServerData {
         return ServerData(domainEntity.name, domainEntity.distance)
     }
 

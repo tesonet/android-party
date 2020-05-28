@@ -1,4 +1,4 @@
-package com.baruckis.androidparty.local
+package com.baruckis.androidparty.local.preferences
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -12,7 +12,8 @@ import kotlin.reflect.KProperty
  * [PreferenceStorage] implementation backed by [android.content.SharedPreferences].
  */
 @Singleton
-class SharedPreferenceStorage @Inject constructor(context: Context) : PreferenceStorage {
+class SharedPreferenceStorage @Inject constructor(context: Context) :
+    PreferenceStorage {
 
     companion object {
         private const val PREF_PACKAGE_NAME = "com.baruckis.androidparty.preferences"
@@ -23,9 +24,17 @@ class SharedPreferenceStorage @Inject constructor(context: Context) : Preference
     private val preferences =
         context.applicationContext.getSharedPreferences(PREF_PACKAGE_NAME, Context.MODE_PRIVATE)
 
-    override var token by StringPreference(preferences, PREF_TOKEN, null)
+    override var token by StringPreference(
+        preferences,
+        PREF_TOKEN,
+        null
+    )
 
-    override var username by StringPreference(preferences, PREF_USERNAME, null)
+    override var username by StringPreference(
+        preferences,
+        PREF_USERNAME,
+        null
+    )
 }
 
 /*

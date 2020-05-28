@@ -85,7 +85,7 @@ class LoginActivity : AppCompatActivity(), BackCallback {
 
                 GlobalScope.launch {
                     delay(delayTime)
-                    loginViewModel.getServers()
+                    loginViewModel.fetchServersRemotely()
                 }
 
             }

@@ -3,7 +3,6 @@ package com.baruckis.androidparty.data.repository
 import com.baruckis.androidparty.data.mapper.LoggedInUserMapper
 import com.baruckis.androidparty.data.mapper.ServerMapper
 import com.baruckis.androidparty.data.model.LoggedInUserData
-import com.baruckis.androidparty.data.model.ServerData
 import com.baruckis.androidparty.data.model.TokenData
 import com.baruckis.androidparty.domain.entity.LoggedInUserEntity
 import com.baruckis.androidparty.domain.entity.ServerEntity
@@ -19,14 +18,14 @@ class MainRepositoryImpl @Inject constructor(
 ) : MainRepository {
 
     override fun getLoggedInUser(): LoggedInUserEntity? {
-        return localDataSource.getLoggedInUser()?.let { loggedInUserMapper.mapFrom(it) }
+        return localDataSource.getLoggedInUser()?.let { loggedInUserMapper.mapFromData(it) }
     }
 
     override fun login(username: String, password: String): Single<LoggedInUserEntity> {
         return remoteDataSource.sendAuthorization(username, password).map { tokenData: TokenData ->
             val loggedInUserData = LoggedInUserData(tokenData.token, username)
             localDataSource.setLoggedInUser(loggedInUserData)
-            loggedInUserMapper.mapFrom(loggedInUserData)
+            loggedInUserMapper.mapFromData(loggedInUserData)
         }
     }
 
@@ -34,9 +33,25 @@ class MainRepositoryImpl @Inject constructor(
         localDataSource.setLoggedInUser(null)
     }
 
-    override fun getServers(): Single<List<ServerEntity>> {
-        return remoteDataSource.getServers().map { response: List<ServerData> ->
-            response.map { item: ServerData -> serverMapper.mapFrom(item) }
+    override fun fetchServersFromRemoteApiSaveToDb(): Single<List<ServerEntity>> {
+
+        return remoteDataSource.getServers().flatMap { serversList ->
+
+            localDataSource.clearServers().andThen(
+                localDataSource.saveServers(serversList).andThen(Single.just(serversList))
+            )
+
+        }.map { serversList ->
+            serversList.map { server ->
+                serverMapper.mapFromData(server)
+            }
+        }
+
+    }
+
+    override fun fetchServersFromLocalCache(): Single<List<ServerEntity>> {
+        return localDataSource.getServers().map { serversList ->
+            serversList.map { server -> serverMapper.mapFromData(server) }
         }
     }
 

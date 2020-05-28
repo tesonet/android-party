@@ -79,7 +79,7 @@ class LoadingFragment(internal var callback: BackCallback) : DaggerFragment() {
             Status.SUCCESS -> {
                 binding.statusMessage.text =
                     getString(R.string.status_msg_logged_in_as,
-                        dataResource.data?.let { loginUiMapper.mapTo(it).username })
+                        dataResource.data?.let { loginUiMapper.mapToUi(it).username })
             }
             Status.ERROR -> {
                 binding.statusMessage.text = getString(R.string.status_msg_error)
