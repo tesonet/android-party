@@ -11,17 +11,11 @@
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/start_vertical_guideline"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.15" />
+            style="@style/AppTheme.Login.StartMarginGuideline" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/end_vertical_guideline"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.85" />
+            style="@style/AppTheme.Login.EndMarginGuideline" />
 
         <ImageView
             android:id="@+id/logo"
@@ -37,7 +31,7 @@
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/input_username"
-            style="@style/AppTheme.LoginInputEditText"
+            style="@style/AppTheme.Login.InputEditText"
             android:drawableStart="@drawable/ic_username"
             android:hint="@string/username_input_hint"
             android:imeOptions="actionNext"
@@ -50,8 +44,8 @@
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/input_password"
-            style="@style/AppTheme.LoginInputEditText"
-            android:layout_marginTop="20dp"
+            style="@style/AppTheme.Login.InputEditText"
+            android:layout_marginTop="@dimen/loginComponentsBetweenMargin"
             android:drawableStart="@drawable/ic_lock"
             android:hint="@string/password_input_hint"
             android:imeOptions="actionGo"
@@ -63,14 +57,8 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_login"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/login_button"
+            style="@style/AppTheme.Login.Button"
             android:text="@string/login_btn_label"
-            android:textAllCaps="false"
-            android:textColor="#FFF"
-            android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@id/end_vertical_guideline"
             app:layout_constraintStart_toEndOf="@id/start_vertical_guideline"
             app:layout_constraintTop_toBottomOf="@id/input_password" />

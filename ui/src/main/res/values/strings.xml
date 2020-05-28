@@ -21,4 +21,6 @@
 
     <string name="toast_msg_welcome" translatable="true">Welcome %s!</string>
 
+    <string name="server_distance_label" translatable="false">%s km</string>
+
 </resources>

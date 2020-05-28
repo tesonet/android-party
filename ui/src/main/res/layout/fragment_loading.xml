@@ -5,59 +5,38 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".login.LoadingFragment">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/middle_vertical_guideline"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="vertical"
+            style="@style/AppTheme.Login.MarginGuideline"
             app:layout_constraintGuide_percent="0.5" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/start_vertical_guideline"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.15" />
+            style="@style/AppTheme.Login.StartMarginGuideline" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/end_vertical_guideline"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.85" />
+            style="@style/AppTheme.Login.EndMarginGuideline" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_back"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="20dp"
+            style="@style/AppTheme.Login.Button"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/login_button"
             android:onClick="@{() -> backCallback.backButtonClick()}"
             android:text="@string/go_back_btn_label"
-            android:textAllCaps="false"
-            android:textColor="#FFF"
-            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/middle_vertical_guideline"
             app:visibleGone="@{stateResource.status == Status.ERROR}" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_retry"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
+            style="@style/AppTheme.Login.Button"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/login_button"
             android:onClick="@{() -> viewModel.retryButtonClick()}"
             android:text="@string/retry_btn_label"
-            android:textAllCaps="false"
-            android:textColor="#FFF"
-            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/middle_vertical_guideline"
             app:visibleGone="@{stateResource.status == Status.ERROR}" />

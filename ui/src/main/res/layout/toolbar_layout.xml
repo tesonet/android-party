@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorToolbar">
+    android:background="@color/colorToolbarBackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -36,13 +36,14 @@
 
         <ImageView
             android:id="@+id/logout"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginEnd="20dp"
+            android:foreground="@drawable/ripple_circle"
             android:src="@drawable/ic_logout"
             app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription,UnusedAttribute" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

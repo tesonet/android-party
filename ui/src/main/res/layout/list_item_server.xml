@@ -17,25 +17,36 @@
         android:clickable="true"
         android:focusable="true">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vertical_guideline"
+            style="@style/AppTheme.Main.ColumnsSeparationGuideline" />
+
         <TextView
             android:id="@+id/server_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:gravity="center_vertical"
-            android:minHeight="48dp"
+            style="@style/AppTheme.Main.ListItemText"
             android:text="@{serverUi.name}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/vertical_guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Lithuania #2" />
+
+        <TextView
+            android:id="@+id/server_distance"
+            style="@style/AppTheme.Main.ListItemText"
+            android:text="@{String.format(@string/server_distance_label, serverUi.distance)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/vertical_guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="801 km" />
 
         <View
             android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:background="?android:attr/listDivider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

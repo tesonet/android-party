@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -11,7 +12,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".main.MainActivity">
 
         <include
             android:id="@+id/custom_toolbar"
@@ -22,58 +24,57 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/headers"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/colorHeadersBar"
-            android:elevation="1dp"
-            android:weightSum="2"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vertical_guideline"
+            style="@style/AppTheme.Main.ColumnsSeparationGuideline" />
+
+        <View
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/colorHeaderBarBackground"
+            app:layout_constraintBottom_toBottomOf="@id/server_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/custom_toolbar">
+            app:layout_constraintTop_toTopOf="@id/server_label" />
 
-            <TextView
-                android:id="@+id/viewTextViewServer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:layout_weight="1"
-                android:text="@string/header_server_label"
-                android:textAllCaps="true"
-                android:textColor="@color/colorHeadersTextDarkerGrey" />
+        <TextView
+            android:id="@+id/server_label"
+            style="@style/AppTheme.Main.HeaderLabels"
+            android:text="@string/header_server_label"
+            app:layout_constraintEnd_toStartOf="@id/vertical_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/custom_toolbar" />
 
-            <TextView
-                android:id="@+id/viewTextViewDistance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:text="@string/header_distance_label"
-                android:textAllCaps="true"
-                android:textColor="@color/colorHeadersTextDarkerGrey" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/server_distance_label"
+            style="@style/AppTheme.Main.HeaderLabels"
+            android:text="@string/header_distance_label"
+            app:layout_constraintBaseline_toBaselineOf="@+id/server_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/vertical_guideline" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@android:color/white"
+            android:background="@color/colorListBackground"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/listPaddingTop"
             android:scrollbars="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/headers" />
+            app:layout_constraintTop_toBottomOf="@id/header"
+            tools:listitem="@layout/list_item_server" />
 
         <View
             android:layout_width="0dp"
-            android:layout_height="24dp"
+            android:layout_height="@dimen/shadowHeaderHeight"
             android:background="@drawable/shadow_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/headers" />
+            app:layout_constraintTop_toBottomOf="@id/header" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -15,10 +15,12 @@
 
     <style name="AppTheme.Launcher" parent="AppTheme.NoActionBar" />
 
-    <style name="AppTheme.LoginInputEditText" parent="Widget.AppCompat.EditText">
+    <style name="AppTheme.Login" />
+
+    <style name="AppTheme.Login.InputEditText" parent="Widget.AppCompat.EditText">
         <item name="textAllCaps">false</item>
         <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:textColorHint">@color/colorTextGrey</item>
+        <item name="android:textColorHint">@color/colorInputHint</item>
         <item name="android:paddingStart">20dp</item>
         <item name="android:paddingEnd">20dp</item>
         <item name="android:drawablePadding">20dp</item>
@@ -26,6 +28,60 @@
         <item name="android:layout_height">60dp</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="AppTheme.Login.MarginGuideline">
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="AppTheme.Login.StartMarginGuideline" parent="AppTheme.Login.MarginGuideline">
+        <item name="layout_constraintGuide_percent">@dimen/guidelineLoginStartMarginPercent</item>
+    </style>
+
+    <style name="AppTheme.Login.EndMarginGuideline" parent="AppTheme.Login.MarginGuideline">
+        <item name="layout_constraintGuide_percent">@dimen/guidelineLoginEndMarginPercent</item>
+    </style>
+
+    <style name="AppTheme.Login.Button">
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:background">@drawable/button_circle_background</item>
+        <item name="android:foreground">@drawable/ripple_circle</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/colorButtonText</item>
+        <item name="android:textSize">@dimen/loginButtonTextSize</item>
+        <item name="android:minWidth">120dp</item>
+        <item name="android:layout_marginTop">@dimen/loginComponentsBetweenMargin</item>
+        <item name="android:layout_marginBottom">@dimen/loginComponentsBetweenMargin</item>
+    </style>
+
+    <style name="AppTheme.Main" />
+
+    <style name="AppTheme.Main.HeaderLabels">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:padding">@dimen/listMargin</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/colorHeaderLabelsText</item>
+    </style>
+
+    <style name="AppTheme.Main.ColumnsSeparationGuideline">
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="layout_constraintGuide_percent">@dimen/guidelineColumnsSeparationPercent</item>
+    </style>
+
+    <style name="AppTheme.Main.ListItemText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginStart">@dimen/listMargin</item>
+        <item name="android:layout_marginEnd">@dimen/listMargin</item>
+        <item name="android:textColor">@color/colorListItemText</item>
     </style>
 
 </resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="loginButtonCornerRadius">5dp</dimen>
+    <dimen name="loginComponentsBetweenMargin">20dp</dimen>
+    <dimen name="loginButtonTextSize">16sp</dimen>
+    <dimen name="guidelineLoginStartMarginPercent">0.15</dimen>
+    <dimen name="guidelineLoginEndMarginPercent">0.85</dimen>
+
+    <dimen name="guidelineColumnsSeparationPercent">0.7</dimen>
+    <dimen name="shadowHeaderHeight">32dp</dimen>
+    <dimen name="listPaddingTop">16dp</dimen>
+    <dimen name="listMargin">16dp</dimen>
+
+</resources>

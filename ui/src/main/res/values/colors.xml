@@ -5,11 +5,14 @@
     <color name="colorAccent">#9fd533</color>
 
     <color name="colorWhiteOpacity20">#33ffffff</color> <!-- 20% white / opacity -->
-    <color name="colorTextGrey">#cccccc</color>
 
-    <color name="colorToolbar">#F0F0F0</color>
-
-    <color name="colorHeadersBar">#ffffff</color>
-    <color name="colorHeadersTextDarkerGrey">#999999</color>
+    <color name="colorInputHint">#cccccc</color>
+    <color name="colorButtonBackground">@color/colorAccent</color>
+    <color name="colorButtonText">#ffffff</color>
+    <color name="colorToolbarBackground">#f0f0f0</color>
+    <color name="colorHeaderBarBackground">#ffffff</color>
+    <color name="colorHeaderLabelsText">#999999</color>
+    <color name="colorListBackground">#ffffff</color>
+    <color name="colorListItemText">#666666</color>
 
 </resources>
