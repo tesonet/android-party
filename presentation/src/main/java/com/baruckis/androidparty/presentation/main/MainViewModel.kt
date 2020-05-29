@@ -27,6 +27,9 @@ import com.baruckis.androidparty.presentation.model.ServerPresentation
 import com.baruckis.androidparty.presentation.state.Resource
 import com.baruckis.androidparty.presentation.state.Status
 import io.reactivex.observers.DisposableSingleObserver
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
@@ -47,6 +50,24 @@ class MainViewModel @Inject constructor(
             GetServersSubscriber(),
             FetchServersUseCase.DataSource.LOCAL
         )
+    }
+
+    fun fetchServersRemotely(delayTime: Long = DELAY) {
+        _serversResource.postValue(Resource(Status.LOADING, null, null))
+
+        GlobalScope.launch {
+            delay(delayTime)
+            fetchServersUseCase.execute(
+                GetServersSubscriber(),
+                FetchServersUseCase.DataSource.REMOTE
+            )
+        }
+
+    }
+
+    override fun onCleared() {
+        fetchServersUseCase.dispose()
+        super.onCleared()
     }
 
     private inner class GetServersSubscriber : DisposableSingleObserver<List<ServerEntity>>() {
@@ -71,6 +92,10 @@ class MainViewModel @Inject constructor(
             )
         }
 
+    }
+
+    companion object {
+        private const val DELAY: Long = 1500
     }
 
 }

@@ -20,7 +20,7 @@ buildscript {
 
     ext {
 
-        gradle_version = '3.6.3'
+        gradle_version = '4.0.0'
         kotlin_version = '1.3.72'
 
         android_min_sdk_version = 21
@@ -29,38 +29,26 @@ buildscript {
         android_build_tools_version = "29.0.3"
 
         // Libraries
-
-        app_compat_version = '1.1.0'        // Android AppCompat.
-
-        annotation_version = '1.1.0'        // Annotation.
-
-        constraint_layout_version = '1.1.3' // Android ConstraintLayout.
-
-        coroutines_version = '1.3.7'        // Kotlin Coroutines.
-
-        espresso_version = '3.2.0'          // Espresso.
-
-        dagger_version = '2.27'             // Dagger.
-
-        javax_inject_version = '1'          // The Javax Inject API.
-
-        lifecycle_version = '2.2.0'         // Android Lifecycle Extensions.
-
-        recyclerview_version = '1.1.0'      // RecyclerView.
-
-        rx_android_version = '2.1.1'        // RxAndroid.
-        rx_java_version = '2.2.19'          // RxJava.
-        rx_kotlin_version = '2.4.0'         // RxKotlin.
-
-        okhttp_version = '4.7.1'            // OkHttp.
-        retrofit_version = '2.8.2'          // Retrofit.
-
-        room_version = '2.2.5'              // Room.
-
-        // Testing
-        android_junit = '1.1.1'             // AndroidJUnit4.
-        arch_testing = '2.1.0'              // Android Core Testing.
-        mockito_version = '3.3.3'           // Mockito.
+        android_junit = '1.1.1'                     // AndroidJUnit4.
+        annotation_version = '1.1.0'                // Annotation.
+        app_compat_version = '1.1.0'                // AppCompat.
+        arch_testing = '2.1.0'                      // Android Core Testing.
+        constraint_layout_version = '1.1.3'         // ConstraintLayout.
+        coroutines_version = '1.3.7'                // Kotlin Coroutines.
+        espresso_version = '3.2.0'                  // Espresso.
+        dagger_version = '2.27'                     // Dagger.
+        javax_inject_version = '1'                  // Javax Inject.
+        lifecycle_version = '2.2.0'                 // Android Lifecycle Extensions.
+        okhttp_version = '4.7.1'                    // OkHttp.
+        recyclerview_version = '1.1.0'              // RecyclerView.
+        retrofit_version = '2.8.2'                  // Retrofit.
+        room_version = '2.2.5'                      // Room.
+        rx_android_version = '2.1.1'                // RxAndroid.
+        rx_java_version = '2.2.19'                  // RxJava.
+        rx_kotlin_version = '2.4.0'                 // RxKotlin.
+        swipe_refresh_layout_version = '1.0.0'      // SwipeRefreshLayout
+        material_version = '1.1.0'                  // Material Components.
+        mockito_version = '3.3.3'                   // Mockito.
 
 
         domainDependencies = [
@@ -141,8 +129,10 @@ buildscript {
                 daggerSupport      : "com.google.dagger:dagger-android-support:${dagger_version}",
                 javaxInject        : "javax.inject:javax.inject:${javax_inject_version}",
                 kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}",
+                material           : "com.google.android.material:material:${material_version}",
                 recyclerView       : "androidx.recyclerview:recyclerview:${recyclerview_version}",
-                rxAndroid          : "io.reactivex.rxjava2:rxandroid:${rx_android_version}"
+                rxAndroid          : "io.reactivex.rxjava2:rxandroid:${rx_android_version}",
+                swipeRefreshLayout : "androidx.swiperefreshlayout:swiperefreshlayout:${swipe_refresh_layout_version}"
         ]
 
         uiTestDependencies = [

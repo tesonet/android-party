@@ -74,8 +74,10 @@ dependencies {
     implementation uiDependencies.daggerSupport
     implementation uiDependencies.javaxInject
     implementation uiDependencies.kotlin
+    implementation uiDependencies.material
     implementation uiDependencies.recyclerView
     implementation uiDependencies.rxAndroid
+    implementation uiDependencies.swipeRefreshLayout
 
     kapt uiDependencies.daggerCompiler
     kapt uiDependencies.daggerProcessor

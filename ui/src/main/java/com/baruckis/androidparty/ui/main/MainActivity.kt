@@ -26,9 +26,13 @@ import com.baruckis.androidparty.presentation.main.MainViewModel
 import com.baruckis.androidparty.presentation.model.ServerPresentation
 import com.baruckis.androidparty.presentation.state.Resource
 import com.baruckis.androidparty.presentation.state.Status
+import com.baruckis.androidparty.ui.R
 import com.baruckis.androidparty.ui.databinding.ActivityMainBinding
 import com.baruckis.androidparty.ui.login.LoginActivity
 import com.baruckis.androidparty.ui.mapper.ServerUiMapper
+import com.baruckis.androidparty.ui.util.onActionButtonClick
+import com.baruckis.androidparty.ui.util.showSnackbar
+import com.google.android.material.snackbar.Snackbar
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.toolbar_layout.view.*
 import javax.inject.Inject
@@ -48,6 +52,8 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var serverUiMapper: ServerUiMapper
 
+    private var snackbarRemoteFetchError: Snackbar? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +72,11 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            snackbarRemoteFetchError?.dismiss()
+            mainViewModel.fetchServersRemotely()
+        }
+
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = serversListRecyclerViewAdapter
 
@@ -76,6 +87,33 @@ class MainActivity : AppCompatActivity() {
         })
 
         mainViewModel.fetchServersLocally()
+
+        val requestRemoteFetchError: Boolean =
+            intent.extras?.getBoolean(REQUEST_REMOTE_FETCH_ERROR, false) ?: false
+
+        if (requestRemoteFetchError) {
+            showFetchingServersError()
+        }
+
+    }
+
+    override fun onDestroy() {
+        snackbarRemoteFetchError?.dismiss()
+        super.onDestroy()
+    }
+
+    private fun showFetchingServersError() {
+        binding.swipeRefreshLayout.isRefreshing = false
+        snackbarRemoteFetchError = binding.layout.showSnackbar(
+            getString(R.string.error_msg_fetching_list),
+            Snackbar.LENGTH_INDEFINITE
+        ) {
+            onActionButtonClick(getString(R.string.error_action_retry)) {
+                this.dismiss()
+                binding.swipeRefreshLayout.isRefreshing = true
+                mainViewModel.fetchServersRemotely()
+            }
+        }
     }
 
 
@@ -88,17 +126,23 @@ class MainActivity : AppCompatActivity() {
             }
             Status.SUCCESS -> {
 
-                val venuesUi = dataResource.data?.map { serverUiMapper.mapToUi(it) } ?: emptyList()
+                val serversListUi =
+                    dataResource.data?.map { serverUiMapper.mapToUi(it) } ?: emptyList()
 
-                serversListRecyclerViewAdapter.setData(venuesUi)
+                serversListRecyclerViewAdapter.setData(serversListUi)
 
+                binding.swipeRefreshLayout.isRefreshing = false
             }
             Status.ERROR -> {
-
+                showFetchingServersError()
             }
 
         }
 
+    }
+
+    companion object {
+        const val REQUEST_REMOTE_FETCH_ERROR = "request_remote_fetch_error"
     }
 
 }

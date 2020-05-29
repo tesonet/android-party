@@ -37,6 +37,9 @@
 
     <string name="toast_msg_welcome" translatable="true">Welcome %s!</string>
 
+    <string name="error_msg_fetching_list" translatable="true">Oops! Error while fetching the servers list. Showing cached data if any. Please try again.</string>
+    <string name="error_action_retry" translatable="true">Retry</string>
+
     <string name="server_distance_label" translatable="false">%s km</string>
 
 </resources>

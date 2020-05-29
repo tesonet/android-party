@@ -112,24 +112,34 @@ class LoginActivity : AppCompatActivity(), BackCallback {
 
     private fun handleServersListPresentationResourceStatus(dataResource: Resource<List<ServerPresentation>>) {
 
+        fun launchMainActivity(intent: Intent) {
+            startActivity(intent)
+
+            Toast.makeText(
+                applicationContext,
+                getString(R.string.toast_msg_welcome, loginViewModel.username),
+                Toast.LENGTH_LONG
+            ).show()
+
+            finish()
+        }
+
         when (dataResource.status) {
             Status.LOADING -> {
-
             }
             Status.SUCCESS -> {
-                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                Toast.makeText(
-                    applicationContext,
-                    getString(R.string.toast_msg_welcome, loginViewModel.username),
-                    Toast.LENGTH_LONG
-                ).show()
                 logConsoleVerbose(dataResource.data.toString())
-                finish()
+
+                val intent = Intent(applicationContext, MainActivity::class.java)
+                launchMainActivity(intent)
             }
             Status.ERROR -> {
-
+                val intent = Intent(applicationContext, MainActivity::class.java)
+                intent.putExtra(MainActivity.REQUEST_REMOTE_FETCH_ERROR, true)
+                launchMainActivity(intent)
             }
         }
+
     }
 
     override fun backButtonClick() {

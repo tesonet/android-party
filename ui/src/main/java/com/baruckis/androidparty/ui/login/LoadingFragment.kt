@@ -65,13 +65,12 @@ class LoadingFragment(internal var callback: BackCallback) : DaggerFragment() {
                 viewModel = loginViewModel
             }
 
-            loginViewModel.loginResource.observe(activity, Observer { resource ->
+            loginViewModel.loginResource.observe(viewLifecycleOwner, Observer { resource ->
                 binding.stateResource = resource
                 handleLoginPresentationResourceStatus(resource)
             })
 
-            loginViewModel.serversResource.observe(activity, Observer { resource ->
-                binding.stateResource = resource
+            loginViewModel.serversResource.observe(viewLifecycleOwner, Observer { resource ->
                 handleServersListPresentationResourceStatus(resource)
             })
 

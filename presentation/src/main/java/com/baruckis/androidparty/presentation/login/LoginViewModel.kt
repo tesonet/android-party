@@ -53,8 +53,6 @@ class LoginViewModel @Inject constructor(
 
     private lateinit var password: String
 
-    private var isLoggedIn: Boolean = false
-
     fun login(username: String, password: String, delayTime: Long = DELAY) {
         _loginResource.postValue(Resource(Status.LOADING, null, null))
 
@@ -73,11 +71,7 @@ class LoginViewModel @Inject constructor(
     }
 
     fun retryButtonClick() {
-        if (isLoggedIn) {
-            // TODO fetch list.
-        } else {
-            login(username, password)
-        }
+        login(username, password)
     }
 
     fun fetchServersRemotely(delayTime: Long = DELAY) {
@@ -103,7 +97,6 @@ class LoginViewModel @Inject constructor(
     private inner class LoginSubscriber : DisposableSingleObserver<LoggedInUserEntity>() {
 
         override fun onSuccess(loggedInUser: LoggedInUserEntity) {
-            isLoggedIn = true
 
             _loginResource.postValue(
                 Resource(
@@ -117,7 +110,6 @@ class LoginViewModel @Inject constructor(
         }
 
         override fun onError(e: Throwable) {
-            isLoggedIn = false
 
             _loginResource.postValue(
                 Resource(
