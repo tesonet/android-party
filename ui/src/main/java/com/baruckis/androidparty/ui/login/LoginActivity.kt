@@ -88,7 +88,7 @@ class LoginActivity : AppCompatActivity(), BackCallback {
                             )
                             .replace(
                                 R.id.fragment_container_view,
-                                LoadingFragment(this@LoginActivity),
+                                LoadingFragment(),
                                 LoadingFragment.TAG
                             )
                             .commit()

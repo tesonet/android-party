@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2020 Andrius Baruckis www.baruckis.com
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,66 +18,73 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:background="@drawable/bg"
+        android:fillViewport="true"
         tools:context=".login.LoginFragment">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/start_vertical_guideline"
-            style="@style/AppTheme.Login.StartMarginGuideline" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/end_vertical_guideline"
-            style="@style/AppTheme.Login.EndMarginGuideline" />
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="170dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/logo_1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.2"
-            tools:ignore="ContentDescription" />
+            tools:background="@drawable/bg">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/input_username"
-            style="@style/AppTheme.Login.InputEditText"
-            android:drawableStart="@drawable/ic_username"
-            android:hint="@string/username_input_hint"
-            android:imeOptions="actionNext"
-            android:text="tesonet"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/end_vertical_guideline"
-            app:layout_constraintStart_toEndOf="@id/start_vertical_guideline"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/start_vertical_guideline"
+                style="@style/AppTheme.Login.StartMarginGuideline" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/input_password"
-            style="@style/AppTheme.Login.InputEditText"
-            android:layout_marginTop="@dimen/loginComponentsBetweenMargin"
-            android:drawableStart="@drawable/ic_lock"
-            android:hint="@string/password_input_hint"
-            android:imeOptions="actionGo"
-            android:inputType="textPassword"
-            android:text="partyanimal"
-            app:layout_constraintEnd_toStartOf="@id/end_vertical_guideline"
-            app:layout_constraintStart_toEndOf="@id/start_vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@id/input_username" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/end_vertical_guideline"
+                style="@style/AppTheme.Login.EndMarginGuideline" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_login"
-            style="@style/AppTheme.Login.Button"
-            android:text="@string/login_btn_label"
-            app:layout_constraintEnd_toStartOf="@id/end_vertical_guideline"
-            app:layout_constraintStart_toEndOf="@id/start_vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@id/input_password" />
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo_1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.2"
+                tools:ignore="ContentDescription" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/input_username"
+                style="@style/AppTheme.Login.InputEditText"
+                android:drawableStart="@drawable/ic_username"
+                android:hint="@string/username_input_hint"
+                android:imeOptions="actionNext"
+                android:text="tesonet"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/end_vertical_guideline"
+                app:layout_constraintStart_toEndOf="@id/start_vertical_guideline"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.6" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/input_password"
+                style="@style/AppTheme.Login.InputEditText"
+                android:layout_marginTop="@dimen/loginComponentsBetweenMargin"
+                android:drawableStart="@drawable/ic_lock"
+                android:hint="@string/password_input_hint"
+                android:imeOptions="actionGo"
+                android:inputType="textPassword"
+                android:text="partyanimal"
+                app:layout_constraintEnd_toStartOf="@id/end_vertical_guideline"
+                app:layout_constraintStart_toEndOf="@id/start_vertical_guideline"
+                app:layout_constraintTop_toBottomOf="@id/input_username" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_login"
+                style="@style/AppTheme.Login.Button"
+                android:text="@string/login_btn_label"
+                app:layout_constraintEnd_toStartOf="@id/end_vertical_guideline"
+                app:layout_constraintStart_toEndOf="@id/start_vertical_guideline"
+                app:layout_constraintTop_toBottomOf="@id/input_password" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </layout>

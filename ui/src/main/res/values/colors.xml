@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2020 Andrius Baruckis www.baruckis.com
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,6 +22,8 @@
     <color name="colorWhiteOpacity20">#33ffffff</color> <!-- 20% white / opacity -->
 
     <color name="colorInputHint">#cccccc</color>
+    <color name="colorProgressTint">#ffffff</color>
+    <color name="colorStatusText">#ffffff</color>
     <color name="colorButtonBackground">@color/colorAccent</color>
     <color name="colorButtonText">#ffffff</color>
     <color name="colorToolbarBackground">#f0f0f0</color>

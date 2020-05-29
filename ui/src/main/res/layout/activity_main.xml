@@ -25,85 +25,92 @@
             type="com.baruckis.androidparty.presentation.main.MainViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".main.MainActivity">
 
-        <include
-            android:id="@+id/custom_toolbar"
-            layout="@layout/toolbar_layout"
-            android:layout_width="0dp"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/vertical_guideline"
-            style="@style/AppTheme.Main.ColumnsSeparationGuideline" />
-
-        <View
-            android:id="@+id/header"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@color/colorHeaderBarBackground"
-            app:layout_constraintBottom_toBottomOf="@id/server_label"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/server_label" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/server_label"
-            style="@style/AppTheme.Main.HeaderLabels"
-            android:text="@string/header_server_label"
-            app:layout_constraintEnd_toStartOf="@id/vertical_guideline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/custom_toolbar" />
+            <include
+                android:id="@+id/custom_toolbar"
+                layout="@layout/toolbar_layout"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/server_distance_label"
-            style="@style/AppTheme.Main.HeaderLabels"
-            android:text="@string/header_distance_label"
-            app:layout_constraintBaseline_toBaselineOf="@+id/server_label"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/vertical_guideline" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/vertical_guideline"
+                style="@style/AppTheme.Main.ColumnsSeparationGuideline" />
+
+            <View
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/colorHeaderBarBackground"
+                app:layout_constraintBottom_toBottomOf="@id/server_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/server_label" />
+
+            <TextView
+                android:id="@+id/server_label"
+                style="@style/AppTheme.Main.HeaderLabels"
+                android:text="@string/header_server_label"
+                app:layout_constraintEnd_toStartOf="@id/vertical_guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/custom_toolbar" />
+
+            <TextView
+                android:id="@+id/server_distance_label"
+                style="@style/AppTheme.Main.HeaderLabels"
+                android:text="@string/header_distance_label"
+                app:layout_constraintBaseline_toBaselineOf="@+id/server_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/vertical_guideline" />
 
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_refresh_layout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/header">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_refresh_layout"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@color/colorListBackground"
-                android:clipToPadding="false"
-                android:paddingTop="@dimen/listPaddingTop"
-                android:scrollbars="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/header"
-                tools:listitem="@layout/list_item_server" />
+                app:layout_constraintTop_toBottomOf="@id/header">
 
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@color/colorListBackground"
+                    android:clipToPadding="false"
+                    android:paddingTop="@dimen/listPaddingTop"
+                    android:scrollbars="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/header"
+                    tools:listitem="@layout/list_item_server" />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="@dimen/shadowHeaderHeight"
-            android:background="@drawable/shadow_header"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/header" />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/shadowHeaderHeight"
+                android:background="@drawable/shadow_header"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

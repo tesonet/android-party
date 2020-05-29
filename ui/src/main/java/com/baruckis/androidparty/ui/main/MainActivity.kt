@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showFetchingServersError() {
         binding.swipeRefreshLayout.isRefreshing = false
-        snackbarRemoteFetchError = binding.layout.showSnackbar(
+        snackbarRemoteFetchError = binding.coordinatorLayout.showSnackbar(
             getString(R.string.error_msg_fetching_list),
             Snackbar.LENGTH_INDEFINITE
         ) {
@@ -118,7 +118,6 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun handlePresentationResourceStatus(dataResource: Resource<List<ServerPresentation>>) {
-
 
         when (dataResource.status) {
             Status.LOADING -> {

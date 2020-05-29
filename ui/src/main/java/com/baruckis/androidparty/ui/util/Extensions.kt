@@ -17,13 +17,14 @@
 package com.baruckis.androidparty.ui.util
 
 import android.view.View
+import android.widget.TextView
 import androidx.annotation.StringRes
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 
 /**
  * Extension method for the View to create a snackbar with [messageRes] string resource,
- * [length] duration, execute [f] and show it.
+ * [length] duration, execute [f] and show it. Snackbar text is multiline.
  */
 inline fun View.showSnackbar(
     @StringRes messageRes: Int,
@@ -35,7 +36,7 @@ inline fun View.showSnackbar(
 
 /**
  * Extension method for the View to create a snackbar with [message] string, [length] duration,
- * execute [f] and show it.
+ * execute [f] and show it. Snackbar text is multiline.
  */
 inline fun View.showSnackbar(
     message: String, length: Int = Snackbar.LENGTH_INDEFINITE,
@@ -44,6 +45,7 @@ inline fun View.showSnackbar(
 
     val snack = Snackbar.make(this, message, length)
     snack.f()
+    snack.view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text).maxLines = 5
     snack.show()
     return snack
 }

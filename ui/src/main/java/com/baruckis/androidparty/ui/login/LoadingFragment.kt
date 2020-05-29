@@ -34,7 +34,7 @@ import com.baruckis.androidparty.ui.mapper.LoginUiMapper
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class LoadingFragment(internal var callback: BackCallback) : DaggerFragment() {
+class LoadingFragment : DaggerFragment() {
 
     companion object {
         const val TAG = "loading_fragment_tag"
@@ -49,6 +49,8 @@ class LoadingFragment(internal var callback: BackCallback) : DaggerFragment() {
     private lateinit var loginViewModel: LoginViewModel
 
     private lateinit var binding: FragmentLoadingBinding
+
+    private var backCallback: BackCallback? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -74,9 +76,11 @@ class LoadingFragment(internal var callback: BackCallback) : DaggerFragment() {
                 handleServersListPresentationResourceStatus(resource)
             })
 
+            backCallback = activity as? BackCallback
+
             binding.backCallback = object : BackCallback {
                 override fun backButtonClick() {
-                    callback.backButtonClick()
+                    backCallback?.backButtonClick()
                 }
             }
 
