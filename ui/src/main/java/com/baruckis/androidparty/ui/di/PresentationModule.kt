@@ -39,7 +39,7 @@ abstract class PresentationModule {
     }
 
     // We'd like to take this implementation of the ViewModel class and make it available
-    // in an injectable map with LoginViewModel::class as a key to that map.
+    // in an injectable map with LauncherViewModel::class as a key to that map.
     @Binds
     @IntoMap
     // We use a restriction on multibound map defined with @ViewModelKey annotation,
