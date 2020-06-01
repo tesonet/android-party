@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2020 Andrius Baruckis www.baruckis.com
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context=".login.LoginFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:background="@drawable/bg">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/start_vertical_guideline"
+                style="@style/AppTheme.Login.StartMarginGuideline" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/end_vertical_guideline"
+                style="@style/AppTheme.Login.EndMarginGuideline" />
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo_1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.2"
+                tools:ignore="ContentDescription" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/input_username"
+                style="@style/AppTheme.Login.InputEditText"
+                android:drawableStart="@drawable/ic_username"
+                android:hint="@string/username_input_hint"
+                android:imeOptions="actionNext"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/end_vertical_guideline"
+                app:layout_constraintStart_toEndOf="@id/start_vertical_guideline"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.6" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/input_password"
+                style="@style/AppTheme.Login.InputEditText"
+                android:layout_marginTop="@dimen/loginComponentsBetweenMargin"
+                android:drawableStart="@drawable/ic_lock"
+                android:hint="@string/password_input_hint"
+                android:imeOptions="actionGo"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toStartOf="@id/end_vertical_guideline"
+                app:layout_constraintStart_toEndOf="@id/start_vertical_guideline"
+                app:layout_constraintTop_toBottomOf="@id/input_username" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_login"
+                style="@style/AppTheme.Login.Button"
+                android:text="@string/login_btn_label"
+                app:layout_constraintEnd_toStartOf="@id/end_vertical_guideline"
+                app:layout_constraintStart_toEndOf="@id/start_vertical_guideline"
+                app:layout_constraintTop_toBottomOf="@id/input_password" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

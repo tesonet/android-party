@@ -4,6 +4,22 @@ If you found this task it means we are looking for you!
 
 > Note: To clone this repository you will need [GIT-LFS](https://git-lfs.github.com/)
 
+***
+
+## Description - what was done?
+
+Kotlin Clean Architecture + MVVM + Reactive prototype app that allows a user to login, logout, fetch servers using Tesonet API.
+
+![baruckis_tesonet_androidparty](https://user-images.githubusercontent.com/2387056/83395134-7222e200-a402-11ea-83ce-064be66d7428.gif)
+
+### Features
+
+- Offline first - persistent data storage;
+- Error handling of user input, server response;
+- Screen rotation support.
+
+***
+
 ## Few simple steps
 
 1. Fork this repo

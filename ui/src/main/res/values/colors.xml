@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2020 Andrius Baruckis www.baruckis.com
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+    <color name="colorPrimary">#2f3254</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#9fd533</color>
+
+    <color name="colorWhiteOpacity20">#33ffffff</color> <!-- 20% white / opacity -->
+
+    <color name="colorInputHint">#cccccc</color>
+    <color name="colorProgressTint">#ffffff</color>
+    <color name="colorStatusText">#ffffff</color>
+    <color name="colorButtonBackground">@color/colorAccent</color>
+    <color name="colorButtonText">#ffffff</color>
+    <color name="colorToolbarBackground">#f0f0f0</color>
+    <color name="colorHeaderBarBackground">#ffffff</color>
+    <color name="colorHeaderLabelsText">#999999</color>
+    <color name="colorListBackground">#ffffff</color>
+    <color name="colorListItemText">#666666</color>
+
+</resources>
