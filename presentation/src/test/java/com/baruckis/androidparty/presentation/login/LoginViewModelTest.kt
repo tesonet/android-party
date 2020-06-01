@@ -18,37 +18,45 @@ package com.baruckis.androidparty.presentation.login
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.baruckis.androidparty.domain.entity.LoggedInUserEntity
+import com.baruckis.androidparty.domain.entity.ServerEntity
 import com.baruckis.androidparty.domain.usecases.FetchServersUseCase
 import com.baruckis.androidparty.domain.usecases.LoginUseCase
-import com.baruckis.androidparty.presentation.TestDataFactory
+import com.baruckis.androidparty.presentation.PresentationTestDataFactory
+import com.baruckis.androidparty.presentation.TestCoroutineContextProvider
 import com.baruckis.androidparty.presentation.mapper.LoginPresentationMapper
 import com.baruckis.androidparty.presentation.mapper.ServerPresentationMapper
+import com.baruckis.androidparty.presentation.model.LoginPresentation
+import com.baruckis.androidparty.presentation.model.ServerPresentation
+import com.baruckis.androidparty.presentation.state.Status
 import com.baruckis.androidparty.presentation.util.any
 import com.baruckis.androidparty.presentation.util.argumentCaptor
 import com.baruckis.androidparty.presentation.util.capture
 import com.baruckis.androidparty.presentation.util.eq
 import io.reactivex.observers.DisposableSingleObserver
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Captor
-import org.mockito.Mockito
 import org.mockito.Mockito.*
 import kotlin.test.assertEquals
 
-
+@ExperimentalCoroutinesApi
 class LoginViewModelTest {
 
     @Rule
     @JvmField
-    var instantTaskExecutorRule = InstantTaskExecutorRule()
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    var loginUseCase: LoginUseCase = mock(LoginUseCase::class.java)
-    var fetchServersUseCase: FetchServersUseCase = mock(FetchServersUseCase::class.java)
-    var loginPresentationMapper: LoginPresentationMapper = mock(LoginPresentationMapper::class.java)
-    var serverPresentationMapper: ServerPresentationMapper =
+    private val testContextProvider = TestCoroutineContextProvider()
+    private val loginUseCase: LoginUseCase = mock(LoginUseCase::class.java)
+    private val fetchServersUseCase: FetchServersUseCase = mock(FetchServersUseCase::class.java)
+    private val loginPresentationMapper: LoginPresentationMapper =
+        mock(LoginPresentationMapper::class.java)
+    private val serverPresentationMapper: ServerPresentationMapper =
         mock(ServerPresentationMapper::class.java)
 
-    var viewModel = LoginViewModel(
+    private val viewModel = LoginViewModel(
+        testContextProvider,
         loginUseCase,
         fetchServersUseCase,
         loginPresentationMapper,
@@ -56,73 +64,264 @@ class LoginViewModelTest {
     )
 
     @Captor
-    val captor = argumentCaptor<DisposableSingleObserver<LoggedInUserEntity>>()
+    val captorLogin = argumentCaptor<DisposableSingleObserver<LoggedInUserEntity>>()
+
+    @Captor
+    val captorFetchServers = argumentCaptor<DisposableSingleObserver<List<ServerEntity>>>()
 
 
     @Test
-    fun loginExecute() {
+    fun loginExecutesUseCase() {
 
-        viewModel.login(TestDataFactory.username, TestDataFactory.password, 0)
+        viewModel.login(
+            PresentationTestDataFactory.username,
+            PresentationTestDataFactory.password,
+            0
+        )
 
         verify(loginUseCase, times(1)).execute(
             any(),
             eq(
                 LoginUseCase.Params.authorization(
-                    TestDataFactory.username,
-                    TestDataFactory.password
+                    PresentationTestDataFactory.username,
+                    PresentationTestDataFactory.password
                 )
             )
         )
+
+    }
+
+    @Test
+    fun loginReturnsSuccess() {
+
+        val loggedInUserEntity = PresentationTestDataFactory.createLoggedInUserEntity()
+        val loginPresentation = PresentationTestDataFactory.createLoginPresentation()
+
+        stubLoginPresentationMapperMapToPresentation(loggedInUserEntity, loginPresentation)
+
+        viewModel.login(
+            PresentationTestDataFactory.username,
+            PresentationTestDataFactory.password,
+            0
+        )
+
+        verify(loginUseCase).execute(
+            capture(captorLogin),
+            eq(
+                LoginUseCase.Params.authorization(
+                    PresentationTestDataFactory.username,
+                    PresentationTestDataFactory.password
+                )
+            )
+        )
+
+        captorLogin.value.onSuccess(loggedInUserEntity)
+
+        assertEquals(Status.SUCCESS, viewModel.loginResource.value?.status)
 
     }
 
     @Test
     fun loginReturnsData() {
 
-        val domainEntity = TestDataFactory.createLoggedInUserEntity()
-        val presentationModel = TestDataFactory.createLoginPresentation()
+        val loggedInUserEntity = PresentationTestDataFactory.createLoggedInUserEntity()
+        val loginPresentation = PresentationTestDataFactory.createLoginPresentation()
 
-        Mockito.`when`(loginPresentationMapper.mapToPresentation(domainEntity))
-            .thenReturn(presentationModel)
+        stubLoginPresentationMapperMapToPresentation(loggedInUserEntity, loginPresentation)
 
-        viewModel.login(TestDataFactory.username, TestDataFactory.password, 0)
+        viewModel.login(
+            PresentationTestDataFactory.username,
+            PresentationTestDataFactory.password,
+            0
+        )
 
-        verify(loginUseCase, times(1)).execute(
-            capture(captor),
+        verify(loginUseCase).execute(
+            capture(captorLogin),
             eq(
                 LoginUseCase.Params.authorization(
-                    TestDataFactory.username,
-                    TestDataFactory.password
+                    PresentationTestDataFactory.username,
+                    PresentationTestDataFactory.password
                 )
             )
         )
 
-        captor.value.onSuccess(domainEntity)
+        captorLogin.value.onSuccess(loggedInUserEntity)
 
-        assertEquals(presentationModel, viewModel.loginResource.value?.data)
+        assertEquals(loginPresentation, viewModel.loginResource.value?.data)
 
+    }
+
+    @Test
+    fun loginReturnsError() {
+
+        viewModel.login(
+            PresentationTestDataFactory.username,
+            PresentationTestDataFactory.password,
+            0
+        )
+
+        verify(loginUseCase).execute(
+            capture(captorLogin),
+            eq(
+                LoginUseCase.Params.authorization(
+                    PresentationTestDataFactory.username,
+                    PresentationTestDataFactory.password
+                )
+            )
+        )
+
+        captorLogin.value.onError(RuntimeException())
+
+        assertEquals(Status.ERROR, viewModel.loginResource.value?.status)
     }
 
     @Test
     fun loginReturnsErrorMessage() {
 
-        val errorMsg = TestDataFactory.createErrorMessage()
+        val errorMsg = PresentationTestDataFactory.createErrorMessage()
 
-        viewModel.login(TestDataFactory.username, TestDataFactory.password, 0)
+        viewModel.login(
+            PresentationTestDataFactory.username,
+            PresentationTestDataFactory.password,
+            0
+        )
 
-        verify(loginUseCase, times(1)).execute(
-            capture(captor),
+        verify(loginUseCase).execute(
+            capture(captorLogin),
             eq(
                 LoginUseCase.Params.authorization(
-                    TestDataFactory.username,
-                    TestDataFactory.password
+                    PresentationTestDataFactory.username,
+                    PresentationTestDataFactory.password
                 )
             )
         )
 
-        captor.value.onError(RuntimeException(errorMsg))
+        captorLogin.value.onError(RuntimeException(errorMsg))
 
         assertEquals(errorMsg, viewModel.loginResource.value?.message)
+    }
+
+
+    @Test
+    fun fetchServersRemotelyExecutesUseCase() {
+
+        viewModel.fetchServersRemotely(0)
+
+        testContextProvider.testCoroutineDispatcher.advanceUntilIdle()
+
+        verify(fetchServersUseCase, times(1)).execute(
+            any(),
+            eq(
+                FetchServersUseCase.Params.dataSource(FetchServersUseCase.DataSource.REMOTE)
+            )
+        )
+    }
+
+    @Test
+    fun fetchServersRemotelyReturnsSuccess() {
+
+        val serverEntity = PresentationTestDataFactory.createServerEntity()
+        val serverPresentation = PresentationTestDataFactory.createServerPresentation()
+
+        stubServerPresentationMapperMapToPresentation(serverEntity, serverPresentation)
+
+        viewModel.fetchServersRemotely(0)
+
+        testContextProvider.testCoroutineDispatcher.advanceUntilIdle()
+
+        verify(fetchServersUseCase).execute(
+            capture(captorFetchServers),
+            eq(
+                FetchServersUseCase.Params.dataSource(FetchServersUseCase.DataSource.REMOTE)
+            )
+        )
+
+        captorFetchServers.value.onSuccess(listOf(serverEntity))
+
+        assertEquals(Status.SUCCESS, viewModel.serversResource.value?.status)
+
+    }
+
+    @Test
+    fun fetchServersRemotelyReturnsData() {
+
+        val serverEntity = PresentationTestDataFactory.createServerEntity()
+        val serverPresentation = PresentationTestDataFactory.createServerPresentation()
+
+        stubServerPresentationMapperMapToPresentation(serverEntity, serverPresentation)
+
+        viewModel.fetchServersRemotely(0)
+
+        testContextProvider.testCoroutineDispatcher.advanceUntilIdle()
+
+        verify(fetchServersUseCase).execute(
+            capture(captorFetchServers),
+            eq(
+                FetchServersUseCase.Params.dataSource(FetchServersUseCase.DataSource.REMOTE)
+            )
+        )
+
+        captorFetchServers.value.onSuccess(listOf(serverEntity))
+
+        assertEquals(listOf(serverPresentation), viewModel.serversResource.value?.data)
+
+    }
+
+    @Test
+    fun fetchServersRemotelyReturnsError() {
+
+        viewModel.fetchServersRemotely(0)
+
+        testContextProvider.testCoroutineDispatcher.advanceUntilIdle()
+
+        verify(fetchServersUseCase).execute(
+            capture(captorFetchServers),
+            eq(
+                FetchServersUseCase.Params.dataSource(FetchServersUseCase.DataSource.REMOTE)
+            )
+        )
+
+        captorFetchServers.value.onError(RuntimeException())
+
+        assertEquals(Status.ERROR, viewModel.serversResource.value?.status)
+    }
+
+    @Test
+    fun fetchServersRemotelyReturnsErrorMessage() {
+
+        val errorMsg = PresentationTestDataFactory.createErrorMessage()
+
+        viewModel.fetchServersRemotely(0)
+
+        testContextProvider.testCoroutineDispatcher.advanceUntilIdle()
+
+        verify(fetchServersUseCase).execute(
+            capture(captorFetchServers),
+            eq(
+                FetchServersUseCase.Params.dataSource(FetchServersUseCase.DataSource.REMOTE)
+            )
+        )
+
+        captorFetchServers.value.onError(RuntimeException(errorMsg))
+
+        assertEquals(errorMsg, viewModel.serversResource.value?.message)
+    }
+
+
+    private fun stubLoginPresentationMapperMapToPresentation(
+        domainEntity: LoggedInUserEntity,
+        presentationModel: LoginPresentation
+    ) {
+        `when`(loginPresentationMapper.mapToPresentation(domainEntity))
+            .thenReturn(presentationModel)
+    }
+
+    private fun stubServerPresentationMapperMapToPresentation(
+        domainEntity: ServerEntity,
+        presentationModel: ServerPresentation
+    ) {
+        `when`(serverPresentationMapper.mapToPresentation(domainEntity))
+            .thenReturn(presentationModel)
     }
 
 }

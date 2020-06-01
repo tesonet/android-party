@@ -16,30 +16,31 @@
 
 package com.baruckis.androidparty.presentation.mapper
 
-import com.baruckis.androidparty.domain.entity.LoggedInUserEntity
+import com.baruckis.androidparty.domain.entity.ServerEntity
 import com.baruckis.androidparty.presentation.PresentationTestDataFactory
-import com.baruckis.androidparty.presentation.model.LoginPresentation
+import com.baruckis.androidparty.presentation.model.ServerPresentation
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class LoginPresentationMapperTest {
+class ServerPresentationMapperTest {
 
-    private val mapper = LoginPresentationMapper()
+    private val mapper = ServerPresentationMapper()
 
     @Test
     fun mapToPresentation() {
 
-        val domainEntity = PresentationTestDataFactory.createLoggedInUserEntity()
+        val domainEntity = PresentationTestDataFactory.createServerEntity()
         val presentationModel = mapper.mapToPresentation(domainEntity)
 
         assertMapsDataCorrectly(domainEntity, presentationModel)
     }
 
     private fun assertMapsDataCorrectly(
-        domainEntity: LoggedInUserEntity,
-        presentationModel: LoginPresentation
+        domainModel: ServerEntity,
+        presentationModel: ServerPresentation
     ) {
-        assertEquals(domainEntity.username, presentationModel.username)
+        assertEquals(domainModel.name, presentationModel.name)
+        assertEquals(domainModel.distance, presentationModel.distance)
     }
 
 }

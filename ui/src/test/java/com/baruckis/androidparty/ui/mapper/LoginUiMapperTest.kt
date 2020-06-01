@@ -17,7 +17,7 @@
 package com.baruckis.androidparty.ui.mapper
 
 import com.baruckis.androidparty.presentation.model.LoginPresentation
-import com.baruckis.androidparty.ui.TestDataFactory
+import com.baruckis.androidparty.ui.UiTestDataFactory
 import com.baruckis.androidparty.ui.model.LoginUi
 import org.junit.Test
 import kotlin.test.assertEquals
@@ -29,7 +29,7 @@ class LoginUiMapperTest {
     @Test
     fun mapToUi() {
 
-        val presentationModel = TestDataFactory.createLoginPresentation()
+        val presentationModel = UiTestDataFactory.createLoginPresentation()
         val uiModel = mapper.mapToUi(presentationModel)
 
         assertMapsDataCorrectly(presentationModel, uiModel)

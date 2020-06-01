@@ -22,16 +22,16 @@ import com.baruckis.androidparty.data.model.LoggedInUserData
 import com.baruckis.androidparty.data.model.TokenData
 import com.baruckis.androidparty.domain.entity.LoggedInUserEntity
 import com.baruckis.androidparty.domain.entity.ServerEntity
-import com.baruckis.androidparty.domain.repository.MainRepository
+import com.baruckis.androidparty.domain.repository.DataRepository
 import io.reactivex.Single
 import javax.inject.Inject
 
-class MainRepositoryImpl @Inject constructor(
+class DataRepositoryImpl @Inject constructor(
     private val loggedInUserMapper: LoggedInUserMapper,
     private val serverMapper: ServerMapper,
     private val localDataSource: LocalDataSource,
     private val remoteDataSource: RemoteDataSource
-) : MainRepository {
+) : DataRepository {
 
     override fun getLoggedInUser(): LoggedInUserEntity? {
         return localDataSource.getLoggedInUser()?.let { loggedInUserMapper.mapFromData(it) }

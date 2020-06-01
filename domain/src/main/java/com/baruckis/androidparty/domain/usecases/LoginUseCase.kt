@@ -19,14 +19,14 @@ package com.baruckis.androidparty.domain.usecases
 import com.baruckis.androidparty.domain.entity.LoggedInUserEntity
 import com.baruckis.androidparty.domain.qualifiers.Background
 import com.baruckis.androidparty.domain.qualifiers.Foreground
-import com.baruckis.androidparty.domain.repository.MainRepository
+import com.baruckis.androidparty.domain.repository.DataRepository
 import com.baruckis.androidparty.domain.usecases.base.SingleUseCase
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import javax.inject.Inject
 
 class LoginUseCase @Inject constructor(
-    private val mainRepository: MainRepository,
+    private val dataRepository: DataRepository,
     @Background backgroundScheduler: Scheduler,
     @Foreground foregroundScheduler: Scheduler
 ) : SingleUseCase<LoggedInUserEntity, LoginUseCase.Params>(
@@ -36,7 +36,7 @@ class LoginUseCase @Inject constructor(
 
     override fun buildUseCaseSingle(params: Params?): Single<LoggedInUserEntity> {
         requireNotNull(params) { "Params can't be null!" }
-        return mainRepository.login(params.username, params.password)
+        return dataRepository.login(params.username, params.password)
     }
 
     data class Params constructor(val username: String, val password: String) {

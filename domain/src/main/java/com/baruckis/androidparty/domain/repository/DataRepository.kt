@@ -14,30 +14,22 @@
  * limitations under the License.
  */
 
-package com.baruckis.androidparty.presentation
+package com.baruckis.androidparty.domain.repository
 
 import com.baruckis.androidparty.domain.entity.LoggedInUserEntity
-import com.baruckis.androidparty.presentation.model.LoginPresentation
+import com.baruckis.androidparty.domain.entity.ServerEntity
+import io.reactivex.Single
 
-object TestDataFactory {
+interface DataRepository {
 
-    private const val TOKEN = "f9731b590611a5a9377fbd02f247fcdf"
-    private const val USERNAME = "abc"
-    private const val PASSWORD = "deg"
+    fun getLoggedInUser(): LoggedInUserEntity?
 
-    fun createLoggedInUserEntity(): LoggedInUserEntity {
-        return LoggedInUserEntity(TOKEN, USERNAME)
-    }
+    fun login(username: String, password: String): Single<LoggedInUserEntity>
 
-    fun createLoginPresentation(): LoginPresentation {
-        return LoginPresentation(USERNAME)
-    }
+    fun logout()
 
-    val username = USERNAME
-    val password = PASSWORD
+    fun fetchServersFromRemoteApiSaveToDb(): Single<List<ServerEntity>>
 
-    fun createErrorMessage(): String {
-        return "Custom error message!"
-    }
+    fun fetchServersFromLocalCache(): Single<List<ServerEntity>>
 
 }

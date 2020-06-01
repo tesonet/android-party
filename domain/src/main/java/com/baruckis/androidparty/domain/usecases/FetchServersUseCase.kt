@@ -19,29 +19,37 @@ package com.baruckis.androidparty.domain.usecases
 import com.baruckis.androidparty.domain.entity.ServerEntity
 import com.baruckis.androidparty.domain.qualifiers.Background
 import com.baruckis.androidparty.domain.qualifiers.Foreground
-import com.baruckis.androidparty.domain.repository.MainRepository
+import com.baruckis.androidparty.domain.repository.DataRepository
 import com.baruckis.androidparty.domain.usecases.base.SingleUseCase
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import javax.inject.Inject
 
 class FetchServersUseCase @Inject constructor(
-    private val mainRepository: MainRepository,
+    private val dataRepository: DataRepository,
     @Background backgroundScheduler: Scheduler,
     @Foreground foregroundScheduler: Scheduler
-) : SingleUseCase<List<ServerEntity>, FetchServersUseCase.DataSource>(
+) : SingleUseCase<List<ServerEntity>, FetchServersUseCase.Params>(
     backgroundScheduler,
     foregroundScheduler
 ) {
 
-    override fun buildUseCaseSingle(params: DataSource?): Single<List<ServerEntity>> {
-        if (params == null) throw IllegalArgumentException("Params can't be null!")
-        return when (params) {
+    override fun buildUseCaseSingle(params: Params?): Single<List<ServerEntity>> {
+        requireNotNull(params) { "Params can't be null!" }
+        return when (params.dataSource) {
             DataSource.LOCAL -> {
-                mainRepository.fetchServersFromLocalCache()
+                dataRepository.fetchServersFromLocalCache()
             }
             DataSource.REMOTE -> {
-                mainRepository.fetchServersFromRemoteApiSaveToDb()
+                dataRepository.fetchServersFromRemoteApiSaveToDb()
+            }
+        }
+    }
+
+    data class Params constructor(val dataSource: DataSource) {
+        companion object {
+            fun dataSource(dataSource: DataSource): Params {
+                return Params(dataSource)
             }
         }
     }

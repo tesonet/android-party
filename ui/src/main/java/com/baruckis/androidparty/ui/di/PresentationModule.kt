@@ -18,11 +18,13 @@ package com.baruckis.androidparty.ui.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.baruckis.androidparty.presentation.CoroutineContextProvider
 import com.baruckis.androidparty.presentation.launcher.LauncherViewModel
 import com.baruckis.androidparty.presentation.login.LoginViewModel
 import com.baruckis.androidparty.presentation.main.MainViewModel
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.multibindings.IntoMap
 
 /**
@@ -30,6 +32,11 @@ import dagger.multibindings.IntoMap
  */
 @Module
 abstract class PresentationModule {
+
+    companion object {
+        @Provides
+        fun provideCoroutineContextProvider(): CoroutineContextProvider = CoroutineContextProvider()
+    }
 
     // We'd like to take this implementation of the ViewModel class and make it available
     // in an injectable map with LoginViewModel::class as a key to that map.
@@ -57,4 +64,5 @@ abstract class PresentationModule {
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
+
 }

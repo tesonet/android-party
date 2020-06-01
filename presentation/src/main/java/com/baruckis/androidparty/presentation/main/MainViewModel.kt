@@ -19,20 +19,22 @@ package com.baruckis.androidparty.presentation.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.baruckis.androidparty.domain.entity.ServerEntity
 import com.baruckis.androidparty.domain.usecases.FetchServersUseCase
 import com.baruckis.androidparty.domain.usecases.LogoutUseCase
+import com.baruckis.androidparty.presentation.CoroutineContextProvider
 import com.baruckis.androidparty.presentation.mapper.ServerPresentationMapper
 import com.baruckis.androidparty.presentation.model.ServerPresentation
 import com.baruckis.androidparty.presentation.state.Resource
 import com.baruckis.androidparty.presentation.state.Status
 import io.reactivex.observers.DisposableSingleObserver
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
+    private val coroutineContextProvider: CoroutineContextProvider,
     private val logoutUseCase: LogoutUseCase,
     private val fetchServersUseCase: FetchServersUseCase,
     private val serverPresentationMapper: ServerPresentationMapper
@@ -48,18 +50,18 @@ class MainViewModel @Inject constructor(
     fun fetchServersLocally() {
         fetchServersUseCase.execute(
             GetServersSubscriber(),
-            FetchServersUseCase.DataSource.LOCAL
+            FetchServersUseCase.Params.dataSource(FetchServersUseCase.DataSource.LOCAL)
         )
     }
 
     fun fetchServersRemotely(delayTime: Long = DELAY) {
         _serversResource.postValue(Resource(Status.LOADING, null, null))
 
-        GlobalScope.launch {
+        viewModelScope.launch(coroutineContextProvider.main) {
             delay(delayTime)
             fetchServersUseCase.execute(
                 GetServersSubscriber(),
-                FetchServersUseCase.DataSource.REMOTE
+                FetchServersUseCase.Params.dataSource(FetchServersUseCase.DataSource.REMOTE)
             )
         }
 

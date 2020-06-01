@@ -42,6 +42,7 @@ buildscript {
         okhttp_version = '4.7.2'                    // OkHttp.
         recyclerview_version = '1.1.0'              // RecyclerView.
         retrofit_version = '2.9.0'                  // Retrofit.
+        robolectric_version = '4.3.1'               // Robolectric.
         room_version = '2.2.5'                      // Room.
         rx_android_version = '2.1.1'                // RxAndroid.
         rx_java_version = '2.2.19'                  // RxJava.
@@ -49,6 +50,7 @@ buildscript {
         swipe_refresh_layout_version = '1.0.0'      // SwipeRefreshLayout
         material_version = '1.1.0'                  // Material Components.
         mockito_version = '3.3.3'                   // Mockito.
+        test_core_version = '1.2.0'                 // AndroidX Test Library.
 
 
         domainDependencies = [
@@ -101,12 +103,16 @@ buildscript {
         ]
 
         localTestDependencies = [
+                archTesting: "androidx.arch.core:core-testing:${arch_testing}",
                 kotlinJUnit: "org.jetbrains.kotlin:kotlin-test-junit:${kotlin_version}",
-                mockito    : "org.mockito:mockito-core:${mockito_version}"
+                mockito    : "org.mockito:mockito-core:${mockito_version}",
+                robolectric: "org.robolectric:robolectric:${robolectric_version}",
+                testCore   : "androidx.test:core:${test_core_version}"
         ]
 
         presentationDependencies = [
                 coroutines         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutines_version}",
+                coroutinesViewModel: "androidx.lifecycle:lifecycle-viewmodel-ktx:${lifecycle_version}",
                 javaxInject        : "javax.inject:javax.inject:${javax_inject_version}",
                 kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}",
                 rxKotlin           : "io.reactivex.rxjava2:rxkotlin:${rx_kotlin_version}",
@@ -114,9 +120,10 @@ buildscript {
         ]
 
         presentationTestDependencies = [
-                archTesting: "androidx.arch.core:core-testing:${arch_testing}",
-                kotlinJUnit: "org.jetbrains.kotlin:kotlin-test-junit:${kotlin_version}",
-                mockito    : "org.mockito:mockito-core:${mockito_version}"
+                archTesting   : "androidx.arch.core:core-testing:${arch_testing}",
+                coroutinesTest: "org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutines_version}",
+                kotlinJUnit   : "org.jetbrains.kotlin:kotlin-test-junit:${kotlin_version}",
+                mockito       : "org.mockito:mockito-core:${mockito_version}"
         ]
 
         uiDependencies = [

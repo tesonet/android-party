@@ -16,28 +16,29 @@
 
 package com.baruckis.androidparty.remote.mapper
 
-import com.baruckis.androidparty.data.model.TokenData
+import com.baruckis.androidparty.data.model.ServerData
 import com.baruckis.androidparty.remote.RemoteTestDataFactory
-import com.baruckis.androidparty.remote.model.ResponseToken
+import com.baruckis.androidparty.remote.model.ResponseServer
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class ResponseTokenMapperTest {
+class ResponseServerMapperTest {
 
     private val mapper =
-        ResponseTokenMapper()
+        ResponseServerMapper()
 
     @Test
     fun mapFromRemote() {
 
-        val remoteModel = RemoteTestDataFactory.createResponseToken()
+        val remoteModel = RemoteTestDataFactory.createResponseServer()
         val dataModel = mapper.mapFromRemote(remoteModel)
 
         assertMapsDataCorrectly(remoteModel, dataModel)
     }
 
-    private fun assertMapsDataCorrectly(remoteModel: ResponseToken, dataModel: TokenData) {
-        assertEquals(remoteModel.token, dataModel.token)
+    private fun assertMapsDataCorrectly(remoteModel: ResponseServer, dataModel: ServerData) {
+        assertEquals(remoteModel.name, dataModel.name)
+        assertEquals(remoteModel.distance, dataModel.distance)
     }
 
 }

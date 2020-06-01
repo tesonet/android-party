@@ -14,20 +14,15 @@
  * limitations under the License.
  */
 
-package com.baruckis.androidparty.local
+package com.baruckis.androidparty.presentation
 
-import org.junit.Test
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlin.coroutines.CoroutineContext
 
-import org.junit.Assert.*
-
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
-class ExampleUnitTest {
-    @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
-    }
+@ExperimentalCoroutinesApi
+class TestCoroutineContextProvider : CoroutineContextProvider() {
+    val testCoroutineDispatcher = TestCoroutineDispatcher()
+    override val main: CoroutineContext = testCoroutineDispatcher
+    override val io: CoroutineContext = testCoroutineDispatcher
 }

@@ -49,6 +49,7 @@ dependencies {
     implementation project(':domain')
 
     implementation presentationDependencies.coroutines
+    implementation presentationDependencies.coroutinesViewModel
     implementation presentationDependencies.javaxInject
     implementation presentationDependencies.kotlin
     implementation presentationDependencies.rxKotlin
@@ -57,5 +58,7 @@ dependencies {
     testImplementation presentationTestDependencies.archTesting
     testImplementation presentationTestDependencies.kotlinJUnit
     testImplementation presentationTestDependencies.mockito
+
+    testImplementation presentationTestDependencies.coroutinesTest
 
 }

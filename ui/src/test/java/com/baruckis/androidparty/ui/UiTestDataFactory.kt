@@ -14,17 +14,16 @@
  * limitations under the License.
  */
 
-package com.baruckis.androidparty.ui.di
+package com.baruckis.androidparty.ui
 
-import com.baruckis.androidparty.data.repository.DataRepositoryImpl
-import com.baruckis.androidparty.domain.repository.DataRepository
-import dagger.Binds
-import dagger.Module
+import com.baruckis.androidparty.presentation.model.LoginPresentation
 
-@Module
-abstract class DataModule {
+object UiTestDataFactory {
 
-    @Binds
-    abstract fun bindDataRepository(dataRepository: DataRepositoryImpl): DataRepository
+    private const val USERNAME = "abc"
+
+    fun createLoginPresentation(): LoginPresentation {
+        return LoginPresentation(USERNAME)
+    }
 
 }

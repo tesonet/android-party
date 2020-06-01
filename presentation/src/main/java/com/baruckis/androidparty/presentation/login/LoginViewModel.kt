@@ -19,10 +19,12 @@ package com.baruckis.androidparty.presentation.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.baruckis.androidparty.domain.entity.LoggedInUserEntity
 import com.baruckis.androidparty.domain.entity.ServerEntity
 import com.baruckis.androidparty.domain.usecases.FetchServersUseCase
 import com.baruckis.androidparty.domain.usecases.LoginUseCase
+import com.baruckis.androidparty.presentation.CoroutineContextProvider
 import com.baruckis.androidparty.presentation.mapper.LoginPresentationMapper
 import com.baruckis.androidparty.presentation.mapper.ServerPresentationMapper
 import com.baruckis.androidparty.presentation.model.LoginPresentation
@@ -30,17 +32,19 @@ import com.baruckis.androidparty.presentation.model.ServerPresentation
 import com.baruckis.androidparty.presentation.state.Resource
 import com.baruckis.androidparty.presentation.state.Status
 import io.reactivex.observers.DisposableSingleObserver
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(
+    coroutineContextProvider: CoroutineContextProvider,
     private val loginUseCase: LoginUseCase,
     private val fetchServersUseCase: FetchServersUseCase,
     private val loginPresentationMapper: LoginPresentationMapper,
     private val serverPresentationMapper: ServerPresentationMapper
 ) : ViewModel() {
+
+    private val coroutineContext = coroutineContextProvider.main
 
     private val _loginResource = MutableLiveData<Resource<LoginPresentation>>()
     val loginResource: LiveData<Resource<LoginPresentation>> = _loginResource
@@ -59,8 +63,9 @@ class LoginViewModel @Inject constructor(
         this.username = username
         this.password = password
 
-        // Start a coroutine
-        GlobalScope.launch {
+        // Start a coroutine.
+        // Coroutine that will be canceled when the ViewModel is cleared.
+        viewModelScope.launch(coroutineContext) {
             delay(delayTime)
             // do something after time delay
             loginUseCase.execute(
@@ -77,11 +82,11 @@ class LoginViewModel @Inject constructor(
     fun fetchServersRemotely(delayTime: Long = DELAY) {
         _serversResource.postValue(Resource(Status.LOADING, null, null))
 
-        GlobalScope.launch {
+        viewModelScope.launch(coroutineContext) {
             delay(delayTime)
             fetchServersUseCase.execute(
                 GetServersSubscriber(),
-                FetchServersUseCase.DataSource.REMOTE
+                FetchServersUseCase.Params.dataSource(FetchServersUseCase.DataSource.REMOTE)
             )
         }
 

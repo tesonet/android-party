@@ -17,19 +17,19 @@
 package com.baruckis.androidparty.data.mapper
 
 import com.baruckis.androidparty.data.DataTestDataFactory
-import com.baruckis.androidparty.data.model.LoggedInUserData
-import com.baruckis.androidparty.domain.entity.LoggedInUserEntity
+import com.baruckis.androidparty.data.model.ServerData
+import com.baruckis.androidparty.domain.entity.ServerEntity
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class LoggedInUserMapperTest {
+class ServerMapperTest {
 
-    private val mapper = LoggedInUserMapper()
+    private val mapper = ServerMapper()
 
     @Test
     fun mapFromData() {
 
-        val dataModel = DataTestDataFactory.createLoggedInUserData()
+        val dataModel = DataTestDataFactory.createServerData()
         val domainEntity = mapper.mapFromData(dataModel)
 
         assertMapsDataCorrectly(dataModel, domainEntity)
@@ -38,18 +38,18 @@ class LoggedInUserMapperTest {
     @Test
     fun mapToData() {
 
-        val domainEntity = DataTestDataFactory.createLoggedInUserEntity()
+        val domainEntity = DataTestDataFactory.createServerEntity()
         val dataModel = mapper.mapToData(domainEntity)
 
         assertMapsDataCorrectly(dataModel, domainEntity)
     }
 
     private fun assertMapsDataCorrectly(
-        dataModel: LoggedInUserData,
-        domainEntity: LoggedInUserEntity
+        dataModel: ServerData,
+        domainEntity: ServerEntity
     ) {
-        assertEquals(dataModel.token, domainEntity.token)
-        assertEquals(dataModel.username, domainEntity.username)
+        assertEquals(dataModel.name, domainEntity.name)
+        assertEquals(dataModel.distance, domainEntity.distance)
     }
 
 }

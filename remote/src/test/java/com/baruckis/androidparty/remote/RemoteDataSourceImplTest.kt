@@ -16,10 +16,12 @@
 
 package com.baruckis.androidparty.remote
 
+import com.baruckis.androidparty.data.model.ServerData
 import com.baruckis.androidparty.data.model.TokenData
 import com.baruckis.androidparty.remote.api.TesonetApiService
 import com.baruckis.androidparty.remote.mapper.ResponseServerMapper
 import com.baruckis.androidparty.remote.mapper.ResponseTokenMapper
+import com.baruckis.androidparty.remote.model.ResponseServer
 import com.baruckis.androidparty.remote.model.ResponseToken
 import io.reactivex.Single
 import org.junit.Before
@@ -41,17 +43,17 @@ class RemoteDataSourceImplTest {
         )
 
     private val responseToken =
-        TestDataFactory.createResponseToken()
+        RemoteTestDataFactory.createResponseToken()
     private val tokenData =
-        TestDataFactory.createTokenData()
+        RemoteTestDataFactory.createTokenData()
 
     private val requestUser =
-        TestDataFactory.createRequestBody()
+        RemoteTestDataFactory.createRequestBody()
 
     @Before
     fun setup() {
         stubSendAuthorization(Single.just(responseToken))
-        stubMapFrom(responseToken, tokenData)
+        stubTokenMapperMapFromRemote(responseToken, tokenData)
     }
 
     @Test
@@ -68,6 +70,30 @@ class RemoteDataSourceImplTest {
         testObserver.assertValue(tokenData)
     }
 
+    @Test
+    fun getServersCompletes() {
+        stubApiServiceGetServers(Single.just(listOf(RemoteTestDataFactory.createResponseServer())))
+        stubApiResponseServerMapperMapFromData(
+            MockitoHelper.anyObject(),
+            RemoteTestDataFactory.createServerData()
+        )
+
+        val testObserver = remoteDataSource.getServers().test()
+        testObserver.assertComplete()
+    }
+
+    @Test
+    fun getServersReturnsData() {
+        val responseServer = RemoteTestDataFactory.createResponseServer()
+        val serverData = RemoteTestDataFactory.createServerData()
+
+        stubApiServiceGetServers(Single.just(listOf(responseServer)))
+        stubApiResponseServerMapperMapFromData(responseServer, serverData)
+
+        val testObserver = remoteDataSource.getServers().test()
+        testObserver.assertValue(listOf(serverData))
+    }
+
     private fun stubSendAuthorization(
         response: Single<ResponseToken>
     ) {
@@ -75,9 +101,32 @@ class RemoteDataSourceImplTest {
             .thenReturn(response)
     }
 
-    private fun stubMapFrom(remoteModel: ResponseToken, dataModel: TokenData) {
+    private fun stubTokenMapperMapFromRemote(remoteModel: ResponseToken, dataModel: TokenData) {
         Mockito.`when`(apiResponseTokenMapper.mapFromRemote(remoteModel))
             .thenReturn(dataModel)
+    }
+
+    private fun stubApiServiceGetServers(single: Single<List<ResponseServer>>) {
+        Mockito.`when`(apiService.getServers()).thenReturn(single)
+    }
+
+    private fun stubApiResponseServerMapperMapFromData(
+        remoteModel: ResponseServer,
+        dataModel: ServerData
+    ) {
+        Mockito.`when`(apiResponseServerMapper.mapFromRemote(remoteModel))
+            .thenReturn(dataModel)
+    }
+
+    // Matches any object, excluding nulls.
+    object MockitoHelper {
+        fun <T> anyObject(): T {
+            Mockito.any<T>()
+            return uninitialized()
+        }
+
+        @Suppress("UNCHECKED_CAST")
+        fun <T> uninitialized(): T = null as T
     }
 
 }

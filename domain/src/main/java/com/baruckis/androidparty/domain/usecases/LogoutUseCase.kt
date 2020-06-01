@@ -16,16 +16,16 @@
 
 package com.baruckis.androidparty.domain.usecases
 
-import com.baruckis.androidparty.domain.repository.MainRepository
+import com.baruckis.androidparty.domain.repository.DataRepository
 import com.baruckis.androidparty.domain.usecases.base.SynchronousUseCase
 import javax.inject.Inject
 
 class LogoutUseCase @Inject constructor(
-    private val mainRepository: MainRepository
+    private val dataRepository: DataRepository
 ) : SynchronousUseCase<Unit, Any> {
 
     override fun execute(params: Any?) {
-        return mainRepository.logout()
+        return dataRepository.logout()
     }
 
 }

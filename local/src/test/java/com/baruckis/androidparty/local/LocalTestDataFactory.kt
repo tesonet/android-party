@@ -14,21 +14,22 @@
  * limitations under the License.
  */
 
-package com.baruckis.androidparty.domain
+package com.baruckis.androidparty.local
 
-import com.baruckis.androidparty.domain.entity.LoggedInUserEntity
+import com.baruckis.androidparty.data.model.ServerData
+import com.baruckis.androidparty.local.model.ServerLocal
 
-object TestDataFactory {
+object LocalTestDataFactory {
 
-    private const val TOKEN = "f9731b590611a5a9377fbd02f247fcdf"
-    private const val USERNAME = "abc"
-    private const val PASSWORD = "def"
+    private const val SERVER_NAME = "Lithuania #85"
+    private const val SERVER_DISTANCE = 1407
 
-    fun createLoggedInUserEntity(): LoggedInUserEntity {
-        return LoggedInUserEntity(TOKEN, USERNAME)
+    fun createServerLocal(): ServerLocal {
+        return ServerLocal(serverId = 1, name = SERVER_NAME, distance = SERVER_DISTANCE)
     }
 
-    val username = USERNAME
-    val password = PASSWORD
+    fun createServerData(): ServerData {
+        return ServerData(SERVER_NAME, SERVER_DISTANCE)
+    }
 
 }

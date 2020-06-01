@@ -14,16 +14,13 @@
  * limitations under the License.
  */
 
-package com.baruckis.androidparty.ui
+package com.baruckis.androidparty.presentation
 
-import com.baruckis.androidparty.presentation.model.LoginPresentation
+import kotlinx.coroutines.Dispatchers
+import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
-object TestDataFactory {
-
-    private const val USERNAME = "abc"
-
-    fun createLoginPresentation(): LoginPresentation {
-        return LoginPresentation(USERNAME)
-    }
-
+open class CoroutineContextProvider @Inject constructor() {
+    open val main: CoroutineContext by lazy { Dispatchers.Main }
+    open val io: CoroutineContext by lazy { Dispatchers.IO }
 }

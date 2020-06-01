@@ -17,17 +17,17 @@
 package com.baruckis.androidparty.domain.usecases
 
 import com.baruckis.androidparty.domain.entity.LoggedInUserEntity
-import com.baruckis.androidparty.domain.repository.MainRepository
+import com.baruckis.androidparty.domain.repository.DataRepository
 import com.baruckis.androidparty.domain.usecases.base.SynchronousUseCase
 import javax.inject.Inject
 
 
 class GetLoggedInUserUseCase @Inject constructor(
-    private val mainRepository: MainRepository
+    private val dataRepository: DataRepository
 ) : SynchronousUseCase<LoggedInUserEntity?, Any> {
 
     override fun execute(params: Any?): LoggedInUserEntity? {
-        return mainRepository.getLoggedInUser()
+        return dataRepository.getLoggedInUser()
     }
 
 }
