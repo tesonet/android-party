@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">testio</string>
+
+    <string name="do_login">Login</string>
+    <string name="do_logout">Logout</string>
+
+    <string name="login_name">Username</string>
+    <string name="login_password">Password</string>
+
+    <string name="server_name">Server</string>
+    <string name="server_distance">Distance</string>
+    <string name="server_distance_value">%d km</string>
+</resources>
