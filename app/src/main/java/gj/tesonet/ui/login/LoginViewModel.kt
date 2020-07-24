@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import gj.tesonet.App
+import gj.tesonet.R
 import gj.tesonet.backend.Backend
 import gj.tesonet.data.Data
 import gj.tesonet.data.model.Server
@@ -13,10 +14,14 @@ import gj.tesonet.data.model.Token
 import gj.tesonet.data.model.User
 import gj.tesonet.ui.AppViewModel
 import gj.tesonet.ui.Message
+import gj.tesonet.ui.getString
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
+import java.lang.Exception
+import java.util.logging.Level
 
 class LoginViewModel(application: Application): AppViewModel(application) {
 
@@ -36,15 +41,28 @@ class LoginViewModel(application: Application): AppViewModel(application) {
     }
 
     fun login(name: String, password: String) {
+        if (name.isEmpty() || password.isEmpty()) {
+            _message.value = Message(getString(R.string.msg_missing_login_data), Level.WARNING)
+
+            return
+        }
+
         viewModelScope.launch {
             val user = User(name, password)
 
             withContext(Dispatchers.IO) {
-                app.backend.login(user)
+                try {
+                    app.backend.login(user)
+                } catch (e: Exception) {
+                    Timber.e(e)
+                    null
+                }
             }?.let {
                 app.user = user
                 _user.value = user
                 _token.value = it
+            } ?: run {
+                _message.value = Message(getString(R.string.msg_failed_login), Level.SEVERE)
             }
         }
     }

@@ -7,6 +7,9 @@
     <string name="login_name">Username</string>
     <string name="login_password">Password</string>
 
+    <string name="msg_missing_login_data">Username and Password required</string>
+    <string name="msg_failed_login">Login failed. Check credentials and try again</string>
+
     <string name="server_name">Server</string>
     <string name="server_distance">Distance</string>
     <string name="server_distance_value">%d km</string>

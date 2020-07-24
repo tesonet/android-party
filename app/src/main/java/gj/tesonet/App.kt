@@ -6,6 +6,7 @@ import android.net.ConnectivityManager
 import gj.tesonet.backend.Backend
 import gj.tesonet.data.Data
 import gj.tesonet.data.model.User
+import timber.log.Timber
 
 class App: Application() {
 
@@ -27,4 +28,11 @@ class App: Application() {
                 ?.activeNetworkInfo?.isConnected
             ?: false
 
+    override fun onCreate() {
+        super.onCreate()
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
+    }
 }

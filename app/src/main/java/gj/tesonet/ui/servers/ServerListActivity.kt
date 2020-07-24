@@ -11,10 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import gj.tesonet.R
+import gj.tesonet.ui.AppActivity
 import gj.tesonet.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_servers_list.*
 
-class ServerListActivity : AppCompatActivity() {
+class ServerListActivity : AppActivity() {
 
     private val adapter: ServerListAdapter by lazy {
         ServerListAdapter()
@@ -41,21 +42,10 @@ class ServerListActivity : AppCompatActivity() {
                 header.visibility = View.VISIBLE
             }
         }
-    }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item?.itemId == R.id.logout) {
-            LoginActivity.start(this)
-            finish()
+        model.message.observe(this) {
+            show(it)
         }
-
-        return super.onOptionsItemSelected(item)
     }
 
     companion object {

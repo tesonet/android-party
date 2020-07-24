@@ -1,6 +1,7 @@
 package gj.tesonet.ui
 
 import android.app.Application
+import androidx.annotation.StringRes
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -26,4 +27,8 @@ open class AppViewModel(application: Application): AndroidViewModel(application)
     protected val app: App
         get() = getApplication<App>()
 
+}
+
+inline fun AndroidViewModel.getString(@StringRes id: Int): String {
+    return getApplication<Application>().getString(id)
 }

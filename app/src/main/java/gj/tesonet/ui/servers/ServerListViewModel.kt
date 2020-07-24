@@ -13,6 +13,7 @@ import gj.tesonet.data.model.User
 import gj.tesonet.ui.AppViewModel
 import gj.tesonet.ui.Message
 import kotlinx.coroutines.*
+import timber.log.Timber
 
 class ServerListViewModel(application: Application): AppViewModel(application) {
 
@@ -29,7 +30,9 @@ class ServerListViewModel(application: Application): AppViewModel(application) {
         _servers.value = null
 
         viewModelScope.launch {
-            _servers.value = loadRemote()?.also { saveLocal(it) } ?: loadLocal()
+            _servers.value = loadRemote()?.also {
+                saveLocal(it)
+            } ?: loadLocal()
         }
     }
 
@@ -39,8 +42,13 @@ class ServerListViewModel(application: Application): AppViewModel(application) {
         val user = app.user ?: return null
 
         return withContext(Dispatchers.IO) {
-            val token = app.backend.login(user)
-            app.backend.getServers(token.bearer)
+            try {
+                val token = app.backend.login(user)
+                app.backend.getServers(token.bearer)
+            } catch (e: Exception) {
+                Timber.e(e)
+                null
+            }
         }
     }
 
