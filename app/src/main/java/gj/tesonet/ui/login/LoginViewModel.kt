@@ -54,7 +54,7 @@ class LoginViewModel(application: Application): AppViewModel(application) {
                 try {
                     app.backend.login(user)
                 } catch (e: Exception) {
-                    Timber.e(e)
+                    Timber.e(e, "login failed")
                     null
                 }
             }?.let {

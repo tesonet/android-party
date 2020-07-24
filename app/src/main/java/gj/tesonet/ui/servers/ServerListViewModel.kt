@@ -46,7 +46,7 @@ class ServerListViewModel(application: Application): AppViewModel(application) {
                 val token = app.backend.login(user)
                 app.backend.getServers(token.bearer)
             } catch (e: Exception) {
-                Timber.e(e)
+                Timber.e(e, "servers load failed")
                 null
             }
         }
