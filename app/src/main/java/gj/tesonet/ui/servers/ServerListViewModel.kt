@@ -1,17 +1,11 @@
 package gj.tesonet.ui.servers
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import gj.tesonet.App
-import gj.tesonet.backend.Backend
-import gj.tesonet.data.Data
 import gj.tesonet.data.model.Server
-import gj.tesonet.data.model.User
 import gj.tesonet.ui.AppViewModel
-import gj.tesonet.ui.Message
 import kotlinx.coroutines.*
 import timber.log.Timber
 
@@ -31,7 +25,9 @@ class ServerListViewModel(application: Application): AppViewModel(application) {
 
         viewModelScope.launch {
             _servers.value = loadRemote()?.also {
-                saveLocal(it)
+                launch {
+                    saveLocal(it)
+                }
             } ?: loadLocal()
         }
     }
@@ -43,6 +39,8 @@ class ServerListViewModel(application: Application): AppViewModel(application) {
 
         return withContext(Dispatchers.IO) {
             try {
+                // token might be saved after login into App
+                // but most likely it is short-lived so we login again
                 val token = app.backend.login(user)
                 app.backend.getServers(token.bearer)
             } catch (e: Exception) {
@@ -58,8 +56,8 @@ class ServerListViewModel(application: Application): AppViewModel(application) {
         }
     }
 
-    private suspend fun CoroutineScope.saveLocal(list: List<Server>) {
-        async(Dispatchers.IO) {
+    private suspend fun saveLocal(list: List<Server>) {
+        withContext(Dispatchers.IO) {
             app.data.servers().setAll(list)
         }
     }

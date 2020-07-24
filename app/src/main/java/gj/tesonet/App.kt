@@ -20,11 +20,8 @@ class App: Application() {
 
     var user: User? = if (BuildConfig.DEBUG) User("tesonet", "partyanimal") else null
 
-    private var _online: Boolean? = null
-
     val online: Boolean
-        get() = _online
-            ?: (getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager)
+        get() = (getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager)
                 ?.activeNetworkInfo?.isConnected
             ?: false
 

@@ -30,6 +30,7 @@
             android:id="@+id/name"
             android:imeOptions="actionDone"
             android:maxLines="1"
+            android:singleLine="true"
             android:hint="@string/login_name"
             android:layout_height="wrap_content"
             android:layout_width="match_parent" />
