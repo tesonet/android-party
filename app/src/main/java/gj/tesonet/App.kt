@@ -3,6 +3,7 @@ package gj.tesonet
 import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
+import androidx.annotation.VisibleForTesting
 import gj.tesonet.backend.Backend
 import gj.tesonet.data.Data
 import gj.tesonet.data.model.User
@@ -14,14 +15,18 @@ class App: Application() {
         Data.create(this)
     }
 
-    val backend: Backend by lazy {
-        Backend.create()
-    }
-
     var user: User? = if (BuildConfig.DEBUG) User("tesonet", "partyanimal") else null
 
-    val online: Boolean
-        get() = (getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager)
+    // fast way to mock network connectivity
+    private var _online: Boolean? = null
+
+    var online: Boolean
+        @VisibleForTesting
+        set(value) {
+            _online = value
+        }
+        get() = _online
+            ?: (getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager)
                 ?.activeNetworkInfo?.isConnected
             ?: false
 

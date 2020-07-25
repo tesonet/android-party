@@ -33,7 +33,8 @@
             android:singleLine="true"
             android:hint="@string/login_name"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent" />
+            android:layout_width="match_parent"
+            style="@style/EditText.Login" />
 
         <EditText
             android:id="@+id/password"

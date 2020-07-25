@@ -1,5 +1,6 @@
 package gj.tesonet.backend
 
+import androidx.annotation.VisibleForTesting
 import gj.tesonet.BuildConfig
 import gj.tesonet.data.model.Server
 import gj.tesonet.data.model.Token
@@ -20,7 +21,16 @@ interface Backend {
 
     companion object {
 
-        private const val BASE_URL = "https://playground.tesonet.lt/v1/"
+        // fast way to mock network server
+        private var _url: String? = null
+
+        var url: String
+            @VisibleForTesting
+            set(value) {
+                _url = value
+            }
+            get() = _url ?: "https://playground.tesonet.lt/v1/"
+
 
         fun create(): Backend {
             val builder = OkHttpClient.Builder()
@@ -33,7 +43,7 @@ interface Backend {
             val client = builder.build()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(url)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

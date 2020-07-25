@@ -6,13 +6,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
-import gj.tesonet.BuildConfig
 import gj.tesonet.R
-import gj.tesonet.ui.AppActivity
 import gj.tesonet.ui.servers.ServerListActivity
+import gj.tesonet.ui.show
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : AppActivity() {
+class LoginActivity : AppCompatActivity() {
 
     private val model: LoginViewModel by lazy {
         ViewModelProvider(this).get(LoginViewModel::class.java)
@@ -39,8 +38,10 @@ class LoginActivity : AppActivity() {
             password?.setText(it?.password)
         }
 
-        model.message.observe(this) {
-            show(it)
+        model.message.observe(this) { reference ->
+            reference.getAndSet(null)?.let { message ->
+                show(message)
+            }
         }
     }
 

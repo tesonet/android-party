@@ -9,13 +9,14 @@ import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import gj.tesonet.R
-import gj.tesonet.ui.AppActivity
 import gj.tesonet.ui.login.LoginActivity
+import gj.tesonet.ui.show
 import kotlinx.android.synthetic.main.activity_servers_list.*
 
-class ServerListActivity : AppActivity() {
+class ServerListActivity : AppCompatActivity() {
 
     private val adapter: ServerListAdapter by lazy {
         ServerListAdapter()
@@ -32,6 +33,13 @@ class ServerListActivity : AppActivity() {
 
         list.layoutManager = LinearLayoutManager(this)
         list.adapter = adapter
+        list.addItemDecoration(
+            DividerItemDecoration(this, DividerItemDecoration.VERTICAL).apply {
+                getDrawable(R.drawable.divider)?.let {
+                    setDrawable(it)
+                }
+            }
+        )
 
         model.servers.observe(this) { servers ->
             adapter.list = servers
@@ -43,9 +51,28 @@ class ServerListActivity : AppActivity() {
             }
         }
 
-        model.message.observe(this) {
-            show(it)
+        model.message.observe(this) { reference ->
+            reference.getAndSet(null)?.let { message ->
+                show(message)
+            }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_servers, menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item?.itemId == R.id.logout) {
+            model.logout()
+
+            LoginActivity.start(this)
+            finish()
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">testio</string>
 
-    <string name="do_login">Login</string>
+    <string name="do_login">Log In</string>
     <string name="do_logout">Logout</string>
 
     <string name="login_name">Username</string>

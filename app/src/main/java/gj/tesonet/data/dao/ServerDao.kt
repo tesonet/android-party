@@ -6,6 +6,9 @@ import gj.tesonet.data.model.Server
 @Dao
 interface ServerDao {
 
+    @Query("SELECT count(*) FROM server")
+    suspend fun count(): Long
+
     @Query("SELECT * FROM server")
     suspend fun getAll(): List<Server>
 

@@ -3,4 +3,19 @@
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
     </style>
 
+    <style name="EditText" parent="Base.Widget.AppCompat.EditText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">100dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:background">#ffffff</item>
+    </style>
+
+    <style name="EditText.Login">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">100dp</item>
+    </style>
+
 </resources>
