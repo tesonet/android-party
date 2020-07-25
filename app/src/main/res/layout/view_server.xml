@@ -2,17 +2,20 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/container"
+    style="@style/ListRow"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
+        style="@style/ListRowCell"
         android:id="@+id/name"
         android:layout_height="wrap_content"
         android:layout_width="0dp"
         android:layout_weight="0.7" />
 
     <TextView
+        style="@style/ListRowCell"
         android:id="@+id/distance"
         android:layout_height="wrap_content"
         android:layout_width="0dp"

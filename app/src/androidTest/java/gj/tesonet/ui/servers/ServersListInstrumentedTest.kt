@@ -16,6 +16,7 @@ import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okhttp3.mockwebserver.RecordedRequest
+import org.hamcrest.core.AllOf.allOf
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -137,6 +138,25 @@ class ServersListInstrumentedTest {
         onView(withId(R.id.list)).check(matches(hasChildCount(2)))
         onView(withText(servers[0].name)).check(matches(isDisplayed()))
         onView(withText(servers[1].name)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun logout() {
+        mockServers(emptyList())
+
+        lateinit var app: App
+        val scenario = launchActivity<ServerListActivity>().onActivity { activity ->
+            app = activity.application as App
+        }
+
+        onView(withId(R.id.logout)).perform(ViewActions.click())
+
+        waitFor(withId(R.id.password), matches(isDisplayed()))
+
+        assertNull(app.user)
+
+        onView(allOf(withId(R.id.name), withText("tesonet"))).check(matches(isDisplayed()))
+        onView(allOf(withId(R.id.password), withText(""))).check(matches(isDisplayed()))
     }
 
     private fun mockServers(list: List<Server>?) {

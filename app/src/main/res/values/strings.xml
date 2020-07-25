@@ -9,6 +9,7 @@
 
     <string name="msg_missing_login_data">Username and Password required</string>
     <string name="msg_failed_login">Login failed. Check credentials and try again</string>
+    <string name="msg_loading_list">Fetching the list...</string>
 
     <string name="server_name">Server</string>
     <string name="server_distance">Distance</string>

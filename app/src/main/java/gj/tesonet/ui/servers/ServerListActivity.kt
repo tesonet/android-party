@@ -2,6 +2,7 @@ package gj.tesonet.ui.servers
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -15,6 +16,7 @@ import gj.tesonet.R
 import gj.tesonet.ui.login.LoginActivity
 import gj.tesonet.ui.show
 import kotlinx.android.synthetic.main.activity_servers_list.*
+import kotlinx.android.synthetic.main.toolbar.view.*
 
 class ServerListActivity : AppCompatActivity() {
 
@@ -31,23 +33,23 @@ class ServerListActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_servers_list)
 
+        toolbar.logout.setOnClickListener {
+            model.logout()
+
+            LoginActivity.start(this)
+            finish()
+        }
+
         list.layoutManager = LinearLayoutManager(this)
         list.adapter = adapter
-        list.addItemDecoration(
-            DividerItemDecoration(this, DividerItemDecoration.VERTICAL).apply {
-                getDrawable(R.drawable.divider)?.let {
-                    setDrawable(it)
-                }
-            }
-        )
+        list.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
 
         model.servers.observe(this) { servers ->
             adapter.list = servers
 
             if (servers != null) {
-                background.visibility = View.GONE
-                list.visibility = View.VISIBLE
-                header.visibility = View.VISIBLE
+                listContainer.visibility = View.VISIBLE
+                progressContainer.visibility = View.GONE
             }
         }
 
@@ -56,23 +58,6 @@ class ServerListActivity : AppCompatActivity() {
                 show(message)
             }
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_servers, menu)
-
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item?.itemId == R.id.logout) {
-            model.logout()
-
-            LoginActivity.start(this)
-            finish()
-        }
-
-        return super.onOptionsItemSelected(item)
     }
 
     companion object {
