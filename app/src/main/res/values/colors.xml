@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="toolbar">#E8E7E7</color>
+
+    <color name="progress">#FFFFFF</color>
+    <color name="progressLight">#6AFFFFFF</color>
+    <color name="progressLighter">#0AFFFFFF</color>
+
+    <color name="listDark">#86E8E7E7</color>
+    <color name="listLight">#36FAFAFA</color>
+
+    <color name="inputBackground">#FFFFFF</color>
+
+    <color name="buttonBackground">#8BC34A</color>
+    <color name="buttonText">#FFFFFF</color>
+
+</resources>

@@ -1,1 +1,36 @@
+# built application files
+# Created by .ignore support plugin (hsz.mobi)
+### Android template
+
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+
+# Gradle files
+.gradle/
+build/
+
+
+
+*.iml
+
+
+# OS
+app/build/*
+
+
+# Crashlytics
+app/src/main/assets/crashlytics-build.properties
+app/src/main/res/values/com_crashlytics_export_strings.xml
+
+#Mac OS Magic files
 .DS_Store
+
+#Generated with every build.
+/manifest-merger-release-report.txt
+.idea
+app/com.crashlytics.settings.json
+
+#does not sync captures
+captures/

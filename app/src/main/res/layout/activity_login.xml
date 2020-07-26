@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:stateListAnimator="@null">
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:src="@drawable/ic_logo_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/inputContainer"
+        android:paddingBottom="50dp"/>
+
+    <LinearLayout
+        android:id="@+id/inputContainer"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:drawableStart="@drawable/ic_username"
+            android:layout_marginBottom="12dp"
+            android:id="@+id/name"
+            android:hint="@string/login_name"
+            style="@style/EditText" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:drawableStart="@drawable/ic_password"
+            android:layout_marginBottom="12dp"
+            android:inputType="textPassword"
+            android:hint="@string/login_password"
+            style="@style/EditText" />
+
+        <Button
+            android:id="@+id/login"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/do_login"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            style="@style/Button"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
