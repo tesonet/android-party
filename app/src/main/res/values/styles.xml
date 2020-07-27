@@ -1,0 +1,36 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:fontFamily">@font/roboto_light</item>
+    </style>
+
+    <style name="loginEditText" parent="@android:style/Widget.EditText">
+        <item name="android:textColor">@color/colorPrimaryGrey</item>
+        <item name="android:textSize">@dimen/text_login</item>
+        <item name="android:background">@drawable/rounded_corners_white_bg</item>
+    </style>
+
+    <style name="loginButton" parent="@android:style/Widget.Button">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/text_login</item>
+        <item name="android:background">@drawable/rounded_corners_green_bg</item>
+    </style>
+
+    <style name="listItemTextView" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorPrimaryDarkGrey</item>
+        <item name="android:textSize">@dimen/text_list_item</item>
+    </style>
+
+    <style name="listHeaderTextView" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorPrimaryGrey</item>
+        <item name="android:textSize">@dimen/text_header</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="loadingTextView" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">@dimen/text_loading</item>
+    </style>
+
+</resources>
