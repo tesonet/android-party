@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#fff</color>
+    <color name="colorLogin">#9df533</color>
+    <color name="colorToolbar">#e4e7e9</color>
+    <color name="colorPrimaryText">#fff</color>
+    <color name="colorPrimaryGrey">#999</color>
+    <color name="colorPrimaryDarkGrey">#666</color>
+    <color name="colorGradientStart">#fefefe</color>
+    <color name="colorGradientEnd">#e4e7e9</color>
+</resources>

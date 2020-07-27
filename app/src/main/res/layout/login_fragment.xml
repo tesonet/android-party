@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bgtestio"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/logo_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <EditText
+        android:id="@+id/username"
+        style="@style/loginEditText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/login_height"
+        android:layout_marginStart="@dimen/login_horizontal_margin"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="@dimen/login_horizontal_margin"
+        android:hint="@string/prompt_username"
+        android:inputType="text"
+        android:paddingStart="@dimen/edit_text_padding_start"
+        android:paddingEnd="@dimen/edit_text_padding_end"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        tools:ignore="Autofill" />
+
+    <ImageView
+        android:id="@+id/username_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_ico_username"
+        android:layout_marginStart="@dimen/edit_text_image_margin"
+        app:layout_constraintStart_toStartOf="@+id/username"
+        app:layout_constraintBottom_toBottomOf="@+id/username"
+        app:layout_constraintTop_toTopOf="@+id/username"
+        tools:ignore="ContentDescription" />
+
+    <EditText
+        android:id="@+id/password"
+        style="@style/loginEditText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/login_height"
+        android:layout_marginStart="@dimen/login_horizontal_margin"
+        android:layout_marginTop="@dimen/login_vertical_margin"
+        android:layout_marginEnd="@dimen/login_horizontal_margin"
+        android:hint="@string/prompt_password"
+        android:inputType="textPassword"
+        android:paddingStart="@dimen/edit_text_padding_start"
+        android:paddingEnd="@dimen/edit_text_padding_end"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        tools:ignore="Autofill" />
+
+    <ImageView
+        android:id="@+id/password_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/edit_text_image_margin"
+        android:src="@drawable/ic_ico_lock"
+        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintBottom_toBottomOf="@+id/password"
+        app:layout_constraintTop_toTopOf="@+id/password"
+        tools:ignore="ContentDescription" />
+
+    <Button
+        android:id="@+id/login"
+        style="@style/loginButton"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/login_height"
+        android:layout_gravity="start"
+        android:layout_marginStart="@dimen/login_horizontal_margin"
+        android:layout_marginTop="@dimen/login_vertical_margin"
+        android:layout_marginEnd="@dimen/login_horizontal_margin"
+        android:text="@string/action_log_in"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        tools:ignore="MissingPrefix" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

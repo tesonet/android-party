@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TesonetFunparty</string>
+    <string name="prompt_username">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_log_in">Log In</string>
+    <string name="wrong_credentials">Username or password is incorrect</string>
+    <string name="validation_error">All fields have to be filled</string>
+    <string name="fetching">Fetching the list…</string>
+    <string name="server">Server</string>
+    <string name="server_distance">Distance</string>
+    <string name="error">Operation was unsuccessful… something went wrong</string>
+
+</resources>
