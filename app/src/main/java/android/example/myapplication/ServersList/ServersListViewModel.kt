@@ -20,18 +20,23 @@ class ServersListViewModel : ViewModel() {
     val viewState: LiveData<ServersListState>
         get()=_viewState
 
-    private val _stateEvent: MutableLiveData<ServersListStateEvent> = MutableLiveData()
+    private val _stateEvent: MutableLiveData<ServersListStateEvent> =MutableLiveData()
 
-   /* val dataState: LiveData<DataState<ServersListState>> = Transformations
-        .switchMap(_stateEvent) {stateEvent ->
-            stateEvent?.let {
-                handleStateEvent(stateEvent)
+    fun dataState(token: String): LiveData<DataState<ServersListState>> {
+        return Transformations
+            .switchMap(_stateEvent) { stateEvent ->
+                stateEvent?.let {
+                    handleStateEvent(stateEvent, token)
+                }
             }
-        } */
+    }
 
-  /*  private fun handleStateEvent(stateEvent: ServersListStateEvent):LiveData<DataState<ServersListState>>? {
+    private fun handleStateEvent(
+        stateEvent: ServersListStateEvent,
+        token: String
+    ): LiveData<DataState<ServersListState>>? {
         println("DEBUG: new state event detected $stateEvent")
-         return when (stateEvent) {
+        return when (stateEvent) {
             is ServersListStateEvent.GetServersEvent -> {
                 ServersRepository.getServers(token)
             }
@@ -39,7 +44,7 @@ class ServersListViewModel : ViewModel() {
                 AbsentLiveData.create()
             }
         }
-    } */
+    }
 
     private fun getCurrentViewStateOrNew(): ServersListState {
         return viewState.value?.let {
@@ -48,17 +53,16 @@ class ServersListViewModel : ViewModel() {
     }
 
     fun setServersListData(servers: List<Server>) {
-        val update = getCurrentViewStateOrNew()
+        val update=getCurrentViewStateOrNew()
         update.servers=servers
         _viewState.value=update
     }
 
-    fun setStateEvent(event:ServersListStateEvent){
-        _stateEvent.value = event
+    fun setStateEvent(event: ServersListStateEvent) {
+        _stateEvent.value=event
     }
 
     //For testing API response:
-
     fun testApiResponse(token: String): LiveData<GenericApiResponse<List<Server>>> {
         return ServersRepository.testApiResponse(token)
     }

@@ -1,12 +1,13 @@
 package android.example.myapplication.network
 
+import android.example.myapplication.util.Constants
 import android.example.myapplication.util.LiveDataCallAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitBuilder {
 
-    private const val BASE_URL="https://playground.tesonet.lt"
+    private const val BASE_URL= Constants.BASE_URL
 
     private val retrofitBuilder: Retrofit.Builder by lazy {
         Retrofit.Builder()
@@ -15,7 +16,7 @@ object RetrofitBuilder {
             .addConverterFactory(GsonConverterFactory.create())
     }
 
-    val apiService: ServersApiService by lazy{
+    val apiService: ServersApiService by lazy {
         retrofitBuilder
             .build()
             .create(ServersApiService::class.java)
