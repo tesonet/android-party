@@ -3,9 +3,11 @@ package android.example.myapplication.ServersList
 import android.example.myapplication.ServersList.state.ServersListState
 import android.example.myapplication.ServersList.state.ServersListStateEvent
 import android.example.myapplication.model.Server
+import android.example.myapplication.network.RetrofitBuilder
 import android.example.myapplication.repository.ServersRepository
 import android.example.myapplication.util.AbsentLiveData
 import android.example.myapplication.util.DataState
+import android.example.myapplication.util.GenericApiResponse
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -18,26 +20,26 @@ class ServersListViewModel : ViewModel() {
     val viewState: LiveData<ServersListState>
         get()=_viewState
 
-    private val _stateEvent: MutableLiveData<ServersListStateEvent> =MutableLiveData()
+    private val _stateEvent: MutableLiveData<ServersListStateEvent> = MutableLiveData()
 
-    val dataState: LiveData<DataState<ServersListState>> = Transformations
-        .switchMap(_stateEvent){stateEvent ->
+   /* val dataState: LiveData<DataState<ServersListState>> = Transformations
+        .switchMap(_stateEvent) {stateEvent ->
             stateEvent?.let {
                 handleStateEvent(stateEvent)
             }
-        }
+        } */
 
-    fun handleStateEvent(stateEvent: ServersListStateEvent):LiveData<DataState<ServersListState>>? {
+  /*  private fun handleStateEvent(stateEvent: ServersListStateEvent):LiveData<DataState<ServersListState>>? {
         println("DEBUG: new state event detected $stateEvent")
-        return when (stateEvent) {
+         return when (stateEvent) {
             is ServersListStateEvent.GetServersEvent -> {
-                return ServersRepository.getServers()
+                ServersRepository.getServers(token)
             }
             is ServersListStateEvent.None -> {
-              return AbsentLiveData.create()
+                AbsentLiveData.create()
             }
         }
-    }
+    } */
 
     private fun getCurrentViewStateOrNew(): ServersListState {
         return viewState.value?.let {
@@ -46,12 +48,18 @@ class ServersListViewModel : ViewModel() {
     }
 
     fun setServersListData(servers: List<Server>) {
-        val update=getCurrentViewStateOrNew()
+        val update = getCurrentViewStateOrNew()
         update.servers=servers
         _viewState.value=update
     }
 
     fun setStateEvent(event:ServersListStateEvent){
         _stateEvent.value = event
+    }
+
+    //For testing API response:
+
+    fun testApiResponse(token: String): LiveData<GenericApiResponse<List<Server>>> {
+        return ServersRepository.testApiResponse(token)
     }
 }

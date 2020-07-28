@@ -8,7 +8,7 @@ object RetrofitBuilder {
 
     private const val BASE_URL="https://playground.tesonet.lt"
 
-    val retrofitBuilder: Retrofit.Builder by lazy {
+    private val retrofitBuilder: Retrofit.Builder by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addCallAdapterFactory(LiveDataCallAdapterFactory())
