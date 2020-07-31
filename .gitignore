@@ -10,3 +10,8 @@
 /captures
 .externalNativeBuild
 .cxx
+build/
+.gradle/
+.idea/
+local.properties
+settings.gradle
