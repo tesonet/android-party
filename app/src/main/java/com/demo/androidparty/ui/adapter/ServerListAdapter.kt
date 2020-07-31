@@ -31,10 +31,11 @@ class ServerListAdapter : RecyclerView.Adapter<ServerListAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         internal fun bind(server: Server) {
             view.name.text = server.name
-            view.distance.text = server.distance.toString()
+            view.distance.text =
+                view.context.resources.getString(R.string.distance_value, server.distance)
         }
     }
 }
