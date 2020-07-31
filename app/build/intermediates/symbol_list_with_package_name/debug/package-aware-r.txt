@@ -691,6 +691,7 @@ color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
 color dim_foreground_material_light
+color edit_text_color
 color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
@@ -761,6 +762,7 @@ color switch_thumb_normal_material_light
 color textColor
 color tooltip_background_dark
 color tooltip_background_light
+color white_color
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
 dimen abc_action_bar_default_height_material
@@ -896,6 +898,9 @@ dimen design_tab_text_size_2line
 dimen design_textinput_caption_translate_y
 dimen disabled_alpha_material_dark
 dimen disabled_alpha_material_light
+dimen edit_text_element_max_width
+dimen edit_text_icon_margin
+dimen edit_text_icon_size
 dimen fastscroll_default_thickness
 dimen fastscroll_margin
 dimen fastscroll_minimum_range
@@ -909,6 +914,9 @@ dimen hint_pressed_alpha_material_light
 dimen item_touch_helper_max_drag_scroll_per_frame
 dimen item_touch_helper_swipe_escape_max_velocity
 dimen item_touch_helper_swipe_escape_velocity
+dimen login_button_height
+dimen login_edit_text_margin
+dimen logo_width
 dimen mtrl_bottomappbar_fabOffsetEndMode
 dimen mtrl_bottomappbar_fab_cradle_margin
 dimen mtrl_bottomappbar_fab_cradle_rounded_corner_radius
@@ -1253,7 +1261,6 @@ id icon
 id icon_group
 id ifRoom
 id image
-id imageView2
 id info
 id infoLabel
 id invisible
@@ -1270,6 +1277,7 @@ id loadingContentLayout
 id lockImageView
 id loginButton
 id loginFragment
+id logoImageView
 id logoutImageView
 id mainContainer
 id masked
@@ -1298,9 +1306,9 @@ id parallax
 id parent
 id parentPanel
 id parent_matrix
-id password
+id passwordEditText
 id percent
-id personImageView
+id personIconImageView
 id pin
 id progressBar
 id progress_circular
@@ -1392,7 +1400,7 @@ id uniform
 id unlabeled
 id up
 id useLogo
-id username
+id usernameEditText
 id viewSwitcher
 id view_offset_helper
 id visible
@@ -1537,9 +1545,11 @@ string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string fetching_the_list
 string hide_bottom_view_on_scroll_behavior
+string login
 string mtrl_chip_close_icon_content_description
 string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
+string password
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
@@ -1548,6 +1558,7 @@ string path_password_strike_through
 string search_menu_title
 string server
 string status_bar_notification_info_overflow
+string username
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
@@ -1747,6 +1758,7 @@ style Base_Widget_MaterialComponents_TextInputLayout
 style CardView
 style CardView_Dark
 style CardView_Light
+style EditTextInputStyle
 style Platform_AppCompat
 style Platform_AppCompat_Light
 style Platform_MaterialComponents

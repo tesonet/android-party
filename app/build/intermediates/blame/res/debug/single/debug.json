@@ -20,6 +20,10 @@
         "source": "/home/deividas/Workspace/android-party/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
     },
     {
+        "merged": "/home/deividas/Workspace/android-party/app/build/intermediates/res/merged/debug/drawable_logo_1.png.flat",
+        "source": "/home/deividas/Workspace/android-party/app/src/main/res/drawable/logo_1.png"
+    },
+    {
         "merged": "/home/deividas/Workspace/android-party/app/build/intermediates/res/merged/debug/anim_anim_slide_down.xml.flat",
         "source": "/home/deividas/Workspace/android-party/app/src/main/res/anim/anim_slide_down.xml"
     },
@@ -130,10 +134,6 @@
     {
         "merged": "/home/deividas/Workspace/android-party/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
         "source": "/home/deividas/Workspace/android-party/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
-    },
-    {
-        "merged": "/home/deividas/Workspace/android-party/app/build/intermediates/res/merged/debug/drawable-v24_logo_1.png.flat",
-        "source": "/home/deividas/Workspace/android-party/app/src/main/res/drawable-v24/logo_1.png"
     },
     {
         "merged": "/home/deividas/Workspace/android-party/app/build/intermediates/res/merged/debug/drawable_divider.xml.flat",
