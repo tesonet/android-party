@@ -49,20 +49,14 @@ class ServersListFragment : BaseFragment() {
     private fun handleState(state: ServerListFetchingState) {
         when (state) {
             is ServerListFetchingState.Started -> {
-//                contentLayout.visibility = View.GONE
-//                loadingContentLayout.visibility = View.VISIBLE
                 viewSwitcher.displayedChild = 0
             }
             is ServerListFetchingState.Failed -> {
                 showToast(state.reason)
-//                contentLayout.visibility = View.GONE
-//                loadingContentLayout.visibility = View.VISIBLE
                 viewSwitcher.displayedChild = 0
             }
             is ServerListFetchingState.Success -> {
                 adapter.setData(state.data)
-//                contentLayout.visibility = View.VISIBLE
-//                loadingContentLayout.visibility = View.GONE
                 viewSwitcher.displayedChild = 1
             }
         }
