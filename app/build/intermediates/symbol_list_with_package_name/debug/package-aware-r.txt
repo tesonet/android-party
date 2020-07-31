@@ -980,6 +980,11 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+dimen server_list_header_height
+dimen server_list_header_logo_width
+dimen server_list_header_side_margin
+dimen server_list_toolbar_height
+dimen shadow_height
 dimen subtitle_corner_radius
 dimen subtitle_outline_width
 dimen subtitle_shadow_offset
@@ -1375,8 +1380,6 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
-id textView2
-id textView3
 id text_input_password_toggle
 id textinput_counter
 id textinput_error

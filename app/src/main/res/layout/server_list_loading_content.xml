@@ -21,8 +21,8 @@
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="@dimen/loading_progress_bar_size"
+        android:layout_height="@dimen/loading_progress_bar_size"
         android:indeterminateDrawable="@drawable/circular_progress_bar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="15dp"
-    android:paddingBottom="15dp">
+    android:paddingTop="@dimen/server_list_item_padding"
+    android:paddingBottom="@dimen/server_list_item_padding">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/name"
