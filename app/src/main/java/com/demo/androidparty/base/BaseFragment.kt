@@ -1,4 +1,4 @@
-package com.demo.androidparty
+package com.demo.androidparty.base
 
 import android.os.Bundle
 import android.view.*

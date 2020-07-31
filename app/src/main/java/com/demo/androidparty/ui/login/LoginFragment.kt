@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.demo.androidparty.BaseFragment
+import com.demo.androidparty.base.BaseFragment
 import com.demo.androidparty.R
 import kotlinx.android.synthetic.main.login_fragment.*
 import javax.inject.Inject
