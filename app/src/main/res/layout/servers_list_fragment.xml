@@ -1,0 +1,16 @@
+<ViewSwitcher xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/viewSwitcher"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:inAnimation="@android:anim/fade_in"
+    android:outAnimation="@android:anim/fade_out">
+
+    <include
+        android:id="@+id/loadingContentLayout"
+        layout="@layout/server_list_loading_content" />
+
+    <include
+        android:id="@+id/contentLayout"
+        layout="@layout/server_list_content" />
+
+</ViewSwitcher>
