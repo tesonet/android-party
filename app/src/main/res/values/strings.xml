@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AndroidParty</string>
+    <string name="server">Server</string>
+    <string name="distance">Distance</string>
+    <string name="fetching_the_list">Fetching the list…</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Log In</string>
+    <string name="distance_value">%1$d km</string>
+</resources>

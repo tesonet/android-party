@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="InvalidNavigation,UnusedNavigation">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.demo.androidparty.ui.login.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment">
+
+        <action
+            android:id="@+id/goToServerListFragment"
+            app:destination="@id/serversListFragment"
+            app:enterAnim="@anim/anim_slide_up"
+            app:exitAnim="@anim/anim_slide_down"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/serversListFragment"
+        android:name="com.demo.androidparty.ui.list.ServersListFragment"
+        android:label="servers_list_fragment"
+        tools:layout="@layout/servers_list_fragment">
+
+        <action
+            android:id="@+id/goToLoginFragment"
+            app:destination="@+id/loginFragment"
+            app:enterAnim="@anim/anim_slide_up"
+            app:exitAnim="@anim/anim_slide_down"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/serversListFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+</navigation>

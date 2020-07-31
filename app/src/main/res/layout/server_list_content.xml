@@ -1,0 +1,95 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/headerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/server_list_header_height"
+        android:layout_marginStart="@dimen/server_list_header_side_margin"
+        android:layout_marginEnd="@dimen/server_list_header_side_margin"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/server_list_header_logo_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:srcCompat="@drawable/ic_logo_2"
+            tools:ignore="ContentDescription" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/logoutImageView"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            app:srcCompat="@drawable/ico_logout"
+            tools:ignore="ContentDescription" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/toolbarView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/server_list_toolbar_height"
+        android:layout_marginStart="@dimen/server_list_header_side_margin"
+        android:layout_marginEnd="@dimen/server_list_header_side_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerView">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:gravity="center"
+            android:text="@string/server"
+            android:textAllCaps="true"
+            android:textSize="15sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:gravity="center"
+            android:text="@string/distance"
+            android:textAllCaps="true"
+            android:textSize="15sp" />
+
+    </FrameLayout>
+
+    <View
+        android:id="@+id/topShadowView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/shadow_height"
+        android:background="@drawable/shadow"
+        app:layout_constraintBottom_toTopOf="@+id/toolbarView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/bottomShadowView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/shadow_height"
+        android:background="@drawable/shadow"
+        android:rotation="180"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/serverListRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/server_list_header_side_margin"
+        android:layout_marginEnd="@dimen/server_list_header_side_margin"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarView"
+        tools:listitem="@layout/server_list_item" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
