@@ -24,7 +24,6 @@ class LoginViewModel(
             error.setValue("Please enter username and password")
             return@launch
         }
-
         val loginData = LoginData(username, password)
         when (val response = model.login(loginData)) {
             is NetworkResult.Success -> {

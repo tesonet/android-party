@@ -15,7 +15,6 @@ import com.demo.androidparty.ui.list.ServersListViewModel
 import com.demo.androidparty.ui.list.mapper.ServerListMapper
 import com.demo.androidparty.ui.list.mapper.ServerListMapperImpl
 import com.demo.androidparty.utils.InternetStateProvider
-import com.demo.androidparty.utils.InternetStateProviderImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -57,12 +56,6 @@ abstract class ServersListFragmentModule private constructor() {
             @HttpClientAuthorized apiService: ApiService,
             preferences: AppPreferences,
             dao: ServerDao
-        ): ServerListModel =
-            ServerListModel(
-                dispatcher,
-                apiService,
-                preferences,
-                dao
-            )
+        ): ServerListModel = ServerListModel(dispatcher, apiService, preferences, dao)
     }
 }
