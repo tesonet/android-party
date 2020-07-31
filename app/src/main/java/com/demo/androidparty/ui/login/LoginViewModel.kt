@@ -31,8 +31,18 @@ class LoginViewModel(
                 model.save(response.data.token)
                 loggedIn.call()
             }
-            is NetworkResult.Error ->
-                error.setValue("Something is wrong. Response code = ${response.errorCode}")
+            is NetworkResult.Error -> {
+                val message = if (response.errorCode == UNAUTHORISED_RESPONSE_CODE) {
+                    "Wrong credentials"
+                } else {
+                    "Something is wrong. Response code = ${response.errorCode}"
+                }
+                error.setValue(message)
+            }
         }
+    }
+
+    companion object {
+        private const val UNAUTHORISED_RESPONSE_CODE = 401
     }
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="login_button_height">55dp</dimen>
+    <dimen name="edit_text_icon_size">20dp</dimen>
+    <dimen name="edit_text_icon_margin">16dp</dimen>
+    <dimen name="login_edit_text_margin">5dp</dimen>
+    <dimen name="edit_text_element_max_width">280dp</dimen>
+    <dimen name="logo_width">170dp</dimen>
+</resources>

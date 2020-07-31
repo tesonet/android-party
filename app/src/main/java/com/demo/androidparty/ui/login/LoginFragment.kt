@@ -23,7 +23,7 @@ class LoginFragment : BaseFragment() {
 
     private fun setViewListeners() {
         loginButton.setOnClickListener {
-            viewModel.login("tesonet", "partyanimal")
+            viewModel.login(usernameEditText.text.toString(), passwordEditText.text.toString())
         }
     }
 
