@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="x_small">4dp</dimen>
+    <dimen name="small">8dp</dimen>
+    <dimen name="standard">16dp</dimen>
+    <dimen name="large">24dp</dimen>
+    <dimen name="x_large">36dp</dimen>
+
+    <dimen name="edittext_height">64dp</dimen>
+    <dimen name="button_height">@dimen/edittext_height</dimen>
+    <dimen name="button_side_margin">32dp</dimen>
+    <dimen name="logo_margin_top_bottom">200dp</dimen>
+    <dimen name="edittext_margin_left_right">@dimen/x_large</dimen>
+    <dimen name="title_bar_height">80dp</dimen>
+    <dimen name="progress_spinner_size">300dp</dimen>
+    <dimen name="default_text_size">22sp</dimen>
+</resources>

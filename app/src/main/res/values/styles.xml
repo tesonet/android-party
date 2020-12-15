@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/edittext_height</item>
+        <item name="android:layout_marginLeft">@dimen/edittext_margin_left_right</item>
+        <item name="android:layout_marginRight">@dimen/edittext_margin_left_right</item>
+        <item name="android:layout_marginBottom">@dimen/standard</item>
+        <item name="background">@drawable/rounded_edittext</item>
+        <item name="android:drawablePadding">@dimen/large</item>
+        <item name="android:paddingLeft">@dimen/standard</item>
+        <item name="android:paddingRight">@dimen/small</item>
+        <item name="android:paddingTop">@dimen/small</item>
+        <item name="android:paddingBottom">@dimen/small</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textColorHint">@android:color/darker_gray</item>
+    </style>
+
+</resources>
