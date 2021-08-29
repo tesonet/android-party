@@ -1,0 +1,2 @@
+rootProject.name = "Testio"
+include ':app'
