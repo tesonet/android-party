@@ -1,9 +1,3 @@
 .DS_Store
-*.iml
-.gradle
-/local.properties
-.idea/*
-build/
-.env.default
-local.properties
-proguard/
+.idea/
+.gradle/
