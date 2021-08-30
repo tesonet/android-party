@@ -1,6 +1,6 @@
 buildscript {
-    ext.kotlin_version = "1.5.30"
-    ext.dagger_version = '2.16'
+    ext.kotlin_version = '1.4.30'
+    ext.dagger_version = '2.26'
     ext.room_version = '2.3.0'
 
     repositories {
@@ -8,7 +8,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.2.2"
+        classpath 'com.android.tools.build:gradle:4.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
