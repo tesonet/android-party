@@ -2,12 +2,12 @@ package com.tesonet.testio.managers
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.tesonet.testio.service.data.user.RequestUser
+import com.tesonet.testio.service.repositories.ServersRepository
 import com.tesonet.testio.utils.Resource
 import com.tesonet.testio.utils.Resource.Complete
 import com.tesonet.testio.utils.Resource.Empty
 import com.tesonet.testio.utils.Resource.Error
-import com.tesonet.testio.service.data.user.RequestUser
-import com.tesonet.testio.service.repositories.ServersRepository
 import io.reactivex.disposables.CompositeDisposable
 import java.util.concurrent.TimeUnit.SECONDS
 
@@ -39,5 +39,22 @@ class ServersManager(private val serversRepository: ServersRepository) {
             ).also {
                 _compositeDisposable.add(it)
             }
+    }
+
+    fun fetchServers(token: String) {
+        deleteToken()
+        serversRepository.getServerList(token)
+            .subscribe(
+                { response ->
+                    response
+                },
+                { error ->
+                    error
+                }
+            ).also { _compositeDisposable.addAll(it) }
+    }
+
+    private fun deleteToken() {
+        _requestToken.value = null
     }
 }
