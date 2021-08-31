@@ -7,19 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.tesonet.testio.R
 import com.tesonet.testio.R.string
 import com.tesonet.testio.databinding.LoginFragmentBinding
 import com.tesonet.testio.service.repositories.ServersRepository.Companion.ERROR_HTTP_401
 import com.tesonet.testio.service.repositories.ServersRepository.Companion.UNKNOWN_ERROR
-import com.tesonet.testio.ui.MainActivity.Companion.LOG_IN_STATE
 import com.tesonet.testio.ui.MainActivity.Companion.SHARED_PREFERENCES_FILE_NAME
 import com.tesonet.testio.ui.login.LoginViewModel.UiEventLogin.EmptyFields
 import com.tesonet.testio.ui.login.LoginViewModel.UiEventLogin.EmptyName
 import com.tesonet.testio.ui.login.LoginViewModel.UiEventLogin.EmptyPassword
 import com.tesonet.testio.ui.login.LoginViewModel.UiEventLogin.FulfilledLogin
+import com.tesonet.testio.utils.LoginHelper
 import com.tesonet.testio.utils.Resource.Complete
 import com.tesonet.testio.utils.Resource.Empty
 import com.tesonet.testio.utils.Resource.Error
@@ -34,6 +33,7 @@ class LoginFragment : DaggerFragment() {
     lateinit var viewModel: LoginViewModel
 
     private lateinit var binding: LoginFragmentBinding
+    private lateinit var loginHelper: LoginHelper
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = LoginFragmentBinding.inflate(inflater, container, false)
@@ -42,6 +42,8 @@ class LoginFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loginHelper = LoginHelper(requireContext())
+        checkIfUserIsLoggedIn()
         observeUiEvent()
         observeRequestToken()
 
@@ -128,8 +130,14 @@ class LoginFragment : DaggerFragment() {
     }
 
     private fun saveUserLoginState() {
-        requireContext().getSharedPreferences(SHARED_PREFERENCES_FILE_NAME, Context.MODE_PRIVATE).run {
-            edit().putBoolean(LOG_IN_STATE, true).apply()
+        loginHelper.logIn()
+    }
+
+    private fun checkIfUserIsLoggedIn() {
+        requireContext().getSharedPreferences(SHARED_PREFERENCES_FILE_NAME, Context.MODE_PRIVATE).let {
+            if (loginHelper.isLoggedIn()) {
+                findNavController().navigate(R.id.loadingFragment) // TODO Change with server list fragment
+            }
         }
     }
 
