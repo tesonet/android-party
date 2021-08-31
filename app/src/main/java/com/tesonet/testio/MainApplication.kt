@@ -6,6 +6,7 @@ import com.tesonet.testio.dagger.components.DaggerApplicationComponent
 import com.tesonet.testio.dagger.components.DaggerServiceComponent
 import com.tesonet.testio.dagger.components.ServiceComponent
 import com.tesonet.testio.dagger.modules.ApplicationModule
+import com.tesonet.testio.dagger.modules.RepositoriesModule
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
@@ -21,19 +22,19 @@ class MainApplication : Application(), HasAndroidInjector {
 
     override fun onCreate() {
         super.onCreate()
-        applicationComponent = DaggerApplicationComponent.builder()
+        applicationComponent = DaggerApplicationComponent
+            .builder()
             .applicationModule(ApplicationModule(this))
             .serviceComponent(provideServiceComponent())
             .build()
-            .also { applicationComponent ->
-                applicationComponent.inject(this)
-            }
+            .also { applicationComponent -> applicationComponent.inject(this) }
     }
 
     private fun provideServiceComponent(): ServiceComponent {
         if (!this::serviceComponent.isInitialized) {
             serviceComponent = DaggerServiceComponent
                 .builder()
+                .repositoriesModule(RepositoriesModule(this))
                 .build()
         }
         return serviceComponent
