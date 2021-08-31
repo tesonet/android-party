@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.tesonet.testio.databinding.LoadingFragmentBinding
 import com.tesonet.testio.ui.login.LoginFragment
+import com.tesonet.testio.utils.observeIt
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -27,7 +28,17 @@ class LoadingFragment : DaggerFragment() {
         val bundle: Bundle? = this.arguments
         bundle?.let {
             it.getString(LoginFragment.REQUEST_TOKEN)?.let { requestToken ->
-                viewModel.getServers(requestToken)
+                viewModel.fetchServers(requestToken)
+            }
+        }
+
+        observeServers()
+    }
+
+    private fun observeServers() {
+        viewModel.savedServers.observeIt(this) {
+            if (it == true) {
+                // TODO Navigate to servers view
             }
         }
     }
