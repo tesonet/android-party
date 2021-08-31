@@ -1,14 +1,21 @@
 package com.tesonet.testio.ui.login
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.tesonet.testio.R
 import com.tesonet.testio.R.string
 import com.tesonet.testio.databinding.LoginFragmentBinding
 import com.tesonet.testio.service.repositories.ServersRepository.Companion.ERROR_HTTP_401
 import com.tesonet.testio.service.repositories.ServersRepository.Companion.UNKNOWN_ERROR
+import com.tesonet.testio.ui.MainActivity.Companion.LOG_IN_STATE
+import com.tesonet.testio.ui.MainActivity.Companion.SHARED_PREFERENCES_FILE_NAME
 import com.tesonet.testio.ui.login.LoginViewModel.UiEventLogin.EmptyFields
 import com.tesonet.testio.ui.login.LoginViewModel.UiEventLogin.EmptyName
 import com.tesonet.testio.ui.login.LoginViewModel.UiEventLogin.EmptyPassword
@@ -73,16 +80,21 @@ class LoginFragment : DaggerFragment() {
             binding.progressBarLogin.visibility = View.GONE
             when (requestTokenState) {
                 is Complete -> {
-                    // Implement getServer
+                    saveUserLoginState()
+                    val bundle = bundleOf(REQUEST_TOKEN to requestTokenState.value)
+                    findNavController().navigate(R.id.navigation_loginFragment_to_loadingFragment, bundle)
                 }
                 is Empty -> {
                     showToast(getString(string.empty_token))
+                    changeButtonState(true)
                 }
                 is Error -> {
                     showToast(getErrorMessage(requestTokenState.error))
+                    changeButtonState(true)
                 }
                 is Loading -> {
                     binding.progressBarLogin.visibility = View.VISIBLE
+                    changeButtonState(false)
                 }
 
             }
@@ -99,5 +111,29 @@ class LoginFragment : DaggerFragment() {
 
     private fun showToast(message: String?) {
         Toast.makeText(context, message ?: UNKNOWN_ERROR, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun changeButtonState(enabled: Boolean) {
+        if (enabled) {
+            binding.buttonLogIn.apply {
+                isEnabled = true
+                alpha = 1f
+            }
+        } else {
+            binding.buttonLogIn.apply {
+                isEnabled = false
+                alpha = .8f
+            }
+        }
+    }
+
+    private fun saveUserLoginState() {
+        requireContext().getSharedPreferences(SHARED_PREFERENCES_FILE_NAME, Context.MODE_PRIVATE).run {
+            edit().putBoolean(LOG_IN_STATE, true).apply()
+        }
+    }
+
+    companion object {
+        const val REQUEST_TOKEN: String = "request_token"
     }
 }
