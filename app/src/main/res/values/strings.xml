@@ -8,4 +8,5 @@
     <string name="fill_all_fields">Please fill all the field</string>
     <string name="empty_token">Token request is empty!</string>
     <string name="incorrect_login">Incorrect login!</string>
+    <string name="fetching_the_list">Fetching the list...</string>
 </resources>

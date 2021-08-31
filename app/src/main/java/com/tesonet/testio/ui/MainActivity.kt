@@ -23,4 +23,9 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
     override fun androidInjector(): AndroidInjector<Any> {
         return androidInjector
     }
+
+    companion object {
+        const val SHARED_PREFERENCES_FILE_NAME: String = "testio_shared"
+        const val LOG_IN_STATE: String = "log_in_state"
+    }
 }

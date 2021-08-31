@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.tesonet.testio.dagger.ViewModelFactory
 import com.tesonet.testio.dagger.ViewModelKey
 import com.tesonet.testio.managers.ServersManager
+import com.tesonet.testio.ui.loading.LoadingViewModel
 import com.tesonet.testio.ui.login.LoginViewModel
 import dagger.Binds
 import dagger.Module
@@ -22,6 +23,11 @@ abstract class ViewModelModule {
     @ViewModelKey(LoginViewModel::class)
     abstract fun bindLoginViewModel(loginViewModel: LoginViewModel): ViewModel
 
+    @Binds
+    @IntoMap
+    @ViewModelKey(LoadingViewModel::class)
+    abstract fun bindLoadingViewModel(loadingViewModel: LoadingViewModel): ViewModel
+
     @Module
     companion object {
 
@@ -29,6 +35,12 @@ abstract class ViewModelModule {
         @JvmStatic
         fun provideLoinViewModel(serversManager: ServersManager): LoginViewModel {
             return LoginViewModel(serversManager)
+        }
+
+        @Provides
+        @JvmStatic
+        fun provideLoadingViewModel(serversManager: ServersManager): LoadingViewModel {
+            return LoadingViewModel(serversManager)
         }
     }
 }

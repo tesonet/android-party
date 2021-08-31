@@ -12,5 +12,6 @@
     <style name="CustomEditTextStyle">
         <item name="android:padding">20sp</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginTop">12dp</item>
     </style>
 </resources>
