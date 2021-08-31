@@ -19,6 +19,10 @@ class ServersManager(private val serversRepository: ServersRepository) {
     val requestToken: LiveData<Resource<String>>
         get() = _requestToken
 
+    private var _savedServers = MutableLiveData(false)
+    val savedServers: LiveData<Boolean>
+        get() = _savedServers
+
     fun getAccessToken(requestUser: RequestUser) {
         _requestToken.value = Resource.Loading()
         serversRepository.getTokenAccess(requestUser)
@@ -46,12 +50,30 @@ class ServersManager(private val serversRepository: ServersRepository) {
         serversRepository.getServerList(token)
             .subscribe(
                 { response ->
-                    response
+                    if (!response.isNullOrEmpty()) {
+                        serversRepository.saveServersToDatabase(response) {
+                            _savedServers.value = it
+                        }
+                    }
                 },
                 { error ->
                     error
                 }
             ).also { _compositeDisposable.addAll(it) }
+    }
+
+    fun getServersFromDatabase() {
+        serversRepository.getServersFromDatabase()
+            .subscribe(
+                { servers ->
+                    servers
+                },
+                { error ->
+                    error
+                }
+            ).also {
+                _compositeDisposable.addAll(it)
+            }
     }
 
     private fun deleteToken() {
