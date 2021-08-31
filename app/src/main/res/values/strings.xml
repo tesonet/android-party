@@ -3,4 +3,9 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="log_in">Log In</string>
+    <string name="enter_name">Enter name</string>
+    <string name="enter_password">Enter password</string>
+    <string name="fill_all_fields">Please fill all the field</string>
+    <string name="empty_token">Token request is empty!</string>
+    <string name="incorrect_login">Incorrect login!</string>
 </resources>
