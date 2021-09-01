@@ -7,6 +7,7 @@ import com.tesonet.testio.dagger.ViewModelKey
 import com.tesonet.testio.managers.ServersManager
 import com.tesonet.testio.ui.loading.LoadingViewModel
 import com.tesonet.testio.ui.login.LoginViewModel
+import com.tesonet.testio.ui.servers.ServersViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -28,6 +29,11 @@ abstract class ViewModelModule {
     @ViewModelKey(LoadingViewModel::class)
     abstract fun bindLoadingViewModel(loadingViewModel: LoadingViewModel): ViewModel
 
+    @Binds
+    @IntoMap
+    @ViewModelKey(ServersViewModel::class)
+    abstract fun bindServersViewModel(serversViewModel: ServersViewModel): ViewModel
+
     @Module
     companion object {
 
@@ -41,6 +47,12 @@ abstract class ViewModelModule {
         @JvmStatic
         fun provideLoadingViewModel(serversManager: ServersManager): LoadingViewModel {
             return LoadingViewModel(serversManager)
+        }
+
+        @Provides
+        @JvmStatic
+        fun provideServersViewModel(serversManager: ServersManager): ServersViewModel {
+            return ServersViewModel(serversManager)
         }
     }
 }
