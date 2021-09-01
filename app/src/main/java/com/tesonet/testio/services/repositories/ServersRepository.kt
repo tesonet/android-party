@@ -10,6 +10,7 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import java.util.concurrent.TimeUnit.SECONDS
 
 class ServersRepository(private val apiClient: ApiClient, private val serversDao: ServersDao) {
 
@@ -37,17 +38,12 @@ class ServersRepository(private val apiClient: ApiClient, private val serversDao
         Single.fromCallable {
             serversDao.addAllServers(servers)
         }
+            .delay(3, SECONDS) // for demo purpose
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { success ->
-                    success
-                    saved(true)
-                },
-                { error ->
-                    error
-                    saved(false)
-                }
+                { saved(true) },
+                { saved(false) }
             ).also { _compositeDisposable.addAll(it) }
     }
 
@@ -57,6 +53,17 @@ class ServersRepository(private val apiClient: ApiClient, private val serversDao
             .observeOn(AndroidSchedulers.mainThread())
             .doOnError { error ->
                 Log.e(TAG, "Servers from database error: ${error.localizedMessage}", error)
+            }
+    }
+
+    fun deleteAllServersFromDatabase(): Single<Unit> {
+        return Single.fromCallable {
+            serversDao.deleteAllServers()
+        }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnError { error ->
+                Log.e(TAG, "Fetch server error: ${error.localizedMessage}", error)
             }
     }
 
