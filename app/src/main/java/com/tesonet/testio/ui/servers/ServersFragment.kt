@@ -9,17 +9,12 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.tesonet.testio.R
 import com.tesonet.testio.databinding.ServersFragmentBinding
 import com.tesonet.testio.ui.adapters.ServersAdapter
 import com.tesonet.testio.utils.LoginHelper
 import com.tesonet.testio.utils.Resource.Complete
-import com.tesonet.testio.utils.Resource.Empty
-import com.tesonet.testio.utils.Resource.Error
-import com.tesonet.testio.utils.Resource.Loading
 import com.tesonet.testio.utils.observeIt
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
@@ -49,18 +44,14 @@ class ServersFragment : DaggerFragment() {
 
     private fun observerListOfServers() {
         viewModel.servers.observeIt(this) { servers ->
+            listOf(binding.progressBarServers, binding.recyclerViewServers).forEach { it.visibility = View.GONE }
             when (servers) {
-                is Complete -> {
+                !is Complete -> {
+                    binding.progressBarServers.visibility = View.VISIBLE
+                }
+                else -> {
+                    binding.recyclerViewServers.visibility = View.VISIBLE
                     serversAdapter.setItem(servers.value)
-                }
-                is Empty -> {
-
-                }
-                is Error -> {
-
-                }
-                is Loading -> {
-
                 }
             }
         }
@@ -84,7 +75,8 @@ class ServersFragment : DaggerFragment() {
         }
 
         serversAdapter.selectedServer = { server ->
-            Toast.makeText(requireContext(), "You have selected: ${server.name}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.selected_server, server.name), Toast.LENGTH_SHORT)
+                .show()
         }
     }
 }

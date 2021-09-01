@@ -30,7 +30,7 @@ class ServersManager(private val serversRepository: ServersRepository) {
         get() = _servers
 
     fun getAccessToken(requestUser: RequestUser) {
-        _requestToken.value = Resource.Loading()
+        _requestToken.value = Loading()
         serversRepository.getTokenAccess(requestUser)
             .delay(3, SECONDS) // for demo purpose
             .subscribe(
@@ -78,6 +78,7 @@ class ServersManager(private val serversRepository: ServersRepository) {
                     } else {
                         _servers.value = Empty()
                     }
+                    dispose()
                 },
                 { error ->
                     _servers.value = Error(error.message)
@@ -108,5 +109,9 @@ class ServersManager(private val serversRepository: ServersRepository) {
 
     private fun deleteToken() {
         _requestToken.value = null
+    }
+
+    private fun dispose() {
+        _compositeDisposable.dispose()
     }
 }

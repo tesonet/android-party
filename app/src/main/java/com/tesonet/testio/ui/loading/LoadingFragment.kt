@@ -50,10 +50,11 @@ class LoadingFragment : DaggerFragment() {
                     }
                 }
                 is Error -> {
-                    Toast.makeText(context, "Failed fetching servers: ${state.error}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.failed_fetching_servers, state.error), Toast.LENGTH_SHORT).show()
                     resetServersFetchingFlow()
                 }
                 else -> {
+                    // no action needed
                 }
             }
         }

@@ -13,4 +13,6 @@
     <string name="distance">Distance</string>
     <string name="logout_image_button">Logout image button</string>
     <string name="company_dark_logo">Company dark logo</string>
+    <string name="failed_fetching_servers">Failed fetching servers: %s</string>
+    <string name="selected_server">You have selected: %s</string>
 </resources>

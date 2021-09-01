@@ -26,7 +26,8 @@ class ServersAdapter(private val context: Context) : RecyclerView.Adapter<ViewHo
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val server = servers[position]
+        val server: Server = servers[position]
+
         holder.run {
             serverName.text = server.name
             serverDistance.text = server.distance.addKilometers()
@@ -47,7 +48,6 @@ class ServersAdapter(private val context: Context) : RecyclerView.Adapter<ViewHo
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
         val serverName: TextView = view.findViewById(R.id.textViewServerName)
         val serverDistance: TextView = view.findViewById(R.id.textViewServerDistance)
     }
