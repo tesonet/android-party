@@ -44,13 +44,9 @@ class ServersFragment : DaggerFragment() {
 
     private fun observerListOfServers() {
         viewModel.servers.observeIt(this) { servers ->
-            listOf(binding.progressBarServers, binding.recyclerViewServers).forEach { it.visibility = View.GONE }
             when (servers) {
-                !is Complete -> {
-                    binding.progressBarServers.visibility = View.VISIBLE
-                }
+                !is Complete -> { }
                 else -> {
-                    binding.recyclerViewServers.visibility = View.VISIBLE
                     serversAdapter.setItem(servers.value)
                 }
             }
