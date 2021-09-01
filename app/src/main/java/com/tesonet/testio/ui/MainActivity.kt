@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
     }
 
     companion object {
-        const val SHARED_PREFERENCES_FILE_NAME: String = "testio_shared"
         const val LOG_IN_STATE: String = "log_in_state"
+        const val SERVER_DATABASE_NAME: String = "servers_database"
     }
 }

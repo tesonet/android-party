@@ -3,11 +3,12 @@ package com.tesonet.testio.dagger.modules
 import android.app.Application
 import android.content.Context
 import androidx.room.Room
-import com.tesonet.testio.service.client.ApiClient
-import com.tesonet.testio.service.client.RestClient
-import com.tesonet.testio.service.database.ServersDao
-import com.tesonet.testio.service.database.ServersDatabase
-import com.tesonet.testio.service.repositories.ServersRepository
+import com.tesonet.testio.services.client.ApiClient
+import com.tesonet.testio.services.client.RestClient
+import com.tesonet.testio.services.database.ServersDao
+import com.tesonet.testio.services.database.ServersDatabase
+import com.tesonet.testio.services.repositories.ServersRepository
+import com.tesonet.testio.ui.MainActivity.Companion.SERVER_DATABASE_NAME
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -18,7 +19,7 @@ class RepositoriesModule(private val application: Application) {
     private val serverDatabase: ServersDatabase = Room.databaseBuilder(
         application.baseContext,
         ServersDatabase::class.java,
-        "servers_database"
+        SERVER_DATABASE_NAME
     ).build()
 
     @Provides

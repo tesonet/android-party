@@ -55,7 +55,6 @@
                 android:drawableStart="@drawable/ic_username"
                 android:hint="@string/username"
                 android:inputType="text"
-                android:text="tesonet"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -70,7 +69,6 @@
                 android:drawableStart="@drawable/ic_lock"
                 android:hint="@string/password"
                 android:inputType="textPassword"
-                android:text="partyanimal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

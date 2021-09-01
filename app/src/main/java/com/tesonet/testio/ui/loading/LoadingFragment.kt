@@ -4,8 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.tesonet.testio.R
 import com.tesonet.testio.databinding.LoadingFragmentBinding
 import com.tesonet.testio.ui.login.LoginFragment
+import com.tesonet.testio.utils.LoginHelper
+import com.tesonet.testio.utils.Resource.Complete
+import com.tesonet.testio.utils.Resource.Error
 import com.tesonet.testio.utils.observeIt
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
@@ -36,10 +42,30 @@ class LoadingFragment : DaggerFragment() {
     }
 
     private fun observeServers() {
-        viewModel.savedServers.observeIt(this) {
-            if (it == true) {
-                // TODO Navigate to servers view
+        viewModel.savedServers.observeIt(this) { state ->
+            when (state) {
+                is Complete -> {
+                    if (state.value) {
+                        findNavController().navigate(R.id.navigation_loadingFragment_to_serversFragment)
+                    }
+                }
+                is Error -> {
+                    Toast.makeText(context, getString(R.string.failed_fetching_servers, state.error), Toast.LENGTH_SHORT).show()
+                    resetServersFetchingFlow()
+                }
+                else -> {
+                    // no action needed
+                }
             }
+        }
+    }
+
+    private fun resetServersFetchingFlow() {
+        viewModel.resetSavedServerState()
+        val loginHelper = LoginHelper(requireContext())
+        if (loginHelper.isLoggedIn()) {
+            loginHelper.logOut()
+            findNavController().navigateUp()
         }
     }
 }

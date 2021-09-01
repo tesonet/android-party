@@ -1,8 +1,8 @@
-package com.tesonet.testio.service.client
+package com.tesonet.testio.services.client
 
-import com.tesonet.testio.service.data.server.Server
-import com.tesonet.testio.service.data.token.Token
-import com.tesonet.testio.service.data.user.RequestUser
+import com.tesonet.testio.services.data.server.Server
+import com.tesonet.testio.services.data.token.Token
+import com.tesonet.testio.services.data.user.RequestUser
 import io.reactivex.Single
 import retrofit2.http.*
 

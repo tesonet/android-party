@@ -1,4 +1,4 @@
-package com.tesonet.testio.service.client
+package com.tesonet.testio.services.client
 
 import okhttp3.OkHttpClient
 import okhttp3.OkHttpClient.Builder

@@ -1,8 +1,8 @@
 package com.tesonet.testio.dagger.components
 
 import com.tesonet.testio.dagger.modules.RepositoriesModule
-import com.tesonet.testio.service.client.ApiClient
-import com.tesonet.testio.service.repositories.ServersRepository
+import com.tesonet.testio.services.client.ApiClient
+import com.tesonet.testio.services.repositories.ServersRepository
 import dagger.Component
 import javax.inject.Singleton
 

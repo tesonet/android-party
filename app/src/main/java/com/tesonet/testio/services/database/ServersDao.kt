@@ -1,10 +1,10 @@
-package com.tesonet.testio.service.database
+package com.tesonet.testio.services.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.tesonet.testio.service.data.server.Server
+import com.tesonet.testio.services.data.server.Server
 import io.reactivex.Single
 
 @Dao

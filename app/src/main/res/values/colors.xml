@@ -2,10 +2,13 @@
 <resources>
     <color name="colorPrimary">@color/green</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">@color/green</color>
     <color name="green">#ABD252</color>
     <color name="darkGray">#777777</color>
-    <color name="gray">#b3b6b6</color>
+    <color name="gray">#EEEEEE</color>
+    <color name="medium_gray">#A1A1A1</color>
+    <color name="medium_gray_alpha_20">#33A1A1A1</color>
+    <color name="dark_gray">#686868</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
 </resources>
