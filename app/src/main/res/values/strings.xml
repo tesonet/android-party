@@ -9,4 +9,8 @@
     <string name="empty_token">Token request is empty!</string>
     <string name="incorrect_login">Incorrect login!</string>
     <string name="fetching_the_list">Fetching the list...</string>
+    <string name="server_label">Server</string>
+    <string name="distance">Distance</string>
+    <string name="logout_image_button">Logout image button</string>
+    <string name="company_dark_logo">Company dark logo</string>
 </resources>
