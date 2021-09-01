@@ -21,7 +21,7 @@
             android:layout_height="40dp"
             android:layout_marginBottom="16dp"
             android:layout_marginStart="@dimen/content_padding"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:contentDescription="@string/company_dark_logo"
             android:src="@drawable/logo_2"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -32,16 +32,14 @@
             android:id="@+id/imageButtonLogOut"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginBottom="16dp"
             android:layout_marginEnd="@dimen/content_padding"
-            android:layout_marginTop="16dp"
             android:background="@null"
             android:contentDescription="@string/logout_image_button"
             android:padding="4dp"
             android:src="@drawable/ic_logout"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewCompanyLogoDark"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/imageViewCompanyLogoDark" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
