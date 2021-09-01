@@ -78,7 +78,6 @@ class ServersManager(private val serversRepository: ServersRepository) {
                     } else {
                         _servers.value = Empty()
                     }
-                    dispose()
                 },
                 { error ->
                     _servers.value = Error(error.message)
@@ -109,9 +108,5 @@ class ServersManager(private val serversRepository: ServersRepository) {
 
     private fun deleteToken() {
         _requestToken.value = null
-    }
-
-    private fun dispose() {
-        _compositeDisposable.dispose()
     }
 }
