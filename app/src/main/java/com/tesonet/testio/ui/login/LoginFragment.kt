@@ -1,19 +1,18 @@
 package com.tesonet.testio.ui.login
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.tesonet.testio.R
 import com.tesonet.testio.R.string
 import com.tesonet.testio.databinding.LoginFragmentBinding
 import com.tesonet.testio.services.repositories.ServersRepository.Companion.ERROR_HTTP_401
 import com.tesonet.testio.services.repositories.ServersRepository.Companion.UNKNOWN_ERROR
-import com.tesonet.testio.ui.MainActivity.Companion.SHARED_PREFERENCES_FILE_NAME
 import com.tesonet.testio.ui.login.LoginViewModel.UiEventLogin.EmptyFields
 import com.tesonet.testio.ui.login.LoginViewModel.UiEventLogin.EmptyName
 import com.tesonet.testio.ui.login.LoginViewModel.UiEventLogin.EmptyPassword
@@ -52,6 +51,12 @@ class LoginFragment : DaggerFragment() {
                 binding.editTextUserName.text.toString().trim(),
                 binding.editTextPassword.text.toString().trim()
             )
+        }
+
+        // easter egg
+        binding.imageViewCompanyLogo.setOnLongClickListener {
+            presetLogin()
+            true
         }
     }
 
@@ -98,7 +103,9 @@ class LoginFragment : DaggerFragment() {
                     binding.progressBarLogin.visibility = View.VISIBLE
                     changeButtonState(false)
                 }
-
+                else -> {
+                    changeButtonState(true)
+                }
             }
         }
     }
@@ -134,14 +141,23 @@ class LoginFragment : DaggerFragment() {
     }
 
     private fun checkIfUserIsLoggedIn() {
-        requireContext().getSharedPreferences(SHARED_PREFERENCES_FILE_NAME, Context.MODE_PRIVATE).let {
-            if (loginHelper.isLoggedIn()) {
-                findNavController().navigate(R.id.loadingFragment) // TODO Change with server list fragment
-            }
+        if (loginHelper.isLoggedIn()) {
+            val navOptions = NavOptions.Builder().apply {
+                setPopUpTo(R.id.loginFragment, true)
+            }.build()
+
+            findNavController().navigate(R.id.serversFragment, null, navOptions)
         }
+    }
+
+    private fun presetLogin() {
+        binding.editTextUserName.setText(EXTRA_USER_NAME)
+        binding.editTextPassword.setText(EXTRA_USER_PASSWORD)
     }
 
     companion object {
         const val REQUEST_TOKEN: String = "request_token"
+        const val EXTRA_USER_NAME: String = "tesonet"
+        const val EXTRA_USER_PASSWORD: String = "partyanimal"
     }
 }
