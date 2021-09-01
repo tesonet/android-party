@@ -1,4 +1,4 @@
-package com.tesonet.testio.service.data.user
+package com.tesonet.testio.services.data.user
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

@@ -11,8 +11,8 @@ import androidx.navigation.fragment.findNavController
 import com.tesonet.testio.R
 import com.tesonet.testio.R.string
 import com.tesonet.testio.databinding.LoginFragmentBinding
-import com.tesonet.testio.service.repositories.ServersRepository.Companion.ERROR_HTTP_401
-import com.tesonet.testio.service.repositories.ServersRepository.Companion.UNKNOWN_ERROR
+import com.tesonet.testio.services.repositories.ServersRepository.Companion.ERROR_HTTP_401
+import com.tesonet.testio.services.repositories.ServersRepository.Companion.UNKNOWN_ERROR
 import com.tesonet.testio.ui.MainActivity.Companion.SHARED_PREFERENCES_FILE_NAME
 import com.tesonet.testio.ui.login.LoginViewModel.UiEventLogin.EmptyFields
 import com.tesonet.testio.ui.login.LoginViewModel.UiEventLogin.EmptyName

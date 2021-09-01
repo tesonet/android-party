@@ -1,4 +1,4 @@
-package com.tesonet.testio.service.data.server
+package com.tesonet.testio.services.data.server
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

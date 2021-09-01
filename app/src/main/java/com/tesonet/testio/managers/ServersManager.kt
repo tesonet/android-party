@@ -2,8 +2,8 @@ package com.tesonet.testio.managers
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.tesonet.testio.service.data.user.RequestUser
-import com.tesonet.testio.service.repositories.ServersRepository
+import com.tesonet.testio.services.data.user.RequestUser
+import com.tesonet.testio.services.repositories.ServersRepository
 import com.tesonet.testio.utils.Resource
 import com.tesonet.testio.utils.Resource.Complete
 import com.tesonet.testio.utils.Resource.Empty

@@ -1,11 +1,11 @@
-package com.tesonet.testio.service.repositories
+package com.tesonet.testio.services.repositories
 
 import android.util.Log
-import com.tesonet.testio.service.client.ApiClient
-import com.tesonet.testio.service.data.server.Server
-import com.tesonet.testio.service.data.token.Token
-import com.tesonet.testio.service.data.user.RequestUser
-import com.tesonet.testio.service.database.ServersDao
+import com.tesonet.testio.services.client.ApiClient
+import com.tesonet.testio.services.data.server.Server
+import com.tesonet.testio.services.data.token.Token
+import com.tesonet.testio.services.data.user.RequestUser
+import com.tesonet.testio.services.database.ServersDao
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

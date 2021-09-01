@@ -3,7 +3,7 @@ package com.tesonet.testio.ui.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.tesonet.testio.managers.ServersManager
-import com.tesonet.testio.service.data.user.RequestUser
+import com.tesonet.testio.services.data.user.RequestUser
 import com.tesonet.testio.ui.login.LoginViewModel.UiEventLogin.EmptyFields
 import com.tesonet.testio.ui.login.LoginViewModel.UiEventLogin.EmptyName
 import com.tesonet.testio.ui.login.LoginViewModel.UiEventLogin.EmptyPassword

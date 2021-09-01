@@ -3,11 +3,11 @@ package com.tesonet.testio.dagger.modules
 import android.app.Application
 import android.content.Context
 import androidx.room.Room
-import com.tesonet.testio.service.client.ApiClient
-import com.tesonet.testio.service.client.RestClient
-import com.tesonet.testio.service.database.ServersDao
-import com.tesonet.testio.service.database.ServersDatabase
-import com.tesonet.testio.service.repositories.ServersRepository
+import com.tesonet.testio.services.client.ApiClient
+import com.tesonet.testio.services.client.RestClient
+import com.tesonet.testio.services.database.ServersDao
+import com.tesonet.testio.services.database.ServersDatabase
+import com.tesonet.testio.services.repositories.ServersRepository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
