@@ -85,6 +85,7 @@ class LoginFragment : DaggerFragment() {
     private fun observeRequestToken() {
         viewModel.requestToken.observeIt(this) { requestTokenState ->
             binding.progressBarLogin.visibility = View.GONE
+
             when (requestTokenState) {
                 is Complete -> {
                     saveUserLoginState()
