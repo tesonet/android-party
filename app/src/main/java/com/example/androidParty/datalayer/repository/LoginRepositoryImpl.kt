@@ -1,6 +1,6 @@
 package com.example.androidParty.datalayer.repository
 
-import com.example.androidParty.datalayer.LoginCredentials
+import com.example.androidParty.datalayer.network.LoginCredentials
 import com.example.androidParty.datalayer.UserPreferences
 import com.example.androidParty.datalayer.dto.toUser
 import com.example.androidParty.datalayer.network.BaseDataSource

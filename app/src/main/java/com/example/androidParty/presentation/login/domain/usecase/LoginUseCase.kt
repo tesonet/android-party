@@ -1,6 +1,6 @@
 package com.example.androidParty.presentation.login.domain.usecase
 
-import com.example.androidParty.datalayer.LoginCredentials
+import com.example.androidParty.datalayer.network.LoginCredentials
 import com.example.androidParty.datalayer.network.Resource
 import com.example.androidParty.presentation.login.LoginRepository
 import com.example.androidParty.presentation.login.domain.entity.User

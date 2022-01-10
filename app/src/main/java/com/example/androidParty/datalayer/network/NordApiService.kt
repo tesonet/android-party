@@ -1,6 +1,5 @@
 package com.example.androidParty.datalayer.network
 
-import com.example.androidParty.datalayer.LoginCredentials
 import com.example.androidParty.datalayer.dto.ServerDto
 import com.example.androidParty.datalayer.dto.UserDto
 import retrofit2.Response

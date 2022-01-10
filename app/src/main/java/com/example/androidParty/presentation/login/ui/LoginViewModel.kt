@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androidParty.authentication.GetTokenUseCase
-import com.example.androidParty.datalayer.LoginCredentials
+import com.example.androidParty.datalayer.network.LoginCredentials
 import com.example.androidParty.datalayer.network.Resource
 import com.example.androidParty.presentation.login.domain.entity.User
 import com.example.androidParty.presentation.login.domain.usecase.LoginUseCase
