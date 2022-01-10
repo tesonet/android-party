@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:context=".presentation.login.ui.LoginFragment"
+      >
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/backgroundImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/background"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="@dimen/logo_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/usernameTxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logot"
+        />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/usernameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/login_edit_text_margin"
+        android:background="@drawable/custom_edit"
+        android:hint="@string/username"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/passwordTxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        style="@style/EditTextInputStyle"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/personImageView"
+        android:layout_width="@dimen/edit_text_icon_size"
+        android:layout_height="@dimen/edit_text_icon_size"
+        android:layout_marginBottom="@dimen/edit_text_icon_margin"
+        android:layout_marginStart="@dimen/edit_text_icon_margin"
+        android:layout_marginTop="@dimen/edit_text_icon_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/usernameTxt"
+        app:layout_constraintStart_toStartOf="@+id/usernameTxt"
+        app:layout_constraintTop_toTopOf="@+id/usernameTxt"
+        app:srcCompat="@drawable/ic_ico_username"
+        />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/passwordTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/login_edit_text_margin"
+        android:background="@drawable/custom_edit"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/loginBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameTxt"
+        style="@style/EditTextInputStyle"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/lockImageView"
+        android:layout_width="@dimen/edit_text_icon_size"
+        android:layout_height="@dimen/edit_text_icon_size"
+        android:layout_marginBottom="@dimen/edit_text_icon_margin"
+        android:layout_marginStart="@dimen/edit_text_icon_margin"
+        android:layout_marginTop="@dimen/edit_text_icon_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/passwordTxt"
+        app:layout_constraintStart_toStartOf="@+id/passwordTxt"
+        app:layout_constraintTop_toTopOf="@+id/passwordTxt"
+        app:srcCompat="@drawable/ic_ico_lock"
+        tools:ignore="ContentDescription"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/loginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/login_edit_text_margin"
+        android:background="@drawable/custom_button"
+        android:text="@string/login"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTxt"
+        style="@style/ButtonStyle"
+        />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

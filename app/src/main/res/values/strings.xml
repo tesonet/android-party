@@ -4,4 +4,6 @@
     <string name="username">Username</string>
     <string name="password">password</string>
     <string name="login">Log In</string>
+  <string name="server">server</string>
+    <string name="distance">distance</string>
 </resources>

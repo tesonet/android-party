@@ -3,12 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/custom_button.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.20052083333333334" />
+        <entry key="app/src/main/res/layout/fragment_server_item.xml" value="0.20052083333333334" />
+        <entry key="app/src/main/res/layout/fragment_server_list.xml" value="0.1" />
       </map>
     </option>
   </component>
-  <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component enabled="true" name="ExternalStorageConfigurationManager" />
+  <component default="true" languageLevel="JDK_11" name="ProjectRootManager" project-jdk-name="11"
+      project-jdk-type="JavaSDK" version="2">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

@@ -17,56 +17,52 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
-    private lateinit var binding: FragmentLoginBinding
-    private val viewModel: LoginViewModel by viewModels()
+  private lateinit var binding: FragmentLoginBinding
+  private val viewModel: LoginViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        viewModel.loginResponse.observe(viewLifecycleOwner, {
-            if (it != null) {
-                findNavController().navigate(R.id.serverList)
-            }
-        })
-        binding = FragmentLoginBinding.inflate(inflater, container, false)
-        return binding.root
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View {
+    setObservables()
+    binding = FragmentLoginBinding.inflate(inflater, container, false)
+    return binding.root
+  }
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    binding.loginBtn.enable(false)
+    binding.passwordTxt.addTextChangedListener {
+      val userName = binding.usernameTxt.text.toString()
+      binding.loginBtn.enable(userName.isNotEmpty() && it.toString().isNotEmpty())
     }
+    setObservables()
+    binding.loginBtn.setOnClickListener {
+      login()
+    }
+  }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.loginBtn.enable(false)
-        binding.passwordTxt.addTextChangedListener {
-            val userName = binding.usernameTxt.text.toString()
-            binding.loginBtn.enable(userName.isNotEmpty() && it.toString().isNotEmpty())
+  private fun setObservables() {
+    val navController = findNavController()
+    viewModel.loginResponse.observe(viewLifecycleOwner, {
+      when (it) {
+        is Resource.Error -> {
+          Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
         }
-        setObservables()
-        binding.loginBtn.setOnClickListener {
-            login()
+        is Resource.Loading -> {
+          //do Nothing
         }
-    }
+        is Resource.Success -> {
+          navController.navigate(R.id.serverList)
+        }
+      }
+    })
+  }
 
-    private fun setObservables() {
-        val navController = findNavController()
-        viewModel.loginResponse.observe(viewLifecycleOwner, {
-            when (it) {
-                is Resource.Error -> {
-                    Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
-                }
-                is Resource.Loading -> {
-                    Toast.makeText(context, "Loading", Toast.LENGTH_LONG).show()
-                }
-                is Resource.Success -> {
-                    navController.navigate(R.id.serverList)
-                }
-            }
-        })
-    }
-
-    private fun login() {
-        val userName = binding.usernameTxt.text.toString()
-        val password = binding.passwordTxt.text.toString()
-        viewModel.login(userName, password)
-    }
+  private fun login() {
+    val userName = binding.usernameTxt.text.toString()
+    val password = binding.passwordTxt.text.toString()
+    viewModel.login(userName, password)
+  }
 }
