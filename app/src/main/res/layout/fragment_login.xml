@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logot"
+        app:srcCompat="@drawable/logo"
         />
 
     <androidx.appcompat.widget.AppCompatEditText

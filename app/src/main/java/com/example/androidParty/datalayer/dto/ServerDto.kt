@@ -5,5 +5,5 @@ import com.example.androidParty.presentation.serverList.domain.entity.Server
 data class ServerDto(val name: String, val distance: String)
 
 fun ServerDto.toServer(): Server {
-    return Server(name = name, distance = distance)
+  return Server(name = name, distance = "$distance km ")
 }

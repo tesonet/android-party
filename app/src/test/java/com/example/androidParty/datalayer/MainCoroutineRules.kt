@@ -9,7 +9,7 @@ import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
 @ExperimentalCoroutinesApi
-class MainCoroutineRules(val testDispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()) :
+class MainCoroutineRules(private val testDispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()) :
     TestWatcher() {
 
     override fun finished(description: Description?) {

@@ -45,15 +45,10 @@ object AppModule {
     @Singleton
     fun provideNordApi(retrofit: Retrofit): NordApiService =
         retrofit.create(NordApiService::class.java)
-//
-//    @Singleton
-//    @Provides
-//    fun provideRemoteDataSource(nordApiService: NordApiService): RemoteDataSource =
-//        RemoteDataSource(nordApiService)
 
     @Singleton
     @Provides
-    fun provideUserPrefrence(@ApplicationContext context: Context): UserPreferences =
+    fun provideUserPreferences(@ApplicationContext context: Context): UserPreferences =
         UserPreferences(context)
 
     @Singleton

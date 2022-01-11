@@ -2,7 +2,6 @@
 <resources>
   <dimen name="padding_element">15dp</dimen>
   <dimen name="text_size">16sp</dimen>
-  <dimen name="login_button_height">55dp</dimen>
   <dimen name="edit_text_icon_size">20dp</dimen>
   <dimen name="edit_text_icon_margin">16dp</dimen>
   <dimen name="login_edit_text_margin">5dp</dimen>

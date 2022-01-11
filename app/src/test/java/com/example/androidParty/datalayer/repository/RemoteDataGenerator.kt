@@ -14,8 +14,4 @@ object RemoteDataGenerator {
     fun getRemoteDataErrorResponse(): Flow<Resource<User>> = flow {
         emit(Resource.Error("Error Happened"))
     }
-
-    fun getRemoteDataLoadingResponse(): Flow<Resource<User>> = flow {
-        emit(Resource.Loading())
-    }
 }

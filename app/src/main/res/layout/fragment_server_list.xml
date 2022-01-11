@@ -45,7 +45,7 @@
                     android:layout_width="@dimen/server_list_header_logo_width"
                     android:layout_height="match_parent"
                     android:layout_gravity="start"
-                    app:srcCompat="@drawable/logoservers"
+                    app:srcCompat="@drawable/logo_servers"
                     tools:ignore="ContentDescription" />
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -92,7 +92,7 @@
                 android:id="@+id/topShadowView"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/shadow_height"
-                android:background="@drawable/shadowserver"
+                android:background="@drawable/shadow_server"
                 app:layout_constraintBottom_toTopOf="@+id/toolbarView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -101,7 +101,7 @@
                 android:id="@+id/bottomShadowView"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/shadow_height"
-                android:background="@drawable/shadowserver"
+                android:background="@drawable/shadow_server"
                 android:rotation="180"
                 app:layout_constraintTop_toBottomOf="@+id/toolbarView" />
 

@@ -26,7 +26,7 @@ class LoginRepositoryImpTest {
     val mainCoroutineRule = MainCoroutineRules()
 
     @Test
-    fun login() = runBlocking() {
+    fun login() = runBlocking {
         //given
         val paramObject = mock(JSONObject()::class.java)
         paramObject.put("username", "Mai")
@@ -43,7 +43,7 @@ class LoginRepositoryImpTest {
     }
 
     @Test
-    fun getAccessToken() = runBlocking() {
+    fun getAccessToken() = runBlocking {
         //given
 
         //when
