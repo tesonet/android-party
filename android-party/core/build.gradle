@@ -1,0 +1,16 @@
+apply from: "$rootDir/buildsystem/android-library.gradle"
+
+dependencies {
+    def commonDependencies = rootProject.ext.commonDependencies
+    implementation commonDependencies.androidx.appcompat
+    //navigation
+    implementation commonDependencies.androidx.navigationFragment
+    implementation commonDependencies.androidx.navigationKtx
+    implementation commonDependencies.google.material
+    implementation commonDependencies.jetbrains.coroutine
+    implementation commonDependencies.other.adapterDelegates
+
+    implementation commonDependencies.other.glide
+    implementation commonDependencies.other.glideCompiler
+
+}

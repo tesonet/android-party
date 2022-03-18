@@ -1,0 +1,64 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+
+android {
+    def androidConfig = rootProject.ext.android
+
+    compileSdkVersion androidConfig.compileSdkVersion
+    defaultConfig {
+        minSdkVersion androidConfig.minSdkVersion
+        targetSdkVersion androidConfig.targetSdkVersion
+        versionName androidConfig.buildVersionName
+        versionCode androidConfig.buildNumber
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+
+    buildTypes {
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    packagingOptions {
+        pickFirst 'META-INF/LICENSE.md'
+        pickFirst 'META-INF/licenses/ASM'
+        pickFirst 'META-INF/INDEX.LIST'
+        pickFirst 'META-INF/LICENSE-notice.md'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+
+}
+
+dependencies {
+    def commonDependencies = rootProject.ext.commonDependencies
+    implementation commonDependencies.other.timber
+    implementation commonDependencies.jetbrains.kotlinLib
+    //Hilt
+    implementation commonDependencies.google.hiltAndroid
+    kapt commonDependencies.google.hiltCompiler
+    //detekt
+    detektPlugins commonDependencies.other.detekt
+
+    implementation commonDependencies.other.timber
+}

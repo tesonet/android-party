@@ -14,3 +14,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "AndroidParty"
 include ':app'
+include ':core'
+include ':feature-login'
+include ':feature-server'
+include ':domain-login'
+include ':domain-server'
