@@ -58,5 +58,12 @@ dependencies {
     //detekt
     detektPlugins commonDependencies.other.detekt
 
+    // test
+    testImplementation commonTestDependencies.mockk
+    testImplementation commonTestDependencies.mockkAndroid
+    testImplementation commonTestDependencies.junit4
+    testImplementation commonTestDependencies.turbine
+    testImplementation commonTestDependencies.coroutineTest
+
     implementation commonDependencies.other.timber
 }

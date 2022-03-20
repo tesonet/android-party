@@ -13,7 +13,6 @@ object LoginContract {
     ) : ViewState
 
     sealed class Event : ViewEvent {
-        object OnLoginSuccess : Event()
         data class OnLoginClicked(
             val userName: String,
             val password: String

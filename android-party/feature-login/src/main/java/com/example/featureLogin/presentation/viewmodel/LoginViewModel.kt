@@ -4,9 +4,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.example.core.viewmodel.BaseViewModel
 import com.example.domainLogin.domain.usecase.LoginUseCase
-import com.example.feature_login.R
 import com.example.featureLogin.presentation.viewmodel.LoginContract.Event.OnLoginClicked
-import com.example.featureLogin.presentation.viewmodel.LoginContract.Event.OnLoginSuccess
+import com.example.utils.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -37,7 +36,7 @@ class LoginViewModel @Inject constructor(
             ).collect { output ->
                 when (output) {
                     is LoginUseCase.Output.Success -> {
-                        onUiEvent(OnLoginSuccess)
+                        sendEffect { LoginContract.Effect.OnNavigationEffect }
                     }
                     is LoginUseCase.Output.NetworkError -> {
                         sendEffect { LoginContract.Effect.NetworkErrorEffect }
@@ -60,9 +59,6 @@ class LoginViewModel @Inject constructor(
         when (event) {
             is OnLoginClicked -> {
                 login(event.userName, event.password)
-            }
-            is OnLoginSuccess -> {
-                sendEffect { LoginContract.Effect.OnNavigationEffect }
             }
         }
     }
