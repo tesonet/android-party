@@ -8,8 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.example.core.ext.viewBinding
+import com.example.core.R.anim
 import com.example.core.R.string
+import com.example.core.ext.viewBinding
 import com.example.feature_login.databinding.ActivityLoginBinding
 import com.example.feature_login.presentation.viewmodel.LoginContract
 import com.example.feature_login.presentation.viewmodel.LoginViewModel
@@ -100,5 +101,6 @@ class LoginActivity : AppCompatActivity() {
         startActivity(
             Intent(this, ServerActivity::class.java)
         )
+        overridePendingTransition(anim.slide_in_right, anim.slide_out_left)
     }
 }

@@ -13,7 +13,8 @@
         android:theme="@style/Theme.AndroidParty">
         <activity
             android:name="com.example.feature_login.presentation.view.LoginActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="stateVisible|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

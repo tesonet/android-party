@@ -32,7 +32,6 @@ class ServerFragment : Fragment(R.layout.fragment_server) {
         super.onViewCreated(view, savedInstanceState)
         initView()
         observeViewState()
-        observeEffect()
     }
 
     private fun initView() {
@@ -56,26 +55,5 @@ class ServerFragment : Fragment(R.layout.fragment_server) {
                 }
             }
         }
-    }
-
-    private fun observeEffect() {
-        lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.effect.collect { effect ->
-                    when (effect) {
-                        is ServerContract.Effect.OnLogoutEffect -> {
-                            logout()
-                        }
-                        else -> {
-                            // do nothing
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private fun logout() {
-        this.activity?.finish()
     }
 }
