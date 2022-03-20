@@ -21,8 +21,6 @@ class LoginUseCaseImpl @Inject constructor(
             LoginInfo(userName = input.userName, password = input.password)
         ).map { token ->
             repository.saveToken(token = token)
-            token
-        }.map { token ->
             Success(token) as Output
         }.catch { exception ->
             if (exception.isNetworkException()) {

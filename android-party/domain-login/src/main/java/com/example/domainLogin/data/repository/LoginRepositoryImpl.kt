@@ -22,7 +22,7 @@ class LoginRepositoryImpl @Inject constructor(
             dtoToDomainMapper.map(tokenDto)
         }
 
-    override suspend fun saveToken(token: Token) {
-       localDataSource.saveToken(token = token.token)
+    override fun saveToken(token: Token) {
+        localDataSource.saveToken(token = token.token)
     }
 }

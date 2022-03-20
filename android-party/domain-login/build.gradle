@@ -13,7 +13,7 @@ dependencies {
     implementation commonDependencies.other.okHttp
     implementation commonDependencies.other.okHttpInterceptor
     implementation project(path: ':core')
-    //debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    // dev tool
     debugImplementation developmentDependencies.chucker
     releaseImplementation developmentDependencies.chuckNoOp
     //test
@@ -21,4 +21,6 @@ dependencies {
     testImplementation commonTestDependencies.mockk
     testImplementation commonTestDependencies.mockkAndroid
     testImplementation commonTestDependencies.junit4
+    testImplementation commonTestDependencies.turbine
+    testImplementation commonTestDependencies.coroutineTest
 }

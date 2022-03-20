@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface LoginRepository {
     fun fetchToken(loginInfo: LoginInfo): Flow<Token>
-    suspend fun saveToken(token: Token)
+    fun saveToken(token: Token)
 }

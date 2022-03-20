@@ -27,7 +27,7 @@ class ServerRepositoryImpl @Inject constructor(
             if (list.isNotEmpty()) {
                 fetchLocalServer()
             } else {
-                flow { emptyList<Server>() }
+                flow { emit(emptyList()) }
             }
         }
     }

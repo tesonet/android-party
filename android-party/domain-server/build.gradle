@@ -27,4 +27,6 @@ dependencies {
     testImplementation commonTestDependencies.mockkAndroid
     testImplementation commonTestDependencies.junit4
     testImplementation commonTestDependencies.roomTest
+    testImplementation commonTestDependencies.turbine
+    testImplementation commonTestDependencies.coroutineTest
 }
