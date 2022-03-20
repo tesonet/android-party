@@ -12,8 +12,9 @@ buildscript {
     dependencies {
         def buildDependencies = rootProject.buildDependencies
         classpath buildDependencies.hiltGradlePlugin
-        //  classpath buildDependencies.serialization
+        classpath buildDependencies.serialization
         classpath buildDependencies.navigationComponentPlugin
+        classpath buildDependencies.kotlinGradlePlugin
     }
 }
 
@@ -22,6 +23,7 @@ plugins {
     id 'com.android.library' version '7.1.2' apply false
     id 'org.jetbrains.kotlin.android' version '1.6.10' apply false
     id "io.gitlab.arturbosch.detekt" version "1.19.0"
+    id 'org.jetbrains.kotlin.jvm' version '1.6.10' apply false
 }
 
 subprojects {

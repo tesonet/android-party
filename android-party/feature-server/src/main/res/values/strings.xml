@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loading_text">Fetching the list...</string>
+    <string name="server">Server</string>
+    <string name="distance">Distance</string>
+</resources>

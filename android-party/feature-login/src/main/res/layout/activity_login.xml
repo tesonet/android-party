@@ -5,15 +5,16 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.LoginActivity">
+    tools:context=".presentation.view.LoginActivity">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:maxHeight="0dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/bg" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg"
+        android:contentDescription="@string/background_image"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -37,13 +38,13 @@
             android:id="@+id/username"
             android:layout_width="0dp"
             android:layout_height="60dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginStart="@dimen/button_margin"
+            android:layout_marginEnd="@dimen/button_margin"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:background="@drawable/rectangle_text"
             android:drawableStart="@drawable/ic_ico_username"
             android:drawablePadding="@dimen/activity_horizontal_margin"
-            android:hint="@string/prompt_email"
+            android:hint="@string/prompt_username"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             android:selectAllOnFocus="true"
@@ -56,9 +57,9 @@
             android:id="@+id/password"
             android:layout_width="0dp"
             android:layout_height="60dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="@dimen/button_margin"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="@dimen/button_margin"
             android:background="@drawable/rectangle_text"
             android:drawableStart="@drawable/ic_ico_lock"
             android:drawablePadding="@dimen/activity_horizontal_margin"
@@ -77,11 +78,10 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_gravity="start"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="@dimen/button_margin"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="@dimen/button_margin"
             android:background="@drawable/rectangle_button"
-            android:enabled="false"
             android:text="@string/action_sign_in"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="guideline_begin">300dp</dimen>
+    <dimen name="header_text_size">18sp</dimen>
+</resources>

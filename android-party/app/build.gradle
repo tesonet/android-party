@@ -11,7 +11,7 @@ android {
     compileSdk androidConfig.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.example.track"
+        applicationId "com.example.party"
         minSdk androidConfig.minSdkVersion
         targetSdk androidConfig.targetSdkVersion
         versionCode androidConfig.buildNumber

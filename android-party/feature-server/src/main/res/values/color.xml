@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="divider">#999999</color>
+    <color name="header_divider">#FFE9EFF1</color>
+    <color name="header_text_color">#D3D3D3</color>
+
+</resources>

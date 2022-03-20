@@ -1,5 +1,16 @@
 apply from: "$rootDir/buildsystem/android-library.gradle"
 
+android {
+    buildTypes {
+        release {
+            buildConfigField "String", "BASE_URL", "\" https://playground.tesonet.lt/v1/\""
+        }
+        debug {
+            buildConfigField "String", "BASE_URL", "\" https://playground.tesonet.lt/v1/\""
+        }
+    }
+}
+
 dependencies {
     def commonDependencies = rootProject.ext.commonDependencies
     implementation commonDependencies.androidx.appcompat
