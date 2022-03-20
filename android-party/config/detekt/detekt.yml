@@ -282,8 +282,8 @@ formatting:
   NoWildcardImports:
     active: true
   PackageName:
-    active: true
-    autoCorrect: true
+    active: false
+    autoCorrect: false
   ParameterListWrapping:
     active: true
     autoCorrect: true

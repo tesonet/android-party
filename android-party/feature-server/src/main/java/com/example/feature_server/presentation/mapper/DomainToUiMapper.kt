@@ -1,7 +1,7 @@
 package com.example.feature_server.presentation.mapper
 
 import com.example.core.mapper.Mapper
-import com.example.domain_server.domain.model.Server
+import com.example.domainServer.domain.model.Server
 import com.example.feature_server.presentation.model.ServerUiModel
 
 class DomainToUiMapper : Mapper<Server, ServerUiModel> {

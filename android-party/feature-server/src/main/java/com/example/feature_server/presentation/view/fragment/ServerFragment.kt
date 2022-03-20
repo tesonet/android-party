@@ -19,7 +19,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class ServerFragment : Fragment(R.layout.fragment_server) {
     private val binding: FragmentServerBinding by viewBinding(FragmentServerBinding::bind)

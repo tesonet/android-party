@@ -2,7 +2,7 @@ package com.example.feature_server.presentation.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import com.example.core.viewmodel.BaseViewModel
-import com.example.domain_server.domain.usecase.FetchServerUseCase
+import com.example.domainServer.domain.usecase.FetchServerUseCase
 import com.example.feature_server.presentation.mapper.DomainToUiMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -51,5 +51,4 @@ class ServerViewModel @Inject constructor(
             }
         }
     }
-
 }

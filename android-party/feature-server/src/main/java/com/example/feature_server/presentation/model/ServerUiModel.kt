@@ -4,5 +4,3 @@ data class ServerUiModel(
     val serverName: String,
     val distance: String,
 )
-
-

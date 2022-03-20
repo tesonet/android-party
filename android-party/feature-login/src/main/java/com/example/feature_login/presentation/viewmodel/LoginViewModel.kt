@@ -3,7 +3,7 @@ package com.example.feature_login.presentation.viewmodel
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.example.core.viewmodel.BaseViewModel
-import com.example.domain_login.domain.usecase.LoginUseCase
+import com.example.domainLogin.domain.usecase.LoginUseCase
 import com.example.feature_login.R
 import com.example.feature_login.presentation.viewmodel.LoginContract.Event.OnLoginClicked
 import com.example.feature_login.presentation.viewmodel.LoginContract.Event.OnLoginSuccess
@@ -66,16 +66,4 @@ class LoginViewModel @Inject constructor(
             }
         }
     }
-
-/*    fun loginDataChanged(username: String, password: String) {
-        if (!isUserNameValid(username)) {
-            _loginForm.value = LoginFormState(usernameError = R.string.invalid_username)
-        } else if (!isPasswordValid(password)) {
-            _loginForm.value = LoginFormState(passwordError = R.string.invalid_password)
-        } else {
-            _loginForm.value = LoginFormState(isDataValid = true)
-        }
-    }*/
-
-
 }
