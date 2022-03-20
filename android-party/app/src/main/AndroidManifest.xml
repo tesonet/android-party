@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidParty">
         <activity
-            android:name="com.example.feature_login.presentation.view.LoginActivity"
+            android:name="com.example.featureLogin.presentation.view.LoginActivity"
             android:exported="true"
             android:windowSoftInputMode="stateVisible|adjustResize">
             <intent-filter>
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.feature_server.presentation.view.activity.ServerActivity" />
+        <activity android:name="com.example.featureServer.presentation.view.activity.ServerActivity" />
     </application>
 
 </manifest>

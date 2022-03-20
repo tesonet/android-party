@@ -1,12 +1,12 @@
-package com.example.feature_login.presentation.viewmodel
+package com.example.featureLogin.presentation.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.example.core.viewmodel.BaseViewModel
 import com.example.domainLogin.domain.usecase.LoginUseCase
 import com.example.feature_login.R
-import com.example.feature_login.presentation.viewmodel.LoginContract.Event.OnLoginClicked
-import com.example.feature_login.presentation.viewmodel.LoginContract.Event.OnLoginSuccess
+import com.example.featureLogin.presentation.viewmodel.LoginContract.Event.OnLoginClicked
+import com.example.featureLogin.presentation.viewmodel.LoginContract.Event.OnLoginSuccess
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

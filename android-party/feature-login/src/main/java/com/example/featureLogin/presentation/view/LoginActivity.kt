@@ -1,4 +1,4 @@
-package com.example.feature_login.presentation.view
+package com.example.featureLogin.presentation.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,9 +12,9 @@ import com.example.core.R.anim
 import com.example.core.R.string
 import com.example.core.ext.viewBinding
 import com.example.feature_login.databinding.ActivityLoginBinding
-import com.example.feature_login.presentation.viewmodel.LoginContract
-import com.example.feature_login.presentation.viewmodel.LoginViewModel
-import com.example.feature_server.presentation.view.activity.ServerActivity
+import com.example.featureLogin.presentation.viewmodel.LoginContract
+import com.example.featureLogin.presentation.viewmodel.LoginViewModel
+import com.example.featureServer.presentation.view.activity.ServerActivity
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

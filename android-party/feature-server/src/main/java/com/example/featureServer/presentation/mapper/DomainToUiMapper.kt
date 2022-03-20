@@ -1,8 +1,8 @@
-package com.example.feature_server.presentation.mapper
+package com.example.featureServer.presentation.mapper
 
 import com.example.core.mapper.Mapper
 import com.example.domainServer.domain.model.Server
-import com.example.feature_server.presentation.model.ServerUiModel
+import com.example.featureServer.presentation.model.ServerUiModel
 
 class DomainToUiMapper : Mapper<Server, ServerUiModel> {
     companion object {

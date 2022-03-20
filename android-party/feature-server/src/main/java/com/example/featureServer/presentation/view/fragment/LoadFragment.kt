@@ -1,4 +1,4 @@
-package com.example.feature_server.presentation.view.fragment
+package com.example.featureServer.presentation.view.fragment
 
 import android.os.Bundle
 import android.view.View
@@ -13,8 +13,8 @@ import com.example.core.delegate.viewBinding
 import com.example.core.ext.safeNavigate
 import com.example.feature_server.R
 import com.example.feature_server.databinding.FragmentLoadingBinding
-import com.example.feature_server.presentation.viewmodel.ServerContract
-import com.example.feature_server.presentation.viewmodel.ServerViewModel
+import com.example.featureServer.presentation.viewmodel.ServerContract
+import com.example.featureServer.presentation.viewmodel.ServerViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

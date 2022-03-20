@@ -1,9 +1,9 @@
-package com.example.feature_server.presentation.viewmodel
+package com.example.featureServer.presentation.viewmodel
 
 import com.example.core.viewmodel.ViewEffect
 import com.example.core.viewmodel.ViewEvent
 import com.example.core.viewmodel.ViewState
-import com.example.feature_server.presentation.model.ServerUiModel
+import com.example.featureServer.presentation.model.ServerUiModel
 
 object ServerContract {
     data class State(

@@ -1,4 +1,4 @@
-package com.example.feature_login.presentation.viewmodel
+package com.example.featureLogin.presentation.viewmodel
 
 import androidx.annotation.StringRes
 import com.example.core.viewmodel.ViewEffect

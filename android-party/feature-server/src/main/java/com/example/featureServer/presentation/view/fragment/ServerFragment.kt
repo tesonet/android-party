@@ -1,4 +1,4 @@
-package com.example.feature_server.presentation.view.fragment
+package com.example.featureServer.presentation.view.fragment
 
 import android.os.Bundle
 import android.view.View
@@ -12,9 +12,9 @@ import com.example.core.ext.asVerticalLayout
 import com.example.core.ext.doNotLeak
 import com.example.feature_server.R
 import com.example.feature_server.databinding.FragmentServerBinding
-import com.example.feature_server.presentation.view.adapter.ServerListAdapter
-import com.example.feature_server.presentation.viewmodel.ServerContract
-import com.example.feature_server.presentation.viewmodel.ServerViewModel
+import com.example.featureServer.presentation.view.adapter.ServerListAdapter
+import com.example.featureServer.presentation.viewmodel.ServerContract
+import com.example.featureServer.presentation.viewmodel.ServerViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -44,7 +44,6 @@ class ServerFragment : Fragment(R.layout.fragment_server) {
             viewModel.onUiEvent(ServerContract.Event.OnLogoutClicked)
         }
     }
-
 
     private fun observeViewState() {
         lifecycleScope.launch {

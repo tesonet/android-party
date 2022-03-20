@@ -1,9 +1,9 @@
-package com.example.feature_server.presentation.view.adapter
+package com.example.featureServer.presentation.view.adapter
 
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
 import com.example.feature_server.databinding.ItemServerBinding
-import com.example.feature_server.presentation.model.ServerUiModel
+import com.example.featureServer.presentation.model.ServerUiModel
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegatesManager
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
@@ -38,7 +38,6 @@ internal fun itemServerDelegate() =
             }
         }
     }
-
 
 class ItemDifferCallback : DiffUtil.ItemCallback<ServerUiModel>() {
     override fun areItemsTheSame(oldItem: ServerUiModel, newItem: ServerUiModel): Boolean {

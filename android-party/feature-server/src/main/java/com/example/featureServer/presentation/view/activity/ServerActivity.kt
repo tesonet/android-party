@@ -1,4 +1,4 @@
-package com.example.feature_server.presentation.view.activity
+package com.example.featureServer.presentation.view.activity
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -11,8 +11,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.core.ext.viewBinding
 import com.example.feature_server.databinding.ActivityServerBinding
-import com.example.feature_server.presentation.viewmodel.ServerContract
-import com.example.feature_server.presentation.viewmodel.ServerViewModel
+import com.example.featureServer.presentation.viewmodel.ServerContract
+import com.example.featureServer.presentation.viewmodel.ServerViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

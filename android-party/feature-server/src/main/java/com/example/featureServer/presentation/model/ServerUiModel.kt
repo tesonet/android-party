@@ -1,4 +1,4 @@
-package com.example.feature_server.presentation.model
+package com.example.featureServer.presentation.model
 
 data class ServerUiModel(
     val serverName: String,

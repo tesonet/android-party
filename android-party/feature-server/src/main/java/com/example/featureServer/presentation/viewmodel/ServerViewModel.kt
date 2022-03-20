@@ -1,9 +1,9 @@
-package com.example.feature_server.presentation.viewmodel
+package com.example.featureServer.presentation.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import com.example.core.viewmodel.BaseViewModel
 import com.example.domainServer.domain.usecase.FetchServerUseCase
-import com.example.feature_server.presentation.mapper.DomainToUiMapper
+import com.example.featureServer.presentation.mapper.DomainToUiMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
