@@ -7,6 +7,7 @@ import com.example.domainLogin.utils.TestData
 import io.mockk.coEvery
 import io.mockk.mockk
 import junit.framework.TestCase
+import kotlinx.coroutines.test.runTest
 import org.junit.Test
 
 class RemoteDataSourceImplTest : TestCase() {
@@ -14,7 +15,7 @@ class RemoteDataSourceImplTest : TestCase() {
     private val remoteDataSource = RemoteDataSourceImpl(service)
 
     @Test
-    fun `test getToken with valid output`() = kotlinx.coroutines.test.runTest {
+    fun `test getToken with valid output`() = runTest {
         val provided = TestData.getTokenDto()
         val input = LoginDto(userName = "test_user", password = "test")
         coEvery {

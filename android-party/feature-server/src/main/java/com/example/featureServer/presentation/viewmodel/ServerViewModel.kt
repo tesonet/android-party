@@ -1,6 +1,7 @@
 package com.example.featureServer.presentation.viewmodel
 
 import androidx.lifecycle.viewModelScope
+import com.example.core.ext.exhaustive
 import com.example.core.viewmodel.BaseViewModel
 import com.example.domainServer.domain.usecase.FetchServerUseCase
 import com.example.featureServer.presentation.mapper.DomainToUiMapper
@@ -33,9 +34,11 @@ class ServerViewModel @Inject constructor(
                         sendEffect { ServerContract.Effect.NetworkErrorEffect }
                     }
                     is FetchServerUseCase.Output.UnknownError -> {
-                        sendEffect { ServerContract.Effect.UnknownErrorEffect(message = output.message) }
+                        sendEffect {
+                            ServerContract.Effect.UnknownErrorEffect(message = output.message)
+                        }
                     }
-                }
+                }.exhaustive
             }
         }
     }
@@ -49,6 +52,6 @@ class ServerViewModel @Inject constructor(
             is ServerContract.Event.OnLogoutClicked -> {
                 sendEffect { ServerContract.Effect.OnLogoutEffect }
             }
-        }
+        }.exhaustive
     }
 }

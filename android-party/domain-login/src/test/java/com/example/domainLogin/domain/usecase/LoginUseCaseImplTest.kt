@@ -62,7 +62,7 @@ class LoginUseCaseImplTest : TestCase() {
     fun `test loginUseCaseImpl with input return unknown error output`() = runBlocking {
         coEvery {
             repository.fetchToken(any())
-        } returns flow { emit(throw RuntimeException()) }
+        } returns flow { emit(throw NullPointerException()) }
         every {
             repository.saveToken(any())
         } returns Unit

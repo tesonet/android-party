@@ -6,10 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.ActivityNavigator
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.example.core.ext.exhaustive
 import com.example.core.ext.viewBinding
 import com.example.featureServer.databinding.ActivityServerBinding
 import com.example.featureServer.presentation.viewmodel.ServerContract
@@ -45,7 +45,7 @@ class ServerActivity : AppCompatActivity() {
                         else -> {
                             // do nothing
                         }
-                    }
+                    }.exhaustive
                 }
             }
         }

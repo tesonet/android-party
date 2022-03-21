@@ -2,9 +2,8 @@ package com.example.featureServer.presentation.utils
 
 import com.example.domainServer.domain.model.Server
 
-
 object TestData {
-    fun getSingleServer() = Server(
+    private fun getSingleServer() = Server(
         name = "test server 1",
         distance = 131
     )

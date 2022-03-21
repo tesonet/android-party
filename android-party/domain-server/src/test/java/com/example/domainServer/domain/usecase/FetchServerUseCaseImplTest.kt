@@ -55,7 +55,7 @@ class FetchServerUseCaseImplTest : TestCase() {
     fun `test fetchServerUseCase with input return unknown exception`() = runBlocking {
         coEvery {
             repository.fetchServer()
-        } returns flow { emit(throw RuntimeException()) }
+        } returns flow { emit(throw NullPointerException()) }
 
         useCase.execute(FetchServerUseCase.Input).collect {
             assert(it is FetchServerUseCase.Output.UnknownError)

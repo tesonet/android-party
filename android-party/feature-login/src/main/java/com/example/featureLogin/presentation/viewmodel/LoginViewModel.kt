@@ -2,6 +2,7 @@ package com.example.featureLogin.presentation.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.example.core.ext.exhaustive
 import com.example.core.viewmodel.BaseViewModel
 import com.example.domainLogin.domain.usecase.LoginUseCase
 import com.example.featureLogin.presentation.viewmodel.LoginContract.Event.OnLoginClicked
@@ -44,7 +45,7 @@ class LoginViewModel @Inject constructor(
                     is LoginUseCase.Output.UnknownError -> {
                         sendEffect { LoginContract.Effect.UnknownErrorEffect(output.message) }
                     }
-                }
+                }.exhaustive
                 updateState { copy(isLoading = false) }
             }
         }
@@ -60,6 +61,6 @@ class LoginViewModel @Inject constructor(
             is OnLoginClicked -> {
                 login(event.userName, event.password)
             }
-        }
+        }.exhaustive
     }
 }

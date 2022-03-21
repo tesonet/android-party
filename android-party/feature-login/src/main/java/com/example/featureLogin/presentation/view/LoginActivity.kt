@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.core.R.anim
 import com.example.core.R.string
+import com.example.core.ext.exhaustive
 import com.example.core.ext.viewBinding
 import com.example.utils.databinding.ActivityLoginBinding
 import com.example.featureLogin.presentation.viewmodel.LoginContract
@@ -78,7 +79,7 @@ class LoginActivity : AppCompatActivity() {
                         is LoginContract.Effect.OnNavigationEffect -> {
                             navigationToLoading()
                         }
-                    }
+                    }.exhaustive
                 }
             }
         }

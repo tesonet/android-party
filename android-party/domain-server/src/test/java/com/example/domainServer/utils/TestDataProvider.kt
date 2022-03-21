@@ -5,7 +5,7 @@ import com.example.domainServer.data.dto.ServerDto
 import com.example.domainServer.domain.model.Server
 
 object TestDataProvider {
-    fun getSingleServerEntity() = ServerEntity(
+    private fun getSingleServerEntity() = ServerEntity(
         name = "test server 1",
         distance = 131
     )
@@ -16,7 +16,7 @@ object TestDataProvider {
         getSingleServerEntity().copy(name = "test server 3")
     )
 
-    fun getSingleServerDto() = ServerDto(
+    private fun getSingleServerDto() = ServerDto(
         name = "test server 1",
         distance = 131
     )
@@ -27,7 +27,7 @@ object TestDataProvider {
         getSingleServerDto().copy(name = "test server 3")
     )
 
-    fun getSingleServer() = Server(
+    private fun getSingleServer() = Server(
         name = "test server 1",
         distance = 131
     )

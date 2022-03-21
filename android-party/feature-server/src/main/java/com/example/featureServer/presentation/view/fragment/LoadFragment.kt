@@ -10,6 +10,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.core.R.string
 import com.example.core.delegate.viewBinding
+import com.example.core.ext.exhaustive
 import com.example.core.ext.safeNavigate
 import com.example.featureServer.R
 import com.example.featureServer.databinding.FragmentLoadingBinding
@@ -47,7 +48,7 @@ class LoadFragment : Fragment(R.layout.fragment_loading) {
                         else -> {
                             // do nothing
                         }
-                    }
+                    }.exhaustive
                 }
             }
         }
