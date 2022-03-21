@@ -2,11 +2,13 @@ package com.example.featureServer.presentation.view.fragment
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.core.delegate.viewBinding
 import com.example.core.ext.asVerticalLayout
 import com.example.core.ext.doNotLeak
@@ -39,6 +41,11 @@ class ServerFragment : Fragment(R.layout.fragment_server) {
             adapter = this@ServerFragment.adapter
             doNotLeak(this@ServerFragment)
         }
+
+        val itemDecorator = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
+        ContextCompat.getDrawable(requireContext(), R.drawable.divider)
+            ?.let { itemDecorator.setDrawable(it) }
+        binding.list.addItemDecoration(itemDecorator)
 
         binding.logoutButton.setOnClickListener {
             viewModel.onUiEvent(ServerContract.Event.OnLogoutClicked)

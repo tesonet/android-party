@@ -8,7 +8,6 @@ import com.example.featureServer.presentation.viewmodel.ServerContract.State
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onCompletion
@@ -19,7 +18,6 @@ import org.hamcrest.MatcherAssert
 import org.junit.Before
 import org.junit.Test
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class ServerViewModelTest {
     private val useCase: FetchServerUseCase = mockk()
     private lateinit var viewModel: ServerViewModel

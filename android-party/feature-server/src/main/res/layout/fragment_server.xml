@@ -25,8 +25,9 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/logo_width"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/logo"
                     android:src="@drawable/ic_logo_2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -37,8 +38,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:contentDescription="@string/logout"
                     android:focusable="true"
-                    android:paddingRight="16dp"
+                    android:paddingRight="@dimen/padding_right"
                     android:src="@drawable/ic_ico_logout"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -49,20 +51,21 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <include
+        android:id="@+id/header"
         layout="@layout/header_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/header"
-        app:layout_constraintTop_toBottomOf="@+id/appBar"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/appBar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
         app:layout_constraintTop_toBottomOf="@+id/header"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp"
+        tools:itemCount="20"
+        tools:layout_editor_absoluteX="0dp"
         tools:listitem="@layout/item_server" />
 
 
