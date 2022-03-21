@@ -11,8 +11,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.core.R.string
 import com.example.core.delegate.viewBinding
 import com.example.core.ext.safeNavigate
-import com.example.feature_server.R
-import com.example.feature_server.databinding.FragmentLoadingBinding
+import com.example.featureServer.R
+import com.example.featureServer.databinding.FragmentLoadingBinding
 import com.example.featureServer.presentation.viewmodel.ServerContract
 import com.example.featureServer.presentation.viewmodel.ServerViewModel
 import com.google.android.material.snackbar.Snackbar

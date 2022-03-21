@@ -97,6 +97,6 @@ internal interface ServerDataModule {
 
         @Singleton
         @Provides
-        fun provideDao(database: ServerDatabase): ServerDao = database.launchDao()
+        fun provideDao(database: ServerDatabase): ServerDao = database.serverDao()
     }
 }

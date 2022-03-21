@@ -12,5 +12,5 @@ import com.example.domainServer.data.db.entity.ServerEntity
 )
 
 abstract class ServerDatabase : RoomDatabase() {
-    abstract fun launchDao(): ServerDao
+    abstract fun serverDao(): ServerDao
 }

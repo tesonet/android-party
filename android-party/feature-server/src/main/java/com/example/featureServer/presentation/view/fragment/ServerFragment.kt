@@ -10,8 +10,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.example.core.delegate.viewBinding
 import com.example.core.ext.asVerticalLayout
 import com.example.core.ext.doNotLeak
-import com.example.feature_server.R
-import com.example.feature_server.databinding.FragmentServerBinding
+import com.example.featureServer.R
+import com.example.featureServer.databinding.FragmentServerBinding
 import com.example.featureServer.presentation.view.adapter.ServerListAdapter
 import com.example.featureServer.presentation.viewmodel.ServerContract
 import com.example.featureServer.presentation.viewmodel.ServerViewModel

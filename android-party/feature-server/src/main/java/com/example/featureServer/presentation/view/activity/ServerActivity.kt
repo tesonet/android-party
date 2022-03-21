@@ -10,7 +10,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.core.ext.viewBinding
-import com.example.feature_server.databinding.ActivityServerBinding
+import com.example.featureServer.databinding.ActivityServerBinding
 import com.example.featureServer.presentation.viewmodel.ServerContract
 import com.example.featureServer.presentation.viewmodel.ServerViewModel
 import dagger.hilt.android.AndroidEntryPoint

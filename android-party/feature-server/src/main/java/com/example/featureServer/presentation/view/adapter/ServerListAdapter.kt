@@ -2,7 +2,7 @@ package com.example.featureServer.presentation.view.adapter
 
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
-import com.example.feature_server.databinding.ItemServerBinding
+import com.example.featureServer.databinding.ItemServerBinding
 import com.example.featureServer.presentation.model.ServerUiModel
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegatesManager

@@ -4,7 +4,6 @@ plugins {
 }
 apply from: "$rootDir/buildsystem/android-library.gradle"
 
-
 dependencies {
     def commonDependencies = rootProject.ext.commonDependencies
     implementation commonDependencies.jetbrains.coroutine
@@ -26,7 +25,11 @@ dependencies {
     testImplementation commonTestDependencies.mockk
     testImplementation commonTestDependencies.mockkAndroid
     testImplementation commonTestDependencies.junit4
-    testImplementation commonTestDependencies.roomTest
     testImplementation commonTestDependencies.turbine
     testImplementation commonTestDependencies.coroutineTest
+    androidTestImplementation commonTestDependencies.roomTest
+    androidTestImplementation commonTestDependencies.extJunit
+    androidTestImplementation commonTestDependencies.coroutineTest
+    androidTestImplementation commonTestDependencies.testRule
+    androidTestImplementation commonTestDependencies.testRunner
 }
