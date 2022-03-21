@@ -1,6 +1,5 @@
 package com.example.featureServer.presentation.view.adapter
 
-import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
 import com.example.featureServer.databinding.ItemServerBinding
 import com.example.featureServer.presentation.model.ServerUiModel
@@ -44,7 +43,6 @@ class ItemDifferCallback : DiffUtil.ItemCallback<ServerUiModel>() {
         return oldItem.serverName == newItem.serverName
     }
 
-    @SuppressLint("DiffUtilEquals")
     override fun areContentsTheSame(oldItem: ServerUiModel, newItem: ServerUiModel): Boolean {
         return oldItem == newItem
     }
