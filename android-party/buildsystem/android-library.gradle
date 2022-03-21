@@ -55,7 +55,6 @@ android {
 
 dependencies {
     def commonDependencies = rootProject.ext.commonDependencies
-    implementation commonDependencies.other.timber
     implementation commonDependencies.jetbrains.kotlinLib
     //Hilt
     implementation commonDependencies.google.hiltAndroid

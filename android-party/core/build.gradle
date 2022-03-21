@@ -20,8 +20,4 @@ dependencies {
     implementation commonDependencies.google.material
     implementation commonDependencies.jetbrains.coroutine
     implementation commonDependencies.other.adapterDelegates
-
-    implementation commonDependencies.other.glide
-    implementation commonDependencies.other.glideCompiler
-
 }
