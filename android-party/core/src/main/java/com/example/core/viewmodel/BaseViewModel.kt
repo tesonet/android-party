@@ -25,8 +25,8 @@ abstract class BaseViewModel<UiEvent : ViewEvent, UiState : ViewState, UiEffect 
     init {
         viewModelScope.launch {
             _event.collect {
-                    handleEvent(it)
-                }
+                handleEvent(it)
+            }
         }
     }
 

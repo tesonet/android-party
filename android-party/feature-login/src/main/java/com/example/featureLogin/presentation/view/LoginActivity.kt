@@ -12,10 +12,10 @@ import com.example.core.R.anim
 import com.example.core.R.string
 import com.example.core.ext.exhaustive
 import com.example.core.ext.viewBinding
-import com.example.utils.databinding.ActivityLoginBinding
 import com.example.featureLogin.presentation.viewmodel.LoginContract
 import com.example.featureLogin.presentation.viewmodel.LoginViewModel
 import com.example.featureServer.presentation.view.activity.ServerActivity
+import com.example.utils.databinding.ActivityLoginBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
