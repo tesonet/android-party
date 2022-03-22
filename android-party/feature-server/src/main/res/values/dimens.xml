@@ -2,5 +2,5 @@
     <dimen name="text_size">18sp</dimen>
     <dimen name="progress_bar_size">250dp</dimen>
     <dimen name="logo_width">100dp</dimen>
-    <dimen name="padding_right">20dp</dimen>
+    <dimen name="padding_right">0dp</dimen>
 </resources>

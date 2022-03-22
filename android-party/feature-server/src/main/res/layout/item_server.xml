@@ -14,7 +14,7 @@
         android:textSize="@dimen/text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/distance"
-        app:layout_constraintHorizontal_weight=".7"
+        app:layout_constraintHorizontal_weight=".75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="TextView" />
@@ -29,7 +29,7 @@
         android:textSize="@dimen/text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_weight=".3"
+        app:layout_constraintHorizontal_weight=".25"
         app:layout_constraintStart_toEndOf="@+id/name"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="TextView" />
