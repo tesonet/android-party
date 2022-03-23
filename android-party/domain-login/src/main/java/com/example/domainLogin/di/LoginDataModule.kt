@@ -32,13 +32,13 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 internal interface LoginDataModule {
     @Binds
-    fun bindRemoteDataSource(useCase: RemoteDataSourceImpl): RemoteDataSource
+    fun bindRemoteDataSource(remoteSource: RemoteDataSourceImpl): RemoteDataSource
 
     @Binds
-    fun bindLocalDataSource(useCase: LocalDataSourceImpl): LocalDataSource
+    fun bindLocalDataSource(localSource: LocalDataSourceImpl): LocalDataSource
 
     @Binds
-    fun bindRepository(useCase: LoginRepositoryImpl): LoginRepository
+    fun bindRepository(repository: LoginRepositoryImpl): LoginRepository
 
     companion object {
         private const val TIME_OUT = 30L

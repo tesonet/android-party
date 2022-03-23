@@ -35,13 +35,13 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 internal interface ServerDataModule {
     @Binds
-    fun bindRemoteDataSource(useCase: ServerRemoteDataSourceImpl): ServerRemoteDataSource
+    fun bindRemoteDataSource(remoteSource: ServerRemoteDataSourceImpl): ServerRemoteDataSource
 
     @Binds
-    fun bindLocalDataSource(useCase: ServerLocalDataSourceImpl): ServerLocalDataSource
+    fun bindLocalDataSource(localSource: ServerLocalDataSourceImpl): ServerLocalDataSource
 
     @Binds
-    fun bindRepository(useCase: ServerRepositoryImpl): ServerRepository
+    fun bindRepository(repository: ServerRepositoryImpl): ServerRepository
 
     @Binds
     fun bindAuthorizationInterceptor(
