@@ -1,0 +1,26 @@
+plugins {
+    id 'kotlinx-serialization'
+}
+apply from: "$rootDir/buildsystem/android-library.gradle"
+
+
+dependencies {
+    def commonDependencies = rootProject.ext.commonDependencies
+    implementation commonDependencies.jetbrains.coroutine
+    implementation commonDependencies.jetbrains.kotlinSerialization
+    implementation commonDependencies.other.retrofitKotlinSerializationConverter
+    implementation commonDependencies.other.retrofit2
+    implementation commonDependencies.other.okHttp
+    implementation commonDependencies.other.okHttpInterceptor
+    implementation project(path: ':core')
+    // dev tool
+    debugImplementation developmentDependencies.chucker
+    releaseImplementation developmentDependencies.chuckNoOp
+    //test
+    def commonTestDependencies = rootProject.ext.commonTestDependencies
+    testImplementation commonTestDependencies.mockk
+    testImplementation commonTestDependencies.mockkAndroid
+    testImplementation commonTestDependencies.junit4
+    testImplementation commonTestDependencies.turbine
+    testImplementation commonTestDependencies.coroutineTest
+}

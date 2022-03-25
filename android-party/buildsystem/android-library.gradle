@@ -1,0 +1,73 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+
+android {
+    def androidConfig = rootProject.ext.android
+
+    compileSdkVersion androidConfig.compileSdkVersion
+    defaultConfig {
+        minSdkVersion androidConfig.minSdkVersion
+        targetSdkVersion androidConfig.targetSdkVersion
+        versionName androidConfig.buildVersionName
+        versionCode androidConfig.buildNumber
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        freeCompilerArgs += '-Xopt-in=kotlin.RequiresOptIn'
+        freeCompilerArgs += '-Xopt-in=com.google.accompanist.pager.ExperimentalPagerApi'
+        freeCompilerArgs += '-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi'
+        freeCompilerArgs += '-Xopt-in=kotlinx.serialization.ExperimentalSerializationApi'
+        jvmTarget = '1.8'
+        useIR = true
+    }
+
+    packagingOptions {
+        pickFirst 'META-INF/LICENSE.md'
+        pickFirst 'META-INF/licenses/ASM'
+        pickFirst 'META-INF/INDEX.LIST'
+        pickFirst 'META-INF/LICENSE-notice.md'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+
+}
+
+dependencies {
+    def commonDependencies = rootProject.ext.commonDependencies
+    implementation commonDependencies.jetbrains.kotlinLib
+    //Hilt
+    implementation commonDependencies.google.hiltAndroid
+    kapt commonDependencies.google.hiltCompiler
+    //detekt
+    detektPlugins commonDependencies.other.detekt
+
+    // test
+    testImplementation commonTestDependencies.mockk
+    testImplementation commonTestDependencies.mockkAndroid
+    testImplementation commonTestDependencies.junit4
+    testImplementation commonTestDependencies.turbine
+    testImplementation commonTestDependencies.coroutineTest
+
+    implementation commonDependencies.other.timber
+}

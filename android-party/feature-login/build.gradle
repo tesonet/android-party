@@ -1,0 +1,30 @@
+apply from: "$rootDir/buildsystem/android-library.gradle"
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+
+dependencies {
+
+    def commonDependencies = rootProject.ext.commonDependencies
+
+    //Hilt
+    implementation commonDependencies.google.hiltAndroid
+    kapt commonDependencies.google.hiltCompiler
+
+    implementation commonDependencies.androidx.coreKtx
+    implementation commonDependencies.androidx.appcompat
+    implementation commonDependencies.androidx.constraintLayout
+    implementation commonDependencies.androidx.lifecycle
+
+    //navigation
+    implementation commonDependencies.androidx.navigationFragment
+    implementation commonDependencies.androidx.navigationKtx
+
+    implementation commonDependencies.other.adapterDelegates
+
+
+    implementation commonDependencies.google.material
+    implementation project(path: ':core')
+    implementation project(path: ':domain-login')
+    implementation project(path: ':feature-server')
+    testImplementation commonTestDependencies.junit4
+}

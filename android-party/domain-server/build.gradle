@@ -1,0 +1,35 @@
+plugins {
+    id 'kotlinx-serialization'
+    id("com.google.devtools.ksp") version "${kspVersion}"
+}
+apply from: "$rootDir/buildsystem/android-library.gradle"
+
+dependencies {
+    def commonDependencies = rootProject.ext.commonDependencies
+    implementation commonDependencies.jetbrains.coroutine
+    implementation commonDependencies.jetbrains.kotlinSerialization
+    implementation commonDependencies.other.retrofitKotlinSerializationConverter
+    implementation commonDependencies.other.retrofit2
+    implementation commonDependencies.other.okHttp
+    implementation commonDependencies.other.okHttpInterceptor
+    implementation commonDependencies.androidx.room
+    ksp commonDependencies.androidx.roomCompiler
+    implementation commonDependencies.androidx.roomKtx
+    implementation project(path: ':core')
+    implementation project(path: ':domain-login')
+    // devtool
+    debugImplementation developmentDependencies.chucker
+    releaseImplementation developmentDependencies.chuckNoOp
+    // test
+    def commonTestDependencies = rootProject.ext.commonTestDependencies
+    testImplementation commonTestDependencies.mockk
+    testImplementation commonTestDependencies.mockkAndroid
+    testImplementation commonTestDependencies.junit4
+    testImplementation commonTestDependencies.turbine
+    testImplementation commonTestDependencies.coroutineTest
+    androidTestImplementation commonTestDependencies.roomTest
+    androidTestImplementation commonTestDependencies.extJunit
+    androidTestImplementation commonTestDependencies.coroutineTest
+    androidTestImplementation commonTestDependencies.testRule
+    androidTestImplementation commonTestDependencies.testRunner
+}

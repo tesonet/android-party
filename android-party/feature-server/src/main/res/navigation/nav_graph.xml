@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loadFragment">
+
+    <fragment
+        android:id="@+id/loadFragment"
+        android:name="com.example.featureServer.presentation.view.fragment.LoadFragment"
+        android:label="LoadFragment" >
+        <action
+            android:id="@+id/action_loadFragment_to_serverFragment"
+            app:destination="@id/serverFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/serverFragment"
+        android:name="com.example.featureServer.presentation.view.fragment.ServerFragment"
+        android:label="ServerFragment" />
+</navigation>

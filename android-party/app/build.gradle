@@ -1,0 +1,60 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    def androidConfig = rootProject.ext.android
+    compileSdk androidConfig.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.example.party"
+        minSdk androidConfig.minSdkVersion
+        targetSdk androidConfig.targetSdkVersion
+        versionCode androidConfig.buildNumber
+        versionName androidConfig.buildVersionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    def commonDependencies = rootProject.ext.commonDependencies
+
+    implementation commonDependencies.androidx.coreKtx
+    implementation commonDependencies.androidx.appcompat
+    implementation commonDependencies.androidx.constraintLayout
+
+    //navigation
+    implementation commonDependencies.androidx.navigationFragment
+    implementation commonDependencies.androidx.navigationKtx
+
+    //Hilt
+    implementation commonDependencies.google.hiltAndroid
+    kapt commonDependencies.google.hiltCompiler
+    implementation commonDependencies.google.maps
+
+    implementation project(path: ':feature-login')
+    implementation project(path: ':feature-server')
+}
