@@ -3,15 +3,8 @@ package com.thescriptan.tesonetparty
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -21,16 +14,22 @@ import com.thescriptan.tesonetparty.login.LoginScreen
 import com.thescriptan.tesonetparty.nav.Navigator
 import com.thescriptan.tesonetparty.nav.Screen
 import com.thescriptan.tesonetparty.ui.theme.TesonetPartyTheme
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var navigator: Navigator
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             TesonetPartyTheme {
                 val navController = rememberNavController()
-                val navigator = Navigator()
                 SingleActivity(navController = navController, navigator = navigator)
             }
         }
@@ -41,12 +40,12 @@ class MainActivity : ComponentActivity() {
 fun SingleActivity(navController: NavHostController, navigator: Navigator) {
     LaunchedEffect("navigation") {
         navigator.sharedFlow.onEach {
-            navigator.navigateTo(it)
+            navController.navigate(it.label)
         }.launchIn(this)
     }
     NavHost(navController = navController, startDestination = Screen.LOGIN.label) {
         composable(Screen.LOGIN.label) {
-            LoginScreen(navigator)
+            LoginScreen()
         }
         composable(Screen.LIST.label) {
             ListScreen(navigator)

@@ -17,14 +17,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.thescriptan.tesonetparty.R
 import com.thescriptan.tesonetparty.components.TestTextField
-import com.thescriptan.tesonetparty.nav.Navigator
 
 @Composable
-fun LoginScreen(navigator: Navigator) {
+fun LoginScreen(viewModel: LoginViewModel = hiltViewModel()) {
     var isLoading by rememberSaveable { mutableStateOf(false) }
 
     LoginBackground()
@@ -38,7 +37,8 @@ fun LoginScreen(navigator: Navigator) {
         ) {
             LoginLogo(modifier = Modifier.paddingFromBaseline(bottom = 80.dp))
             LoginInteractables {
-                isLoading = true
+                //isLoading = true
+                viewModel.navigateToList()
             }
         }
     }
@@ -121,8 +121,8 @@ private fun LoginLogo(modifier: Modifier = Modifier) {
     )
 }
 
-@Preview
-@Composable
-fun PreviewLoginScreen() {
-    LoginScreen(navigator = Navigator())
-}
+//@Preview
+//@Composable
+//fun PreviewLoginScreen() {
+//    LoginScreen()
+//}
