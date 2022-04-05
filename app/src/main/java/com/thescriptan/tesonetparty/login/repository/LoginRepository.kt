@@ -6,10 +6,12 @@ import com.thescriptan.tesonetparty.network.LoginApi
 import com.thescriptan.tesonetparty.storage.TesoDataStore
 import com.thescriptan.tesonetparty.utils.Result
 import dagger.hilt.android.scopes.ActivityScoped
+import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
 interface LoginRepository {
     suspend fun login(loginRequest: LoginRequest): Result<LoginResponse>
+    suspend fun isLoggedIn(): Boolean
 }
 
 @ActivityScoped
@@ -33,5 +35,11 @@ class LoginRepositoryImpl @Inject constructor(
             return Result.Error("Authentication error")
         }
         return Result.Error("Unknown error")
+    }
+
+    override suspend fun isLoggedIn(): Boolean {
+        val token = dataStore.token.first()
+        if (token.isEmpty()) return false
+        return true
     }
 }

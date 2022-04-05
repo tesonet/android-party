@@ -1,17 +1,16 @@
 package com.thescriptan.tesonetparty.login
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -22,21 +21,31 @@ import com.thescriptan.tesonetparty.login.model.LoginRequest
 
 @Composable
 fun LoginScreen(viewModel: LoginViewModel = hiltViewModel()) {
-    var isLoading by rememberSaveable { mutableStateOf(false) }
+    val context = LocalContext.current
+    val loginState = viewModel.loginState.collectAsState().value
 
     LoginBackground()
-    if (isLoading) {
-        LoginLoading()
-    } else {
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            LoginLogo(modifier = Modifier.paddingFromBaseline(bottom = 80.dp))
-            LoginInteractables { loginRequest ->
-                viewModel.login(loginRequest)
-            }
+    when (loginState) {
+        LoginState.Idle -> LoginIdle(viewModel)
+        LoginState.Loading -> LoginLoading()
+        LoginState.Authorized -> viewModel.navigateToList()
+        is LoginState.Error -> {
+            Toast.makeText(context, "Error: ${loginState.message}", Toast.LENGTH_SHORT).show()
+            LoginIdle(viewModel)
+        }
+    }
+}
+
+@Composable
+private fun LoginIdle(viewModel: LoginViewModel) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        LoginLogo(modifier = Modifier.paddingFromBaseline(bottom = 80.dp))
+        LoginInteractables { loginRequest ->
+            viewModel.login(loginRequest)
         }
     }
 }
