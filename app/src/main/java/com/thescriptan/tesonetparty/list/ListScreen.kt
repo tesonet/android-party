@@ -90,7 +90,7 @@ fun ListServerViewHolder(serverInfo: ServerInfo) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             ViewHolderText(text = serverInfo.name)
-            ViewHolderText(text = serverInfo.distance.toString())
+            ViewHolderText(text = "${serverInfo.distance} km")
         }
         Divider()
     }

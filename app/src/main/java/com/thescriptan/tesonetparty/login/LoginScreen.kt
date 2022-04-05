@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.thescriptan.tesonetparty.R
 import com.thescriptan.tesonetparty.components.TestTextField
+import com.thescriptan.tesonetparty.login.model.LoginRequest
 
 @Composable
 fun LoginScreen(viewModel: LoginViewModel = hiltViewModel()) {
@@ -33,9 +34,8 @@ fun LoginScreen(viewModel: LoginViewModel = hiltViewModel()) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             LoginLogo(modifier = Modifier.paddingFromBaseline(bottom = 80.dp))
-            LoginInteractables {
-                //isLoading = true
-                viewModel.navigateToList()
+            LoginInteractables { loginRequest ->
+                viewModel.login(loginRequest)
             }
         }
     }
@@ -62,7 +62,7 @@ private fun LoginLoading() {
 }
 
 @Composable
-private fun LoginInteractables(onLoginPressed: () -> Unit) {
+private fun LoginInteractables(onLoginPressed: (loginRequest: LoginRequest) -> Unit) {
     var username by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
 
@@ -91,7 +91,7 @@ private fun LoginInteractables(onLoginPressed: () -> Unit) {
                 backgroundColor = Color(159, 213, 51),
                 contentColor = Color.White
             ),
-            onClick = onLoginPressed
+            onClick = { onLoginPressed(LoginRequest(username, password)) }
         ) {
             Text(text = "Login", style = MaterialTheme.typography.body1)
         }
