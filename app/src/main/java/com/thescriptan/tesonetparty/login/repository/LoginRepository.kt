@@ -3,6 +3,7 @@ package com.thescriptan.tesonetparty.login.repository
 import com.thescriptan.tesonetparty.login.model.LoginRequest
 import com.thescriptan.tesonetparty.login.model.LoginResponse
 import com.thescriptan.tesonetparty.network.LoginApi
+import com.thescriptan.tesonetparty.storage.TesoDataStore
 import com.thescriptan.tesonetparty.utils.Result
 import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
@@ -12,7 +13,10 @@ interface LoginRepository {
 }
 
 @ActivityScoped
-class LoginRepositoryImpl @Inject constructor(private val api: LoginApi) : LoginRepository {
+class LoginRepositoryImpl @Inject constructor(
+    private val api: LoginApi,
+    private val dataStore: TesoDataStore
+) : LoginRepository {
     override suspend fun login(loginRequest: LoginRequest): Result<LoginResponse> {
         val response = try {
             api.login(loginRequest)
@@ -22,6 +26,7 @@ class LoginRepositoryImpl @Inject constructor(private val api: LoginApi) : Login
 
         if (response.code() == 200) {
             response.body()?.let {
+                dataStore.setToken(it.token)
                 return Result.Success(it)
             }
         } else if (response.code() == 401) {

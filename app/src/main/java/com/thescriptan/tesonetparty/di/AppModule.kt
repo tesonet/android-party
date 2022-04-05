@@ -1,13 +1,15 @@
 package com.thescriptan.tesonetparty.di
 
+import android.content.Context
 import com.thescriptan.tesonetparty.login.repository.LoginRepository
 import com.thescriptan.tesonetparty.login.repository.LoginRepositoryImpl
 import com.thescriptan.tesonetparty.nav.Navigator
 import com.thescriptan.tesonetparty.network.LoginApi
-import dagger.Binds
+import com.thescriptan.tesonetparty.storage.TesoDataStore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -32,5 +34,11 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideLoginRepository(api: LoginApi): LoginRepository = LoginRepositoryImpl(api)
+    fun provideLoginRepository(api: LoginApi, dataStore: TesoDataStore): LoginRepository =
+        LoginRepositoryImpl(api, dataStore)
+
+    @Provides
+    @Singleton
+    fun provideDataStore(@ApplicationContext context: Context): TesoDataStore =
+        TesoDataStore(context)
 }
