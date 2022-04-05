@@ -1,10 +1,7 @@
 package com.thescriptan.tesonetparty.components
 
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Icon
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -27,14 +24,21 @@ fun TestTextField(
         value = text,
         onValueChange = onValueChange,
         singleLine = true,
-        placeholder = { Text(hint, modifier = Modifier.alpha(0.5f)) },
+        placeholder = {
+            Text(
+                hint,
+                modifier = Modifier.alpha(0.5f),
+                style = MaterialTheme.typography.body1
+            )
+        },
         colors = TextFieldDefaults.textFieldColors(backgroundColor = Color.White),
         leadingIcon = leadingIcon?.let {
             {
                 Icon(
                     painter = painterResource(id = leadingIcon),
                     contentDescription = null,
-                    modifier = Modifier.alpha(0.5f)
+                    modifier = Modifier.alpha(0.5f),
+                    tint = Color.Unspecified,
                 )
             }
         },

@@ -2,10 +2,7 @@ package com.thescriptan.tesonetparty.login
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -58,7 +55,8 @@ private fun LoginLoading() {
         Text(
             text = "Fetching the list...",
             modifier = Modifier.padding(top = 50.dp),
-            color = Color.White
+            color = Color.White,
+            style = MaterialTheme.typography.body1
         )
     }
 }
@@ -95,7 +93,7 @@ private fun LoginInteractables(onLoginPressed: () -> Unit) {
             ),
             onClick = onLoginPressed
         ) {
-            Text(text = "Login")
+            Text(text = "Login", style = MaterialTheme.typography.body1)
         }
     }
 }
@@ -120,9 +118,3 @@ private fun LoginLogo(modifier: Modifier = Modifier) {
         contentDescription = null,
     )
 }
-
-//@Preview
-//@Composable
-//fun PreviewLoginScreen() {
-//    LoginScreen()
-//}

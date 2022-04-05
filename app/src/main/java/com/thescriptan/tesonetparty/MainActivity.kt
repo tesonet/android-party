@@ -48,7 +48,7 @@ fun SingleActivity(navController: NavHostController, navigator: Navigator) {
             LoginScreen()
         }
         composable(Screen.LIST.label) {
-            ListScreen(navigator)
+            ListScreen()
         }
     }
 }
