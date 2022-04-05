@@ -1,6 +1,8 @@
 package com.thescriptan.tesonetparty.di
 
 import android.content.Context
+import com.thescriptan.tesonetparty.list.repository.ListRepository
+import com.thescriptan.tesonetparty.list.repository.ListRepositoryImpl
 import com.thescriptan.tesonetparty.login.repository.LoginRepository
 import com.thescriptan.tesonetparty.login.repository.LoginRepositoryImpl
 import com.thescriptan.tesonetparty.nav.Navigator
@@ -36,6 +38,11 @@ object AppModule {
     @Provides
     fun provideLoginRepository(api: LoginApi, dataStore: TesoDataStore): LoginRepository =
         LoginRepositoryImpl(api, dataStore)
+
+    @Singleton
+    @Provides
+    fun provideListRepository(dataStore: TesoDataStore): ListRepository =
+        ListRepositoryImpl(dataStore)
 
     @Provides
     @Singleton

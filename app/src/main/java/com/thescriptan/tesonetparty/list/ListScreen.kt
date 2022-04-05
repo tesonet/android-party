@@ -5,6 +5,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -15,6 +16,14 @@ import com.thescriptan.tesonetparty.list.model.ServerInfo
 
 @Composable
 fun ListScreen(viewModel: ListViewModel = hiltViewModel()) {
+    when (viewModel.listState.collectAsState().value) {
+        ListState.Authorized -> ListScaffold(viewModel = viewModel)
+        ListState.Logout -> viewModel.navigateToLogin()
+    }
+}
+
+@Composable
+fun ListScaffold(viewModel: ListViewModel) {
     val scaffoldState = rememberScaffoldState()
 
     Scaffold(
