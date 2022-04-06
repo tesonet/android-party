@@ -12,6 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @HiltViewModel
@@ -76,10 +77,12 @@ class LoginViewModel @Inject constructor(
         navigator.navigateTo(Screen.LIST)
     }
 
-    private fun isLoggedIn() = viewModelScope.launch {
-        val test = repository.isLoggedIn()
-        println(test)
-        if (test)
-            _loginState.value = LoginState.Authorized
+    fun isLoggedIn() {
+        runBlocking {
+            val isLoggedIn = repository.isLoggedIn()
+            println(isLoggedIn)
+            if (isLoggedIn)
+                _loginState.value = LoginState.Authorized
+        }
     }
 }

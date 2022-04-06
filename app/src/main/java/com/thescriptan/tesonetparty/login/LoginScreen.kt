@@ -41,8 +41,11 @@ fun LoginScreen(viewModel: LoginViewModel = hiltViewModel()) {
         }.launchIn(this)
     }
 
-    LoginBackground()
+    //TODO: Better add onboarding screen with CircularProgressIndicator and check loggedIn status
+    viewModel.isLoggedIn()
     viewModel.handleVisibility(loginState)
+
+    LoginBackground()
     LoginIdle(viewModel, idleVisibility)
     LoginLoading(loadingVisibility)
 }
