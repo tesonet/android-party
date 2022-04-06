@@ -10,8 +10,7 @@ import com.thescriptan.tesonetparty.utils.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,27 +23,57 @@ class LoginViewModel @Inject constructor(
     private val _loginState = MutableStateFlow<LoginState>(LoginState.Idle)
     val loginState: StateFlow<LoginState> = _loginState
 
+    private val _loadingVisibility = MutableStateFlow(false)
+    val loadingVisibility: StateFlow<Boolean> = _loadingVisibility
+
+    private val _idleVisibility = MutableStateFlow(false)
+    val idleVisibility: StateFlow<Boolean> = _idleVisibility
+
+    private val _errorMessage = MutableSharedFlow<String>(replay = 1)
+    val errorMessage: SharedFlow<String> = _errorMessage.asSharedFlow()
+
     init {
         isLoggedIn()
-    }
-
-    fun navigateToList() {
-        navigator.navigateTo(Screen.LIST)
     }
 
     fun login(loginRequest: LoginRequest) {
         viewModelScope.launch(Dispatchers.IO) {
             _loginState.value = LoginState.Loading
+            delay(1500L)
             when (val loginResult = repository.login(loginRequest)) {
-                is Result.Error -> _loginState.value =
-                    LoginState.Error("Error: ${loginResult.message}")
+                is Result.Error -> {
+                    val errorMessage = "Error ${loginResult.message}"
+                    _loginState.value = LoginState.Error("${loginResult.message}")
+                    _errorMessage.tryEmit(errorMessage)
+                }
                 is Result.Success -> {
-                    delay(2000L)
                     _loginState.value = LoginState.Authorized
                 }
                 else -> _loginState.value = LoginState.Idle
             }
         }
+    }
+
+    fun handleVisibility(loginState: LoginState) {
+        when (loginState) {
+            LoginState.Idle -> {
+                _idleVisibility.value = true
+                _loadingVisibility.value = false
+            }
+            LoginState.Loading -> {
+                _idleVisibility.value = false
+                _loadingVisibility.value = true
+            }
+            LoginState.Authorized -> navigateToList()
+            is LoginState.Error -> {
+                _idleVisibility.value = true
+                _loadingVisibility.value = false
+            }
+        }
+    }
+
+    private fun navigateToList() {
+        navigator.navigateTo(Screen.LIST)
     }
 
     private fun isLoggedIn() = viewModelScope.launch {

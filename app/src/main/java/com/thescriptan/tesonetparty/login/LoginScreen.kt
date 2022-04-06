@@ -1,6 +1,10 @@
 package com.thescriptan.tesonetparty.login
 
 import android.widget.Toast
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -18,55 +22,72 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.thescriptan.tesonetparty.R
 import com.thescriptan.tesonetparty.components.TestTextField
 import com.thescriptan.tesonetparty.login.model.LoginRequest
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @Composable
 fun LoginScreen(viewModel: LoginViewModel = hiltViewModel()) {
     val context = LocalContext.current
     val loginState = viewModel.loginState.collectAsState().value
+    val loadingVisibility = viewModel.loadingVisibility.collectAsState().value
+    val idleVisibility = viewModel.idleVisibility.collectAsState().value
+
+    LaunchedEffect("errorMessage") {
+        viewModel.errorMessage.onEach {
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+        }.launchIn(this)
+    }
 
     LoginBackground()
-    when (loginState) {
-        LoginState.Idle -> LoginIdle(viewModel)
-        LoginState.Loading -> LoginLoading()
-        LoginState.Authorized -> viewModel.navigateToList()
-        is LoginState.Error -> {
-            Toast.makeText(context, "Error: ${loginState.message}", Toast.LENGTH_SHORT).show()
-            LoginIdle(viewModel)
+    viewModel.handleVisibility(loginState)
+    LoginIdle(viewModel, idleVisibility)
+    LoginLoading(loadingVisibility)
+}
+
+@Composable
+private fun LoginIdle(viewModel: LoginViewModel, visibility: Boolean) {
+    AnimatedVisibility(
+        visible = visibility,
+        enter = fadeIn(animationSpec = tween(durationMillis = 500)),
+        exit = fadeOut(animationSpec = tween(durationMillis = 500))
+    ) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            LoginLogo(modifier = Modifier.paddingFromBaseline(bottom = 80.dp))
+            LoginInteractables { loginRequest ->
+                if (visibility)
+                    viewModel.login(loginRequest)
+            }
         }
     }
 }
 
 @Composable
-private fun LoginIdle(viewModel: LoginViewModel) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+private fun LoginLoading(visibility: Boolean) {
+    AnimatedVisibility(
+        visible = visibility,
+        enter = fadeIn(animationSpec = tween(durationMillis = 500)),
+        exit = fadeOut(animationSpec = tween(durationMillis = 500))
     ) {
-        LoginLogo(modifier = Modifier.paddingFromBaseline(bottom = 80.dp))
-        LoginInteractables { loginRequest ->
-            viewModel.login(loginRequest)
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            CircularProgressIndicator(
+                modifier = Modifier.fillMaxSize(0.5f),
+                color = Color.White
+            )
+            Text(
+                text = "Fetching the list...",
+                modifier = Modifier.padding(top = 50.dp),
+                color = Color.White,
+                style = MaterialTheme.typography.body1
+            )
         }
-    }
-}
-
-@Composable
-private fun LoginLoading() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        CircularProgressIndicator(
-            modifier = Modifier.fillMaxSize(0.5f),
-            color = Color.White
-        )
-        Text(
-            text = "Fetching the list...",
-            modifier = Modifier.padding(top = 50.dp),
-            color = Color.White,
-            style = MaterialTheme.typography.body1
-        )
     }
 }
 
