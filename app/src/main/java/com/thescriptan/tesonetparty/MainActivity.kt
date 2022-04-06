@@ -40,7 +40,12 @@ class MainActivity : ComponentActivity() {
 fun SingleActivity(navController: NavHostController, navigator: Navigator) {
     LaunchedEffect("navigation") {
         navigator.sharedFlow.onEach {
-            navController.navigate(it.label)
+            navController.navigate(it.label) {
+                if (it.label == Screen.LOGIN.label)
+                    popUpTo(Screen.LIST.label) { inclusive = true }
+                else if (it.label == Screen.LIST.label)
+                    popUpTo(Screen.LOGIN.label) { inclusive = true }
+            }
         }.launchIn(this)
     }
     NavHost(navController = navController, startDestination = Screen.LOGIN.label) {
