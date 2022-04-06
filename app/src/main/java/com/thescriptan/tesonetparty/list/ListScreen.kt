@@ -9,7 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -84,6 +86,17 @@ fun ListServer(viewModel: ListViewModel) {
         LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(16.dp)) {
             item {
                 ListServerHeader()
+                if (serverList.isEmpty())
+                    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
+                        Text(
+                            modifier = Modifier
+                                .padding(16.dp)
+                                .alpha(0.75f),
+                            text = "No servers available",
+                            style = MaterialTheme.typography.h3,
+                            color = Color.Red
+                        )
+                    }
             }
             items(serverList) { serverInfo ->
                 ListServerViewHolder(serverInfo)

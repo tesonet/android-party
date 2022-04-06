@@ -48,6 +48,7 @@ class ListViewModel @Inject constructor(
             when (val serversResult = repository.getServers()) {
                 is Result.Error -> {
                     val errorMessage = "${serversResult.message}"
+                    _isRefreshing.value = false
                     _errorMessage.tryEmit(errorMessage)
                 }
                 is Result.Loading -> TODO()

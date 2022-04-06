@@ -26,7 +26,7 @@ class ListRepositoryImpl @Inject constructor(
             }
             api.getServers(token)
         } catch (e: Exception) {
-            return Result.Error("Network error ${e.message}")
+            return Result.Error("Network error")
         }
 
         if (response.code() == 200) {
