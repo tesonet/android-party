@@ -88,7 +88,7 @@ fun ListServer(viewModel: ListViewModel) {
         LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(16.dp)) {
             item {
                 ListServerHeader()
-                if (serverList.isEmpty() && listState == ListState.Fetching)
+                if (serverList.isEmpty() && listState != ListState.Fetching)
                     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
                         Text(
                             modifier = Modifier
