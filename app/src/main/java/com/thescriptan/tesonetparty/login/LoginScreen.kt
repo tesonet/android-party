@@ -11,16 +11,19 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.thescriptan.tesonetparty.R
-import com.thescriptan.tesonetparty.components.TestTextField
+import com.thescriptan.tesonetparty.components.TesoTextField
 import com.thescriptan.tesonetparty.login.model.LoginRequest
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -44,8 +47,11 @@ fun LoginScreen(viewModel: LoginViewModel = hiltViewModel()) {
     LoginLoading(loadingVisibility)
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 private fun LoginIdle(viewModel: LoginViewModel, visibility: Boolean) {
+    val keyboardController = LocalSoftwareKeyboardController.current
+
     AnimatedVisibility(
         visible = visibility,
         enter = fadeIn(animationSpec = tween(durationMillis = 500)),
@@ -58,8 +64,10 @@ private fun LoginIdle(viewModel: LoginViewModel, visibility: Boolean) {
         ) {
             LoginLogo(modifier = Modifier.paddingFromBaseline(bottom = 80.dp))
             LoginInteractables { loginRequest ->
-                if (visibility)
+                if (visibility) {
                     viewModel.login(loginRequest)
+                    keyboardController?.hide()
+                }
             }
         }
     }
@@ -93,6 +101,7 @@ private fun LoginLoading(visibility: Boolean) {
 
 @Composable
 private fun LoginInteractables(onLoginPressed: (loginRequest: LoginRequest) -> Unit) {
+    val focusManager = LocalFocusManager.current
     var username by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
 
@@ -100,18 +109,23 @@ private fun LoginInteractables(onLoginPressed: (loginRequest: LoginRequest) -> U
         modifier = Modifier
             .padding(horizontal = 64.dp)
     ) {
-        TestTextField(
+        TesoTextField(
             text = username,
             hint = stringResource(R.string.username),
             leadingIcon = R.drawable.ic_username,
-            onValueChange = { username = it })
+            onValueChange = { username = it },
+            focusManager = focusManager
+        )
         Spacer(Modifier.size(18.dp))
-        TestTextField(
+        TesoTextField(
             text = password,
             hint = stringResource(R.string.password),
             isPassword = true,
             leadingIcon = R.drawable.ic_lock,
-            onValueChange = { password = it })
+            onValueChange = { password = it },
+            focusManager = focusManager,
+            onKeyboardDone = { onLoginPressed(LoginRequest(username, password)) }
+        )
         Spacer(Modifier.size(18.dp))
         Button(
             modifier = Modifier
