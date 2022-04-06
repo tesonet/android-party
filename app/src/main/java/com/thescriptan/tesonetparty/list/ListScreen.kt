@@ -1,21 +1,34 @@
 package com.thescriptan.tesonetparty.list
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.thescriptan.tesonetparty.R
 import com.thescriptan.tesonetparty.list.model.ServerInfo
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @Composable
 fun ListScreen(viewModel: ListViewModel = hiltViewModel()) {
+    val context = LocalContext.current
+
+    LaunchedEffect("errorMessage") {
+        viewModel.errorMessage.onEach {
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+        }.launchIn(this)
+    }
+
     when (viewModel.listState.collectAsState().value) {
         ListState.Authorized -> ListScaffold(viewModel = viewModel)
         ListState.Logout -> viewModel.navigateToLogin()
@@ -25,6 +38,7 @@ fun ListScreen(viewModel: ListViewModel = hiltViewModel()) {
 @Composable
 fun ListScaffold(viewModel: ListViewModel) {
     val scaffoldState = rememberScaffoldState()
+    val serverList = viewModel.serverList.collectAsState().value
 
     Scaffold(
         scaffoldState = scaffoldState,
@@ -32,7 +46,7 @@ fun ListScaffold(viewModel: ListViewModel) {
             ListTopBar(viewModel = viewModel)
         }
     ) {
-        ListServer(serverList = viewModel.getServerList())
+        ListServer(serverList = serverList)
     }
 }
 

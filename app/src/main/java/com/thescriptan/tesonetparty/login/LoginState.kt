@@ -4,5 +4,5 @@ sealed class LoginState {
     object Idle : LoginState()
     object Loading : LoginState()
     object Authorized : LoginState()
-    class Error(val message: String) : LoginState()
+    object Error : LoginState()
 }

@@ -6,6 +6,7 @@ import com.thescriptan.tesonetparty.list.repository.ListRepositoryImpl
 import com.thescriptan.tesonetparty.login.repository.LoginRepository
 import com.thescriptan.tesonetparty.login.repository.LoginRepositoryImpl
 import com.thescriptan.tesonetparty.nav.Navigator
+import com.thescriptan.tesonetparty.network.ListApi
 import com.thescriptan.tesonetparty.network.LoginApi
 import com.thescriptan.tesonetparty.storage.TesoDataStore
 import dagger.Module
@@ -15,7 +16,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -28,11 +28,18 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideLoginApi(): LoginApi = Retrofit.Builder()
+    fun provideRetrofit(): Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
         .baseUrl("https://playground.tesonet.lt/v1/")
         .build()
-        .create()
+
+    @Singleton
+    @Provides
+    fun provideLoginApi(retrofit: Retrofit): LoginApi = retrofit.create(LoginApi::class.java)
+
+    @Singleton
+    @Provides
+    fun provideListApi(retrofit: Retrofit): ListApi = retrofit.create(ListApi::class.java)
 
     @Singleton
     @Provides
@@ -41,8 +48,8 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideListRepository(dataStore: TesoDataStore): ListRepository =
-        ListRepositoryImpl(dataStore)
+    fun provideListRepository(api: ListApi, dataStore: TesoDataStore): ListRepository =
+        ListRepositoryImpl(api, dataStore)
 
     @Provides
     @Singleton

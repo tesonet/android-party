@@ -42,8 +42,8 @@ class LoginViewModel @Inject constructor(
             delay(1500L)
             when (val loginResult = repository.login(loginRequest)) {
                 is Result.Error -> {
-                    val errorMessage = "Error ${loginResult.message}"
-                    _loginState.value = LoginState.Error("${loginResult.message}")
+                    val errorMessage = "${loginResult.message}"
+                    _loginState.value = LoginState.Error
                     _errorMessage.tryEmit(errorMessage)
                 }
                 is Result.Success -> {
