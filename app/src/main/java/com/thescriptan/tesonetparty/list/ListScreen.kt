@@ -41,7 +41,6 @@ fun ListScreen(viewModel: ListViewModel = hiltViewModel()) {
 @Composable
 fun ListScaffold(viewModel: ListViewModel) {
     val scaffoldState = rememberScaffoldState()
-    val serverList = viewModel.serverList.collectAsState().value
 
     Scaffold(
         scaffoldState = scaffoldState,
@@ -49,7 +48,7 @@ fun ListScaffold(viewModel: ListViewModel) {
             ListTopBar(viewModel = viewModel)
         }
     ) {
-        ListServer(serverList = serverList, viewModel = viewModel)
+        ListServer(viewModel = viewModel)
     }
 }
 
@@ -75,7 +74,8 @@ fun ListTopBar(viewModel: ListViewModel) = TopAppBar(
 )
 
 @Composable
-fun ListServer(serverList: List<ServerInfo>, viewModel: ListViewModel) {
+fun ListServer(viewModel: ListViewModel) {
+    val serverList = viewModel.serverList.collectAsState().value
     val isRefreshing by viewModel.isRefreshing.collectAsState()
     SwipeRefresh(
         state = rememberSwipeRefreshState(isRefreshing = isRefreshing),

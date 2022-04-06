@@ -31,6 +31,10 @@ class ListViewModel @Inject constructor(
     private val _isRefreshing = MutableStateFlow(false)
     val isRefreshing: StateFlow<Boolean> = _isRefreshing
 
+    init {
+        getServerList()
+    }
+
     fun logout() {
         viewModelScope.launch(Dispatchers.IO) {
             repository.logout()

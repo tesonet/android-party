@@ -30,9 +30,9 @@ class ListRepositoryImpl @Inject constructor(
         }
 
         if (response.code() == 200) {
-            response.body()?.let {
+            response.body()?.let { it ->
                 //TODO: save in Room and determine check if refetching is required
-                return Result.Success(it)
+                return Result.Success(it.sortedBy { s -> s.distance })
             }
         } else if (response.code() == 401) {
             return Result.Error("Authentication error")
