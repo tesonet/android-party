@@ -35,7 +35,7 @@ fun ListScreen(viewModel: ListViewModel = hiltViewModel()) {
     }
 
     when (viewModel.listState.collectAsState().value) {
-        ListState.Authorized -> ListScaffold(viewModel = viewModel)
+        ListState.Authorized, ListState.Fetching -> ListScaffold(viewModel = viewModel)
         ListState.Logout -> viewModel.navigateToLogin()
     }
 }
@@ -77,16 +77,18 @@ fun ListTopBar(viewModel: ListViewModel) = TopAppBar(
 
 @Composable
 fun ListServer(viewModel: ListViewModel) {
-    val serverList = viewModel.serverList.collectAsState().value
+    val serverList by viewModel.serverList.collectAsState()
     val isRefreshing by viewModel.isRefreshing.collectAsState()
+    val listState by viewModel.listState.collectAsState()
+
     SwipeRefresh(
         state = rememberSwipeRefreshState(isRefreshing = isRefreshing),
-        onRefresh = { viewModel.getServerList() }
+        onRefresh = { viewModel.swipeRefresh() }
     ) {
         LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(16.dp)) {
             item {
                 ListServerHeader()
-                if (serverList.isEmpty())
+                if (serverList.isEmpty() && listState == ListState.Fetching)
                     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
                         Text(
                             modifier = Modifier

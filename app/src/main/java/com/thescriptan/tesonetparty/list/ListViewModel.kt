@@ -42,8 +42,13 @@ class ListViewModel @Inject constructor(
         }
     }
 
-    fun getServerList() {
+    fun swipeRefresh() {
         _isRefreshing.value = true
+        getServerList()
+    }
+
+    private fun getServerList() {
+        _listState.value = ListState.Fetching
         viewModelScope.launch(Dispatchers.IO) {
             when (val serversResult = repository.getServers()) {
                 is Result.Error -> {
@@ -51,10 +56,12 @@ class ListViewModel @Inject constructor(
                     _isRefreshing.value = false
                     _errorMessage.tryEmit(errorMessage)
                 }
-                is Result.Loading -> TODO()
                 is Result.Success -> {
                     _isRefreshing.value = false
                     _serverList.value = serversResult.data ?: listOf()
+                }
+                else -> {
+                    _listState.value = ListState.Logout
                 }
             }
         }
