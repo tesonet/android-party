@@ -8,12 +8,15 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.thescriptan.tesonetparty.R
 import com.thescriptan.tesonetparty.list.model.ServerInfo
 import kotlinx.coroutines.flow.launchIn
@@ -46,7 +49,7 @@ fun ListScaffold(viewModel: ListViewModel) {
             ListTopBar(viewModel = viewModel)
         }
     ) {
-        ListServer(serverList = serverList)
+        ListServer(serverList = serverList, viewModel = viewModel)
     }
 }
 
@@ -72,13 +75,19 @@ fun ListTopBar(viewModel: ListViewModel) = TopAppBar(
 )
 
 @Composable
-fun ListServer(serverList: List<ServerInfo>) {
-    LazyColumn(modifier = Modifier.fillMaxWidth(), contentPadding = PaddingValues(16.dp)) {
-        item {
-            ListServerHeader()
-        }
-        items(serverList) { serverInfo ->
-            ListServerViewHolder(serverInfo)
+fun ListServer(serverList: List<ServerInfo>, viewModel: ListViewModel) {
+    val isRefreshing by viewModel.isRefreshing.collectAsState()
+    SwipeRefresh(
+        state = rememberSwipeRefreshState(isRefreshing = isRefreshing),
+        onRefresh = { viewModel.getServerList() }
+    ) {
+        LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(16.dp)) {
+            item {
+                ListServerHeader()
+            }
+            items(serverList) { serverInfo ->
+                ListServerViewHolder(serverInfo)
+            }
         }
     }
 }

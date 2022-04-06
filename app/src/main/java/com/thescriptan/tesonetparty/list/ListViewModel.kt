@@ -28,9 +28,8 @@ class ListViewModel @Inject constructor(
     private val _errorMessage = MutableSharedFlow<String>(replay = 1)
     val errorMessage: SharedFlow<String> = _errorMessage.asSharedFlow()
 
-    init {
-        getServerList()
-    }
+    private val _isRefreshing = MutableStateFlow(false)
+    val isRefreshing: StateFlow<Boolean> = _isRefreshing
 
     fun logout() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -40,6 +39,7 @@ class ListViewModel @Inject constructor(
     }
 
     fun getServerList() {
+        _isRefreshing.value = true
         viewModelScope.launch(Dispatchers.IO) {
             when (val serversResult = repository.getServers()) {
                 is Result.Error -> {
@@ -47,7 +47,10 @@ class ListViewModel @Inject constructor(
                     _errorMessage.tryEmit(errorMessage)
                 }
                 is Result.Loading -> TODO()
-                is Result.Success -> _serverList.value = serversResult.data ?: listOf()
+                is Result.Success -> {
+                    _isRefreshing.value = false
+                    _serverList.value = serversResult.data ?: listOf()
+                }
             }
         }
     }
