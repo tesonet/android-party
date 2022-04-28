@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.czech.androidparty.databinding.ActivityMainBinding
+import com.czech.androidparty.utils.hide
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,5 +33,13 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
 
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+
+        navController.addOnDestinationChangedListener {_, destination, _ ->
+            when(destination.id) {
+                R.id.loginFragment -> {
+                    binding.appBar.hide()
+                }
+            }
+        }
     }
 }

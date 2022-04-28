@@ -1,8 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".ui.LoginFragment">
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/ic_icon_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/username_container"
+        android:layout_width="0dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="120dp"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="6dp"
+        app:cardBackgroundColor="@color/white"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <EditText
+            android:id="@+id/username_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:paddingVertical="16dp"
+            android:paddingStart="20dp"
+            android:textColor="@color/text_dark"
+            android:drawablePadding="12dp"
+            android:drawableStart="@drawable/username_icon"
+            android:hint="Username"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            tools:ignore="RtlSymmetry" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/password_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/username_container"
+        app:layout_constraintStart_toStartOf="@+id/username_container"
+        app:layout_constraintTop_toBottomOf="@+id/username_container">
+
+        <EditText
+            android:id="@+id/passwprd_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:drawableStart="@drawable/password_icon"
+            android:drawablePadding="12dp"
+            android:hint="Password"
+            android:textColor="@color/text_dark"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingVertical="16dp"
+            android:paddingStart="20dp"
+            tools:ignore="RtlSymmetry" />
+
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/login_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cornerRadius="6dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/roboto_bold"
+        android:backgroundTint="@color/green"
+        android:paddingVertical="16dp"
+        android:text="Login"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/password_container"
+        app:layout_constraintStart_toStartOf="@+id/password_container"
+        app:layout_constraintTop_toBottomOf="@+id/password_container" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
