@@ -5,6 +5,7 @@ import com.czech.androidparty.models.LoginRequest
 import com.czech.androidparty.models.LoginResponse
 import com.czech.androidparty.utils.Routes
 import io.ktor.client.*
+import io.ktor.client.features.*
 import io.ktor.client.request.*
 
 class ApiServiceImpl(
@@ -12,9 +13,19 @@ class ApiServiceImpl(
     private val baseUrl: String
 ): ApiService {
     override suspend fun login(userData: LoginRequest): LoginResponse {
-        return client.post{
-            url(Routes.LOGIN)
-            body = userData
+        return try {
+            client.post{
+                url(Routes.LOGIN)
+                body = userData
+            }
+        } catch (e: ClientRequestException) {
+            LoginResponse(
+                message = e.message
+            )
+        } catch (e: ServerResponseException) {
+            LoginResponse(
+                message = e.message
+            )
         }
     }
 
