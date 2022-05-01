@@ -20,11 +20,15 @@ class ApiServiceImpl(
             }
         } catch (e: ClientRequestException) {
             LoginResponse(
-                message = e.message
+                message = "Error: ${e.response.status}"
             )
         } catch (e: ServerResponseException) {
             LoginResponse(
-                message = e.message
+                message = "Error: ${e.response.status}"
+            )
+        } catch (e: RedirectResponseException) {
+            LoginResponse(
+                message = "Error: ${e.response.status}"
             )
         }
     }

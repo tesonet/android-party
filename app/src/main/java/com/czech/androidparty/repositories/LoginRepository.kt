@@ -6,10 +6,10 @@ import com.czech.androidparty.models.LoginRequest
 import com.czech.androidparty.models.LoginResponse
 import com.czech.androidparty.utils.DataState
 import io.ktor.client.features.*
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.*
 import java.lang.Exception
 
 class LoginRepository(
@@ -27,18 +27,16 @@ class LoginRepository(
             try {
                 if (response.token == null) {
                     emit(DataState.error(message = response.message.toString()))
-                    Log.d("REPOSITORY_ERROR", response.message.toString())
                 }else {
                     emit(DataState.data(data = response))
                 }
             }catch (e: Exception) {
                 emit(
                     DataState.error(
-                        message = e.message.toString()
+                        message = response.message ?: "An error occurred"
                     )
                 )
             }
-        }
-//            .flowOn(Dispatchers.IO)
+        }.flowOn(Dispatchers.IO)
     }
 }

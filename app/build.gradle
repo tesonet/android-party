@@ -79,4 +79,10 @@ dependencies {
     // SQLDelight
     implementation "com.squareup.sqldelight:runtime:1.5.3"
     implementation "com.squareup.sqldelight:android-driver:1.5.3"
+
+    //Lottie animation
+    implementation("com.airbnb.android:lottie:3.7.0")
+
+    // Progress button library
+    implementation("com.github.razir.progressbutton:progressbutton:2.1.0")
 }

@@ -6,13 +6,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import com.czech.androidparty.R
 import com.czech.androidparty.databinding.LoginFragmentBinding
 import com.czech.androidparty.responseStates.LoginState
+import com.czech.androidparty.utils.disableView
+import com.czech.androidparty.utils.enableView
+import com.czech.androidparty.utils.hide
+import com.czech.androidparty.utils.show
+import com.github.razir.progressbutton.ProgressButtonUtils.Companion.hideProgress
+import com.github.razir.progressbutton.hideProgress
+import com.github.razir.progressbutton.showProgress
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
@@ -36,6 +47,10 @@ class LoginFragment : Fragment() {
 
         observeLogin()
 
+        viewModel.login(
+            username = "tesonet",
+            password = "partyanimal"
+        )
     }
 
     private fun isFieldsValid(): Boolean {
@@ -43,7 +58,7 @@ class LoginFragment : Fragment() {
             binding.usernameEdittext.text.isEmpty() -> {
                 false
             }
-            binding.passwprdEdittext.text.isEmpty() -> {
+            binding.passwordEdittext.text.isEmpty() -> {
                 false
             }
             else -> true
@@ -56,7 +71,10 @@ class LoginFragment : Fragment() {
                 when (it) {
                     is LoginState.Loading -> {
                         Log.d("LOGIN", "Loading")
-
+                        showProgress(true)
+                        run { delay(3000) }
+                        binding.enterFields.hide()
+                        binding.loader.loadingView.show()
                     }
                     is LoginState.Error -> {
                         it.message.let { errorMessage ->
@@ -67,6 +85,21 @@ class LoginFragment : Fragment() {
                         Log.d("LOGIN", "Successful. Token: ${it.data?.token}")
                     }
                 }
+            }
+        }
+    }
+
+    private fun showProgress(show: Boolean) {
+        binding.loginButton.apply {
+            if (show) {
+                disableView()
+                showProgress {
+                    buttonText = "Logging in..."
+                    progressColor = ContextCompat.getColor(requireContext(), R.color.green)
+                }
+            } else {
+                enableView()
+                hideProgress(newText = "Login")
             }
         }
     }
