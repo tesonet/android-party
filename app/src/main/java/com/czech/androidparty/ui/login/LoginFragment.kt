@@ -74,7 +74,7 @@ class LoginFragment : Fragment() {
                         showProgress(true)
                         run { delay(3000) }
                         binding.enterFields.hide()
-                        binding.loader.loadingView.show()
+                        binding.loader.show()
                     }
                     is LoginState.Error -> {
                         it.message.let { errorMessage ->
