@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.czech.androidparty.ui.LoginFragment"
+        android:name="com.czech.androidparty.ui.login.LoginFragment"
         android:label=""
         tools:layout="@layout/login_fragment" />
 </navigation>

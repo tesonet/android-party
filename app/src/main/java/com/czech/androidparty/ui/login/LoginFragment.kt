@@ -1,4 +1,4 @@
-package com.czech.androidparty.ui
+package com.czech.androidparty.ui.login
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle

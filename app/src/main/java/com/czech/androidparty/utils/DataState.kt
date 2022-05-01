@@ -1,35 +1,34 @@
 package com.czech.androidparty.utils
 
-import com.czech.androidparty.models.LoginError
+import com.czech.androidparty.models.LoginResponse
 
 data class DataState<T>(
     val message: String? = null,
     val data: T? = null,
-    val isLoading: Boolean = false
+    val isLoading: Boolean = false,
+    val success: Boolean = false
 ) {
     companion object {
 
         fun <T> error(
-            message: LoginError
+            message: String
         ): DataState<T> {
             return DataState(
-                message = message.message
-            )
-        }
-
-        fun <T> loading(
-            isLoading: Boolean
-        ): DataState<T> {
-            return DataState(
-                isLoading = isLoading
+                message = message,
+                data = null,
+                success = false
             )
         }
 
         fun <T> data(
-            data: T? = null
+            message: String? = null,
+            data: T? = null,
+            success: Boolean = true
         ): DataState<T> {
             return DataState(
-                data = data
+                message = message,
+                data = data,
+                success = success
             )
         }
 

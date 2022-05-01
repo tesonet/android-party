@@ -1,7 +1,7 @@
-package com.czech.androidparty.ui
+package com.czech.androidparty.ui.login
 
 import androidx.lifecycle.ViewModel
 
 class LoginViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+
 }

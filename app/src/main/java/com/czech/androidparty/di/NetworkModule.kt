@@ -1,7 +1,7 @@
 package com.czech.androidparty.di
 
-import com.czech.androidparty.network.ApiService
-import com.czech.androidparty.network.ApiServiceImpl
+import com.czech.androidparty.datasource.network.ApiService
+import com.czech.androidparty.datasource.network.ApiServiceImpl
 import com.czech.androidparty.utils.Routes
 import dagger.Module
 import dagger.Provides

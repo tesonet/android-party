@@ -1,4 +1,4 @@
-package com.czech.androidparty.network
+package com.czech.androidparty.datasource.network
 
 import com.czech.androidparty.models.DataList
 import com.czech.androidparty.models.LoginRequest
