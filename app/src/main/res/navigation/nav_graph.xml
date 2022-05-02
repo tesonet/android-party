@@ -9,5 +9,16 @@
         android:id="@+id/loginFragment"
         android:name="com.czech.androidparty.ui.login.LoginFragment"
         android:label=""
-        tools:layout="@layout/login_fragment" />
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.czech.androidparty.ui.list.ListFragment"
+        android:label="list_fragment"
+        tools:layout="@layout/list_fragment" />
 </navigation>

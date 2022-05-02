@@ -1,6 +1,8 @@
 package com.czech.androidparty.di
 
+import com.czech.androidparty.datasource.cache.AndroidPartyCache
 import com.czech.androidparty.datasource.network.ApiService
+import com.czech.androidparty.repositories.ListRepository
 import com.czech.androidparty.repositories.LoginRepository
 import dagger.Module
 import dagger.Provides
@@ -19,6 +21,18 @@ class RepositoryModule {
     ): LoginRepository {
         return LoginRepository(
             apiService = apiService
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideListRepository(
+        apiService: ApiService,
+        androidPartyCache: AndroidPartyCache
+    ): ListRepository {
+        return ListRepository(
+            apiService = apiService,
+            androidPartyCache = androidPartyCache
         )
     }
 }

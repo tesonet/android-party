@@ -8,5 +8,5 @@ interface ApiService {
 
     suspend fun login(userData: LoginRequest): LoginResponse
 
-    suspend fun getList(): List<DataList>
+    suspend fun getList(token: String): List<DataList>?
 }

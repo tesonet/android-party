@@ -9,13 +9,12 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.czech.androidparty.R
 import com.czech.androidparty.databinding.LoginFragmentBinding
+import com.czech.androidparty.preferences.SharedPrefs
 import com.czech.androidparty.responseStates.LoginState
-import com.czech.androidparty.utils.disableView
-import com.czech.androidparty.utils.enableView
-import com.czech.androidparty.utils.hide
-import com.czech.androidparty.utils.show
+import com.czech.androidparty.utils.*
 import com.github.razir.progressbutton.ProgressButtonUtils.Companion.hideProgress
 import com.github.razir.progressbutton.hideProgress
 import com.github.razir.progressbutton.showProgress
@@ -33,10 +32,11 @@ class LoginFragment : Fragment() {
 
     private val viewModel by activityViewModels<LoginViewModel>()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = LoginFragmentBinding.inflate(inflater, container, false)
 
         return binding.root
@@ -47,18 +47,24 @@ class LoginFragment : Fragment() {
 
         observeLogin()
 
-        viewModel.login(
-            username = "tesonet",
-            password = "partyanimal"
-        )
+        binding.loginButton.setOnClickListener {
+            if (isFieldsValid()) {
+                viewModel.login(
+                    username = binding.usernameEdittext.text.toString(),
+                    password = binding.passwordEdittext.text.toString()
+                )
+            }
+        }
     }
 
     private fun isFieldsValid(): Boolean {
         return when {
             binding.usernameEdittext.text.isEmpty() -> {
+                showShortSnackBar("Username field cannot be empty")
                 false
             }
             binding.passwordEdittext.text.isEmpty() -> {
+                showShortSnackBar("Password field cannot be empty")
                 false
             }
             else -> true
@@ -70,20 +76,24 @@ class LoginFragment : Fragment() {
             viewModel.loginState.collect {
                 when (it) {
                     is LoginState.Loading -> {
-                        Log.d("LOGIN", "Loading")
                         showProgress(true)
-                        run { delay(3000) }
+                        run { delay(2000) }
                         binding.enterFields.hide()
                         binding.loader.show()
+                        run { delay(2000) }
                     }
                     is LoginState.Error -> {
+                        binding.enterFields.show()
+                        binding.loader.hide()
+                        showProgress(false)
                         it.message.let { errorMessage ->
-                            Log.d("LOGIN", errorMessage)
+                            requireActivity().showErrorDialog("$errorMessage. Invalid username or password")
                         }
                     }
                     is LoginState.Success -> {
-                        Log.d("LOGIN", "Successful. Token: ${it.data?.token}")
+                        launchFragment(LoginFragmentDirections.actionLoginFragmentToListFragment())
                     }
+                    else -> {}
                 }
             }
         }
