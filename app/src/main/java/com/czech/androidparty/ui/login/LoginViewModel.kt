@@ -19,12 +19,10 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val loginRepository: LoginRepository,
-    @ApplicationContext context: Context
+    private val sharedPrefs: SharedPrefs
 ) : ViewModel() {
 
     val loginState = MutableStateFlow<LoginState?>(null)
-
-    private val sharedPrefs = SharedPrefs(context)
 
     fun login(
         username: String,
