@@ -1,26 +1,23 @@
-package com.czech.androidparty
+package com.czech.androidparty.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.appcompat.widget.Toolbar
+import androidx.activity.viewModels
 import androidx.core.os.postDelayed
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.czech.androidparty.R
 import com.czech.androidparty.databinding.ActivityMainBinding
 import com.czech.androidparty.utils.hide
+import com.czech.androidparty.utils.launchFragment
 import com.czech.androidparty.utils.show
 import com.czech.androidparty.utils.showShortToast
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -33,6 +30,8 @@ class MainActivity : AppCompatActivity() {
 
     private var backPressedOnce = false
 
+    private val viewModel: MainViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -43,11 +42,13 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
         setUpNavigation()
-    }
 
+    }
 
     private fun setUpNavigation() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
+
+        navController = navHostFragment.navController
 
         appBarConfig = AppBarConfiguration(
             setOf(
@@ -55,8 +56,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.listFragment
             )
         )
-        navController = navHostFragment.navController
         setupActionBarWithNavController(navController, appBarConfig)
+
+        if (viewModel.isLoggedIn) {
+            navController.navigate(R.id.listFragment)
+        } else {
+            navController.navigate(R.id.loginFragment)
+        }
 
         navController.addOnDestinationChangedListener {_, destination, _ ->
             when(destination.id) {
@@ -67,7 +73,11 @@ class MainActivity : AppCompatActivity() {
                     binding.toolbar.show()
                     binding.toolbar.navigationIcon = null
                     binding.logoutBtn.setOnClickListener {
-
+                        viewModel.apply {
+                            deleteToken()
+                            deleteData()
+                            launchFragment(R.id.loginFragment, navController)
+                        }
                     }
                 }
             }

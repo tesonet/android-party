@@ -1,7 +1,6 @@
 package com.czech.androidparty.ui.login
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,20 +8,16 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.czech.androidparty.R
 import com.czech.androidparty.databinding.LoginFragmentBinding
-import com.czech.androidparty.preferences.SharedPrefs
 import com.czech.androidparty.responseStates.LoginState
 import com.czech.androidparty.utils.*
-import com.github.razir.progressbutton.ProgressButtonUtils.Companion.hideProgress
 import com.github.razir.progressbutton.hideProgress
 import com.github.razir.progressbutton.showProgress
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {

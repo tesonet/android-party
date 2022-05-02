@@ -1,6 +1,5 @@
 package com.czech.androidparty.repositories
 
-import android.util.Log
 import com.czech.androidparty.datasource.cache.AndroidPartyCache
 import com.czech.androidparty.datasource.network.ApiService
 import com.czech.androidparty.models.DataList

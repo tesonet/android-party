@@ -6,8 +6,11 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import androidx.navigation.NavDirections
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -38,6 +41,12 @@ fun View.enableView() {
 
 fun Fragment.launchFragment(direction: NavDirections) = try {
     findNavController().navigate(direction)
+} catch (e: Exception) {
+    Log.e("NAVIGATION_ERROR", e.toString())
+}
+
+fun Activity.launchFragment(@IdRes destination: Int, navController: NavController) = try {
+    navController.navigate(destination)
 } catch (e: Exception) {
     Log.e("NAVIGATION_ERROR", e.toString())
 }
