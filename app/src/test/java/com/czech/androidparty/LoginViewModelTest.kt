@@ -75,5 +75,6 @@ class LoginViewModelTest {
 
         Assert.assertEquals(true, loginViewModel.loginState.value == LoginState.Success(loginResponse))
         Assert.assertEquals(false, loginViewModel.loginState.value == LoginState.Loading)
+        Assert.assertEquals(false, loginViewModel.loginState.value == LoginState.Error(""))
     }
 }
