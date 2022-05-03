@@ -1,16 +1,20 @@
 package com.czech.androidparty.utils
 
+import android.accounts.NetworkErrorException
 import android.app.Activity
 import android.content.Context
+import android.net.ConnectivityManager
+import android.os.Build
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.IdRes
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -69,4 +73,17 @@ fun Context.showErrorDialog(message: String) {
         .setMessage(message)
         .setPositiveButton("OK") { _, _ -> }
         .show()
+}
+
+fun hideKeyboard(activity: Activity?, view: View? = null) {
+    if (activity == null) {
+        return
+    }
+    val currentView = activity.currentFocus ?: view ?: return
+    val inputMethodManager = activity.getSystemService(
+        Activity.INPUT_METHOD_SERVICE
+    ) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(
+        currentView.windowToken, 0
+    )
 }

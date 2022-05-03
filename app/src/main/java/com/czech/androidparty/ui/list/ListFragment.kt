@@ -1,8 +1,6 @@
 package com.czech.androidparty.ui.list
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,11 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.czech.androidparty.R
+import com.czech.androidparty.connection.NetworkConnection
 import com.czech.androidparty.databinding.ListFragmentBinding
-import com.czech.androidparty.databinding.LoginFragmentBinding
 import com.czech.androidparty.responseStates.ListState
-import com.czech.androidparty.ui.login.LoginViewModel
 import com.czech.androidparty.utils.hide
 import com.czech.androidparty.utils.show
 import com.czech.androidparty.utils.showErrorDialog
@@ -31,6 +27,8 @@ class ListFragment : Fragment() {
 
     private val dataListAdapter by lazy { DataListAdapter(DataListDiffCallback) }
 
+    private lateinit var networkConnection: NetworkConnection
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,14 +42,24 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        observeNetwork()
         observe()
 
         binding.dataList.apply {
             adapter = dataListAdapter
             layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
         }
+    }
 
-        viewModel.getData()
+    private fun observeNetwork() {
+        networkConnection = NetworkConnection(requireContext())
+        networkConnection.observe(viewLifecycleOwner) { isConnected ->
+            if (!isConnected) {
+                viewModel.getDataFromDB()
+            } else {
+                viewModel.getDataWithNetwork()
+            }
+        }
     }
 
     private fun observe() {
@@ -74,7 +82,11 @@ class ListFragment : Fragment() {
                         binding.dataList.show()
                         binding.loader.loadingView.hide()
 
-                        dataListAdapter.submitList(it.data)
+                        if (it.data.isNullOrEmpty()) {
+                            requireActivity().showErrorDialog("no saved data to display")
+                        } else {
+                            dataListAdapter.submitList(it.data)
+                        }
                     }
                     else -> {}
                 }

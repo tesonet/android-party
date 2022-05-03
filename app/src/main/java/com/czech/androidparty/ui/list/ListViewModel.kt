@@ -1,6 +1,5 @@
 package com.czech.androidparty.ui.list
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.czech.androidparty.preferences.SharedPrefs
@@ -22,9 +21,29 @@ class ListViewModel @Inject constructor(
 
     private val token = sharedPrefs.fetchToken().toString()
 
-    fun getData() {
+    fun getDataWithNetwork() {
         viewModelScope.launch {
-            listRepository.execute(token).collect {
+            listRepository.getFromNetwork(token).collect {
+                when {
+                    it.isLoading -> {
+                        listState.value = ListState.Loading
+                    }
+                    it.data == null -> {
+                        listState.value = ListState.Error(message = it.message.toString())
+                    }
+                    else -> {
+                        it.data.let { data ->
+                            listState.value = ListState.Success(data = data)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    fun getDataFromDB() {
+        viewModelScope.launch {
+            listRepository.getFromDatabase().collect {
                 when {
                     it.isLoading -> {
                         listState.value = ListState.Loading

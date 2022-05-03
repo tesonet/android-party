@@ -13,10 +13,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.czech.androidparty.R
 import com.czech.androidparty.databinding.ActivityMainBinding
-import com.czech.androidparty.utils.hide
-import com.czech.androidparty.utils.launchFragment
-import com.czech.androidparty.utils.show
-import com.czech.androidparty.utils.showShortToast
+import com.czech.androidparty.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

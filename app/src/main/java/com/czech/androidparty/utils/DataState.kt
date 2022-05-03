@@ -1,7 +1,5 @@
 package com.czech.androidparty.utils
 
-import com.czech.androidparty.models.LoginResponse
-
 data class DataState<T>(
     val message: String? = null,
     val data: T? = null,

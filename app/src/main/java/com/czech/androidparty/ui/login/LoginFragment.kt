@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.czech.androidparty.R
+import com.czech.androidparty.connection.NetworkConnection
 import com.czech.androidparty.databinding.LoginFragmentBinding
 import com.czech.androidparty.responseStates.LoginState
 import com.czech.androidparty.utils.*
@@ -27,6 +28,8 @@ class LoginFragment : Fragment() {
 
     private val viewModel by activityViewModels<LoginViewModel>()
 
+    private lateinit var networkConnection: NetworkConnection
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,14 +43,26 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        observeNetwork()
+
         observeLogin()
 
         binding.loginButton.setOnClickListener {
-            if (isFieldsValid()) {
+            hideKeyboard(requireActivity(), it)
+                if (isFieldsValid()) {
                 viewModel.login(
                     username = binding.usernameEdittext.text.toString(),
                     password = binding.passwordEdittext.text.toString()
                 )
+            }
+        }
+    }
+
+    private fun observeNetwork() {
+        networkConnection = NetworkConnection(requireContext())
+        networkConnection.observe(viewLifecycleOwner) { isConnected ->
+            if (!isConnected) {
+                requireActivity().showErrorDialog("You do not have an active internet connection. Please establish a connection and try again.")
             }
         }
     }
@@ -87,6 +102,7 @@ class LoginFragment : Fragment() {
                     }
                     is LoginState.Success -> {
                         launchFragment(LoginFragmentDirections.actionLoginFragmentToListFragment())
+                        viewModel.loginState.value = null
                     }
                     else -> {}
                 }

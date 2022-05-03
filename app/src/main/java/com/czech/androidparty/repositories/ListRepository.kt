@@ -14,14 +14,14 @@ class ListRepository(
     private val apiService: ApiService,
     private val androidPartyCache: AndroidPartyCache
 ) {
-    fun execute(
+    fun getFromNetwork(
         token: String
     ): Flow<DataState<List<DataList>>> {
         return flow<DataState<List<DataList>>> {
 
-            emit(DataState.loading())
-
             val response = apiService.getList(token)
+
+            emit(DataState.loading())
 
             if (response != null) {
                 androidPartyCache.insertData(response)
@@ -31,6 +31,23 @@ class ListRepository(
 
             try {
                 emit(DataState.data(data = cacheResponse))
+            }catch (e: Exception) {
+                emit(
+                    DataState.error(
+                        message = e.message ?: "An error occurred"
+                    )
+                )
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    fun getFromDatabase(): Flow<DataState<List<DataList>>> {
+        return flow<DataState<List<DataList>>> {
+
+            val cacheData = androidPartyCache.getData()
+
+            try {
+                emit(DataState.data(data = cacheData))
             }catch (e: Exception) {
                 emit(
                     DataState.error(

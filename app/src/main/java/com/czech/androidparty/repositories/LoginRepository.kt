@@ -1,13 +1,9 @@
 package com.czech.androidparty.repositories
 
-import android.util.Log
 import com.czech.androidparty.datasource.network.ApiService
 import com.czech.androidparty.models.LoginRequest
 import com.czech.androidparty.models.LoginResponse
 import com.czech.androidparty.utils.DataState
-import io.ktor.client.features.*
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import java.lang.Exception
