@@ -1,4 +1,4 @@
-package com.czech.androidparty.ui.list
+package com.czech.androidparty.ui.list.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

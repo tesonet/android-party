@@ -1,5 +1,6 @@
 package com.czech.androidparty.ui.login
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -49,6 +50,7 @@ class LoginFragment : Fragment() {
 
         binding.loginButton.setOnClickListener {
             hideKeyboard(requireActivity(), it)
+            observeNetwork()
                 if (isFieldsValid()) {
                 viewModel.login(
                     username = binding.usernameEdittext.text.toString(),
@@ -123,6 +125,11 @@ class LoginFragment : Fragment() {
                 hideProgress(newText = "Login")
             }
         }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+
     }
 
     override fun onDestroy() {

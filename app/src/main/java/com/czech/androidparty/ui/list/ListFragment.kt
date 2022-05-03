@@ -1,5 +1,6 @@
 package com.czech.androidparty.ui.list
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.czech.androidparty.connection.NetworkConnection
 import com.czech.androidparty.databinding.ListFragmentBinding
 import com.czech.androidparty.responseStates.ListState
+import com.czech.androidparty.ui.list.adapter.DataListAdapter
+import com.czech.androidparty.ui.list.adapter.DataListDiffCallback
 import com.czech.androidparty.utils.hide
 import com.czech.androidparty.utils.show
 import com.czech.androidparty.utils.showErrorDialog
@@ -94,5 +97,12 @@ class ListFragment : Fragment() {
         }
     }
 
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }
