@@ -14,7 +14,9 @@
             android:id="@+id/action_loginFragment_to_listFragment"
             app:destination="@id/listFragment"
             app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/listFragment"

@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.TransitionInflater
+import com.czech.androidparty.R
 import com.czech.androidparty.connection.NetworkConnection
 import com.czech.androidparty.databinding.ListFragmentBinding
 import com.czech.androidparty.responseStates.ListState
@@ -39,6 +41,11 @@ class ListFragment : Fragment() {
 
         _binding = ListFragmentBinding.inflate(inflater, container, false)
 
+        val transitionInflater = TransitionInflater.from(requireContext())
+        exitTransition = transitionInflater.inflateTransition(R.transition.slide_right)
+
+        enterTransition = transitionInflater.inflateTransition(R.transition.slide_left)
+
         return binding.root
     }
 
@@ -52,6 +59,8 @@ class ListFragment : Fragment() {
             adapter = dataListAdapter
             layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
         }
+
+        binding.dataList.hide()
     }
 
     private fun observeNetwork() {

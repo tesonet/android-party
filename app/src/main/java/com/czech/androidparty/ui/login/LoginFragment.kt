@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.transition.TransitionInflater
 import com.czech.androidparty.R
 import com.czech.androidparty.connection.NetworkConnection
 import com.czech.androidparty.databinding.LoginFragmentBinding
@@ -37,6 +38,11 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = LoginFragmentBinding.inflate(inflater, container, false)
+
+        val transitionInflater = TransitionInflater.from(requireContext())
+        exitTransition = transitionInflater.inflateTransition(R.transition.slide_left)
+
+        enterTransition = transitionInflater.inflateTransition(R.transition.slide_right)
 
         return binding.root
     }
