@@ -60,7 +60,7 @@ class ListFragment : Fragment() {
             if (!isConnected) {
                 viewModel.getDataFromDB()
             } else {
-                viewModel.getDataWithNetwork()
+                viewModel.getDataWithNetwork(viewModel.token)
             }
         }
     }

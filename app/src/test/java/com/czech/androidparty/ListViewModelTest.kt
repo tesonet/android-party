@@ -6,9 +6,11 @@ import com.czech.androidparty.models.LoginResponse
 import com.czech.androidparty.preferences.SharedPrefs
 import com.czech.androidparty.repositories.ListRepository
 import com.czech.androidparty.responseStates.ListState
+import com.czech.androidparty.responseStates.LoginState
 import com.czech.androidparty.ui.list.ListViewModel
 import com.czech.androidparty.utils.DataState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.consumeAsFlow
 import kotlinx.coroutines.launch
@@ -40,20 +42,18 @@ class ListViewModelTest {
     @Mock
     private lateinit var sharedPrefs: SharedPrefs
 
+    private val testCoroutineDispatcher = TestCoroutineDispatcher()
+
     @Before
     fun initMocks(){
         MockitoAnnotations.initMocks(this)
-
     }
-
-    private val testCoroutineDispatcher = TestCoroutineDispatcher()
 
     @Test
     fun testGetDataFromDB() = testCoroutineDispatcher.runBlockingTest {
+        val dataResponse = DataList(name = "", distance = 0)
 
         val listViewModel = ListViewModel(listRepository, sharedPrefs)
-
-        val dataResponse = DataList(name = "", distance = 0)
 
         val response = DataState.data(dataResponse.toString(), listOf(dataResponse))
 
@@ -66,8 +66,12 @@ class ListViewModelTest {
         val job = launch {
             channel.send(response)
         }
+
+        listViewModel.getDataFromDB()
+
         Assert.assertEquals(true, listViewModel.listState.value == ListState.Success(listOf(dataResponse)))
         Assert.assertEquals(false, listViewModel.listState.value == ListState.Loading)
+        Assert.assertEquals(false, listViewModel.listState.value == ListState.Error(""))
         job.cancel()
     }
 
@@ -88,18 +92,15 @@ class ListViewModelTest {
 
         Mockito.`when`(listRepository.getFromNetwork(loginResponse.token!!)).thenReturn(flow)
 
-        launch {
-            channel.send(response)
-        }
-
-        listViewModel.getDataWithNetwork()
-
         val job = launch {
             channel.send(response)
         }
 
+        listViewModel.getDataWithNetwork(loginResponse.token!!)
+
         Assert.assertEquals(true, listViewModel.listState.value == ListState.Success(listOf(dataResponse)))
         Assert.assertEquals(false, listViewModel.listState.value == ListState.Loading)
+        Assert.assertEquals(false, listViewModel.listState.value == ListState.Error(""))
         job.cancel()
     }
 

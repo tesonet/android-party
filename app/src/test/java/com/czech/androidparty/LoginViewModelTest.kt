@@ -43,13 +43,13 @@ class LoginViewModelTest {
     @Mock
     private lateinit var sharedPrefs: SharedPrefs
 
+    private val testCoroutineDispatcher = TestCoroutineDispatcher()
+
     @Before
     fun initMocks(){
         MockitoAnnotations.initMocks(this)
 
     }
-
-    private val testCoroutineDispatcher = TestCoroutineDispatcher()
 
     @Test
     fun testLogin() = testCoroutineDispatcher.runBlockingTest {

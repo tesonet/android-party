@@ -19,9 +19,9 @@ class ListViewModel @Inject constructor(
 
     val listState = MutableStateFlow<ListState?>(null)
 
-    private val token = sharedPrefs.fetchToken().toString()
+    val token = sharedPrefs.fetchToken().toString()
 
-    fun getDataWithNetwork() {
+    fun getDataWithNetwork(token: String) {
         viewModelScope.launch {
             listRepository.getFromNetwork(token).collect {
                 when {

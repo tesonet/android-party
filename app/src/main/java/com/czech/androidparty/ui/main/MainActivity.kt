@@ -74,8 +74,8 @@ class MainActivity : AppCompatActivity() {
                         viewModel.apply {
                             deleteToken()
                             deleteData()
-                            launchFragment(R.id.loginFragment, navController)
                         }
+                        launchFragment(R.id.loginFragment, navController)
                     }
                 }
             }
