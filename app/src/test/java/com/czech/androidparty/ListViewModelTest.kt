@@ -6,11 +6,9 @@ import com.czech.androidparty.models.LoginResponse
 import com.czech.androidparty.preferences.SharedPrefs
 import com.czech.androidparty.repositories.ListRepository
 import com.czech.androidparty.responseStates.ListState
-import com.czech.androidparty.responseStates.LoginState
 import com.czech.androidparty.ui.list.ListViewModel
 import com.czech.androidparty.utils.DataState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.consumeAsFlow
 import kotlinx.coroutines.launch

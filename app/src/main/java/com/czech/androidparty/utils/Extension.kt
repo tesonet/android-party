@@ -1,17 +1,13 @@
 package com.czech.androidparty.utils
 
-import android.accounts.NetworkErrorException
 import android.app.Activity
 import android.content.Context
-import android.net.ConnectivityManager
-import android.os.Build
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.IdRes
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections

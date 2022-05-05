@@ -4,14 +4,12 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.czech.androidparty.models.LoginRequest
 import com.czech.androidparty.models.LoginResponse
 import com.czech.androidparty.preferences.SharedPrefs
-import com.czech.androidparty.repositories.ListRepository
 import com.czech.androidparty.repositories.LoginRepository
 import com.czech.androidparty.responseStates.LoginState
 import com.czech.androidparty.ui.login.LoginViewModel
 import com.czech.androidparty.utils.DataState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.consumeAsFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.TestCoroutineDispatcher
