@@ -2,6 +2,7 @@ package com.czech.androidparty.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.czech.androidparty.connection.NetworkConnection
 import com.czech.androidparty.models.LoginRequest
 import com.czech.androidparty.preferences.SharedPrefs
 import com.czech.androidparty.repositories.LoginRepository
@@ -15,9 +16,11 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val loginRepository: LoginRepository,
-    private val sharedPrefs: SharedPrefs
+    private val sharedPrefs: SharedPrefs,
+    networkConnection: NetworkConnection
 ) : ViewModel() {
 
+    val isNetworkConnected = networkConnection
     val loginState = MutableStateFlow<LoginState?>(null)
 
     fun login(

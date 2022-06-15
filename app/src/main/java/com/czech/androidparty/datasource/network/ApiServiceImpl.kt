@@ -10,8 +10,9 @@ import io.ktor.client.*
 import io.ktor.client.features.*
 import io.ktor.client.request.*
 import io.ktor.http.*
+import javax.inject.Inject
 
-class ApiServiceImpl(
+class ApiServiceImpl @Inject constructor(
     private val client: HttpClient,
     private val baseUrl: String
 ): ApiService {

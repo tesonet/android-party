@@ -7,14 +7,15 @@ import com.czech.androidparty.utils.DataState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import java.lang.Exception
+import javax.inject.Inject
 
-class LoginRepository(
+class LoginRepository @Inject constructor(
     private val apiService: ApiService
 ) {
     fun execute(
         userData: LoginRequest
     ): Flow<DataState<LoginResponse>> {
-        return flow<DataState<LoginResponse>> {
+        return flow {
 
             emit(DataState.loading())
 

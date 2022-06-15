@@ -15,7 +15,7 @@ class SharedPreferencesModule {
 
     @Provides
     @Singleton
-    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPrefs {
+    fun provideSharedPreferences(context: BaseApplication): SharedPrefs {
         return SharedPrefs(
             context = context
         )

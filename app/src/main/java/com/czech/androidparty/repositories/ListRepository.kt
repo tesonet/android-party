@@ -9,15 +9,16 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import java.lang.Exception
+import javax.inject.Inject
 
-class ListRepository(
+class ListRepository @Inject constructor(
     private val apiService: ApiService,
     private val androidPartyCache: AndroidPartyCache
 ) {
     fun getFromNetwork(
         token: String
     ): Flow<DataState<List<DataList>>> {
-        return flow<DataState<List<DataList>>> {
+        return flow {
 
             val response = apiService.getList(token)
 
@@ -42,7 +43,7 @@ class ListRepository(
     }
 
     fun getFromDatabase(): Flow<DataState<List<DataList>>> {
-        return flow<DataState<List<DataList>>> {
+        return flow {
 
             val cacheData = androidPartyCache.getData()
 

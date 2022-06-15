@@ -1,5 +1,6 @@
 package com.czech.androidparty.di
 
+import com.czech.androidparty.connection.NetworkConnection
 import com.czech.androidparty.datasource.network.ApiService
 import com.czech.androidparty.datasource.network.ApiServiceImpl
 import com.czech.androidparty.utils.Routes
@@ -56,5 +57,13 @@ object NetworkModule {
             client = client,
             baseUrl = Routes.BASE_URL
         )
+    }
+
+    @Provides
+    @Singleton
+    fun provideNetworkConnection(
+        context: BaseApplication
+    ): NetworkConnection {
+        return NetworkConnection(context)
     }
 }

@@ -1,6 +1,5 @@
 package com.czech.androidparty.ui.login
 
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.transition.TransitionInflater
 import com.czech.androidparty.R
-import com.czech.androidparty.connection.NetworkConnection
 import com.czech.androidparty.databinding.LoginFragmentBinding
 import com.czech.androidparty.responseStates.LoginState
 import com.czech.androidparty.utils.*
@@ -29,8 +27,6 @@ class LoginFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel by activityViewModels<LoginViewModel>()
-
-    private lateinit var networkConnection: NetworkConnection
 
 
     override fun onCreateView(
@@ -67,8 +63,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun observeNetwork() {
-        networkConnection = NetworkConnection(requireContext())
-        networkConnection.observe(viewLifecycleOwner) { isConnected ->
+        viewModel.isNetworkConnected.observe(viewLifecycleOwner) { isConnected ->
             if (!isConnected) {
                 requireActivity().showErrorDialog("You do not have an active internet connection. Please establish a connection and try again.")
             }
@@ -131,11 +126,6 @@ class LoginFragment : Fragment() {
                 hideProgress(newText = "Login")
             }
         }
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-
     }
 
     override fun onDestroy() {

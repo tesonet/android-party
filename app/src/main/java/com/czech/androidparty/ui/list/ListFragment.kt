@@ -1,6 +1,5 @@
 package com.czech.androidparty.ui.list
 
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -104,10 +103,6 @@ class ListFragment : Fragment() {
                 }
             }
         }
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
     }
 
     override fun onDestroy() {

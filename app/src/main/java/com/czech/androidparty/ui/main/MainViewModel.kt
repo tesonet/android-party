@@ -1,6 +1,5 @@
 package com.czech.androidparty.ui.main
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.czech.androidparty.datasource.cache.AndroidPartyCache
@@ -23,14 +22,12 @@ class MainViewModel @Inject constructor(
     fun deleteToken() {
         viewModelScope.launch {
             sharedPrefs.deleteToken()
-            Log.d("MAINVM", sharedPrefs.fetchToken().toString())
         }
     }
 
     fun deleteData() {
         viewModelScope.launch {
             androidPartyCache.deleteData()
-            Log.d("MAINVM", androidPartyCache.getData().toString())
         }
     }
 

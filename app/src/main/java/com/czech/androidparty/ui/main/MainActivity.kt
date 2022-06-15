@@ -1,12 +1,9 @@
 package com.czech.androidparty.ui.main
 
-import android.content.res.Configuration
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
 import androidx.activity.viewModels
-import androidx.core.os.postDelayed
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -14,8 +11,13 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.czech.androidparty.R
 import com.czech.androidparty.databinding.ActivityMainBinding
-import com.czech.androidparty.utils.*
+import com.czech.androidparty.utils.hide
+import com.czech.androidparty.utils.launchFragment
+import com.czech.androidparty.utils.show
+import com.czech.androidparty.utils.showShortToast
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
+import kotlin.concurrent.schedule
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -95,16 +97,12 @@ class MainActivity : AppCompatActivity() {
             backPressedOnce = true
             this.showShortToast("Press BACK again to exit")
 
-            Handler().postDelayed(5000) {
+            Timer().schedule(3000) {
                 backPressedOnce = false
             }
+
         } else {
             super.onBackPressed()
         }
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-
     }
 }

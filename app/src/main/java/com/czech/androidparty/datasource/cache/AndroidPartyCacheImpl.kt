@@ -3,8 +3,9 @@ package com.czech.androidparty.datasource.cache
 import com.czech.androidparty.Database
 import com.czech.androidparty.models.DataList
 import com.czech.androidparty.utils.SqlConverter.toDataList
+import javax.inject.Inject
 
-class AndroidPartyCacheImpl(
+class AndroidPartyCacheImpl @Inject constructor(
     database: Database
 ): AndroidPartyCache {
 
