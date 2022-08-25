@@ -20,3 +20,18 @@ If you found this task it means we are looking for you!
 - Bonus: have a good set of unit tests
 
 *Note:* The bonus requirements are optional. While they are nice to have, it's much more important to have the basics nailed.
+
+# My Implementation:
+
+## Libraries I used and what was done:
+- MVVM architecture
+- Hilt for dependency injection
+- Ktor as http client
+- Android Navigation Component and safe args for smooth navigation
+- Coroutines Flow to handle network calls
+- SQLDelight for persistent storage
+- JUnit and Mockito for testing
+- Shared Preferences to store token and login state
+- Explicitly handled errors
+- Logout handled
+- Offline mode handled
