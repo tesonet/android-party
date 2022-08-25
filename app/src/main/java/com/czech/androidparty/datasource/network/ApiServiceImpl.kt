@@ -13,8 +13,7 @@ import io.ktor.http.*
 import javax.inject.Inject
 
 class ApiServiceImpl @Inject constructor(
-    private val client: HttpClient,
-    private val baseUrl: String
+    private val client: HttpClient
 ): ApiService {
     override suspend fun login(userData: LoginRequest): LoginResponse {
         return try {

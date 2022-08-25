@@ -54,8 +54,7 @@ object NetworkModule {
         client: HttpClient
     ): ApiService {
         return ApiServiceImpl(
-            client = client,
-            baseUrl = Routes.BASE_URL
+            client = client
         )
     }
 

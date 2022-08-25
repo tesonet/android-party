@@ -2,7 +2,7 @@ package com.czech.androidparty.utils
 
 object Routes {
 
-    const val BASE_URL = "https://playground.tesonet.lt/v1"
+    private const val BASE_URL = "https://playground.tesonet.lt/v1"
 
     const val LOGIN = "$BASE_URL/tokens"
 
