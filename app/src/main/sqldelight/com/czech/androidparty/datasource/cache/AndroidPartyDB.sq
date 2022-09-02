@@ -1,0 +1,21 @@
+CREATE TABLE Data_Entity(
+    name TEXT NOT NULL,
+    distance INTEGER NOT NULL PRIMARY KEY
+);
+
+selectAll:
+SELECT  *
+FROM Data_Entity;
+
+insertData:
+INSERT OR REPLACE
+INTO Data_Entity(
+    name,
+    distance
+) VALUES (?, ?);
+
+getData:
+SELECT  * FROM Data_Entity;
+
+deleteData:
+DELETE FROM Data_Entity;
