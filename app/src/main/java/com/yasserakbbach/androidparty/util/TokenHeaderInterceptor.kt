@@ -12,11 +12,8 @@ class TokenHeaderInterceptor @Inject constructor(
     private val sessionRepository: SessionRepository,
 ) : Interceptor {
 
-    private val token by lazy {
-        runBlocking { sessionRepository.getSession().first().token }
-    }
-
     override fun intercept(chain: Interceptor.Chain): Response {
+        val token = runBlocking { sessionRepository.getSession().first().token }
         val request = chain.request()
             .newBuilder()
             .addHeader(HEADER_AUTHORIZATION, token ?: "")

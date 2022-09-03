@@ -30,8 +30,12 @@ object RepositoryModule {
     @Singleton
     fun provideLoginRepository(
         loginApi: LoginApi,
+        sessionRepository: SessionRepository,
     ): LoginRepository =
-        LoginRepositoryImpl(loginApi)
+        LoginRepositoryImpl(
+            loginApi,
+            sessionRepository,
+        )
 
     @Provides
     @Singleton

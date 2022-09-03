@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Android Party</string>
+    <string name="login_background_image_description">Login background image</string>
+    <string name="login_screen_title">testio</string>
+    <string name="login_screen_usename_icon_description">Icon username</string>
+    <string name="login_screen_password_icon_description">Icon password</string>
+    <string name="login_screen_usename_hint">Username</string>
+    <string name="login_screen_password_hint">Password</string>
+    <string name="login_screen_button">Log In</string>
 </resources>
