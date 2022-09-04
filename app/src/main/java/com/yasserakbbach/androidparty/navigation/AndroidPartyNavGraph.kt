@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.yasserakbbach.androidparty.listsevers.presenation.ServerListScreen
 import com.yasserakbbach.androidparty.login.presentation.LoginScreen
 
 @ExperimentalMaterial3Api
@@ -18,7 +19,7 @@ fun AndroidPartyNavGraph(
             LoginScreen(navController = navController)
         }
         composable(route = Screen.ListServer.route) {
-            Text(text = "List servers...")
+            ServerListScreen()
         }
     }
 }

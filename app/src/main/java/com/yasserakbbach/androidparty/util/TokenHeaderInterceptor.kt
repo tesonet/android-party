@@ -18,6 +18,7 @@ class TokenHeaderInterceptor @Inject constructor(
             .newBuilder()
             .addHeader(HEADER_AUTHORIZATION, token ?: "")
             .build()
+        Log.d("REQUEST", "intercept: $request")
         Log.d("AUTHORIZATION_HEADER", "intercept: header token $token")
         return chain.proceed(request)
     }
