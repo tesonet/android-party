@@ -68,93 +68,97 @@ fun LoginScreen(
         }
     }
 
-    Box(
-        modifier = Modifier.fillMaxSize(),
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.bg),
-            contentDescription = stringResource(R.string.login_background_image_description),
-            contentScale = ContentScale.Crop,
+    if(state.isLoggedIn.not()) {
+        Box(
             modifier = Modifier.fillMaxSize(),
-        )
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .imePadding(),
         ) {
-            TestIoTitle(
-                modifier = Modifier
-                    .fillMaxHeight(.3F)
-                    .fillMaxWidth(),
+            Image(
+                painter = painterResource(id = R.drawable.bg),
+                contentDescription = stringResource(R.string.login_background_image_description),
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize(),
             )
-            Spacer(modifier = Modifier.fillMaxHeight(.2F))
-            TextField(
-                value = state.username,
-                onValueChange = { viewModel.onEvent(LoginEvent.OnUsernameChange(it)) },
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_username),
-                        contentDescription = stringResource(R.string.login_screen_usename_icon_description),
-                    )
-                },
-                maxLines = 1,
-                label = {
-                    Text(text = stringResource(R.string.login_screen_usename_hint))
-                },
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth(.8F)
-                    .align(Alignment.CenterHorizontally),
-            )
-            Spacer(modifier = Modifier.height(SmallPadding))
-            TextField(
-                value = state.password,
-                onValueChange = { viewModel.onEvent(LoginEvent.OnPasswordChange(it)) },
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_lock),
-                        contentDescription = stringResource(R.string.login_screen_password_icon_description),
-                    )
-                },
-                maxLines = 1,
-                label = {
-                    Text(text = stringResource(R.string.login_screen_password_hint))
-                },
-                modifier = Modifier
-                    .fillMaxWidth(.8F)
-                    .align(Alignment.CenterHorizontally),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                visualTransformation = PasswordVisualTransformation(),
-            )
-            Spacer(modifier = Modifier.height(SmallPadding))
-            Button(
-                onClick = { viewModel.onEvent(LoginEvent.OnLoginClick) },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = SoftGreen,
-                ),
-                shape = MaterialTheme.shapes.extraSmall,
-                modifier = Modifier
-                    .fillMaxWidth(.8F)
-                    .align(Alignment.CenterHorizontally),
-                enabled = state.isLoginEnabled,
+                    .fillMaxSize()
+                    .imePadding(),
             ) {
-                Text(
-                    text = stringResource(R.string.login_screen_button),
-                    color = Color.White,
-                    modifier = Modifier.padding(SmallPadding),
+                TestIoTitle(
+                    modifier = Modifier
+                        .fillMaxHeight(.3F)
+                        .fillMaxWidth(),
                 )
-            }
-            Spacer(modifier = Modifier.height(SmallPadding))
-            if(state.isLoading) {
-                CircularProgressIndicator(
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                Spacer(modifier = Modifier.fillMaxHeight(.2F))
+                TextField(
+                    value = state.username,
+                    onValueChange = { viewModel.onEvent(LoginEvent.OnUsernameChange(it)) },
+                    leadingIcon = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_username),
+                            contentDescription = stringResource(R.string.login_screen_usename_icon_description),
+                        )
+                    },
+                    maxLines = 1,
+                    singleLine = true,
+                    label = {
+                        Text(text = stringResource(R.string.login_screen_usename_hint))
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth(.8F)
+                        .align(Alignment.CenterHorizontally),
                 )
-            }
-            if(state.error != null) {
-                Text(
-                    text = state.error,
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
-                    color = Color.Red,
+                Spacer(modifier = Modifier.height(SmallPadding))
+                TextField(
+                    value = state.password,
+                    onValueChange = { viewModel.onEvent(LoginEvent.OnPasswordChange(it)) },
+                    leadingIcon = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_lock),
+                            contentDescription = stringResource(R.string.login_screen_password_icon_description),
+                        )
+                    },
+                    maxLines = 1,
+                    singleLine = true,
+                    label = {
+                        Text(text = stringResource(R.string.login_screen_password_hint))
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth(.8F)
+                        .align(Alignment.CenterHorizontally),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    visualTransformation = PasswordVisualTransformation(),
                 )
+                Spacer(modifier = Modifier.height(SmallPadding))
+                Button(
+                    onClick = { viewModel.onEvent(LoginEvent.OnLoginClick) },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = SoftGreen,
+                    ),
+                    shape = MaterialTheme.shapes.extraSmall,
+                    modifier = Modifier
+                        .fillMaxWidth(.8F)
+                        .align(Alignment.CenterHorizontally),
+                    enabled = state.isLoginEnabled,
+                ) {
+                    Text(
+                        text = stringResource(R.string.login_screen_button),
+                        color = Color.White,
+                        modifier = Modifier.padding(SmallPadding),
+                    )
+                }
+                Spacer(modifier = Modifier.height(SmallPadding))
+                if(state.isLoading) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.align(Alignment.CenterHorizontally),
+                    )
+                }
+                if(state.error != null) {
+                    Text(
+                        text = state.error,
+                        modifier = Modifier.align(Alignment.CenterHorizontally),
+                        color = Color.Red,
+                    )
+                }
             }
         }
     }

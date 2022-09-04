@@ -7,6 +7,8 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yasserakbbach.androidparty.listsevers.domain.usecase.GetAllServersUseCase
+import com.yasserakbbach.androidparty.login.domain.usecase.LogoutUseCase
+import com.yasserakbbach.androidparty.navigation.Screen
 import com.yasserakbbach.androidparty.navigation.UiEvent
 import com.yasserakbbach.androidparty.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,6 +21,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ServerListViewModel @Inject constructor(
     private val getAllServersUseCase: GetAllServersUseCase,
+    private val logoutUseCase: LogoutUseCase,
 ) : ViewModel() {
 
     var state by mutableStateOf(ServerListState())
@@ -67,7 +70,10 @@ class ServerListViewModel @Inject constructor(
     }
 
     private fun onLogoutClick() {
-
+        viewModelScope.launch {
+            logoutUseCase()
+            _uiEvent.send(UiEvent.NavigateTo(Screen.Login))
+        }
     }
 
     private fun onSwipeRefresh() {

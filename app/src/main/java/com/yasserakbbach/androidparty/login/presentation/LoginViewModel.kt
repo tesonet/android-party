@@ -37,12 +37,14 @@ class LoginViewModel @Inject constructor(
 
     private fun checkSession() {
         viewModelScope.launch {
-            getSessionUseCase.invoke()
+            val isLoggedIn = getSessionUseCase.invoke()
                 .first()
-                .token
-                ?.let {
-                    _uiEvent.send(UiEvent.NavigateTo(Screen.ListServer))
-                }
+                .token != null
+
+            if(isLoggedIn) {
+                _uiEvent.send(UiEvent.NavigateTo(Screen.ListServer))
+            }
+            state = state.copy(isLoggedIn = isLoggedIn)
         }
     }
 
