@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Android Party</string>
+    <string name="login_background_image_description">Login background image</string>
+    <string name="login_screen_title">testio</string>
+    <string name="login_screen_usename_icon_description">Icon username</string>
+    <string name="login_screen_password_icon_description">Icon password</string>
+    <string name="login_screen_usename_hint">Username</string>
+    <string name="login_screen_password_hint">Password</string>
+    <string name="login_screen_button">Log In</string>
+    <string name="list_servers_screen_logout_description">Logout icon</string>
+    <string name="list_servers_screen_server_label">SERVER</string>
+    <string name="list_servers_screen_distance_label">DISTANCE</string>
+    <string name="list_servers_screen_distance_format">%d km</string>
+    <string name="list_servers_loading_text_label">Fetching the list…</string>
+</resources>
