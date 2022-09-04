@@ -8,7 +8,6 @@ import com.yasserakbbach.androidparty.login.domain.model.Session
 import com.yasserakbbach.androidparty.login.domain.repository.LoginRepository
 import com.yasserakbbach.androidparty.login.domain.repository.SessionRepository
 import java.lang.Exception
-import javax.inject.Inject
 
 class LoginRepositoryImpl(
     private val loginApi: LoginApi,
