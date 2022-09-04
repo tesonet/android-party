@@ -7,4 +7,9 @@
     <string name="login_screen_usename_hint">Username</string>
     <string name="login_screen_password_hint">Password</string>
     <string name="login_screen_button">Log In</string>
+    <string name="list_servers_screen_logout_description">Logout icon</string>
+    <string name="list_servers_screen_server_label">SERVER</string>
+    <string name="list_servers_screen_distance_label">DISTANCE</string>
+    <string name="list_servers_screen_distance_format">%d km</string>
+    <string name="list_servers_loading_text_label">Fetching the list…</string>
 </resources>

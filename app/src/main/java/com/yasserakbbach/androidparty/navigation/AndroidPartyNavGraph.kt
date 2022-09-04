@@ -3,6 +3,7 @@ package com.yasserakbbach.androidparty.navigation
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -19,7 +20,7 @@ fun AndroidPartyNavGraph(
             LoginScreen(navController = navController)
         }
         composable(route = Screen.ListServer.route) {
-            ServerListScreen()
+            ServerListScreen(navController = navController)
         }
     }
 }

@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -32,6 +33,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -54,6 +56,7 @@ fun LoginScreen(
 ) {
 
     val state = viewModel.state
+
     LaunchedEffect(key1 = Unit) {
         viewModel.event.collectLatest { event ->
             when(event) {
@@ -75,7 +78,9 @@ fun LoginScreen(
             modifier = Modifier.fillMaxSize(),
         )
         Column(
-            modifier = Modifier.fillMaxSize().imePadding(),
+            modifier = Modifier
+                .fillMaxSize()
+                .imePadding(),
         ) {
             TestIoTitle(
                 modifier = Modifier
@@ -158,6 +163,9 @@ fun LoginScreen(
 @Composable
 fun TestIoTitle(
     modifier: Modifier = Modifier,
+    textStyle: TextStyle = MaterialTheme.typography.displayLarge,
+    textColor: Color = Color.White,
+    circlePadding: PaddingValues = PaddingValues(bottom = NormalPadding)
 ) {
     Row(
         modifier = modifier,
@@ -165,15 +173,15 @@ fun TestIoTitle(
     ) {
         Text(
             text = stringResource(R.string.login_screen_title),
-            color = Color.White,
+            color = textColor,
             fontWeight = FontWeight.Bold,
-            style = MaterialTheme.typography.displayLarge,
+            style = textStyle,
             modifier = Modifier.align(Alignment.Bottom),
         )
         Circle(
             modifier = Modifier
                 .align(Alignment.Bottom)
-                .padding(bottom = NormalPadding),
+                .padding(circlePadding),
         )
     }
 }
