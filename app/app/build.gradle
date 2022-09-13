@@ -1,0 +1,125 @@
+import com.simplekjl.buildsrc.Configs
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+}
+
+
+android {
+    compileSdk Configs.compilation
+
+    defaultConfig {
+        applicationId Configs.applicationId
+        minSdk Configs.minSdk
+        targetSdk Configs.target
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion Versions.composeUi
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // common classes for testing
+    testImplementation project(':testshared')
+
+    // Kotlin
+    implementation JetbrainsLibraries.kotlin
+    implementation JetbrainsLibraries.coroutinesCore
+    implementation JetbrainsLibraries.coroutinesAndroid
+
+    // Koin
+    implementation KoinLibraries.core
+    implementation KoinLibraries.android
+    implementation KoinLibraries.compose
+
+    // Google
+    implementation GoogleLibraries.material
+
+    // Androidx
+    implementation AndroidxLibraries.core
+    implementation AndroidxLibraries.collection
+    implementation AndroidxLibraries.dynamicAnimation
+    implementation AndroidxLibraries.navigationUI
+    implementation AndroidxLibraries.navigationFragment
+    implementation AndroidxLibraries.activityKtx
+    implementation AndroidxLibraries.fragmentKtx
+
+    // AndroidX Lifecycle
+    implementation LifecyleLibraries.viewModel
+    implementation LifecyleLibraries.runtime
+    implementation LifecyleLibraries.liveData
+    implementation LifecyleLibraries.process
+
+    //run-time live data
+    implementation ComposeLibraries.runtimeLiveData
+    implementation ComposeLibraries.ui
+    // Tooling support (Previews, etc.)
+    implementation ComposeLibraries.uiTooling
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation ComposeLibraries.foundation
+    // Material Design
+    implementation ComposeLibraries.material
+    // Navigation
+    implementation ComposeLibraries.navigation
+    implementation ComposeLibraries.runtime
+
+    // Used for displaying Preview
+    implementation ComposeLibraries.activity
+    implementation Libraries.fixture
+    implementation 'androidx.navigation:navigation-testing:2.5.2'
+
+    androidTestImplementation ComposeLibraries.uiTestJunit4
+    testImplementation ComposeLibraries.uiTestJunit4
+    debugImplementation ComposeLibraries.uiTest
+
+    testImplementation Libraries.robolectric
+
+    // need this for android instrumentation tests run
+    androidTestImplementation ComposeLibraries.activity
+
+    testImplementation AndroidxTestLibraries.archCoreTest
+    testImplementation AndroidxTestLibraries.core
+    testImplementation AndroidxTestLibraries.testJunit
+    testImplementation AndroidxTestLibraries.testRules
+    testImplementation MockkLibraries.mockk
+    testImplementation MockkLibraries.mockkAndroid
+
+    testImplementation Libraries.robolectric
+
+    
+    debugApi "androidx.customview:customview:1.2.0-alpha01"
+    debugApi "androidx.customview:customview-poolingcontainer:1.0.0"
+}

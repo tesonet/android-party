@@ -1,0 +1,27 @@
+apply from: "$rootProject.projectDir/common-library.gradle"
+
+dependencies {
+
+    implementation LifecyleLibraries.liveData
+    implementation AndroidxLibraries.paging
+
+    api KoinLibraries.test
+    api GoogleLibraries.truth
+
+    api JetbrainsLibraries.coroutinesCore
+    api JetbrainsLibraries.coroutinesTest
+
+    api AndroidxTestLibraries.testRules
+
+    // Mockk
+    api MockkLibraries.mockk
+
+    // Kotlin flow test
+    api Libraries.turbine
+
+    api JetbrainsLibraries.kotlinReflect
+
+    // Auto generate models
+    api Libraries.fixture
+
+}
