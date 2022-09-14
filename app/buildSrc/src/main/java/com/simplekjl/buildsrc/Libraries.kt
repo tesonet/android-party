@@ -38,7 +38,11 @@ object Libraries {
 
     const val coil = "io.coil-kt:coil-base:${Versions.coil}"
 
-    const val gson = "com.google.code.gson:gson:${Versions.gson}"
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
+
+    const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofitVersion}"
+
+    const val okHttpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttpVersion}"
 
     const val turbine = "app.cash.turbine:turbine:${Versions.turbine}"
 
@@ -46,7 +50,8 @@ object Libraries {
 
     const val sentry = "io.sentry:sentry-android:${Versions.sentry}"
 
-    const val materialDateTimePicker = "com.wdullaer:materialdatetimepicker:${Versions.materialDateTimePicker}"
+    const val materialDateTimePicker =
+        "com.wdullaer:materialdatetimepicker:${Versions.materialDateTimePicker}"
 
     const val photoView = "com.github.chrisbanes:PhotoView:${Versions.photoView}"
 
@@ -68,7 +73,8 @@ object JetbrainsLibraries {
     const val coroutinesTest =
         "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlinx}"
     const val kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
-    const val coroutinesPlayService = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:${Versions.kotlinx}"
+    const val coroutinesPlayService =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:${Versions.kotlinx}"
 }
 
 object AndroidxLibraries {
@@ -89,10 +95,12 @@ object AndroidxLibraries {
     const val navigationFragment =
         "androidx.navigation:navigation-fragment-ktx:${Versions.Androidx.navigation}"
     const val preference = "androidx.preference:preference-ktx:${Versions.Androidx.preference}"
-    const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.Androidx.swiperefreshlayout}"
+    const val swipeRefreshLayout =
+        "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.Androidx.swiperefreshlayout}"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.Androidx.fragmentKtx}"
     const val activityKtx = "androidx.activity:activity-ktx:${Versions.Androidx.activityKtx}"
-    const val dataStorePreferences = "androidx.datastore:datastore-preferences:${Versions.Androidx.dataStorePreferences}"
+    const val dataStorePreferences =
+        "androidx.datastore:datastore-preferences:${Versions.Androidx.dataStorePreferences}"
     const val annotationx = "androidx.annotation:annotation:${Versions.Androidx.annotationx}"
 }
 
@@ -131,7 +139,7 @@ object WorkManageLibraries {
 
 object KoinLibraries {
     const val androidCompat = "io.insert-koin:koin-android-compat:${Versions.koin}"
-    const val compose ="io.insert-koin:koin-androidx-compose:${Versions.koin}"
+    const val compose = "io.insert-koin:koin-androidx-compose:${Versions.koin}"
     const val core = "io.insert-koin:koin-core:${Versions.koin}"
     const val android = "io.insert-koin:koin-android:${Versions.koin}"
     const val workManager = "io.insert-koin:koin-androidx-workmanager:${Versions.koin}"

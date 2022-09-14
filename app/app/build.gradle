@@ -17,7 +17,7 @@ android {
         targetSdk Configs.target
         versionCode 1
         versionName "1.0"
-
+        buildConfigField "String", "BASE_URL", Configs.serversUrl
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true
@@ -48,11 +48,16 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+    configurations {
+        all*.exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     // common classes for testing
+    implementation project(':data')
+    implementation project(':domain')
     testImplementation project(':testshared')
 
     // Kotlin
@@ -119,7 +124,11 @@ dependencies {
 
     testImplementation Libraries.robolectric
 
-    
+    // Network
+    implementation Libraries.retrofit
+    implementation Libraries.okHttpLogging
+    implementation Libraries.gsonConverter
+
     debugApi "androidx.customview:customview:1.2.0-alpha01"
     debugApi "androidx.customview:customview-poolingcontainer:1.0.0"
 }

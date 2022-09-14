@@ -1,0 +1,10 @@
+apply from: "$rootProject.projectDir/common-library.gradle"
+dependencies {
+    implementation project(':testshared')
+    implementation KoinLibraries.core
+    testImplementation KoinLibraries.test
+    testImplementation Libraries.junit4
+    testImplementation Libraries.fixture
+    testImplementation MockkLibraries.mockk
+    testImplementation GoogleLibraries.truth
+}

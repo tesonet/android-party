@@ -40,7 +40,8 @@ object Versions {
 
     const val coil = "1.4.0"
     const val sqdDelight = "1.5.0"
-    const val gson = "2.8.6"
+    const val retrofitVersion = "2.9.0"
+    const val okHttpVersion = "4.9.1"
 
     const val turbine = "0.5.1"
 

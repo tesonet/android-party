@@ -6,4 +6,8 @@ object Configs {
     const val minSdk = 26
     const val target = 32
     const val testRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+    // Service URL
+    // services
+    const val serversUrl : String = "\"https://playground.tesonet.lt/v1/\""
 }
