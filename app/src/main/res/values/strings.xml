@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Android Party</string>
+    <string name="login_logo_description">Login Logo</string>
+    <string name="login_button_text">Log In</string>
+    <string name="login_input_username_text">Username</string>
+    <string name="login_input_password_text">Password</string>
+    <string name="login_input_icon_description">Login Input Icon</string>
+    <string name="generic_network_error">There has been a network error. Try again later.</string>
 </resources>
