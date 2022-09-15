@@ -1,4 +1,4 @@
-package com.ac.androidparty.login.ui.components
+package com.ac.androidparty.login.presentation.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

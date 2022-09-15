@@ -1,4 +1,4 @@
-package com.ac.androidparty.login.ui.components
+package com.ac.androidparty.login.presentation.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -14,15 +14,20 @@ import com.ac.androidparty.core.spacing.Spacing
 import com.ac.androidparty.core.theme.Colors
 
 @Composable
-fun LoginButton() {
+fun LoginButton(
+    onLoginButtonTapped: () -> Unit,
+    isErrored: Boolean
+) {
     Button(
-        onClick = {},
+        onClick = { onLoginButtonTapped() },
         modifier = Modifier
             .fillMaxWidth(Spacing.mainComponentsWidth),
         colors = ButtonDefaults.buttonColors(
             backgroundColor = Colors.primaryButton,
-            contentColor = Color.White
-        )
+            contentColor = Color.White,
+            disabledBackgroundColor = Colors.disabledPrimaryButton
+        ),
+        enabled = isErrored.not(),
     ) {
         Text(
             text = stringResource(R.string.login_button_text),

@@ -1,4 +1,4 @@
-package com.ac.androidparty.login.ui.components
+package com.ac.androidparty.login.presentation.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,8 +23,11 @@ import com.ac.androidparty.core.spacing.Spacing
 
 @Composable
 fun LoginInputText(
-    isUsername: Boolean
+    isUsername: Boolean,
+    onValueChanged: (String) -> Unit,
+    isErrored: Boolean
 ) {
+
     var text by rememberSaveable { mutableStateOf("") }
 
     TextField(
@@ -33,6 +36,7 @@ fun LoginInputText(
         leadingIcon = { InputTextLeadingIcon(isUsername = isUsername) },
         onValueChange = {
             text = it
+            onValueChanged(it)
         },
         modifier = Modifier
             .fillMaxWidth(0.75f)
@@ -46,6 +50,7 @@ fun LoginInputText(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent
         ),
+        isError = isErrored
     )
 }
 
