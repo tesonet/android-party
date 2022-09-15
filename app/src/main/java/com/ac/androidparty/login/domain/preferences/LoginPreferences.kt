@@ -7,4 +7,7 @@ internal class LoginPreferences @Inject constructor() : DefaultSharedPreferences
     key = "login_preferences"
 ) {
     var token by stringPreferences("loginToken")
+
+    val isTokenAvailable: Boolean
+        get() = token.isNullOrBlank().not()
 }
