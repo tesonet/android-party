@@ -55,5 +55,4 @@ private object RetryExecutor {
     }
 
     private const val DELAY = 1000L
-
 }

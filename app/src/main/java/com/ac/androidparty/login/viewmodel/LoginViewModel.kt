@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.ac.androidparty.login.data.repository.LoginRepository
 import com.ac.androidparty.login.data.repository.LoginResult
 import com.ac.androidparty.login.domain.model.Login
+import com.ac.androidparty.login.domain.preferences.LoginPreferences
 import com.ac.androidparty.login.presentation.LoginState
 import com.ac.androidparty.login.presentation.LoginStateMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 internal class LoginViewModel @Inject constructor(
-    private val loginRepository: LoginRepository
+    private val loginRepository: LoginRepository,
+    private val loginPreferences: LoginPreferences
 ) : ViewModel() {
 
     private var login = Login("", "")
@@ -51,5 +53,8 @@ internal class LoginViewModel @Inject constructor(
 
     private fun applyLoginResult(loginResult: LoginResult) = viewStateMapper(loginResult).run {
         _state.value = this
+        if (this is LoginState.Success) {
+            loginPreferences.token = this.token
+        }
     }
 }
