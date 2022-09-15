@@ -33,7 +33,7 @@ fun LoginInputText(
     TextField(
         label = { InputTextLabel(isUsername = isUsername) },
         value = text,
-        leadingIcon = { InputTextLeadingIcon(isUsername = isUsername) },
+        leadingIcon = { InputTextLeadingIcon(isUsername = isUsername, isError = isErrored) },
         onValueChange = {
             text = it
             onValueChanged(it)
@@ -46,7 +46,8 @@ fun LoginInputText(
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.White,
             cursorColor = Color.Black,
-            disabledLabelColor = Color.White,
+            errorLabelColor = Color.Red,
+            textColor = if (isErrored) Color.Red else Color.Black,
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent
         ),
@@ -66,12 +67,14 @@ private fun InputTextLabel(
 
 @Composable
 private fun InputTextLeadingIcon(
-    isUsername: Boolean
+    isUsername: Boolean,
+    isError: Boolean
 ) {
     val icon = if (isUsername) R.drawable.ic_ico_username else R.drawable.ic_ico_lock
     Icon(
         painter = painterResource(icon),
-        contentDescription = stringResource(R.string.login_input_icon_description)
+        contentDescription = stringResource(R.string.login_input_icon_description),
+        tint = if (isError) Color.Red else Color.Gray
     )
 }
 

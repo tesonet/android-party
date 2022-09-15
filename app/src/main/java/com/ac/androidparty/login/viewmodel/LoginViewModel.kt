@@ -1,6 +1,5 @@
 package com.ac.androidparty.login.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ac.androidparty.login.data.repository.LoginRepository
@@ -30,12 +29,12 @@ internal class LoginViewModel @Inject constructor(
         get() = _state
 
     fun updateUsername(username: String) {
-        login = login.copy(username = username)
+        login = login.copy(username = username.trimEnd())
         _state.value = LoginState.Initial
     }
 
     fun updatePassword(password: String) {
-        login = login.copy(password = password)
+        login = login.copy(password = password.trimEnd())
         _state.value = LoginState.Initial
     }
 
@@ -52,6 +51,5 @@ internal class LoginViewModel @Inject constructor(
 
     private fun applyLoginResult(loginResult: LoginResult) = viewStateMapper(loginResult).run {
         _state.value = this
-        Log.d("lmao", this.toString())
     }
 }
