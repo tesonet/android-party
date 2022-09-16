@@ -1,7 +1,7 @@
-package com.ac.androidparty.servers.data.repository
+package com.ac.androidparty.servers.data.repository.serverslist
 
 import com.ac.androidparty.servers.data.remote.ServersApi
-import com.ac.androidparty.servers.data.repository.mapper.ServersResultMapper
+import com.ac.androidparty.servers.data.repository.serverslist.mapper.ServersResultMapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
@@ -19,8 +19,8 @@ internal class ServersListRepositoryImpl @Inject constructor(
             kotlin.runCatching {
                 RetryExecutor.execute({ execute() }, MAX_ATTEMPTS)
             }.onFailure {
-                ServersResult.Error
-            }.getOrNull() ?: ServersResult.Error
+                ServersResult.Error()
+            }.getOrNull() ?: ServersResult.Error()
         }
 
     private suspend fun execute(): ServersResult = mapper(serversApi.getServers())
@@ -43,7 +43,7 @@ private object RetryExecutor {
                 delay(DELAY)
                 execute(action, attempts)
             } else {
-                ServersResult.Error
+                ServersResult.Error()
             }
         }
     }

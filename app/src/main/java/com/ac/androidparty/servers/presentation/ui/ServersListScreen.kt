@@ -15,6 +15,8 @@ import com.ac.androidparty.servers.presentation.ServersListState
 import com.ac.androidparty.servers.presentation.ui.components.ServersListHeader
 import com.ac.androidparty.servers.presentation.ui.components.ServersListTopBar
 import com.ac.androidparty.servers.viewmodel.ServersListViewModel
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
@@ -22,22 +24,32 @@ internal fun ServersListRoute(
     viewModel: ServersListViewModel = hiltViewModel()
 ) {
     val serversListState by viewModel.state.collectAsStateWithLifecycle()
-    ServersListScreen(state = serversListState)
+    ServersListScreen(state = serversListState, onRefresh = viewModel::refreshServers)
 }
 
 @Composable
 private fun ServersListScreen(
-    state: ServersListState
+    state: ServersListState,
+    onRefresh: () -> Unit
 ) {
+
+    val isRefreshing = rememberSwipeRefreshState(isRefreshing = state is ServersListState.Loading)
+
     Scaffold(
-        topBar = { ServersListTopBar(isVisible = state != ServersListState.Error) },
+        topBar = { ServersListTopBar(isVisible = true) },
         backgroundColor = Colors.lightGrey
     ) { _ ->
-        Column(modifier = Modifier.fillMaxWidth()) {
-            ServersListHeader(isVisible = state != ServersListState.Error)
-            ServersListComponents(state = state)
-        }
+        SwipeRefresh(
+            state = isRefreshing,
+            onRefresh = { onRefresh() },
+            swipeEnabled = true
+        ) {
+            Column(modifier = Modifier.fillMaxWidth()) {
+                ServersListHeader(isVisible = state != ServersListState.Error())
+                ServersListComponents(state = state)
+            }
 
+        }
         CircularProgressBarComponent(isDisplayed = state is ServersListState.Loading)
     }
 }

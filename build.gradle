@@ -6,7 +6,7 @@ buildscript {
     ext.kotlin_serialization = '1.4.0'
     ext.httplogging_version = '4.10.0'
     ext.timber_version = '4.7.1'
-
+    ext.room_version = '2.4.3'
     repositories {
         mavenCentral()
         google()

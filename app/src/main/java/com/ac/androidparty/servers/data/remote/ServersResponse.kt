@@ -1,5 +1,6 @@
 package com.ac.androidparty.servers.data.remote
 
+import com.ac.androidparty.servers.data.localsource.ServerEntity
 import com.ac.androidparty.servers.domain.model.Server
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -11,3 +12,9 @@ data class ServerResponse(
 )
 
 fun ServerResponse.toServer() = Server(name = name, distance = distance)
+
+fun ServerResponse.toServerEntity() = ServerEntity(
+    serverId = name.split(" ").last().removePrefix("#").toInt(),
+    serverName = name,
+    serverDistance = distance
+)

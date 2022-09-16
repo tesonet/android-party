@@ -1,7 +1,7 @@
-package com.ac.androidparty.servers.data.repository.mapper
+package com.ac.androidparty.servers.data.repository.serverslist.mapper
 
 import com.ac.androidparty.servers.data.remote.ServerResponse
-import com.ac.androidparty.servers.data.repository.ServersResult
+import com.ac.androidparty.servers.data.repository.serverslist.ServersResult
 import timber.log.Timber
 
 internal object ServersResultMapper {
@@ -9,6 +9,6 @@ internal object ServersResultMapper {
         ServersResult.Success(serverResponses)
     } catch (throwable: Throwable) {
         Timber.tag("ServersResultMapper").w(throwable.toString())
-        ServersResult.Error
+        ServersResult.Error()
     }
 }
