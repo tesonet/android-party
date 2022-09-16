@@ -1,11 +1,11 @@
 package com.ac.androidparty.servers.data.repository
 
-import android.util.Log
 import com.ac.androidparty.servers.data.remote.ServersApi
 import com.ac.androidparty.servers.data.repository.mapper.ServersResultMapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 import javax.inject.Inject
 
 internal class ServersListRepositoryImpl @Inject constructor(
@@ -38,7 +38,7 @@ private object RetryExecutor {
         return try {
             action.invoke()
         } catch (throwable: Throwable) {
-            Log.w("ServersRetryExecutor", throwable.toString())
+            Timber.tag("ServersRetryExecutor").w(throwable.toString())
             if (count < attempts) {
                 delay(DELAY)
                 execute(action, attempts)

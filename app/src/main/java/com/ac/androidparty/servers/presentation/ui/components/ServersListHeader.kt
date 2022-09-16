@@ -18,16 +18,18 @@ import com.ac.androidparty.core.theme.Colors
 import java.util.*
 
 @Composable
-internal fun ServersListHeader() {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(Color.White),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        ServersListHeaderText(textId = R.string.servers_list_server_text)
-        ServersListHeaderText(textId = R.string.servers_list_distance_text)
+internal fun ServersListHeader(isVisible: Boolean) {
+    if (isVisible) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.White),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            ServersListHeaderText(textId = R.string.servers_list_server_text)
+            ServersListHeaderText(textId = R.string.servers_list_distance_text)
+        }
     }
 }
 

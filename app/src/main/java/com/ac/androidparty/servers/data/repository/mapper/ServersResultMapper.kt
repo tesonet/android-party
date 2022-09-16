@@ -1,14 +1,14 @@
 package com.ac.androidparty.servers.data.repository.mapper
 
-import android.util.Log
-import com.ac.androidparty.servers.data.remote.Server
+import com.ac.androidparty.servers.data.remote.ServerResponse
 import com.ac.androidparty.servers.data.repository.ServersResult
+import timber.log.Timber
 
 internal object ServersResultMapper {
-    operator fun invoke(servers: List<Server>): ServersResult = try {
-        ServersResult.Success(servers)
+    operator fun invoke(serverResponses: List<ServerResponse>): ServersResult = try {
+        ServersResult.Success(serverResponses)
     } catch (throwable: Throwable) {
-        Log.w("ServersResultMapper", throwable.toString())
+        Timber.tag("ServersResultMapper").w(throwable.toString())
         ServersResult.Error
     }
 }

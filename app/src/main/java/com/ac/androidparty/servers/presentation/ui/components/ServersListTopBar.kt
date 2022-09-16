@@ -16,23 +16,27 @@ import com.ac.androidparty.core.spacing.Spacing
 import com.ac.androidparty.core.theme.Colors
 
 @Composable
-internal fun ServersListTopBar() {
-    Row(
-        modifier = Modifier
-            .background(Colors.lightGrey)
-            .fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.Bottom
-    ) {
-        ServersListIcon(
-            iconId = R.drawable.severs_screen_logo,
-            contentDescription = R.string.servers_list_logo_content_description
-        )
-        ServersListLogoutButton(
-            onLogoutClicked = {},
-            iconId = R.drawable.ic_ico_logout,
-            contentDescription = R.string.servers_list_logout_content_description
-        )
+internal fun ServersListTopBar(
+    isVisible: Boolean
+) {
+    if (isVisible) {
+        Row(
+            modifier = Modifier
+                .background(Colors.lightGrey)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.Bottom
+        ) {
+            ServersListIcon(
+                iconId = R.drawable.severs_screen_logo,
+                contentDescription = R.string.servers_list_logo_content_description
+            )
+            ServersListLogoutButton(
+                onLogoutClicked = {},
+                iconId = R.drawable.ic_ico_logout,
+                contentDescription = R.string.servers_list_logout_content_description
+            )
+        }
     }
 }
 

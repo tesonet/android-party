@@ -8,17 +8,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.ac.androidparty.core.spacing.Spacing
 import com.ac.androidparty.core.theme.Colors
+import com.ac.androidparty.servers.domain.model.Server
 
 @Composable
-internal fun ServersListItem() {
+internal fun ServersListItem(server: Server) {
     Column {
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            ServersListItemText(text = "Canada #10")
-            ServersListItemText(text = "3423 km")
+            ServersListItemText(text = server.name)
+            ServersListItemText(text = "${server.distance} km")
         }
         ServersListItemDivider()
     }
@@ -36,7 +37,7 @@ private fun ServersListItemText(
             top = Spacing.XXXL,
             bottom = Spacing.XXXL
         ),
-        color = Colors.textGrey,
+        color = Colors.textGrey
     )
 }
 

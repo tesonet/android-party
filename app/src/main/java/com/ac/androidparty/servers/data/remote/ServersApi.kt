@@ -7,7 +7,7 @@ import retrofit2.http.Headers
 internal interface ServersApi {
     @GET(SERVERS)
     @Headers(TOKEN_AUTHORIZATION)
-    suspend fun getServers(): List<Server>
+    suspend fun getServers(): List<ServerResponse>
 
     companion object {
         private const val SERVERS = "servers"

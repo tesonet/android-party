@@ -1,10 +1,9 @@
 package com.ac.androidparty.servers.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ac.androidparty.servers.data.repository.ServersListRepository
-import com.ac.androidparty.servers.data.repository.ServersResult
+import com.ac.androidparty.servers.data.repository.asServersListState
 import com.ac.androidparty.servers.presentation.ServersListState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,7 +17,7 @@ internal class ServersListViewModel @Inject constructor(
     private val serversListRepository: ServersListRepository
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(ServersListState.Loading)
+    private val _state = MutableStateFlow<ServersListState>(ServersListState.Loading)
     val state: StateFlow<ServersListState>
         get() = _state
 
@@ -29,13 +28,13 @@ internal class ServersListViewModel @Inject constructor(
     fun getServers() {
         viewModelScope.launch {
             flowOf(
-                serversListRepository.getServers()
+                serversListRepository.getServers().asServersListState()
             ).collect(::applyServersResult)
         }
     }
 
-    private fun applyServersResult(serversResult: ServersResult) {
-        Log.d("lmao", serversResult::class.toString())
+    private fun applyServersResult(serversListState: ServersListState) {
+        _state.value = serversListState
     }
 
 }
