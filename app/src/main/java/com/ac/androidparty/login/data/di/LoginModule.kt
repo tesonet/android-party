@@ -1,5 +1,6 @@
 package com.ac.androidparty.login.data.di
 
+import com.ac.androidparty.core.network.NetworkConstants
 import com.ac.androidparty.core.network.RetrofitConstants
 import com.ac.androidparty.login.data.remote.LoginApi
 import com.ac.androidparty.login.data.repository.LoginRepository
@@ -18,9 +19,10 @@ import javax.inject.Singleton
 object LoginModule {
     @Provides
     @Singleton
-    fun providesLoginApi(
-        @Named(RetrofitConstants.BASE_RETROFIT) retrofit: Retrofit
-    ): LoginApi = retrofit.newBuilder().baseUrl(LoginApi.BASE_URL).build().create()
+    internal fun providesLoginApi(
+        @Named(RetrofitConstants.BASE_RETROFIT) retrofit: Retrofit,
+    ): LoginApi =
+        retrofit.newBuilder().build().create()
 
     @Provides
     internal fun provideLoginRepository(

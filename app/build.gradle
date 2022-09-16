@@ -98,4 +98,6 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlin_serialization"
     implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
 
+    implementation "com.jakewharton.timber:timber:$timber_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$httplogging_version"
 }

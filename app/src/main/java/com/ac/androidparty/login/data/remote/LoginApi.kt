@@ -4,14 +4,14 @@ import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
 
-interface LoginApi {
+internal interface LoginApi {
 
-    @POST("tokens")
+    @POST(TOKENS)
     @Headers(CONTENT_TYPE_HEADERS)
     suspend fun login(@Body login: LoginRequest): Token
 
-    companion object {
-        private const val CONTENT_TYPE_HEADERS = "Content-Type: application/json"
-        const val BASE_URL = " https://playground.tesonet.lt/v1/"
+    private companion object {
+        const val TOKENS = "tokens"
+        const val CONTENT_TYPE_HEADERS = "Content-Type: application/json"
     }
 }

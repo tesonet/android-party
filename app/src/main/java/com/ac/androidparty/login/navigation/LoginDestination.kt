@@ -11,8 +11,10 @@ object LoginDestination
         get() = "login"
 }
 
-fun NavGraphBuilder.loginGraph() {
+fun NavGraphBuilder.loginGraph(
+    navigateToServers: () -> Unit
+) {
     composable(route = LoginDestination.route) {
-        LoginRoute()
+        LoginRoute(navigateToServers = navigateToServers)
     }
 }

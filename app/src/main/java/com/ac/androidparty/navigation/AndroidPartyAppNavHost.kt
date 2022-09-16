@@ -14,8 +14,7 @@ import com.ac.androidparty.servers.navigation.serversGraph
 @Composable
 fun AndroidPartyAppNavHost(
     navController: NavHostController,
-    onNavigateToDestination: (AndroidPartyAppDestination, String) -> Unit,
-    onBackClick: () -> Unit,
+    onNavigateToDestination: (AndroidPartyAppDestination) -> Unit,
     modifier: Modifier = Modifier,
     startDestination: String = LoginDestination.route
 ) {
@@ -27,7 +26,11 @@ fun AndroidPartyAppNavHost(
         startDestination = if (loginPreferences.isTokenAvailable.not())
             startDestination else ServersListDestination.route,
     ) {
-        loginGraph()
+        loginGraph(
+            navigateToServers = {
+                onNavigateToDestination(ServersListDestination)
+            }
+        )
         serversGraph()
     }
 }
