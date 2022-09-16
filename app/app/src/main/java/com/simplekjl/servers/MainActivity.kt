@@ -3,41 +3,45 @@ package com.simplekjl.servers
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.LaunchedEffect
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.simplekjl.servers.navigation.NavTarget
+import com.simplekjl.servers.navigation.Navigator
+import com.simplekjl.servers.ui.list.ServerListScreen
+import com.simplekjl.servers.ui.login.LoginScreen
 import com.simplekjl.servers.ui.theme.ServersTheme
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
+    private val navigator: Navigator by inject()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             ServersTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
+                val navController = rememberNavController()
+                LaunchedEffect("navigation") {
+                    navigator.sharedFlow.onEach {
+                        navController.navigate(it.label) {
+                            if (it.label == NavTarget.Login.label)
+                                popUpTo(NavTarget.ServerList.label) { inclusive = true }
+                            else if (it.label == NavTarget.ServerList.label)
+                                popUpTo(NavTarget.Login.label) { inclusive = true }
+                        }
+                    }.launchIn(this)
+                }
+                NavHost(navController = navController, startDestination = NavTarget.Login.label) {
+                    composable(NavTarget.Login.label) {
+                        LoginScreen()
+                    }
+                    composable(NavTarget.ServerList.label) {
+                        ServerListScreen()
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    ServersTheme {
-        Greeting("Android")
     }
 }

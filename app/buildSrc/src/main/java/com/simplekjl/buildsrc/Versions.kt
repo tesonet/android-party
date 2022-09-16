@@ -2,7 +2,7 @@ object Versions {
     const val nav_version ="2.5.2"
     const val junit4 = "4.13.2"
     const val gradlePlugin = "7.0.1"
-    const val kotlin = "1.7.0"
+    const val kotlin = "1.7.10"
     const val kotlinx = "1.5.2"
 
     const val koin = "3.2.0-beta-1"
@@ -62,7 +62,7 @@ object Versions {
 
     const val intercom = "10.4.2"
 
-    const val composeUi = "1.2.0"
+    const val composeUi = "1.2.1"
     const val kaspresso = "1.4.0"
 
     internal object Androidx {
@@ -91,7 +91,7 @@ object Versions {
     }
 
     internal object Google {
-        const val material = "1.2.0"
+        const val material = "1.2.1"
         const val playCore = "1.9.0"
         const val playCoreKtx = "1.8.1"
         const val servicesAuth = "17.0.0"
