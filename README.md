@@ -1,22 +1,21 @@
-# Task for a Great Android developer
+## Requirements
 
-If you found this task it means we are looking for you!
+- [x] Send authorization request (POST) to http://playground.tesonet.lt/v1/tokens to generate token with body: `{"username": "tesonet", "password": "partyanimal"}`. (Don't forget Content-Type)
+- [x] Get servers list from http://playground.tesonet.lt/v1/servers. Add header to request: `Authorization: Bearer <token>`
+- [x] Design should be recreated as closely as possible
+- [x] Bonus: implement smooth animated transition from login through loader to server list screen
+- [ ] Bonus: implement persistent storage of the downloaded server data
+- [x] Bonus: have a good set of unit tests
 
-> Note: To clone this repository you will need [GIT-LFS](https://git-lfs.github.com/)
+# Results
 
-## Few simple steps
+https://user-images.githubusercontent.com/12452269/190680318-78913406-b134-4e1f-ae07-4f93e4b822d6.mov
 
-1. Fork this repo
-2. Do your best
-3. Prepare pull request and let us know that you are done
+# Libraries used
+- Material
+- Koin for DI
+- Retrofit
+- OkHttp
+- Compose
 
-## Few simple requirements
 
-- Send authorization request (POST) to http://playground.tesonet.lt/v1/tokens to generate token with body: `{"username": "tesonet", "password": "partyanimal"}`. (Don't forget Content-Type)
-- Get servers list from http://playground.tesonet.lt/v1/servers. Add header to request: `Authorization: Bearer <token>`
-- Design should be recreated as closely as possible
-- Bonus: implement smooth animated transition from login through loader to server list screen
-- Bonus: implement persistent storage of the downloaded server data
-- Bonus: have a good set of unit tests
-
-*Note:* The bonus requirements are optional. While they are nice to have, it's much more important to have the basics nailed.

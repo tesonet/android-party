@@ -1,0 +1,9 @@
+apply from: "$rootProject.projectDir/common-library.gradle"
+dependencies {
+    implementation project(path: ':domain')
+    implementation KoinLibraries.test
+    implementation Libraries.gsonConverter
+    implementation Libraries.retrofit
+    implementation Libraries.okHttp
+    api GoogleLibraries.truth
+}

@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Servers</string>
+    <string name="username_hint">Username</string>
+    <string name="username_ic_description">username field</string>
+    <string name="password_hint">Password</string>
+    <string name="password_title">Password</string>
+    <string name="login_text">Log in</string>
+    <string name="server_title">SERVER</string>
+    <string name="distance_title">DISTANCE</string>
+    <string name="fetching_list_title">Fetching the list...</string>
+    <string name="error_login">Verify your credentials, please try again</string>
+    <string name="server_list_description">Tesonio server list screen</string>
+    <string name="log_out_description">Log out</string>
+    <string name="something_went_wrong_error">Something went wrong</string>
+    <string name="no_available_servers_msg">No servers available, swipe to refresh</string>
+</resources>

@@ -1,0 +1,33 @@
+configurations {
+    ktlint {
+        filter {
+            exclude("**/generated/**")
+        }
+    }
+}
+
+dependencies {
+    ktlint "com.pinterest:ktlint:0.42.1"
+}
+
+task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
+    classpath = configurations.ktlint
+    main = "com.pinterest.ktlint.Main"
+    args "--reporter=plain", "--reporter=json,output=${buildDir}/ktlint-report.json", "src/**/*.kt"
+}
+
+task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations."
+    classpath = configurations.ktlint
+    main = "com.pinterest.ktlint.Main"
+    args "-F", "src/**/*.kt"
+}
+
+check.dependsOn ktlint
+allprojects {
+    if (tasks.findByPath('preBuild')) {
+        preBuild.dependsOn ktlintFormat
+    }
+}
+
