@@ -6,4 +6,9 @@
     <string name="login_input_password_text">Password</string>
     <string name="login_input_icon_description">Login Input Icon</string>
     <string name="generic_network_error">There has been a network error. Try again later.</string>
+    <string name="servers_list_logo_content_description">Servers list logo</string>
+    <string name="servers_list_logout_content_description">Servers List Logout</string>
+    <string name="servers_list_server_text">server</string>
+    <string name="servers_list_distance_text">distance</string>
+    <string name="servers_list_not_latest_data">There has been an error. You are not seeing the latest data!</string>
 </resources>

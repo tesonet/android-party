@@ -26,7 +26,6 @@ internal class LoginViewModel @Inject constructor(
     private val viewStateMapper: LoginStateMapper = LoginStateMapper
 
     private val _state = MutableStateFlow<LoginState>(LoginState.Initial)
-
     val state: StateFlow<LoginState>
         get() = _state
 

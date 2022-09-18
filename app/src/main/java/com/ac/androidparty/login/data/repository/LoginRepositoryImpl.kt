@@ -1,5 +1,6 @@
 package com.ac.androidparty.login.data.repository
 
+import android.util.Log
 import com.ac.androidparty.login.data.mapper.ErrorResultMapper
 import com.ac.androidparty.login.data.mapper.LoginResultMapper
 import com.ac.androidparty.login.data.remote.LoginApi
@@ -45,6 +46,7 @@ private object RetryExecutor {
         return try {
             action.invoke()
         } catch (throwable: Throwable) {
+            Log.w("LoginRetryExecutor", throwable.toString())
             if (count < attempts) {
                 delay(DELAY)
                 execute(action, attempts)

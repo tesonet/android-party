@@ -28,13 +28,14 @@ import com.ac.androidparty.login.viewmodel.LoginViewModel
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
 internal fun LoginRoute(
-    modifier: Modifier = Modifier,
+    navigateToServers: () -> Unit,
     viewModel: LoginViewModel = hiltViewModel()
 ) {
     val loginState by viewModel.state.collectAsStateWithLifecycle()
 
+    if (loginState is LoginState.Success) navigateToServers()
+
     LoginScreen(
-        modifier = modifier,
         loginState = loginState,
         onUsernameChanged = viewModel::updateUsername,
         onPasswordChanged = viewModel::updatePassword,
@@ -44,7 +45,6 @@ internal fun LoginRoute(
 
 @Composable
 private fun LoginScreen(
-    modifier: Modifier,
     loginState: LoginState,
     onUsernameChanged: (String) -> Unit,
     onPasswordChanged: (String) -> Unit,
@@ -52,7 +52,6 @@ private fun LoginScreen(
 ) {
     Scaffold { padding ->
         LoginComponents(
-            modifier = modifier,
             paddingValues = padding,
             onUsernameChanged = onUsernameChanged,
             onPasswordChanged = onPasswordChanged,
@@ -71,7 +70,6 @@ private fun LoginScreen(
 
 @Composable
 private fun LoginComponents(
-    modifier: Modifier,
     paddingValues: PaddingValues,
     onUsernameChanged: (String) -> Unit,
     onPasswordChanged: (String) -> Unit,
@@ -80,7 +78,7 @@ private fun LoginComponents(
 ) {
     Box(Modifier.padding(paddingValues)) {
         Column(
-            modifier = modifier
+            modifier = Modifier
                 .fillMaxSize()
                 .background(Colors.primaryBackground)
                 .verticalScroll(rememberScrollState(), enabled = true),
