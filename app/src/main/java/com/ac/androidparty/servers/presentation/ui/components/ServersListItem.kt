@@ -40,14 +40,3 @@ private fun ServersListItemText(
         color = Colors.textGrey
     )
 }
-
-@Composable
-private fun ServersListItemDivider() {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = Spacing.XXL)
-            .height(height = Spacing.XXXS)
-            .background(color = Colors.dividerGrey)
-    ) {}
-}

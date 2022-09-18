@@ -10,4 +10,9 @@ internal class LoginPreferences @Inject constructor() : DefaultSharedPreferences
 
     val isTokenAvailable: Boolean
         get() = token.isNullOrBlank().not()
+
+    fun invalidateToken(): Boolean {
+        token = null
+        return token.isNullOrEmpty()
+    }
 }

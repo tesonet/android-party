@@ -10,4 +10,5 @@
     <string name="servers_list_logout_content_description">Servers List Logout</string>
     <string name="servers_list_server_text">server</string>
     <string name="servers_list_distance_text">distance</string>
+    <string name="servers_list_not_latest_data">There has been an error. You are not seeing the latest data!</string>
 </resources>

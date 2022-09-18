@@ -17,7 +17,8 @@ import com.ac.androidparty.core.theme.Colors
 
 @Composable
 internal fun ServersListTopBar(
-    isVisible: Boolean
+    isVisible: Boolean = true,
+    onLogout: () -> Unit
 ) {
     if (isVisible) {
         Row(
@@ -32,7 +33,7 @@ internal fun ServersListTopBar(
                 contentDescription = R.string.servers_list_logo_content_description
             )
             ServersListLogoutButton(
-                onLogoutClicked = {},
+                onLogoutClicked = { onLogout() },
                 iconId = R.drawable.ic_ico_logout,
                 contentDescription = R.string.servers_list_logout_content_description
             )

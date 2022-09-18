@@ -1,9 +1,7 @@
 package com.ac.androidparty.login.viewmodel
 
-import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.NavHostController
 import com.ac.androidparty.login.data.repository.LoginRepository
 import com.ac.androidparty.login.data.repository.LoginResult
 import com.ac.androidparty.login.domain.model.Login

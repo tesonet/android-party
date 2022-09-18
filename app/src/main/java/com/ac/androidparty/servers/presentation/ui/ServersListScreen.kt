@@ -1,5 +1,6 @@
 package com.ac.androidparty.servers.presentation.ui
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Scaffold
@@ -12,6 +13,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ac.androidparty.core.components.CircularProgressBarComponent
 import com.ac.androidparty.core.theme.Colors
 import com.ac.androidparty.servers.presentation.ServersListState
+import com.ac.androidparty.servers.presentation.ui.components.ServersListErrorComponent
 import com.ac.androidparty.servers.presentation.ui.components.ServersListHeader
 import com.ac.androidparty.servers.presentation.ui.components.ServersListTopBar
 import com.ac.androidparty.servers.viewmodel.ServersListViewModel
@@ -21,22 +23,29 @@ import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
 internal fun ServersListRoute(
+    navigateToLogin: () -> Unit,
+    onBackPressed: () -> Unit,
     viewModel: ServersListViewModel = hiltViewModel()
 ) {
+    BackHandler { onBackPressed() }
     val serversListState by viewModel.state.collectAsStateWithLifecycle()
-    ServersListScreen(state = serversListState, onRefresh = viewModel::refreshServers)
+    if (!viewModel.isLoggedIn.value) navigateToLogin()
+    ServersListScreen(
+        state = serversListState,
+        onRefresh = viewModel::refreshServers,
+        onLogout = viewModel::logout
+    )
 }
 
 @Composable
 private fun ServersListScreen(
     state: ServersListState,
-    onRefresh: () -> Unit
+    onRefresh: () -> Unit,
+    onLogout: () -> Unit
 ) {
-
     val isRefreshing = rememberSwipeRefreshState(isRefreshing = state is ServersListState.Loading)
-
     Scaffold(
-        topBar = { ServersListTopBar(isVisible = true) },
+        topBar = { ServersListTopBar(onLogout = onLogout) },
         backgroundColor = Colors.lightGrey
     ) { _ ->
         SwipeRefresh(
@@ -46,6 +55,7 @@ private fun ServersListScreen(
         ) {
             Column(modifier = Modifier.fillMaxWidth()) {
                 ServersListHeader(isVisible = state != ServersListState.Error())
+                ServersListErrorComponent(isVisible = state is ServersListState.Error && state.servers.isNotEmpty())
                 ServersListComponents(state = state)
             }
 
