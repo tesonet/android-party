@@ -11,8 +11,7 @@ object ServersListDestination : AndroidPartyAppDestination {
 }
 
 fun NavGraphBuilder.serversGraph(
-    navigateToLogin: () -> Unit,
-    onBackPressed: () -> Unit
+    navigateToLogin: () -> Unit
 ) = composable(route = ServersListDestination.route) {
-    ServersListRoute(navigateToLogin = navigateToLogin, onBackPressed = onBackPressed)
+    ServersListRoute(navigateToLogin = navigateToLogin)
 }

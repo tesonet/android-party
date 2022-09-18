@@ -25,18 +25,18 @@ internal class LoginViewModel @Inject constructor(
 
     private val viewStateMapper: LoginStateMapper = LoginStateMapper
 
-    private val _state = MutableStateFlow<LoginState>(LoginState.Initial)
+    private val _state = MutableStateFlow<LoginState>(LoginState.LoggedOut)
     val state: StateFlow<LoginState>
         get() = _state
 
     fun updateUsername(username: String) {
         login = login.copy(username = username.trimEnd())
-        _state.value = LoginState.Initial
+        _state.value = LoginState.LoggedOut
     }
 
     fun updatePassword(password: String) {
         login = login.copy(password = password.trimEnd())
-        _state.value = LoginState.Initial
+        _state.value = LoginState.LoggedOut
     }
 
     fun login() {

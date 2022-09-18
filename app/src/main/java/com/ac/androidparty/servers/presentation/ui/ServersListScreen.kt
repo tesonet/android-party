@@ -1,6 +1,5 @@
 package com.ac.androidparty.servers.presentation.ui
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Scaffold
@@ -10,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.ac.androidparty.core.components.CircularProgressBarComponent
+import com.ac.androidparty.core.components.loading.LoadingComponent
 import com.ac.androidparty.core.theme.Colors
 import com.ac.androidparty.servers.presentation.ServersListState
 import com.ac.androidparty.servers.presentation.ui.components.ServersListErrorComponent
@@ -24,10 +23,8 @@ import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 @Composable
 internal fun ServersListRoute(
     navigateToLogin: () -> Unit,
-    onBackPressed: () -> Unit,
     viewModel: ServersListViewModel = hiltViewModel()
 ) {
-    BackHandler { onBackPressed() }
     val serversListState by viewModel.state.collectAsStateWithLifecycle()
     if (!viewModel.isLoggedIn.value) navigateToLogin()
     ServersListScreen(
@@ -51,7 +48,8 @@ private fun ServersListScreen(
         SwipeRefresh(
             state = isRefreshing,
             onRefresh = { onRefresh() },
-            swipeEnabled = true
+            swipeEnabled = true,
+            indicator = { _, _ -> }
         ) {
             Column(modifier = Modifier.fillMaxWidth()) {
                 ServersListHeader(isVisible = state != ServersListState.Error())
@@ -60,6 +58,6 @@ private fun ServersListScreen(
             }
 
         }
-        CircularProgressBarComponent(isDisplayed = state is ServersListState.Loading)
+        LoadingComponent(isLoading = state is ServersListState.Loading)
     }
 }

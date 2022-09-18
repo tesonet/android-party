@@ -15,7 +15,6 @@ import com.ac.androidparty.servers.navigation.serversGraph
 fun AndroidPartyAppNavHost(
     navController: NavHostController,
     onNavigateToDestination: (AndroidPartyAppDestination) -> Unit,
-    onBackPressed: () -> Unit,
     modifier: Modifier = Modifier,
     startDestination: String = LoginDestination.route
 ) {
@@ -29,15 +28,15 @@ fun AndroidPartyAppNavHost(
     ) {
         loginGraph(
             navigateToServers = {
+                navController.popBackStack()
                 onNavigateToDestination(ServersListDestination)
             }
         )
         serversGraph(
             navigateToLogin = {
-                navController.clearBackStack(ServersListDestination.route)
+                navController.popBackStack()
                 onNavigateToDestination(LoginDestination)
-            },
-            onBackPressed = onBackPressed
+            }
         )
     }
 }

@@ -19,8 +19,4 @@ class AndroidPartyAppState(
     fun navigate(destination: AndroidPartyAppDestination, route: String? = null) {
         navController.navigate(route ?: destination.route)
     }
-
-    fun onBackPressed() {
-        navController.popBackStack()
-    }
 }

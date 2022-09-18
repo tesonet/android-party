@@ -11,4 +11,7 @@
     <string name="servers_list_server_text">server</string>
     <string name="servers_list_distance_text">distance</string>
     <string name="servers_list_not_latest_data">There has been an error. You are not seeing the latest data!</string>
+    <string name="loading_background_content_description">Loading background</string>
+    <string name="loading_screen_loading_text">Fetching the list...</string>
+    <string name="login_wrong_credentials">Wrong username or password!</string>
 </resources>

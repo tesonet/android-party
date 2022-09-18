@@ -9,7 +9,6 @@ fun AndroidPartyApp(
 ) {
     AndroidPartyAppNavHost(
         navController = appState.navController,
-        onNavigateToDestination = appState::navigate,
-        onBackPressed = appState::onBackPressed
+        onNavigateToDestination = appState::navigate
     )
 }

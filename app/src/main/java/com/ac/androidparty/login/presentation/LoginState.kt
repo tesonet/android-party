@@ -3,7 +3,7 @@ package com.ac.androidparty.login.presentation
 import com.ac.androidparty.login.data.repository.LoginResult
 
 internal interface LoginState {
-    object Initial : LoginState
+    object LoggedOut : LoginState
     object Loading : LoginState
     object Error : LoginState
     object WrongCredentials : LoginState

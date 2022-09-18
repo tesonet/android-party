@@ -9,12 +9,15 @@ import androidx.compose.ui.graphics.Color
 import com.ac.androidparty.core.spacing.Spacing
 
 @Composable
-fun CircularProgressBarComponent(isDisplayed: Boolean, color: Color = Color.White) {
+fun CircularProgressBarComponent(
+    modifier: Modifier = Modifier,
+    isDisplayed: Boolean,
+    color: Color = Color.White,
+) {
     if (isDisplayed) {
         Box() {
             Column(
-                modifier = Modifier
-                    .fillMaxSize(),
+                modifier = modifier,
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceEvenly
             ) {

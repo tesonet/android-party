@@ -1,5 +1,6 @@
 package com.ac.androidparty.login.presentation.ui
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -33,6 +34,8 @@ internal fun LoginRoute(
 ) {
     val loginState by viewModel.state.collectAsStateWithLifecycle()
 
+    Log.d("lmao", loginState.toString())
+
     if (loginState is LoginState.Success) navigateToServers()
 
     LoginScreen(
@@ -61,10 +64,12 @@ private fun LoginScreen(
 
         CircularProgressBarComponent(
             isDisplayed = loginState is LoginState.Loading,
-            color = Colors.primaryButton
+            color = Colors.primaryButton,
+            modifier = Modifier
+                .fillMaxSize()
         )
 
-        ErrorToastComponent(isDisplayed = loginState is LoginState.Error)
+        ErrorToastComponent(state = loginState)
     }
 }
 
@@ -114,13 +119,19 @@ private fun LoginInputComponents(
 
 @Composable
 private fun ErrorToastComponent(
-    isDisplayed: Boolean
+    state: LoginState
 ) {
-    if (isDisplayed) Toast.makeText(
-        LocalContext.current,
-        stringResource(R.string.generic_network_error),
-        Toast.LENGTH_SHORT
-    ).show()
+    when (state) {
+        is LoginState.Error -> stringResource(id = R.string.generic_network_error)
+        is LoginState.WrongCredentials -> stringResource(id = R.string.login_wrong_credentials)
+        else -> null
+    }?.let { error ->
+        Toast.makeText(
+            LocalContext.current,
+            error,
+            Toast.LENGTH_SHORT
+        ).show()
+    }
 }
 
 @Composable

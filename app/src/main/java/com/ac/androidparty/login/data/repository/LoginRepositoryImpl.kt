@@ -10,6 +10,7 @@ import com.ac.androidparty.login.domain.model.asLoginRequest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 import javax.inject.Inject
 
 internal class LoginRepositoryImpl @Inject constructor(
@@ -46,7 +47,7 @@ private object RetryExecutor {
         return try {
             action.invoke()
         } catch (throwable: Throwable) {
-            Log.w("LoginRetryExecutor", throwable.toString())
+            Timber.tag("LoginRetryExecutor").w(throwable.toString())
             if (count < attempts) {
                 delay(DELAY)
                 execute(action, attempts)
