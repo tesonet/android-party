@@ -1,0 +1,130 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+    id("org.jetbrains.kotlin.plugin.serialization") version "$kotlin_serialization"
+}
+
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        applicationId "com.ac.androidparty"
+        minSdkVersion 28
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.2.0"
+    }
+
+    android.testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.7.10"
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+
+    def app_compat = '1.5.1'
+    implementation "androidx.appcompat:appcompat:$app_compat"
+
+    def material = '1.6.1'
+    implementation "com.google.android.material:material:$material"
+
+    def androidx_ui = "1.0.0-alpha07"
+    implementation "androidx.ui:ui-tooling:$androidx_ui"
+
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+
+    implementation "androidx.compose.ui:ui:$compose_version"
+    implementation "androidx.compose.foundation:foundation:$compose_version"
+    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
+    implementation "androidx.compose.material:material:$compose_version"
+    implementation "androidx.compose.material:material-icons-core:$compose_version"
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
+    implementation "androidx.compose.runtime:runtime:$compose_version"
+    implementation "androidx.compose.animation:animation:1.2.1"
+    implementation "androidx.compose.ui:ui-tooling:$compose_version"
+
+    def compose_constraint = '1.0.1'
+    implementation "androidx.constraintlayout:constraintlayout-compose:$compose_constraint"
+
+    def compose_activity = '1.5.1'
+    implementation "androidx.activity:activity-compose:$compose_activity"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-compose:$nav_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-compose:2.6.0-alpha02"
+
+    def retrofit = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "com.squareup.okhttp3:okhttp:4.10.0"
+
+    def glide = '4.13.2'
+    implementation "com.github.bumptech.glide:glide:$glide"
+    kapt "com.github.bumptech.glide:compiler:$glide"
+
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    def hilt = '2.43.2'
+    implementation "com.google.dagger:hilt-android:$hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt"
+    kapt 'androidx.hilt:hilt-compiler:1.0.0'
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+
+    def kotlin_serialization = "1.4.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlin_serialization"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
+
+    implementation "com.jakewharton.timber:timber:$timber_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$httplogging_version"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+
+    implementation "com.google.accompanist:accompanist-swiperefresh:0.26.3-beta"
+
+    androidTestImplementation "org.mockito:mockito-android:4.8.0"
+    testImplementation "org.mockito:mockito-inline:4.8.0"
+    testImplementation "org.mockito:mockito-core:4.8.0"
+    testImplementation 'org.mockito.kotlin:mockito-kotlin:3.2.0'
+    testImplementation "io.mockk:mockk:1.12.8"
+    testImplementation 'io.kotest:kotest-runner-junit5:4.6.0'
+    testImplementation 'io.kotest:kotest-assertions-core:4.6.0'
+    testImplementation 'io.kotest:kotest-property:4.6.0'
+}

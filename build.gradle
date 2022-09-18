@@ -1,0 +1,27 @@
+buildscript {
+    ext.kotlin_version = "1.7.0"
+    ext.compose_version = '1.2.1'
+    ext.nav_version = '2.5.2'
+    ext.hilt = '2.43.2'
+    ext.kotlin_serialization = '1.4.0'
+    ext.httplogging_version = '4.10.0'
+    ext.timber_version = '4.7.1'
+    ext.room_version = '2.4.3'
+    repositories {
+        mavenCentral()
+        google()
+    }
+
+    dependencies {
+        def gradle = '7.2.2'
+        classpath "com.android.tools.build:gradle:$gradle"
+
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt"
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
