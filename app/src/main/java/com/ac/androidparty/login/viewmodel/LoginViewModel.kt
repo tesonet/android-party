@@ -21,30 +21,38 @@ internal class LoginViewModel @Inject constructor(
     private val loginPreferences: LoginPreferences
 ) : ViewModel() {
 
-    private var login = Login("", "")
-
-    private val viewStateMapper: LoginStateMapper = LoginStateMapper
+    private var credentials = Login("", "")
 
     private val _state = MutableStateFlow<LoginState>(LoginState.LoggedOut)
     val state: StateFlow<LoginState>
         get() = _state
 
-    fun updateUsername(username: String) {
-        login = login.copy(username = username.trimEnd())
-        _state.value = LoginState.LoggedOut
+    fun handleEvent(event: LoginEvent) {
+        when (event) {
+            is LoginEvent.UsernameChanged -> {
+                credentials = credentials.copy(username = event.username.trim())
+                _state.value = LoginState.LoggedOut
+            }
+            is LoginEvent.PasswordChanged -> {
+                credentials = credentials.copy(password = event.password.trim())
+                _state.value = LoginState.LoggedOut
+            }
+            is LoginEvent.Login -> {
+                login()
+                if (_state.value is LoginState.Success) event.navigateToServers()
+            }
+            else -> throw IllegalStateException("Event not implemented")
+        }
     }
 
-    fun updatePassword(password: String) {
-        login = login.copy(password = password.trimEnd())
-        _state.value = LoginState.LoggedOut
-    }
+    private val viewStateMapper: LoginStateMapper = LoginStateMapper
 
-    fun login() {
+    private fun login() {
         viewModelScope.launch {
             _state.value = LoginState.Loading
             flowOf(
                 loginRepository.login(
-                    login = login
+                    login = credentials
                 )
             ).collect(::applyLoginResult)
         }

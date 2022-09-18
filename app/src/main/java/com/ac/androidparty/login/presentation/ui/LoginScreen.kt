@@ -1,6 +1,5 @@
 package com.ac.androidparty.login.presentation.ui
 
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -24,6 +23,7 @@ import com.ac.androidparty.login.presentation.LoginState
 import com.ac.androidparty.login.presentation.ui.components.LoginButton
 import com.ac.androidparty.login.presentation.ui.components.LoginInputText
 import com.ac.androidparty.login.presentation.ui.components.LoginLogo
+import com.ac.androidparty.login.viewmodel.LoginEvent
 import com.ac.androidparty.login.viewmodel.LoginViewModel
 
 @OptIn(ExperimentalLifecycleComposeApi::class)
@@ -34,23 +34,20 @@ internal fun LoginRoute(
 ) {
     val loginState by viewModel.state.collectAsStateWithLifecycle()
 
-    Log.d("lmao", loginState.toString())
-
     if (loginState is LoginState.Success) navigateToServers()
 
     LoginScreen(
         loginState = loginState,
-        onUsernameChanged = viewModel::updateUsername,
-        onPasswordChanged = viewModel::updatePassword,
-        onLoginButtonClicked = viewModel::login
-    )
+        onUsernameChanged = viewModel::handleEvent,
+        onPasswordChanged = viewModel::handleEvent
+    ) { viewModel.handleEvent(LoginEvent.Login { navigateToServers() }) }
 }
 
 @Composable
 private fun LoginScreen(
     loginState: LoginState,
-    onUsernameChanged: (String) -> Unit,
-    onPasswordChanged: (String) -> Unit,
+    onUsernameChanged: LoginEvent.() -> Unit,
+    onPasswordChanged: LoginEvent.() -> Unit,
     onLoginButtonClicked: () -> Unit
 ) {
     Scaffold { padding ->
@@ -76,8 +73,8 @@ private fun LoginScreen(
 @Composable
 private fun LoginComponents(
     paddingValues: PaddingValues,
-    onUsernameChanged: (String) -> Unit,
-    onPasswordChanged: (String) -> Unit,
+    onUsernameChanged: LoginEvent.() -> Unit,
+    onPasswordChanged: LoginEvent.() -> Unit,
     onLoginButtonClicked: () -> Unit,
     isUsernamePasswordWrong: Boolean = false
 ) {
@@ -103,15 +100,27 @@ private fun LoginComponents(
 
 @Composable
 private fun LoginInputComponents(
-    onUsernameChanged: (String) -> Unit,
-    onPasswordChanged: (String) -> Unit,
+    onUsernameChanged: LoginEvent.() -> Unit,
+    onPasswordChanged: LoginEvent.() -> Unit,
     onLoginButtonClicked: () -> Unit,
     isUsernamePasswordWrong: Boolean
 ) {
     Column {
-        LoginInputText(isUsername = true, onUsernameChanged, isErrored = isUsernamePasswordWrong)
+        LoginInputText(
+            isUsername = true,
+            onValueChanged = { value ->
+                onUsernameChanged(LoginEvent.UsernameChanged(value))
+            },
+            isErrored = isUsernamePasswordWrong
+        )
         LoginSpacer()
-        LoginInputText(isUsername = false, onPasswordChanged, isErrored = isUsernamePasswordWrong)
+        LoginInputText(
+            isUsername = false,
+            onValueChanged = { value ->
+                onPasswordChanged(LoginEvent.PasswordChanged(value))
+            },
+            isErrored = isUsernamePasswordWrong
+        )
         LoginSpacer()
         LoginButton(onLoginButtonClicked, isErrored = isUsernamePasswordWrong)
     }

@@ -15,6 +15,7 @@ import com.ac.androidparty.servers.presentation.ServersListState
 import com.ac.androidparty.servers.presentation.ui.components.ServersListErrorComponent
 import com.ac.androidparty.servers.presentation.ui.components.ServersListHeader
 import com.ac.androidparty.servers.presentation.ui.components.ServersListTopBar
+import com.ac.androidparty.servers.viewmodel.ServersEvent
 import com.ac.androidparty.servers.viewmodel.ServersListViewModel
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
@@ -29,8 +30,8 @@ internal fun ServersListRoute(
     if (!viewModel.isLoggedIn.value) navigateToLogin()
     ServersListScreen(
         state = serversListState,
-        onRefresh = viewModel::refreshServers,
-        onLogout = viewModel::logout
+        onRefresh = { viewModel.handleEvent(ServersEvent.Refresh) },
+        onLogout = { viewModel.handleEvent(ServersEvent.Logout) }
     )
 }
 

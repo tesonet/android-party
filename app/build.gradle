@@ -38,6 +38,12 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.2.0"
     }
+
+    android.testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
 }
 
 dependencies {
@@ -45,6 +51,9 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.9.0'
 
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.7.10"
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 
     def app_compat = '1.5.1'
     implementation "androidx.appcompat:appcompat:$app_compat"
@@ -109,4 +118,13 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
 
     implementation "com.google.accompanist:accompanist-swiperefresh:0.26.3-beta"
+
+    androidTestImplementation "org.mockito:mockito-android:4.8.0"
+    testImplementation "org.mockito:mockito-inline:4.8.0"
+    testImplementation "org.mockito:mockito-core:4.8.0"
+    testImplementation 'org.mockito.kotlin:mockito-kotlin:3.2.0'
+    testImplementation "io.mockk:mockk:1.12.8"
+    testImplementation 'io.kotest:kotest-runner-junit5:4.6.0'
+    testImplementation 'io.kotest:kotest-assertions-core:4.6.0'
+    testImplementation 'io.kotest:kotest-property:4.6.0'
 }

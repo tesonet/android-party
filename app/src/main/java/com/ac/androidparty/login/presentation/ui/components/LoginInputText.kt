@@ -22,21 +22,20 @@ import com.ac.androidparty.R
 import com.ac.androidparty.core.spacing.Spacing
 
 @Composable
-fun LoginInputText(
+internal fun LoginInputText(
     isUsername: Boolean,
     onValueChanged: (String) -> Unit,
     isErrored: Boolean
 ) {
-
     var text by rememberSaveable { mutableStateOf("") }
 
     TextField(
         label = { InputTextLabel(isUsername = isUsername) },
         value = text,
         leadingIcon = { InputTextLeadingIcon(isUsername = isUsername, isError = isErrored) },
-        onValueChange = {
-            text = it
-            onValueChanged(it)
+        onValueChange = { value ->
+            text = value
+            onValueChanged(value)
         },
         modifier = Modifier
             .fillMaxWidth(0.75f)

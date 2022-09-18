@@ -31,6 +31,14 @@ internal class ServersListViewModel @Inject constructor(
 
     val isLoggedIn: MutableState<Boolean> = mutableStateOf(true)
 
+    fun handleEvent(event: ServersEvent) {
+        when (event) {
+            is ServersEvent.Refresh -> refreshServers()
+            is ServersEvent.Logout -> logout()
+            else -> throw IllegalStateException("Event not implemented")
+        }
+    }
+
     private fun getServers() {
         viewModelScope.launch {
             flowOf(
@@ -39,12 +47,12 @@ internal class ServersListViewModel @Inject constructor(
         }
     }
 
-    fun refreshServers() = viewModelScope.launch {
+    private fun refreshServers() = viewModelScope.launch {
         _state.value = ServersListState.Loading
         flowOf(serversUseCase.getServers().asServersListState()).collect(::applyServersResult)
     }
 
-    fun logout() {
+    private fun logout() {
         isLoggedIn.value = logoutUseCase.logout()
     }
 
