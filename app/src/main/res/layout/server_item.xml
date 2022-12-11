@@ -4,7 +4,7 @@
 
         <variable
             name="server"
-            type="com.k4dima.androidparty.features.main.data.model.Server" />
+            type="main.domain.model.Server" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@{server.name}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
             tools:text="@tools:sample/cities" />
 
         <TextView
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text='@{@string/km(server.distance)}'
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
             tools:text="@tools:sample/us_zipcodes" />
     </LinearLayout>
 </layout>

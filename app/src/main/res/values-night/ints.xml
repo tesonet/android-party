@@ -1,0 +1,4 @@
+<resources>
+    <item name="alpha" format="float" type="integer">1</item>
+    <integer name="background_visibility">0</integer>
+</resources>
