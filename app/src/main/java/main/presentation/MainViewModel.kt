@@ -23,7 +23,7 @@ constructor(
 ) : ViewModel() {
     val login = MutableLiveData<Unit>()
     val error = MutableLiveData<String?>()
-    val servers = ObservableField<ServersAdapter>()
+    val servers = ObservableField<List<Server>>()
     val refreshing = ObservableBoolean()
 
     init {
@@ -39,7 +39,7 @@ constructor(
                     val token = preferenceRepository.token ?: throw NoTokenException()
                     serversRepository.data(token)
                 }
-                servers.set(ServersAdapter(serverList))
+                servers.set(serverList)
             } catch (e: Exception) {
                 Timber.e(e)
                 if (e is NoTokenException) loginScreen()

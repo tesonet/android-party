@@ -5,5 +5,5 @@
     <color name="color_secondary">#9FD533</color>
     <color name="logo">@color/color_primary</color>
     <color name="input">@color/color_primary</color>
-    <color name="input_inactive">#75757F</color>
+    <color name="input_inactive">#546E7A</color>
 </resources>

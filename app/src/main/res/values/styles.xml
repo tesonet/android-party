@@ -1,23 +1,29 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.Material3.DynamicColors.DayNight">
-        <item name="actionBarStyle">@style/ToolBar</item>
-        <item name="android:windowLightStatusBar">@bool/lightStatusBar</item>
-        <item name="android:statusBarColor">@color/app_bar</item>
-        <item name="colorPrimary">@color/color_primary</item>
-        <item name="colorSecondary">@color/color_secondary</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
-    </style>
-
-    <style name="LoginTheme" parent="AppTheme">
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
-    </style>
-
     <style name="ToolBar" parent="Widget.AppCompat.ActionBar">
         <item name="elevation">0dp</item>
         <item name="background">@color/app_bar</item>
+    </style>
+
+    <style name="LoginLogo" parent="TextAppearance.Material3.DisplayLarge">
+        <item name="android:textColor">@color/logo</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextInputLayout">
+        <item name="boxStrokeColor">@color/text_input_box_stroke</item>
+        <item name="hintTextColor">@color/input</item>
+    </style>
+
+    <style name="TextInputEditText">
+        <item name="android:textCursorDrawable">@drawable/color_cursor</item>
+    </style>
+
+    <style name="MaterialButton">
+        <item name="backgroundTint">@color/input</item>
+    </style>
+
+    <style name="HeaderTextView" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

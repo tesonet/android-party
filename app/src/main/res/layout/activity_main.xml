@@ -1,7 +1,4 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/tools"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout>
 
     <data>
 
@@ -10,11 +7,13 @@
             type="main.presentation.MainViewModel" />
     </data>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/swipe"
+        refreshing="@{model.refreshing}"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        bind:refreshing="@{model.refreshing}"
         tools:context="main.ui.MainActivity"
         tools:menu="@menu/main">
 
@@ -31,31 +30,29 @@
 
                 <TextView
                     android:id="@+id/textView3"
+                    style="@style/HeaderTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:gravity="center"
                     android:text="@string/server"
-                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView4"
+                    style="@style/HeaderTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:gravity="center"
                     android:text="@string/distance"
-                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/servers"
+                    adapter="@{model.servers}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:adapter="@{model.servers}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView3"

@@ -15,19 +15,19 @@
 
         <TextView
             android:id="@+id/country"
+            style="@style/TextAppearance.Material3.TitleMedium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@{server.name}"
-            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
             tools:text="@tools:sample/cities" />
 
         <TextView
             android:id="@+id/distance"
+            style="@style/TextAppearance.Material3.TitleMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text='@{@string/km(server.distance)}'
-            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
             tools:text="@tools:sample/us_zipcodes" />
     </LinearLayout>
 </layout>

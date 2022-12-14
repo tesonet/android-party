@@ -9,6 +9,7 @@ import android.text.style.StyleSpan
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.text.set
 import androidx.core.text.toSpannable
@@ -17,13 +18,13 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import com.google.android.material.snackbar.Snackbar
 import com.k4dima.party.R
 import com.k4dima.party.databinding.ActivityMainBinding
-import dagger.android.support.DaggerAppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 import login.ui.LoginActivity
 import main.presentation.MainViewModel
 import javax.inject.Inject
 
-
-class MainActivity : DaggerAppCompatActivity() {
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {
     @Inject
     internal lateinit var viewModelFactory: ViewModelProvider.Factory
     private val model by viewModels<MainViewModel> { viewModelFactory }

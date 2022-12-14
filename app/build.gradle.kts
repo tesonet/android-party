@@ -1,7 +1,10 @@
 plugins {
     id("com.android.application")
-    id("kotlin-android")
-    id("kotlin-kapt")
+    kotlin("android")
+    kotlin("kapt")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
+    alias(libs.plugins.hilt)
 }
 android {
     signingConfigs {
@@ -43,7 +46,6 @@ android {
 }
 dependencies {
     // coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     // androidx
     implementation("androidx.core:core-ktx:1.9.0")
@@ -54,17 +56,21 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-    // dagger
-    implementation("com.google.dagger:dagger-android-support:2.21")
-    kapt("com.google.dagger:dagger-android-processor:2.21")
-    kapt("com.google.dagger:dagger-compiler:2.21")
+    // hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
     // google
     implementation("com.google.android.material:material:1.7.0")
+    // firebase
+    implementation(platform("com.google.firebase:firebase-bom:31.1.1"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-crashlytics-ktx")
     // 3rd
     implementation("com.jakewharton.timber:timber:5.0.1")
     // square
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.10")
     // junit
     testImplementation("junit:junit:4.13.2")
     // androidx
@@ -81,4 +87,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-intents:3.5.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0")
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
+}
+kapt {
+    correctErrorTypes = true
 }

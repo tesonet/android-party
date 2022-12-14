@@ -5,18 +5,20 @@ import android.os.Bundle
 import android.text.style.ForegroundColorSpan
 import android.view.WindowManager
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.text.set
 import androidx.core.text.toSpannable
 import androidx.lifecycle.ViewModelProvider
 import com.k4dima.party.R
 import com.k4dima.party.databinding.ActivityLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
 import login.presentation.LoginViewModel
 import main.ui.MainActivity
-import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
-class LoginActivity : DaggerAppCompatActivity() {
+@AndroidEntryPoint
+class LoginActivity : AppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 

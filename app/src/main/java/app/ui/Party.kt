@@ -1,15 +1,13 @@
 package app.ui
 
+import android.app.Application
 import android.os.StrictMode
 import com.k4dima.party.BuildConfig.DEBUG
-import app.ui.di.DaggerAppComponent
-import dagger.android.support.DaggerApplication
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
-class Party : DaggerApplication() {
-    override fun applicationInjector() =
-        DaggerAppComponent.builder().context(this).build()
-
+@HiltAndroidApp
+class Party : Application() {
     init {
         if (DEBUG) {
             StrictMode.enableDefaults()

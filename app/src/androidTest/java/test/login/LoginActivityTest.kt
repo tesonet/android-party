@@ -12,8 +12,8 @@ import androidx.test.espresso.intent.rule.IntentsRule
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import app.domain.AppPreferenceRepository
 import app.data.di.PersistenceModule
+import app.domain.AppPreferenceRepository
 import app.ui.Party
 import com.k4dima.party.R
 import login.ui.LoginActivity
@@ -31,10 +31,11 @@ class LoginActivityTest {
     // Given
     @get:Rule
     val activityScenarioRule = activityScenarioRule<LoginActivity>()
+
     @get:Rule
     val intentsRule = IntentsRule()
     private val party = ApplicationProvider.getApplicationContext<Party>()
-    private val preferences = PersistenceModule().preferences(party)
+    private val preferences = PersistenceModule.preferences(party)
 
     @Before
     fun setUp() {

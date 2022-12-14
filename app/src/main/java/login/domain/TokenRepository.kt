@@ -1,13 +1,13 @@
 package login.domain
 
-import app.domain.DataRepository
 import app.data.api.TesonetService
+import app.domain.DataRepository
+import dagger.hilt.android.scopes.ActivityRetainedScoped
 import login.domain.model.Token
-import login.ui.di.LoginScope
 import okhttp3.RequestBody
 import javax.inject.Inject
 
-@LoginScope
+@ActivityRetainedScoped
 class TokenRepository
 @Inject
 constructor(private val tesonetService: TesonetService) :

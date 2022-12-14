@@ -1,12 +1,12 @@
 package main.domain
 
-import app.domain.DataRepository
 import app.data.api.TesonetService
+import app.domain.DataRepository
+import dagger.hilt.android.scopes.ActivityRetainedScoped
 import main.domain.model.Server
-import main.ui.di.MainScope
 import javax.inject.Inject
 
-@MainScope
+@ActivityRetainedScoped
 class ServersRepository
 @Inject
 constructor(private val tesonetService: TesonetService) : DataRepository<String, List<Server>> {

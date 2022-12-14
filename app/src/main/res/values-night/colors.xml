@@ -2,5 +2,5 @@
     <color name="app_bar">#46464A</color>
     <color name="logo">@android:color/white</color>
     <color name="input">@color/color_secondary</color>
-    <color name="input_inactive">#909099</color>
+    <color name="input_inactive">#9E9E9E</color>
 </resources>

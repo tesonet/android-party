@@ -3,16 +3,18 @@ package app.data.api
 import com.k4dima.party.BuildConfig
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+@InstallIn(SingletonComponent::class)
 @Module
 object ApiModule {
     @Singleton
-    @JvmStatic
     @Provides
     fun tesonetService(): TesonetService = Retrofit.Builder()
         .baseUrl("https://playground.tesonet.lt/")
