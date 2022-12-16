@@ -1,4 +1,0 @@
-<resources>
-    <dimen name="login_bottom_margin">0dp</dimen>
-    <dimen name="login_margin_title">48dp</dimen>
-</resources>

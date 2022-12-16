@@ -11,7 +11,9 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:paddingStart="@dimen/side_margin"
+        android:paddingEnd="@dimen/side_margin">
 
         <TextView
             android:id="@+id/country"

@@ -1,4 +1,4 @@
-package test.login
+package testandroid.login
 
 import android.view.autofill.AutofillManager
 import androidx.lifecycle.DefaultLifecycleObserver

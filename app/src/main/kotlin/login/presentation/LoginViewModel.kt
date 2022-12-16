@@ -37,11 +37,14 @@ constructor(
             try {
                 refreshing.set(true)
                 val requestBodyMap = mapOf(
-                    "username" to username.get()!!.toRequestBody("text/plain".toMediaTypeOrNull()),
-                    "password" to password.get()!!.toRequestBody("text/plain".toMediaTypeOrNull())
-                )
+                    "username" to username.get(),
+                    "password" to password.get()
+                ).mapValues { it.value!!.toRequestBody("text/plain".toMediaTypeOrNull()) }
                 withContext(Dispatchers.IO) {
-                    preferenceRepository.token = tokenRepository.data(requestBodyMap).token
+                    tokenRepository
+                        .data(requestBodyMap)
+                        .token
+                        .let { preferenceRepository.token = it }
                 }
                 main.value = Unit
             } catch (e: Exception) {

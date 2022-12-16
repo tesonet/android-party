@@ -20,14 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:alpha="@integer/alpha"
-                android:contentDescription="@string/background"
-                android:scaleType="centerCrop"
-                android:src="@drawable/bg"
-                android:visibility="@integer/background_visibility" />
+            <include layout="@layout/background" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="300dp"

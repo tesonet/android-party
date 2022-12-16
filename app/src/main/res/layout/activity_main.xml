@@ -24,12 +24,10 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingStart="@dimen/side_margin"
-                android:paddingEnd="@dimen/side_margin">
+                android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/server_label"
                     style="@style/HeaderTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
@@ -39,7 +37,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView4"
                     style="@style/HeaderTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
@@ -55,7 +52,7 @@
                     android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3"
+                    app:layout_constraintTop_toBottomOf="@+id/server_label"
                     tools:listitem="@layout/server_item" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>

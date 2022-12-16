@@ -1,4 +1,4 @@
-package test.app
+package testandroid.app
 
 import android.view.autofill.AutofillManager
 import androidx.test.core.app.ApplicationProvider

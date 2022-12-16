@@ -16,6 +16,7 @@
     </style>
 
     <style name="TextInputEditText">
+        <item name="android:imeOptions">flagNoFullscreen</item>
         <item name="android:textCursorDrawable">@drawable/color_cursor</item>
     </style>
 
@@ -25,5 +26,7 @@
 
     <style name="HeaderTextView" parent="TextAppearance.Material3.TitleMedium">
         <item name="android:textStyle">bold</item>
+        <item name="android:paddingStart">@dimen/side_margin</item>
+        <item name="android:paddingEnd">@dimen/side_margin</item>
     </style>
 </resources>

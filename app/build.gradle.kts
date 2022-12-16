@@ -74,13 +74,6 @@ dependencies {
     // junit
     testImplementation("junit:junit:4.13.2")
     // androidx
-    testImplementation("androidx.test.ext:junit:1.1.4")
-    testImplementation("androidx.test.ext:truth:1.5.0")
-    testImplementation("androidx.test.espresso:espresso-intents:3.5.0")
-    testImplementation("androidx.test.espresso:espresso-core:3.5.0")
-    // 3rd
-    testImplementation("org.robolectric:robolectric:4.6.1")
-    // androidx
     androidTestImplementation("androidx.test.ext:junit:1.1.4")
     androidTestImplementation("androidx.test.ext:junit-ktx:1.1.4")
     androidTestImplementation("androidx.test.ext:truth:1.5.0")
