@@ -18,7 +18,7 @@ android {
     namespace = "com.k4dima.party"
     compileSdk = 33
     defaultConfig {
-        minSdk = 24
+        minSdk = 21
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
