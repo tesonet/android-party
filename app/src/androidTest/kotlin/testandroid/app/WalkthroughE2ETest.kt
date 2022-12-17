@@ -1,5 +1,6 @@
 package testandroid.app
 
+import android.os.Build
 import android.view.autofill.AutofillManager
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -18,10 +19,11 @@ import java.util.concurrent.TimeUnit
 class WalkthroughE2ETest {
     @Before
     fun setUp() {
-        InstrumentationRegistry.getInstrumentation()
-            .targetContext
-            .getSystemService(AutofillManager::class.java)
-            .disableAutofillServices()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+            InstrumentationRegistry.getInstrumentation()
+                .targetContext
+                .getSystemService(AutofillManager::class.java)
+                .disableAutofillServices()
     }
 
     @Test

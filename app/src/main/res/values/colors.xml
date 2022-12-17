@@ -1,5 +1,7 @@
 <resources>
     <color name="app_bar">#E3E2E6</color>
+    <color name="status_bar">@android:color/black</color>
+    <color name="navigation_bar">@android:color/black</color>
     <color name="color_primary">#2F3254</color>
     <color name="color_secondary">#9FD533</color>
     <color name="logo">@color/color_primary</color>

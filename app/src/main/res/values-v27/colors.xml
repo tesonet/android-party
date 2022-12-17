@@ -1,0 +1,3 @@
+<resources>
+    <color name="navigation_bar">@color/app_bar</color>
+</resources>

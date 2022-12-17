@@ -1,5 +1,6 @@
 package testandroid.login
 
+import android.os.Build
 import android.view.autofill.AutofillManager
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -34,12 +35,13 @@ class LoginActivityTest {
 
     @get:Rule
     val intentsRule = IntentsRule()
-    private val party = ApplicationProvider.getApplicationContext<Party>()
-    private val preferences = PersistenceModule.preferences(party)
+    private val app = ApplicationProvider.getApplicationContext<Party>()
+    private val preferences = PersistenceModule.preferences(app)
 
     @Before
     fun setUp() {
-        party.getSystemService(AutofillManager::class.java).disableAutofillServices()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+            app.getSystemService(AutofillManager::class.java).disableAutofillServices()
         AppPreferenceRepository { preferences }.token = null
     }
 

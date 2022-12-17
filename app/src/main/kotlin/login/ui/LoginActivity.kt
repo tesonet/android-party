@@ -1,6 +1,7 @@
 package login.ui
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.text.style.ForegroundColorSpan
 import android.view.WindowManager
@@ -44,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
         appName[length - 1..length] =
             ForegroundColorSpan(ContextCompat.getColor(this, R.color.color_secondary))
         binding.title.text = appName
-        window.setFlags(
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
