@@ -22,7 +22,7 @@ jobs:
       - store_test_results:
           path: ~/test-results
       - store_artifacts:
-          path: ~/test-results/junit
+          path: app/build/reports/tests/
   android-test:
     executor:
       name: android/android-machine
@@ -40,7 +40,7 @@ jobs:
       - store_test_results:
           path: ~/test-results
       - store_artifacts:
-          path: ~/test-results/junit
+          path: app/build/reports/androidTests/
   release-build:
     executor:
       name: android/android-machine
