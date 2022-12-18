@@ -64,7 +64,7 @@ class LoginActivityTest {
             .perform(typeText("partyanimal"), closeSoftKeyboard())
         onView(withId(R.id.login)).perform(click())
         // Then
-        latch.await(8, TimeUnit.SECONDS).let { Assert.assertTrue(it) }
+        latch.await(16, TimeUnit.SECONDS).let { Assert.assertTrue(it) }
         Intents.intended(IntentMatchers.hasComponent(MainActivity::class.qualifiedName))
     }
 }
