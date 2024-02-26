@@ -1,0 +1,15 @@
+<resources>
+    <string name="settings">Налаштування</string>
+    <string name="dark_theme">Темна тема</string>
+    <string name="personal_colors">Персональні кольори</string>
+    <string name="view_in_play_store">Переглянути в Play Маркеті</string>
+    <string name="rate_and_review">Оцінка та відгук</string>
+    <string name="version">Версія</string>
+    <string name="display">Екран</string>
+    <string name="about">Про додаток</string>
+    <string name="system_theme">Системна</string>
+    <string name="dark">Темна</string>
+    <string name="light">Світла</string>
+    <string name="language">Мова</string>
+    <string name="default_">За замовчуванням</string>
+</resources>

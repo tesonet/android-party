@@ -1,0 +1,6 @@
+<resources>
+    <color name="color_primary">@color/brand_dark_blue</color>
+    <color name="brand_dark_blue">#2F3254</color>
+    <color name="brand_light_green">#9FD533</color>
+    <color name="ic_launcher_background">@android:color/white</color>
+</resources>

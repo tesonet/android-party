@@ -1,0 +1,7 @@
+<resources>
+
+    <style name="TestioTheme" parent="ModernTheme">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>

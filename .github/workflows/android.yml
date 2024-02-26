@@ -1,0 +1,169 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ "main", "dev" ]
+  pull_request:
+    branches: [ "main", "dev" ]
+
+permissions:
+  contents: write
+  actions: read
+  issues: read
+  checks: write
+  pull-requests: write
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - uses: actions/cache@v4
+        with:
+          path: |
+            build-conventions/build
+          key: ${{ runner.os }}-build-conventions
+      - uses: gradle/actions/setup-gradle@v3
+        with:
+          dependency-graph: generate-and-submit
+          arguments: check
+          cache-encryption-key: ${{ secrets.GradleEncryptionKey }}
+          gradle-home-cache-includes: |
+            caches
+            notifications
+            jdks
+            ../.android
+            android.lock
+            configuration-cache
+            ../../../../../usr/local/lib/android/sdk/platform-tools/.installer/.installData
+      - uses: EnricoMi/publish-unit-test-result-action@v2
+        if: success() || failure()
+        with:
+          check_name: tests enrico
+          files: |
+            **/build/test-results/**/*.xml
+      - uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: tests dorny
+          reporter: java-junit
+          path: |
+            **/build/test-results/**/*.xml
+      - uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          path: |
+            **/build/reports/
+
+  connected-check:
+    if: false
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        api-level: [ 23, 26 ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - uses: actions/cache@v4
+        with:
+          path: |
+            build-conventions/build
+          key: ${{ runner.os }}-build-conventions
+      - uses: gradle/actions/setup-gradle@v3
+        with:
+          cache-encryption-key: ${{ secrets.GradleEncryptionKey }}
+          gradle-home-cache-includes: |
+            caches
+            notifications
+            jdks
+            ../.android
+            android.lock
+            configuration-cache
+            ../../../../../usr/local/lib/android/sdk/platform-tools/.installer/.installData
+      - uses: actions/cache@v3
+        id: avd-cache
+        with:
+          path: |
+            ~/.android/avd/*
+            ~/.android/adb*
+          key: avd-${{ matrix.api-level }}
+      - if: steps.avd-cache.outputs.cache-hit != 'true'
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api-level }}
+          force-avd-creation: false
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: false
+          script: echo "Generated AVD snapshot for caching."
+      - uses: reactivecircus/android-emulator-runner@v2
+        continue-on-error: true
+        with:
+          api-level: ${{ matrix.api-level }}
+          force-avd-creation: false
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: true
+          script: ./gradlew connectedCheck
+      - uses: EnricoMi/publish-unit-test-result-action/composite@v2
+        with:
+          check_name: tests android enrico (${{ matrix.api-level }})
+          files: |
+            **/build/outputs/androidTest-results/connected/**/*.xml
+      - uses: dorny/test-reporter@v1
+        continue-on-error: true
+        with:
+          name: tests android dorny (${{ matrix.api-level }})
+          reporter: java-junit
+          path: |
+            **/build/outputs/androidTest-results/connected/**/*.xml
+      - uses: actions/upload-artifact@v3
+        with:
+          path: |
+            **/build/reports/
+            benchmark/build/outputs/connected_android_test_additional_output/benchmark/connected/**/*.json
+
+  assemble:
+    needs: [ lint-test ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - uses: actions/cache@v4
+        with:
+          path: |
+            build-conventions/build
+          key: ${{ runner.os }}-build-conventions
+      - uses: gradle/actions/setup-gradle@v3
+        with:
+          dependency-graph: generate-and-submit
+          arguments: app:assembleRelease
+          cache-encryption-key: ${{ secrets.GradleEncryptionKey }}
+          gradle-home-cache-includes: |
+            caches
+            notifications
+            jdks
+            ../.android
+            android.lock
+            configuration-cache
+            ../../../../../usr/local/lib/android/sdk/platform-tools/.installer/.installData
+      - uses: actions/upload-artifact@v3
+        with:
+          path: |
+            **/build/outputs/
+      - uses: sergeysova/jq-action@v2
+        id: version
+        with:
+          cmd: jq '.elements[0].versionName' app/build/outputs/apk/release/output-metadata.json -r
+      - uses: softprops/action-gh-release@v1
+        with:
+          files: app/build/outputs/apk/release/app-release.apk
+          tag_name: ${{ steps.version.outputs.value }}
