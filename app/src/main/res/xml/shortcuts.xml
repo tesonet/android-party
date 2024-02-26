@@ -1,0 +1,13 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <shortcut
+        android:icon="@mipmap/ic_settings"
+        android:shortcutId="settings"
+        android:shortcutShortLabel="@string/settings"
+        tools:targetApi="n_mr1">
+        <intent
+            android:action="android.intent.action.APPLICATION_PREFERENCES"
+            android:targetClass="ui.elements.MainActivity"
+            android:targetPackage="com.github.k4dima.testio" />
+    </shortcut>
+</shortcuts>

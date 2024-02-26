@@ -1,0 +1,8 @@
+<resources>
+    <string name="sign_in">Вхід</string>
+    <string name="username">Ім’я користувача</string>
+    <string name="password">Пароль</string>
+    <string name="hide_password">Приховати пароль</string>
+    <string name="show_password">Показати пароль</string>
+    <string name="no_account">Немає облікового запису</string>
+</resources>

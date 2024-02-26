@@ -1,0 +1,95 @@
+[versions]
+agp = '8.2.2'
+kotlin = '1.9.22'
+ksp = '1.9.22-1.0.17'
+room = '2.6.1'
+hilt = '2.50'
+detekt = '1.23.5'
+lint-rules = '0.25.0'
+
+[libraries]
+# kotlin
+kotlinx-collections-immutable = { module = 'org.jetbrains.kotlinx:kotlinx-collections-immutable', version = '0.3.7' }
+# androidx
+core = { module = 'androidx.core:core', version = '1.12.0' }
+appcompat = { module = 'androidx.appcompat:appcompat', version = '1.6.1' }
+datastore-preferences = { module = 'androidx.datastore:datastore-preferences', version = '1.0.0' }
+credentials-play-services-auth = { module = 'androidx.credentials:credentials-play-services-auth', version = '1.2.0' }
+# room
+room-ktx = { module = 'androidx.room:room-ktx', version.ref = 'room' }
+room-compiler = { module = 'androidx.room:room-compiler', version.ref = 'room' }
+# compose
+compose-bom = { module = 'androidx.compose:compose-bom', version = '2024.02.01' }
+material3 = { module = 'androidx.compose.material3:material3' }
+material3-window-size = { module = 'androidx.compose.material3:material3-window-size-class' }
+material = { module = 'androidx.compose.material:material' }
+material-icons-extended = { module = 'androidx.compose.material:material-icons-extended' }
+# compose preview
+ui-tooling-preview = { module = 'androidx.compose.ui:ui-tooling-preview' }
+ui-tooling = { module = 'androidx.compose.ui:ui-tooling' }
+# compose test
+ui-test-junit4 = { module = 'androidx.compose.ui:ui-test-junit4' }
+ui-test-manifest = { module = 'androidx.compose.ui:ui-test-manifest' }
+# compose integration
+activity-compose = { module = 'androidx.activity:activity-compose', version = '1.8.2' }
+hilt-navigation-compose = { module = 'androidx.hilt:hilt-navigation-compose', version = '1.2.0' }
+navigation-compose = { module = 'androidx.navigation:navigation-compose', version = '2.7.7' }
+# google
+com-google-android-material-material = { module = 'com.google.android.material:material', version = '1.11.0' }
+# accomanist
+accompanist-placeholder-material3 = { module = 'com.google.accompanist:accompanist-placeholder-material3', version = '0.34.0' }
+# hilt
+hilt-android = { module = 'com.google.dagger:hilt-android', version.ref = 'hilt' }
+hilt-android-compiler = { module = 'com.google.dagger:hilt-android-compiler', version.ref = 'hilt' }
+# detekt
+detekt-formatting = { module = 'io.gitlab.arturbosch.detekt:detekt-formatting', version.ref = 'detekt' }
+detekt-twitter = { module = 'io.nlopez.compose.rules:detekt', version = '0.3.11' }
+# square
+converter-gson = { module = 'com.squareup.retrofit2:converter-gson', version = '2.9.0' }
+leakcanary-android = { module = 'com.squareup.leakcanary:leakcanary-android', version = '2.13' }
+okhttp-bom = { module = 'com.squareup.okhttp3:okhttp-bom', version = '4.12.0' }
+okhttp = { module = 'com.squareup.okhttp3:okhttp' }
+logging-interceptor = { module = 'com.squareup.okhttp3:logging-interceptor' }
+logcat = { module = 'com.squareup.logcat:logcat', version = '0.1' }
+# compose settings
+compose-settings-ui-m3 = { module = 'com.github.alorma:compose-settings-ui-m3', version = '1.0.3' }
+compose-settings-storage-datastore = { module = 'com.github.alorma:compose-settings-storage-datastore', version = '0.27.0' }
+# lint
+lint-rules-android = { module = 'com.vanniktech:lint-rules-android', version.ref = 'lint-rules' }
+lint-rules-kotlin = { module = 'com.vanniktech:lint-rules-kotlin', version.ref = 'lint-rules' }
+slack-lint-checks = { module = 'com.slack.lint:slack-lint-checks', version = '0.7.0' }
+# 3rd
+semver = { module = 'io.github.z4kn4fein:semver', version = '1.4.2' }
+# test
+kotlinx-coroutines-test = { module = 'org.jetbrains.kotlinx:kotlinx-coroutines-test', version = '1.8.0' }
+androidx-test-ext-junit = { module = 'androidx.test.ext:junit', version = '1.1.5' }
+# 3rd
+mockito-kotlin = { module = 'org.mockito.kotlin:mockito-kotlin', version = '5.2.1' }
+robolectric = { module = 'org.robolectric:robolectric', version = '4.11.1' }
+# android test
+orchestrator = { module = 'androidx.test:orchestrator', version = '1.4.2' }
+uiautomator = { module = 'androidx.test.uiautomator:uiautomator', version = '2.3.0' }
+runner = { module = 'androidx.test:runner', version = '1.5.2' }
+# benchmark
+benchmark-macro-junit4 = { module = 'androidx.benchmark:benchmark-macro-junit4', version = '1.2.3' }
+profileinstaller = { module = 'androidx.profileinstaller:profileinstaller', version = '1.3.1' }
+# plugins
+agp = { module = 'com.android.tools.build:gradle', version.ref = 'agp' }
+kgp = { module = 'org.jetbrains.kotlin:kotlin-gradle-plugin', version.ref = 'kotlin' }
+hgp = { module = 'com.google.dagger:hilt-android-gradle-plugin', version.ref = 'hilt' }
+ksp = { module = 'com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin', version.ref = 'ksp' }
+detekt = { module = 'io.gitlab.arturbosch.detekt:detekt-gradle-plugin', version.ref = 'detekt' }
+
+[bundles]
+compose-settings = ['compose-settings-ui-m3', 'compose-settings-storage-datastore']
+detekt = ['detekt-formatting', 'detekt-twitter']
+lint-rules = ['lint-rules-android', 'lint-rules-kotlin']
+
+[plugins]
+# android
+androidApplication = { id = 'com.android.application', version.ref = 'agp' }
+# kotlin
+kotlinAndroid = { id = 'org.jetbrains.kotlin.android', version.ref = 'kotlin' }
+# google
+ksp = { id = 'com.google.devtools.ksp', version.ref = 'ksp' }
+hiltAndroid = { id = 'com.google.dagger.hilt.android', version.ref = 'hilt' }

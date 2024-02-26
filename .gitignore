@@ -1,14 +1,6 @@
-# IDEA/Android Studio project files, because
-# the project can be imported from settings.gradle
-*.iml
-# Local configuration file (sdk path, etc)
 local.properties
-# OSX files
 .DS_Store
-# Views screenshots
-captures/
-# Built apk
-release/
-.*/
+.idea/*
+!.idea/icon.svg
+.gradle
 build/
-!.idea/dictionaries/

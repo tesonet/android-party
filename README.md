@@ -1,8 +1,8 @@
 # Task for a Great Android developer
 
-If you found this task it means we are looking for you!
+If you found this task, it means we are looking for you!
 
-> Note: To clone this repository you will need [GIT-LFS](https://git-lfs.github.com/)
+> Note: To clone this repository, you will need [GIT-LFS](https://git-lfs.github.com/)
 
 ## Few simple steps
 
@@ -13,7 +13,7 @@ If you found this task it means we are looking for you!
 ## Few simple requirements
 
 - Send authorization request (POST) to http://playground.tesonet.lt/v1/tokens to generate token with body: `{"username": "tesonet", "password": "partyanimal"}`. (Don't forget Content-Type)
-- Get servers list from http://playground.tesonet.lt/v1/servers. Add header to request: `Authorization: Bearer <token>`
+- Get a server list from http://playground.tesonet.lt/v1/servers. Add header to request: `Authorization: Bearer <token>`
 - Design should be recreated as closely as possible
 - Bonus: implement smooth animated transition from login through loader to server list screen
 - Bonus: implement persistent storage of the downloaded server data
